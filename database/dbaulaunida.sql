@@ -108,6 +108,12 @@ CREATE TABLE IF NOT EXISTS `calificaciones` (
   KEY `materia_id` (`materia_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
+
+
+------------------------------------------------------
+
+
+
 --
 -- Volcado de datos para la tabla `calificaciones`
 --
@@ -122,6 +128,31 @@ INSERT INTO `calificaciones` (`id_calificacion`, `docente_id`, `estudiante_id`, 
 (7, 1, 2, 2, 100, 100, 0, 0, 0, 0, 0, 0, '2024-10-13', '2024-10-13', '1');
 
 -- --------------------------------------------------------
+
+
+CREATE TABLE informes (
+  `id_informe` int (11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `docente_id` int (11) NOT NULL,
+  `estudiante_id` int (11) NOT NULL,
+  `materia_id` int (11) NOT NULL,
+
+  `observacion` varchar (10) NOT NULL,
+  `nota` text NOT NULL,
+
+  `fyh_creacion` date NULL,
+  `fyh_actualizacion` date NULL,
+  `estado` varchar(11),
+
+ FOREIGN KEY (docente_id) REFERENCES docentes (id_docente) on delete no action on update cascade,
+ FOREIGN KEY (estudiante_id) REFERENCES estudiantes (id_estudiante) on delete no action on update cascade,
+ FOREIGN KEY (materia_id) REFERENCES materias (id_materia) on delete no action on update cascade
+) ENGINE=InnoDB;
+
+
+-----------------------------------------------------------
+
+
+
 
 --
 -- Estructura de tabla para la tabla `configuracion_instituciones`

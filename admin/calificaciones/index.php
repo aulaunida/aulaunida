@@ -32,7 +32,7 @@ include('../../app/controllers/docentes/listado_de_asignaciones.php');
                 <div class="col-md-12">
                     <div class="card card-outline card-primary">
                         <div class="card-header">
-                            <h3 class="card-title">Grados asignados</h3>
+                            <h3 class="card-title">Calificaciones por grados</h3>
                         </div>
                         <div class="card-body">
                             <!-- <?= $email_sesion; ?> -->
