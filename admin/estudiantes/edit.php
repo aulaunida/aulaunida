@@ -15,7 +15,7 @@ include('../../app/controllers/grados/listado_de_grados.php');
     <div class="content">
         <div class="container">
             <div class="row">
-                <h2>EDITAR ESTUDIANTE <i class="bi bi-chevron-right"></i> <?= $apellidos . ', ' .$nombres ; ?></h2>
+                <h2>EDITAR ESTUDIANTE <i class="bi bi-chevron-right"></i> <?= strtoupper($apellidos . ', ' . $nombres); ?></h2>
             </div>
             <br>
 
@@ -56,13 +56,13 @@ include('../../app/controllers/grados/listado_de_grados.php');
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="">Apellido<b style="color:red">*</b></label>
-                                            <input type="text" name="apellidos" value="<?= $apellidos; ?>" class="form-control" required>
+                                            <input type="text" name="apellidos" value="<?= strtoupper($apellidos); ?>" class="form-control" required>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="">Nombre<b style="color:red">*</b></label>
-                                            <input type="text" name="nombres" value="<?= $nombres; ?>" class="form-control" required>
+                                            <input type="text" name="nombres" value="<?= strtoupper($nombres); ?>" class="form-control" required>
                                         </div>
                                     </div>
                                 </div>
@@ -185,7 +185,7 @@ include('../../app/controllers/grados/listado_de_grados.php');
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="">Nombre y Apellido<b style="color:red">*</b></label>
-                                            <input type="text" name="nombres_apellidos_ppff" value="<?= $nombres_apellidos_ppff; ?>" class="form-control"
+                                            <input type="text" name="nombres_apellidos_ppff" value="<?= strtoupper($nombres_apellidos_ppff);?>" class="form-control"
                                                 required>
                                         </div>
                                     </div>
@@ -225,7 +225,7 @@ include('../../app/controllers/grados/listado_de_grados.php');
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="">Contacto adicional emergencia<b style="color:red">*</b></label>
-                                            <input type="text" name="ref_nombre" value="<?= $ref_nombre; ?>" class="form-control" required>
+                                            <input type="text" name="ref_nombre" value="<?= strtoupper($ref_nombre);?>" class="form-control" required>
                                         </div>
                                     </div>
 

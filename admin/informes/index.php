@@ -3,6 +3,7 @@ include('../../app/config.php');
 include('../../admin/layout/parte1.php');
 
 include('../../app/controllers/docentes/listado_de_asignaciones.php');
+include('../../app/controllers/estudiantes/listado_de_estudiantes.php');
 
 
 ?>
@@ -85,32 +86,71 @@ include('../../app/controllers/docentes/listado_de_asignaciones.php');
                                                 </td>
                                                 <td style="text-align: center">
 
-                                                    <a class="btn btn-info btn-sm" data-toggle="modal" data-target="#exampleModal<?= $id_asignacion; ?>"><i class="bi bi-journals"></i> Redactar informe</a>
+                                                    <a class="btn btn-info btn-sm" data-toggle="modal"
+                                                        data-target="#exampleModal<?= $id_asignacion; ?>"><i
+                                                            class="bi bi-journals"></i> Redactar informe</a>
                                                     <!-- Modal -->
-                                                    <div class="modal fade" id="exampleModal<?= $id_asignacion; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                        <div class="modal-dialog modal-xl">
+                                                    <div class="modal fade" id="exampleModal<?= $id_asignacion; ?>"
+                                                        tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                        <div class="modal-dialog modal-lg">
                                                             <div class="modal-content">
-                                                                <div class="modal-header" style="background-color:#17a2b8; color:#FFFFFF">
-                                                                    <h5 class="modal-title" id="exampleModalLabel">Redactar informes <i class="bi bi-chevron-right"></i><?= $asignacione['curso']; ?> "<?= $asignacione['paralelo']; ?>" - <?= $asignacione['nombre_materia']; ?></h5>
-                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <div class="modal-header"
+                                                                    style="background-color:#17a2b8; color:#FFFFFF">
+                                                                    <h5 class="modal-title" id="exampleModalLabel">REDACTAR INFORME <i
+                                                                            class="bi bi-chevron-right"></i><?= $asignacione['curso']; ?>
+                                                                        "<?= $asignacione['paralelo']; ?>" -
+                                                                        <?= $asignacione['nombre_materia']; ?>
+                                                                    </h5>
+                                                                    <button type="button" class="close" data-dismiss="modal"
+                                                                        aria-label="Close">
                                                                         <span aria-hidden="true">&times;</span>
                                                                     </button>
                                                                 </div>
                                                                 <div class="modal-body">
                                                                     <div class="row">
-
+                                                                        <div class="col-md-12">
+                                                                            <div class="form-group" style="text-align: left">
+                                                                                <label for="" class="text-align-left">Fecha de
+                                                                                    Informe</label>
+                                                                                <input type="date" class="form-control" name=""
+                                                                                    id="">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col-md-12">
+                                                                            <div class="form-group" style="text-align: left">
+                                                                                <label for=""
+                                                                                    class="text-align-left">Estudiante</label>
+                                                                                <select name="" class="form-control" id="">
+                                                                                    <?php
+                                                                                    foreach ($estudiantes as $estudiante) {
+                                                                                        if($estudiante['id_grado']==$asignacione['grado_id']){
+                                                                                        $id_estudiante = $estudiante['id_estudiante'];?>
+                                                                                        <option value="<?= $id_estudiante; ?>">
+                                                                                            <?= strtoupper($estudiante['apellidos'] . ", " . $estudiante['nombres']); ?>
+                                                                                        </option>
+                                                                                        <?php    
+                                                                                        }
+                                                                                    }
+                                                                                    ?>
+                                                                                </select>
+                                                                            </div>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
                                                                 <div class="modal-footer">
-                                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                                                    <button type="submit"
+                                                                        class="btn btn-primary">Registrar</button>
+                                                                    <button type="button" class="btn btn-secondary"
+                                                                        data-dismiss="modal">Cancelar</button>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </td>
                                             </tr>
-                                    <?php
+                                            <?php
                                         }
                                     }
                                     ?>
