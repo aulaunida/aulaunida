@@ -21,7 +21,7 @@ include ('../../app/controllers/roles/datos_del_rol.php');
     <div class="content">
         <div class="container">
             <div class="row">
-                <h1>Consultar detalles <i class="bi bi-chevron-right"></i> <?=$nombre_rol;?></h1>
+                <h2>CONSULTAR DETALLES <i class="bi bi-chevron-right"></i> <?=$nombre_rol;?></h>
             </div>
             <br>
             <div class="row">

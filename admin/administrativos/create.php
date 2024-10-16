@@ -11,7 +11,7 @@ include('../../app/controllers/roles/listado_de_roles.php');
     <div class="content">
         <div class="container">
             <div class="row">
-                <h1>Administrativos <i class="bi bi-chevron-right"></i> Crear nuevo administrativo</h1>
+                <h2>ADMINISTRATIVOS <i class="bi bi-chevron-right"></i> REGISTRAR ADMINISTRATIVO</h2>
             </div>
             <br>
             <div class="row">

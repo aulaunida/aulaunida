@@ -13,7 +13,7 @@ include ('../../../app/controllers/configuraciones/institucion/datos_institucion
     <div class="content">
         <div class="container">
             <div class="row">
-                <h1>Editar institución <i class="bi bi-chevron-right"></i> <?=$nombre_institucion;?></h1>
+                <h2>EDITAR INSTITUCIÓN <i class="bi bi-chevron-right"></i> <?=$nombre_institucion;?></h>
             </div>
             <br>
             <div class="row">

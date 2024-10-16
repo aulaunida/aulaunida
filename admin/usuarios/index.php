@@ -17,7 +17,7 @@ include ('../../app/controllers/usuarios/listado_de_usuarios.php');
     <div class="content">
         <div class="container">
             <div class="row">
-                <h1>Usuarios <i class="bi bi-chevron-right"></i> Consultar usuarios</h1>
+                <h2>USUARIOS <i class="bi bi-chevron-right"></i> CONSULTAR USUARIOS</h2>
             </div>
             <br>
             <div class="row">

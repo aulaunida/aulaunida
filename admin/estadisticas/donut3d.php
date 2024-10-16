@@ -10,7 +10,7 @@ include ('../../app/controllers/usuarios/listado_de_usuarios.php');
     <div class="content">
         <div class="container">
                 <div class="row">
-                    <h1>Informes</h1>
+                <h2>ESTADÍSTICAS</h2>
                 </div>
                 <br>
                 <div class="row">

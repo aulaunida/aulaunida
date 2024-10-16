@@ -10,7 +10,7 @@ include ('../../admin/layout/parte1.php');
     <div class="content">
         <div class="container">
             <div class="row">
-                <h1>Materias <i class="bi bi-chevron-right"></i> Registrar materia</h1>
+                <h2>MATERIAS <i class="bi bi-chevron-right"></i> REGISTRAR MATERIA</h2>
             </div>
             <br>
             <div class="row">

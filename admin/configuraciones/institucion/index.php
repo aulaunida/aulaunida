@@ -12,7 +12,7 @@ include ('../../../app/controllers/configuraciones/institucion/listado_de_instit
     <div class="content">
         <div class="container">
             <div class="row">
-                <h1>Configurar instituciones educativas</h1>
+                <h2>CONFIGURAR INSTITUCIÓN EDUCATIVA</h2>
             </div>
             <br>
             <div class="row">

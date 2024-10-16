@@ -12,7 +12,7 @@ include ('../../app/controllers/configuraciones/gestion/listado_de_gestiones.php
     <div class="content">
         <div class="container">
             <div class="row">
-                <h1>Niveles educativos <i class="bi bi-chevron-right"></i> Registrar nivel educativo</h1>
+                <h2>NIVELES EDUCATIVOS <i class="bi bi-chevron-right"></i> REGISTRAR NIVEL EDUCATIVO</h2>
             </div>
             <br>
             <div class="row">

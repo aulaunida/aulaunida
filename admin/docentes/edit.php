@@ -13,7 +13,7 @@ include('../../app/controllers/roles/listado_de_roles.php');
     <div class="content">
         <div class="container">
             <div class="row">
-                <h1>Editar docente <i class="bi bi-chevron-right"></i> <?= $apellidos . ', ' .$nombres ; ?></h1>
+                <h2>EDITAR DOCENTE <i class="bi bi-chevron-right"></i> <?= $apellidos . ', ' .$nombres ; ?></h2>
             </div>
             <br>
             <div class="row">

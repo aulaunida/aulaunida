@@ -11,7 +11,7 @@ include ('../../admin/layout/parte1.php');
     <div class="content">
         <div class="container">
             <div class="row">
-                <h1>Administrador <i class="bi bi-chevron-right"></i> Consultar Configuraciones</h1>
+                <h2>ADMINISTRADOR <i class="bi bi-chevron-right"></i> CONSULTAR CONFIGURACIONES</h>
             </div>
             <br>
             <div class="row">

@@ -12,7 +12,7 @@ include ('../../../app/controllers/configuraciones/gestion/datos_gestion.php');
     <div class="content">
         <div class="container">
             <div class="row">
-                <h1>Editar Ciclo lectivo <i class="bi bi-chevron-right"></i> <?=$gestion;?></h1>
+                <h2>EDITAR CICLO LECTIVO <i class="bi bi-chevron-right"></i> <?=$gestion;?></h2>
             </div>
             <br>
             <div class="row">

@@ -10,7 +10,7 @@ include ('../../../admin/layout/parte1.php');
     <div class="content">
         <div class="container">
             <div class="row">
-                <h1>Instituciones educativas <i class="bi bi-chevron-right"></i> Registrar institución</h1>
+                <h2>INSTITUCIONES EDUCATIVAS <i class="bi bi-chevron-right"></i> REGISTRAR INSTITUCIÓN</h2>
             </div>
             <br>
             <div class="row">

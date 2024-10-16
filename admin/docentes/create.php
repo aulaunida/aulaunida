@@ -11,7 +11,7 @@ include('../../app/controllers/roles/listado_de_roles.php');
     <div class="content">
         <div class="container">
             <div class="row">
-                <h1>Docentes <i class="bi bi-chevron-right"></i> Registrar docente</h1>
+                <h2>DOCENTES <i class="bi bi-chevron-right"></i> REGISTRAR DOCENTE</h2>
             </div>
             <br>
             <div class="row">

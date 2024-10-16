@@ -21,7 +21,7 @@ include('../../admin/layout/parte1.php');
     <div class="content">
         <div class="container">
             <div class="row">
-                <h1>Inscripciones <i class="bi bi-chevron-right"></i> Año <?= $ano_actual ?></h1>
+                <h2>INSCRIPCIONES <i class="bi bi-chevron-right"></i> AÑO <?= $ano_actual ?></h2>
             </div>
             <br>
             <div class="row">

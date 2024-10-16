@@ -26,7 +26,7 @@ include('../../app/controllers/docentes/listado_de_asignaciones.php');
     <div class="content">
         <div class="container">
             <div class="row">
-                <h1>Asignar materias <i class="bi bi-chevron-right"></i> Consultar docentes asignados</h1>
+                <h2>ASIGNAR MATERIAS <i class="bi bi-chevron-right"></i> Consultar docentes asignados</h2>
             </div>
             <br>
             <div class="row">

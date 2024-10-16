@@ -24,7 +24,7 @@ include('../../app/controllers/docentes/listado_de_asignaciones.php');
     <div class="content">
         <div class="container">
             <div class="row">
-                <h1>Informes <i class="bi bi-chevron-right"></i> Consultar informes</h1>
+                <h2>INFORMES <i class="bi bi-chevron-right"></i> CONSULTAR INFORMES</h2>
             </div>
             <br>
             <div class="row">
@@ -98,7 +98,7 @@ include('../../app/controllers/docentes/listado_de_asignaciones.php');
                                                                 </div>
                                                                 <div class="modal-body">
                                                                     <div class="row">
-                                                                        
+
                                                                     </div>
                                                                 </div>
                                                                 <div class="modal-footer">

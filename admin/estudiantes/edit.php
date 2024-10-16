@@ -15,7 +15,7 @@ include('../../app/controllers/grados/listado_de_grados.php');
     <div class="content">
         <div class="container">
             <div class="row">
-                <h1>Editar estudiante <i class="bi bi-chevron-right"></i> <?= $nombres . ' ' . $apellidos; ?></h1>
+                <h2>EDITAR ESTUDIANTE <i class="bi bi-chevron-right"></i> <?= $apellidos . ', ' .$nombres ; ?></h2>
             </div>
             <br>
 

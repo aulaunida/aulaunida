@@ -22,7 +22,7 @@ include ('../../app/controllers/docentes/listado_de_docentes.php');
     <div class="content">
         <div class="container">
             <div class="row">
-                <h1>Docentes <i class="bi bi-chevron-right"></i> Consultar docentes</h1>
+                <h2>DOCENTES <i class="bi bi-chevron-right"></i> CONSULTAR DOCENTES</h2>
             </div>
             <br>
             <div class="row">

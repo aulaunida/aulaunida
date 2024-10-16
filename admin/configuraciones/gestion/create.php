@@ -10,7 +10,7 @@ include ('../../../admin/layout/parte1.php');
     <div class="content">
         <div class="container">
             <div class="row">
-                <h1>Ciclo lectivo <i class="bi bi-chevron-right"></i> Registrar ciclo lectivo</h1>
+                <h2>CICLO LECTIVO <i class="bi bi-chevron-right"></i> REGISTRAR CICLO LECTIVO</h2>
             </div>
             <br>
             <div class="row">

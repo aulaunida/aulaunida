@@ -13,7 +13,7 @@ include('../../app/controllers/administrativos/datos_administrativos.php');
     <div class="content">
         <div class="container">
             <div class="row">
-                <h1>Ver más detalles <i class="bi bi-chevron-right"></i> <?=$nombres.' '.$apellidos;?></h1>
+                <h2>CONSULTAR DETALLES <i class="bi bi-chevron-right"></i> <?=$nombres.' '.$apellidos;?></h2>
             </div>
             <br>
             <div class="row">

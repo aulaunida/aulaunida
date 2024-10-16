@@ -12,7 +12,7 @@ include ('../../app/controllers/grados/listado_de_grados.php');
     <div class="content">
         <div class="container">
             <div class="row">
-                <h1>Grados <i class="bi bi-chevron-right"></i> Consultar grados</h1>
+                <h2>GRADOS <i class="bi bi-chevron-right"></i> CONSULTAR GRADOS</h2>
             </div>
             <br>
             <div class="row">

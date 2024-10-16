@@ -12,7 +12,7 @@ include ('../../../app/controllers/configuraciones/gestion/listado_de_gestiones.
     <div class="content">
         <div class="container">
             <div class="row">
-                <h1>Configurar ciclos lectivos</h1>
+                <h2>CONFIGURAR CICLO LECTIVO</h2>
             </div>
             <br>
             <div class="row">

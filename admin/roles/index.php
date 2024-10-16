@@ -12,7 +12,7 @@ include('../../app/controllers/roles/listado_de_roles.php');
     <div class="content">
         <div class="container">
             <div class="row">
-                <h1>Usuarios <i class="bi bi-chevron-right"></i> Consultar roles</h1>
+                <h2>USUARIOS <i class="bi bi-chevron-right"></i> CONSULTAR ROLES</h2>
             </div>
             <br>
             <div class="row">
