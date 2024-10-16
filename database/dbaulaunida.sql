@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 14-10-2024 a las 10:14:43
+-- Tiempo de generación: 16-10-2024 a las 17:22:44
 -- Versión del servidor: 8.3.0
 -- Versión de PHP: 8.2.18
 
@@ -61,13 +61,13 @@ CREATE TABLE IF NOT EXISTS `asignaciones` (
   `materia_id` int NOT NULL,
   `fyh_creacion` date DEFAULT NULL,
   `fyh_actualizacion` date DEFAULT NULL,
-  `estado` varchar(11) COLLATE utf8mb4_spanish_ci DEFAULT NULL,
+  `estado` varchar(11) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci DEFAULT NULL,
   PRIMARY KEY (`id_asignacion`),
   KEY `materia_id` (`materia_id`),
   KEY `docente_id` (`docente_id`),
   KEY `nivel_id` (`nivel_id`),
   KEY `grado_id` (`grado_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `asignaciones`
@@ -76,8 +76,9 @@ CREATE TABLE IF NOT EXISTS `asignaciones` (
 INSERT INTO `asignaciones` (`id_asignacion`, `docente_id`, `nivel_id`, `grado_id`, `materia_id`, `fyh_creacion`, `fyh_actualizacion`, `estado`) VALUES
 (1, 1, 1, 1, 1, '2024-10-08', '2024-10-12', '1'),
 (2, 1, 1, 1, 2, '2024-10-08', '2024-10-12', '1'),
-(3, 5, 2, 2, 1, '2024-10-08', NULL, '1'),
-(4, 5, 2, 2, 2, '2024-10-08', NULL, '1');
+(3, 5, 2, 2, 1, '2024-10-08', '2024-10-14', '1'),
+(4, 5, 2, 2, 2, '2024-10-08', NULL, '1'),
+(9, 1, 1, 1, 3, '2024-10-14', NULL, '1');
 
 -- --------------------------------------------------------
 
@@ -101,18 +102,12 @@ CREATE TABLE IF NOT EXISTS `calificaciones` (
   `nota8` int DEFAULT NULL,
   `fyh_creacion` date DEFAULT NULL,
   `fyh_actualizacion` date DEFAULT NULL,
-  `estado` varchar(11) COLLATE utf8mb4_spanish_ci DEFAULT NULL,
+  `estado` varchar(11) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci DEFAULT NULL,
   PRIMARY KEY (`id_calificacion`),
   KEY `docente_id` (`docente_id`),
   KEY `estudiante_id` (`estudiante_id`),
   KEY `materia_id` (`materia_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
-
-
-
-------------------------------------------------------
-
-
 
 --
 -- Volcado de datos para la tabla `calificaciones`
@@ -128,31 +123,6 @@ INSERT INTO `calificaciones` (`id_calificacion`, `docente_id`, `estudiante_id`, 
 (7, 1, 2, 2, 100, 100, 0, 0, 0, 0, 0, 0, '2024-10-13', '2024-10-13', '1');
 
 -- --------------------------------------------------------
-
-
-CREATE TABLE informes (
-  `id_informe` int (11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  `docente_id` int (11) NOT NULL,
-  `estudiante_id` int (11) NOT NULL,
-  `materia_id` int (11) NOT NULL,
-  `fecha_informe` varchar (10) NOT NULL,
-  `observacion` varchar (10) NOT NULL,
-  `nota` text NOT NULL,
-
-  `fyh_creacion` date NULL,
-  `fyh_actualizacion` date NULL,
-  `estado` varchar(11),
-
- FOREIGN KEY (docente_id) REFERENCES docentes (id_docente) on delete no action on update cascade,
- FOREIGN KEY (estudiante_id) REFERENCES estudiantes (id_estudiante) on delete no action on update cascade,
- FOREIGN KEY (materia_id) REFERENCES materias (id_materia) on delete no action on update cascade
-) ENGINE=InnoDB;
-
-
------------------------------------------------------------
-
-
-
 
 --
 -- Estructura de tabla para la tabla `configuracion_instituciones`
@@ -306,6 +276,30 @@ INSERT INTO `grados` (`id_grado`, `nivel_id`, `curso`, `paralelo`, `fyh_creacion
 (15, 2, 'QUINTO GRADO', 'B', '2024-08-25', NULL, '1'),
 (16, 1, 'SEXTO GRADO', 'A', '2024-08-25', NULL, '1'),
 (17, 2, 'SEXTO GRADO', 'B', '2024-08-25', NULL, '1');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `informes`
+--
+
+DROP TABLE IF EXISTS `informes`;
+CREATE TABLE IF NOT EXISTS `informes` (
+  `id_informe` int NOT NULL AUTO_INCREMENT,
+  `docente_id` int NOT NULL,
+  `estudiante_id` int NOT NULL,
+  `materia_id` int NOT NULL,
+  `fecha_informe` varchar(10) COLLATE utf8mb4_spanish_ci NOT NULL,
+  `observacion` varchar(10) COLLATE utf8mb4_spanish_ci NOT NULL,
+  `nota` text COLLATE utf8mb4_spanish_ci NOT NULL,
+  `fyh_creacion` date DEFAULT NULL,
+  `fyh_actualizacion` date DEFAULT NULL,
+  `estado` varchar(11) COLLATE utf8mb4_spanish_ci DEFAULT NULL,
+  PRIMARY KEY (`id_informe`),
+  KEY `docente_id` (`docente_id`),
+  KEY `estudiante_id` (`estudiante_id`),
+  KEY `materia_id` (`materia_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
 -- --------------------------------------------------------
 
@@ -555,6 +549,14 @@ ALTER TABLE `estudiantes`
 --
 ALTER TABLE `grados`
   ADD CONSTRAINT `grados_ibfk_1` FOREIGN KEY (`nivel_id`) REFERENCES `niveles` (`id_nivel`) ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `informes`
+--
+ALTER TABLE `informes`
+  ADD CONSTRAINT `informes_ibfk_1` FOREIGN KEY (`docente_id`) REFERENCES `docentes` (`id_docente`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `informes_ibfk_2` FOREIGN KEY (`estudiante_id`) REFERENCES `estudiantes` (`id_estudiante`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `informes_ibfk_3` FOREIGN KEY (`materia_id`) REFERENCES `materias` (`id_materia`) ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `niveles`
