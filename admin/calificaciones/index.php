@@ -24,7 +24,7 @@ include('../../app/controllers/docentes/listado_de_asignaciones.php');
     <div class="content">
         <div class="container">
             <div class="row">
-                <h1>Calificaciones <i class="bi bi-chevron-right"></i> Cargar calificaciones</h1>
+                <h2>CALIFICACIONES <i class="bi bi-chevron-right"></i> CARGAR CALIFICACIONES</h2>
             </div>
             <br>
             <div class="row">

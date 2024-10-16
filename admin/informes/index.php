@@ -90,14 +90,16 @@ include('../../app/controllers/docentes/listado_de_asignaciones.php');
                                                     <div class="modal fade" id="exampleModal<?= $id_asignacion; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                         <div class="modal-dialog modal-xl">
                                                             <div class="modal-content">
-                                                                <div class="modal-header">
-                                                                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                                                <div class="modal-header" style="background-color:#17a2b8; color:#FFFFFF">
+                                                                    <h5 class="modal-title" id="exampleModalLabel">Redactar informes <i class="bi bi-chevron-right"></i><?= $asignacione['curso']; ?> "<?= $asignacione['paralelo']; ?>" - <?= $asignacione['nombre_materia']; ?></h5>
                                                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                                         <span aria-hidden="true">&times;</span>
                                                                     </button>
                                                                 </div>
                                                                 <div class="modal-body">
-                                                                    ...
+                                                                    <div class="row">
+                                                                        
+                                                                    </div>
                                                                 </div>
                                                                 <div class="modal-footer">
                                                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

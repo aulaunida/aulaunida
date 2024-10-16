@@ -8,6 +8,7 @@ include('../../admin/layout/parte1.php');
 
 include('../../app/controllers/estudiantes/listado_de_estudiantes.php');
 include('../../app/controllers/calificaciones/listado_de_calificaciones.php');
+include('../../app/controllers/materias/listado_de_materias.php');
 
 
 $curso = "";
@@ -19,9 +20,14 @@ foreach ($estudiantes as $estudiante) {
         $paralelo = $estudiante['paralelo'];
     }
 }
+
+foreach ($materias as $materia) {
+    if ($id_materia_get == $materia['id_materia']) {
+        $nombre_materia = $materia['nombre_materia'];
+    }
+}
 ?>
 
-?>
 <style>
     .icono-blanco i {
         color: white;
@@ -40,7 +46,7 @@ foreach ($estudiantes as $estudiante) {
     <div class="content">
         <div class="container">
             <div class="row">
-                <h1>Cargar calificaciones<i class="bi bi-chevron-right"></i><?= $curso ?> - <?= $paralelo; ?></h1>
+                <h2>CARGAR CALIFICACIONES<i class="bi bi-chevron-right"></i><?= $curso ?> "<?= $paralelo;?>" - <?= $nombre_materia;?></h>
             </div>
             <br>
             <div class="row">

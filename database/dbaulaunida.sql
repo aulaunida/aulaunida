@@ -135,7 +135,7 @@ CREATE TABLE informes (
   `docente_id` int (11) NOT NULL,
   `estudiante_id` int (11) NOT NULL,
   `materia_id` int (11) NOT NULL,
-
+  `fecha_informe` varchar (10) NOT NULL,
   `observacion` varchar (10) NOT NULL,
   `nota` text NOT NULL,
 
