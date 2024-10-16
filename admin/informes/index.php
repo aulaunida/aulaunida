@@ -133,6 +133,7 @@ include('../../app/controllers/estudiantes/listado_de_estudiantes.php');
                                                                                         <?php    
                                                                                         }
                                                                                     }
+                                                                                    $id_estudiante;
                                                                                     ?>
                                                                                 </select>
                                                                             </div>
