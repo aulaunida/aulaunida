@@ -16,7 +16,7 @@ include ('../app/controllers/estudiantes/listado_de_estudiantes.php');
     <div class="container">
         <div class="container">
             <div class="row">
-                <h1><?=APP_NAME;?>® <i class="bi bi-chevron-right"></i> MENÚ PRINCIPAL</h1>
+                <h1> MENÚ PRINCIPAL</h1>
             </div>
             <br>
             <div class="row">

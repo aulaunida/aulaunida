@@ -130,7 +130,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <!-- Brand Logo -->
 <a href="<?=APP_URL;?>/admin" class="brand-link">
     <img src="<?= APP_URL; ?>/public/images/logoau.png" alt="AulaUnida Logo" class="brand-image" style="width: 36px;">
-    <span class="brand-text d-none d-sm-inline">Aula Unida®</span>
+    <span class="brand-text d-none d-sm-inline">AULA UNIDA®</span>
 </a>
 
         <!-- Sidebar -->

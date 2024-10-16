@@ -30,7 +30,7 @@ foreach ($usuarios as $usuario){
 if (($contador > 0) && (password_verify($password, $password_tabla))) {
     echo "los datos son correctos";
     session_start();
-    $_SESSION['mensaje'] = "¡Bienvenido ".$nombre_sesion_usuario."!";
+    $_SESSION['mensaje'] = "¡Bienvenido/a ".$nombre_sesion_usuario."!";
     $_SESSION['icono'] = "success";
     $_SESSION['timer'] = 4000;  // Duración del mensaje en milisegundos (4 segundos)
     $_SESSION['timerProgressBar'] = true;
