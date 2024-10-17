@@ -290,7 +290,7 @@ CREATE TABLE IF NOT EXISTS `informes` (
   `estudiante_id` int NOT NULL,
   `materia_id` int NOT NULL,
   `fecha_informe` varchar(10) COLLATE utf8mb4_spanish_ci NOT NULL,
-  `observacion` varchar(10) COLLATE utf8mb4_spanish_ci NOT NULL,
+  `observacion` varchar(50) COLLATE utf8mb4_spanish_ci NOT NULL,
   `nota` text COLLATE utf8mb4_spanish_ci NOT NULL,
   `fyh_creacion` date DEFAULT NULL,
   `fyh_actualizacion` date DEFAULT NULL,

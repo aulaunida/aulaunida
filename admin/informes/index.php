@@ -190,13 +190,13 @@ include('../../app/controllers/estudiantes/listado_de_estudiantes.php');
                                                                                     <label for="" class="text-align-left">Categorización</label>
                                                                                     <select name="observacion" class="form-control uppercase" id="">
                                                                                         <option value="" disabled selected>Seleccione una categorización</option>
-                                                                                        <option value="comportamiento_y_disciplina">COMPORTAMIENTO Y DISCIPLINA</option>
-                                                                                        <option value="comunicacion_y_participacion">COMUNICACIÓN Y PARTICIPACIÓN</option>
-                                                                                        <option value="diagnostico_inicial">DIAGNÓSTICO INICIAL</option>
-                                                                                        <option value="evolucion_y_progreso_general">EVOLUCIÓN Y PROGRESO GENERAL</option>
-                                                                                        <option value="observaciones_especificas">OBSERVACIONES ESPECÍFICAS</option>
-                                                                                        <option value="retos_y_estrategias_de_apoyo">RETOS Y ESTRATEGIAS DE APOYO</option>
-                                                                                        <option value="trabajo_en_grupo_y_colaboracion">TRABAJO EN GRUPO Y COLABORACIÓN</option>
+                                                                                        <option value="COMPORTAMIENTO Y DISCIPLINA">COMPORTAMIENTO Y DISCIPLINA</option>
+                                                                                        <option value="COMUNICACIÓN Y PARTICIPACIÓN">COMUNICACIÓN Y PARTICIPACIÓN</option>
+                                                                                        <option value="DIAGNÓSTICO INICIAL">DIAGNÓSTICO INICIAL</option>
+                                                                                        <option value="EVOLUCIÓN Y PROGRESO GENERAL">EVOLUCIÓN Y PROGRESO GENERAL</option>
+                                                                                        <option value="OBSERVACIONES ESPECÍFICAS">OBSERVACIONES ESPECÍFICAS</option>
+                                                                                        <option value="RETOS Y ESTRATEGIAS DE APOYO">RETOS Y ESTRATEGIAS DE APOYO</option>
+                                                                                        <option value="TRABAJO EN GRUPO Y COLABORACIÓN">TRABAJO EN GRUPO Y COLABORACIÓN</option>
 
                                                                                     </select>
                                                                                 </div>
