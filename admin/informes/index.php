@@ -270,9 +270,9 @@ include('../../app/controllers/informes/listado_de_informes.php');
                                         <th>
                                             <center>Categorización</center>
                                         </th>
-                                        <th>
+                                        <!-- <th>
                                             <center>Observación</center>
-                                        </th>
+                                        </th> -->
                                         <th>
                                             <center>Acciones</center>
                                         </th>
@@ -302,9 +302,9 @@ include('../../app/controllers/informes/listado_de_informes.php');
                                                         <td>
                                                             <center><?= $informe['observacion']; ?></center>
                                                         </td>
-                                                        <td>
+                                                        <!-- <td>
                                                             <center><?= $informe['nota']; ?></center>
-                                                        </td>
+                                                        </td> -->
 
                                                 <?php
                                                     }
@@ -312,6 +312,7 @@ include('../../app/controllers/informes/listado_de_informes.php');
                                                 ?>
                                                 <td style="text-align: center">
                                                     <div class="btn-group" role="group" aria-label="Basic example">
+                                                    <a href="show.php?id=<?=$id_informe;?>" type="button" title="Consultar informe" class="btn btn-info btn-sm"><i class="bi bi-eye"></i></a>
                                                         <a href="edit.php?id=<?= $id_estudiante; ?>" type="button" title="Editar" class="btn btn-success btn-sm icono-blanco"><i class="bi bi-pencil-square"></i></a>
                                                         <form action="<?= APP_URL; ?>/app/controllers/estudiantes/delete.php" onclick="preguntar<?= $id_estudiante; ?>(event)" method="post" id="miFormulario<?= $id_estudiante; ?>">
                                                             <input type="text" name="id_estudiante" value="<?= $id_estudiante; ?>" hidden>

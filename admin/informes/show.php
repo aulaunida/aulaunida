@@ -38,26 +38,26 @@ include('../../app/controllers/informes/datos_informes.php');
                         <div class="card-body">
 
                             <div class="row">
-                                <div class="col-md-3">
+                                <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="">Fecha Informe</label>
                                         <p><?= $fecha_informe; ?></p>
                                     </div>
                                 </div>
-                                <div class="col-md-3">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="">Materia</label>
+                                        <p><?= $nombre_materia; ?></p>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="">Categorización</label>
                                         <p class="uppercase"><?= $observacion; ?></p>
                                     </div>
                                 </div>
 
-                                <div class="col-md-3">
-                                    <div class="form-group">
-                                        <label for="">Fecha de creación</label>
-
-                                        <p><?= $fyh_creacion; ?></p>
-                                    </div>
-                                </div>
+                                
                             </div>
 
 
@@ -66,7 +66,7 @@ include('../../app/controllers/informes/datos_informes.php');
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="">Observación</label>
-                                        <p class="uppercase"><?= $nota; ?></p>
+                                        <p><?= $nota; ?></p>
                                     </div>
                                 </div>
 
@@ -76,7 +76,7 @@ include('../../app/controllers/informes/datos_informes.php');
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <a href="<?= APP_URL; ?>/admin/docentes" class="btn btn-secondary">Volver</a>
+                                        <a href="<?= APP_URL; ?>/admin/informes" class="btn btn-secondary">Volver</a>
                                     </div>
                                 </div>
                             </div>

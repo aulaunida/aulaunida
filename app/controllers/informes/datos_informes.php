@@ -15,8 +15,11 @@ foreach($informes as $informe){
     $id_informe = $informe['id_informe'];
     $docente_id = $informe['docente_id'];
     $estudiante_id = $informe['estudiante_id'];
+    $nombres_docente = $informe['nombres'];
+    $apellidos_docente = $informe['apellidos'];
     $materia_id = $informe['materia_id'];
-    $fecha_informe = $informe['nombre_materia'];
+    $nombre_materia = $informe['nombre_materia'];
+    $fecha_informe = $informe['fecha_informe'];
     $observacion = $informe['observacion'];
     $nota = $informe['nota'];
     $fyh_creacion = $informe['fyh_creacion'];
