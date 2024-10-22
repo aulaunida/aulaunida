@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 17-10-2024 a las 02:09:17
+-- Tiempo de generación: 22-10-2024 a las 21:38:42
 -- Versión del servidor: 8.3.0
 -- Versión de PHP: 8.2.18
 
@@ -300,14 +300,15 @@ CREATE TABLE IF NOT EXISTS `informes` (
   KEY `docente_id` (`docente_id`),
   KEY `estudiante_id` (`estudiante_id`),
   KEY `materia_id` (`materia_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `informes`
 --
 
 INSERT INTO `informes` (`id_informe`, `docente_id`, `estudiante_id`, `materia_id`, `fecha_informe`, `observacion`, `nota`, `fyh_creacion`, `fyh_actualizacion`, `estado`) VALUES
-(1, 1, 1, 1, '2024-10-16', 'EVOLUCIÓN Y PROGRESO GENERAL', 'Análisis del avance del alumno a lo largo del tiempo, incluyendo logros y áreas de mejora.', '2024-10-16', NULL, '1');
+(1, 1, 1, 1, '2024-10-16', 'EVOLUCIÓN Y PROGRESO GENERAL', 'Análisis del avance del alumno a lo largo del tiempo, incluyendo logros y áreas de mejora.', '2024-10-16', NULL, '1'),
+(2, 1, 2, 2, '2024-10-17', 'COMUNICACIÓN Y PARTICIPACIÓN', 'Evaluación de la interacción del alumno en clase, incluyendo su habilidad para expresarse, hacer preguntas y participar en discusiones.', '2024-10-21', NULL, '1');
 
 -- --------------------------------------------------------
 
