@@ -4,6 +4,7 @@ include('../../admin/layout/parte1.php');
 
 include('../../app/controllers/docentes/listado_de_asignaciones.php');
 include('../../app/controllers/estudiantes/listado_de_estudiantes.php');
+include('../../app/controllers/informes/listado_de_informes.php');
 
 
 ?>
@@ -33,11 +34,11 @@ include('../../app/controllers/estudiantes/listado_de_estudiantes.php');
                 <div class="col-md-12">
                     <div class="card card-outline card-info">
                         <div class="card-header">
-                            <h3 class="card-title">Informes por grados</h3>
+                            <h3 class="card-title">Redactar informe según grado</h3>
                         </div>
                         <div class="card-body">
                             <!-- <?= $email_sesion; ?> -->
-                            <table class="table table-striped table-bordered table-hover table-sm">
+                            <table id="example2" class="table table-striped table-bordered table-hover table-sm">
                                 <thead>
                                     <tr>
                                         <th>
@@ -109,14 +110,14 @@ include('../../app/controllers/estudiantes/listado_de_estudiantes.php');
                                                                         <span aria-hidden="true">&times;</span>
                                                                     </button>
                                                                 </div>
-                                                                <form action="<?=APP_URL;?>/app/controllers/informes/create.php" method="post">
+                                                                <form action="<?= APP_URL; ?>/app/controllers/informes/create.php" method="post">
                                                                     <div class="modal-body">
                                                                         <div class="row">
                                                                             <div class="col-md-12">
                                                                                 <div class="form-group" style="text-align: left">
                                                                                     <label for="" class="text-align-left">Fecha de
                                                                                         Informe</label>
-                                                                                        <input type="text" name="docente_id" value="<?=$docente_id;?>" hidden>
+                                                                                    <input type="text" name="docente_id" value="<?= $docente_id; ?>" hidden>
                                                                                     <input type="date" name="fecha_informe" class="form-control" name=""
                                                                                         id="">
                                                                                 </div>
@@ -179,7 +180,7 @@ include('../../app/controllers/estudiantes/listado_de_estudiantes.php');
                                                                             <div class="col-md-12">
                                                                                 <div class="form-group" style="text-align: left">
                                                                                     <label for="" class="text-align-left">Materia</label>
-                                                                                    <input type="text" name="materia_id" value="<?=$asignacione['id_materia'];?>">
+                                                                                    <input type="text" name="materia_id" value="<?= $asignacione['id_materia']; ?>">
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -228,6 +229,126 @@ include('../../app/controllers/estudiantes/listado_de_estudiantes.php');
                                     ?>
                                 </tbody>
                             </table>
+                            <!-- <hr>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group text-center">
+                                        <a href="<?= APP_URL; ?>/admin/index.php" class="btn btn-danger">Volver</a>
+                                    </div>
+                                </div>
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.row -->
+            <br>
+
+            <!-- INICIO SEGUNDA PARTE DEL MAIN -->
+
+            <div class="row">
+
+                <div class="col-md-12">
+                    <div class="card card-outline card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">Consultar informes existentes</h3>
+                        </div>
+                        <div class="card-body">
+                            <!-- <?= $email_sesion; ?> -->
+                            <table id="example1" class="table table-striped table-bordered table-hover table-sm">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            <center>Estudiante</center>
+                                        </th>
+                                        <th>
+                                            <center>Fecha de informe</center>
+                                        </th>
+                                        <th>
+                                            <center>Materia</center>
+                                        </th>
+                                        <th>
+                                            <center>Categorización</center>
+                                        </th>
+                                        <th>
+                                            <center>Observación</center>
+                                        </th>
+                                        <th>
+                                            <center>Acciones</center>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                    $contador_informes = 0;
+                                    foreach ($informes as $informe) {
+                                        $id_informe = $informe['id_informe'];
+                                        if ($email_sesion == $informe['email']) {
+                                            $estudiante_id = $informe['estudiante_id'];
+                                            $contador_informes = $contador_informes + 1; ?>
+                                            <tr>
+                                                <?php
+                                                foreach ($estudiantes as $estudiante) {
+                                                    if ($estudiante['id_estudiante'] == $estudiante_id) { ?>
+                                                        <td>
+                                                            <center><?= strtoupper($estudiante['apellidos'] . ", " . $estudiante['nombres']); ?></center>
+                                                        </td>
+                                                        <td>
+                                                            <center><?= $informe['fecha_informe']; ?></center>
+                                                        </td>
+                                                        <td>
+                                                            <center><?= $informe['nombre_materia']; ?></center>
+                                                        </td>
+                                                        <td>
+                                                            <center><?= $informe['observacion']; ?></center>
+                                                        </td>
+                                                        <td>
+                                                            <center><?= $informe['nota']; ?></center>
+                                                        </td>
+
+                                                <?php
+                                                    }
+                                                }
+                                                ?>
+                                                <td style="text-align: center">
+                                                    <div class="btn-group" role="group" aria-label="Basic example">
+                                                        <a href="edit.php?id=<?= $id_estudiante; ?>" type="button" title="Editar" class="btn btn-success btn-sm icono-blanco"><i class="bi bi-pencil-square"></i></a>
+                                                        <form action="<?= APP_URL; ?>/app/controllers/estudiantes/delete.php" onclick="preguntar<?= $id_estudiante; ?>(event)" method="post" id="miFormulario<?= $id_estudiante; ?>">
+                                                            <input type="text" name="id_estudiante" value="<?= $id_estudiante; ?>" hidden>
+                                                            <button type="submit" title="Eliminar" class="btn btn-danger btn-sm" style="border-radius: 0px 5px 5px 0px"><i class="bi bi-trash"></i></button>
+                                                        </form>
+                                                        <script>
+                                                            function preguntar<?= $id_estudiante; ?>(event) {
+                                                                event.preventDefault();
+                                                                Swal.fire({
+                                                                    title: 'Eliminar estudiante existente',
+                                                                    text: '¿Desea eliminar este estudiante?',
+                                                                    icon: 'question',
+                                                                    showDenyButton: true,
+                                                                    confirmButtonText: 'Eliminar',
+                                                                    confirmButtonColor: '#a5161d',
+                                                                    denyButtonColor: '#270a0a',
+                                                                    denyButtonText: 'Cancelar',
+                                                                }).then((result) => {
+                                                                    if (result.isConfirmed) {
+                                                                        var form = $('#miFormulario<?= $id_estudiante; ?>');
+                                                                        form.submit();
+                                                                        Swal.fire('Eliminado', 'Se eliminó el estudiante correctamente', 'success');
+                                                                    }
+                                                                });
+                                                            }
+                                                        </script>
+                                                    </div>
+                                                </td>
+
+
+                                            </tr>
+                                    <?php
+                                        }
+                                    }
+                                    ?>
+                                </tbody>
+                            </table>
                             <hr>
                             <div class="row">
                                 <div class="col-md-12">
@@ -240,7 +361,7 @@ include('../../app/controllers/estudiantes/listado_de_estudiantes.php');
                     </div>
                 </div>
             </div>
-            <!-- /.row -->
+
         </div><!-- /.container-fluid -->
     </div>
     <!-- /.content -->
@@ -253,3 +374,115 @@ include('../../admin/layout/parte2.php');
 include('../../layout/mensajes.php');
 
 ?>
+
+<script>
+    $(function () {
+        $("#example2").DataTable({
+            "pageLength": 10,
+            "language": {
+                "emptyTable": "No hay información",
+                "info": "Mostrando _START_ - _END_ | _TOTAL_ grados",
+                "infoEmpty": "Mostrando 0 - 0 | 0 grados",
+                "infoFiltered": "(Filtrado de _MAX_ total grados)",
+                "infoPostFix": "",
+                "thousands": ",",
+                "lengthMenu": "Mostrar _MENU_ grados",
+                "loadingRecords": "Cargando...",
+                "processing": "Procesando...",
+                "search": "Buscar grados:",
+                "zeroRecords": "Sin resultados encontrados",
+                "paginate": {
+                    "first": "Primero",
+                    "last": "Ultimo",
+                    "next": "Siguiente",
+                    "previous": "Anterior"
+                }
+            },
+            "responsive": true, "lengthChange": true, "autoWidth": false,
+            buttons: [{
+                extend: 'collection',
+                text: 'Reportes',
+                orientation: 'landscape',
+                buttons: [{
+                    text: 'Copiar Texto',
+                    extend: 'copy',
+                }, {
+                    text: 'Descargar en PDF',
+                    extend: 'pdf'
+                },{
+                    text: 'Descargar en CSV',
+                    extend: 'csv'
+                },{
+                    text: 'Descargar en Excel',
+                    extend: 'excel'
+                },{
+                    text: 'Imprimir Reporte',
+                    extend: 'print'
+                }
+                ]
+            },
+                {
+                    extend: 'colvis',
+                    text: 'Visor de columnas',
+                    collectionLayout: 'fixed three-column'
+                }
+            ],
+        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+    });
+</script>
+
+<script>
+    $(function () {
+        $("#example1").DataTable({
+            "pageLength": 25,
+            "language": {
+                "emptyTable": "No hay información",
+                "info": "Mostrando _START_ - _END_ | _TOTAL_ informes",
+                "infoEmpty": "Mostrando 0 - 0 | 0 informes",
+                "infoFiltered": "(Filtrado de _MAX_ total informes)",
+                "infoPostFix": "",
+                "thousands": ",",
+                "lengthMenu": "Mostrar _MENU_ informes",
+                "loadingRecords": "Cargando...",
+                "processing": "Procesando...",
+                "search": "Buscar informes:",
+                "zeroRecords": "Sin resultados encontrados",
+                "paginate": {
+                    "first": "Primero",
+                    "last": "Ultimo",
+                    "next": "Siguiente",
+                    "previous": "Anterior"
+                }
+            },
+            "responsive": true, "lengthChange": true, "autoWidth": false,
+            buttons: [{
+                extend: 'collection',
+                text: 'Reportes',
+                orientation: 'landscape',
+                buttons: [{
+                    text: 'Copiar Texto',
+                    extend: 'copy',
+                }, {
+                    text: 'Descargar en PDF',
+                    extend: 'pdf'
+                },{
+                    text: 'Descargar en CSV',
+                    extend: 'csv'
+                },{
+                    text: 'Descargar en Excel',
+                    extend: 'excel'
+                },{
+                    text: 'Imprimir Reporte',
+                    extend: 'print'
+                }
+                ]
+            },
+                {
+                    extend: 'colvis',
+                    text: 'Visor de columnas',
+                    collectionLayout: 'fixed three-column'
+                }
+            ],
+        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+    });
+</script>
