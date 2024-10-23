@@ -315,10 +315,10 @@ include('../../app/controllers/informes/listado_de_informes.php');
                                                     <div class="btn-group" role="group" aria-label="Basic example">
                                                         <a href="show.php?id=<?= $id_informe; ?>" type="button" title="Consultar informe" class="btn btn-primary btn-sm"><i class="bi bi-eye"></i></a>
                                                         <a type="button" title="Editar" data-toggle="modal"
-                                                        data-target="#modal_editar<?= $id_informe; ?>" class="btn btn-success btn-sm icono-blanco"><i class="bi bi-pencil-square"></i></a>
+                                                            data-target="#modal_editar<?= $id_informe; ?>" class="btn btn-success btn-sm icono-blanco"><i class="bi bi-pencil-square"></i></a>
 
                                                         <!-- INICIO DEL MODAL EDITAR INFORME  -->
-                                                        <div class="modal fade" id="modal_editar<?= $id_informe;?>"
+                                                        <div class="modal fade" id="modal_editar<?= $id_informe; ?>"
                                                             tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                             <div class="modal-dialog modal-lg">
                                                                 <div class="modal-content">
@@ -339,7 +339,7 @@ include('../../app/controllers/informes/listado_de_informes.php');
                                                                                 <div class="col-md-12">
                                                                                     <div class="form-group" style="text-align: left">
                                                                                         <label for="" class="text-align-left">Fecha de Informe</label>
-                                                                                        <input type="text" name="id_informe" value="<?= $id_informe; ?>">
+                                                                                        <input type="text" name="id_informe" value="<?= $id_informe; ?>" hidden>
                                                                                         <input type="text" name="docente_id" value="<?= $docente_id; ?>" hidden>
                                                                                         <input type="date" value="<?= $informe['fecha_informe']; ?>" name="fecha_informe" class="form-control" name=""
                                                                                             id="">
