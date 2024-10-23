@@ -338,8 +338,8 @@ include('../../app/controllers/informes/listado_de_informes.php');
                                                                             <div class="row">
                                                                                 <div class="col-md-12">
                                                                                     <div class="form-group" style="text-align: left">
-                                                                                        <label for="" class="text-align-left">Fecha de
-                                                                                            Informe</label>
+                                                                                        <label for="" class="text-align-left">Fecha de Informe</label>
+                                                                                        <input type="text" name="id_informe" value="<?= $id_informe; ?>" hidden>
                                                                                         <input type="text" name="docente_id" value="<?= $docente_id; ?>" hidden>
                                                                                         <input type="date" value="<?= $informe['fecha_informe']; ?>" name="fecha_informe" class="form-control" name=""
                                                                                             id="">
@@ -416,7 +416,7 @@ include('../../app/controllers/informes/listado_de_informes.php');
                                                             </div>
                                                         </div>
 
-                                                        <form action="<?= APP_URL; ?>/app/controllers/estudiantes/delete.php" onclick="preguntar<?= $id_estudiante; ?>(event)" method="post" id="miFormulario<?= $id_estudiante; ?>">
+                                                        <form action="<?= APP_URL; ?>/app/controllers/informes/delete.php" onclick="preguntar<?= $id_estudiante; ?>(event)" method="post" id="miFormulario<?= $id_estudiante; ?>">
                                                             <input type="text" name="id_estudiante" value="<?= $id_estudiante; ?>" hidden>
                                                             <button type="submit" title="Eliminar" class="btn btn-danger btn-sm" style="border-radius: 0px 5px 5px 0px"><i class="bi bi-trash"></i></button>
                                                         </form>
