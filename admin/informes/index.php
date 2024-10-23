@@ -339,7 +339,7 @@ include('../../app/controllers/informes/listado_de_informes.php');
                                                                                 <div class="col-md-12">
                                                                                     <div class="form-group" style="text-align: left">
                                                                                         <label for="" class="text-align-left">Fecha de Informe</label>
-                                                                                        <input type="text" name="id_informe" value="<?= $id_informe; ?>" hidden>
+                                                                                        <input type="text" name="id_informe" value="<?= $id_informe; ?>">
                                                                                         <input type="text" name="docente_id" value="<?= $docente_id; ?>" hidden>
                                                                                         <input type="date" value="<?= $informe['fecha_informe']; ?>" name="fecha_informe" class="form-control" name=""
                                                                                             id="">
@@ -416,16 +416,16 @@ include('../../app/controllers/informes/listado_de_informes.php');
                                                             </div>
                                                         </div>
 
-                                                        <form action="<?= APP_URL; ?>/app/controllers/informes/delete.php" onclick="preguntar<?= $id_estudiante; ?>(event)" method="post" id="miFormulario<?= $id_estudiante; ?>">
-                                                            <input type="text" name="id_estudiante" value="<?= $id_estudiante; ?>" hidden>
+                                                        <form action="<?= APP_URL; ?>/app/controllers/informes/delete.php" onclick="preguntar<?= $id_informe; ?>(event)" method="post" id="miFormulario<?= $id_informe; ?>">
+                                                            <input type="text" name="id_informe" value="<?= $id_informe; ?>" hidden>
                                                             <button type="submit" title="Eliminar" class="btn btn-danger btn-sm" style="border-radius: 0px 5px 5px 0px"><i class="bi bi-trash"></i></button>
                                                         </form>
                                                         <script>
-                                                            function preguntar<?= $id_estudiante; ?>(event) {
+                                                            function preguntar<?= $id_informe; ?>(event) {
                                                                 event.preventDefault();
                                                                 Swal.fire({
-                                                                    title: 'Eliminar estudiante existente',
-                                                                    text: '¿Desea eliminar este estudiante?',
+                                                                    title: 'Eliminar informe existente',
+                                                                    text: '¿Desea eliminar este informe?',
                                                                     icon: 'question',
                                                                     showDenyButton: true,
                                                                     confirmButtonText: 'Eliminar',
@@ -434,9 +434,9 @@ include('../../app/controllers/informes/listado_de_informes.php');
                                                                     denyButtonText: 'Cancelar',
                                                                 }).then((result) => {
                                                                     if (result.isConfirmed) {
-                                                                        var form = $('#miFormulario<?= $id_estudiante; ?>');
+                                                                        var form = $('#miFormulario<?= $id_informe; ?>');
                                                                         form.submit();
-                                                                        Swal.fire('Eliminado', 'Se eliminó el estudiante correctamente', 'success');
+                                                                        Swal.fire('Eliminado', 'Se eliminó el informe correctamente', 'success');
                                                                     }
                                                                 });
                                                             }
