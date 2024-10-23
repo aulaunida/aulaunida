@@ -1,11 +1,11 @@
 <?php
 
-$sql_informes = "SELECT * FROM usuarios AS usu 
-INNER JOIN roles AS rol ON rol.id_rol = usu.rol_id 
-INNER JOIN personas AS per ON per.usuario_id = usu.id_usuario 
-INNER JOIN docentes AS doc ON doc.persona_id = per.id_persona
-INNER JOIN informes AS inf ON inf.docente_id = doc.id_docente
-INNER JOIN materias AS mat ON mat.id_materia = inf.materia_id
+$sql_informes = "SELECT * FROM informes AS inf 
+INNER JOIN docentes AS doc ON doc.id_docente = inf.docente_id
+INNER JOIN personas AS per ON per.id_persona = doc.persona_id 
+INNER JOIN usuarios AS usu ON usu.id_usuario = per.usuario_id  
+INNER JOIN materias AS mat ON mat.id_materia = inf.materia_id  
+INNER JOIN estudiantes AS est ON est.id_estudiante = inf.estudiante_id  
 WHERE inf.estado = '1' ORDER BY per.apellidos ASC";
 $query_informes = $pdo->prepare($sql_informes);
 $query_informes->execute();

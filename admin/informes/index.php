@@ -282,9 +282,10 @@ include('../../app/controllers/informes/listado_de_informes.php');
                                     <?php
                                     $contador_informes = 0;
                                     foreach ($informes as $informe) {
-                                        $id_informe = $informe['id_informe'];
                                         if ($email_sesion == $informe['email']) {
+                                            $id_informe = $informe['id_informe'];
                                             $estudiante_id = $informe['estudiante_id'];
+                                            $grado_id = $informe['grado_id'];
                                             $contador_informes = $contador_informes + 1; ?>
                                             <tr>
                                                 <?php
@@ -312,8 +313,109 @@ include('../../app/controllers/informes/listado_de_informes.php');
                                                 ?>
                                                 <td style="text-align: center">
                                                     <div class="btn-group" role="group" aria-label="Basic example">
-                                                    <a href="show.php?id=<?=$id_informe;?>" type="button" title="Consultar informe" class="btn btn-info btn-sm"><i class="bi bi-eye"></i></a>
-                                                        <a href="edit.php?id=<?= $id_estudiante; ?>" type="button" title="Editar" class="btn btn-success btn-sm icono-blanco"><i class="bi bi-pencil-square"></i></a>
+                                                        <a href="show.php?id=<?= $id_informe; ?>" type="button" title="Consultar informe" class="btn btn-primary btn-sm"><i class="bi bi-eye"></i></a>
+                                                        <a type="button" title="Editar" data-toggle="modal"
+                                                        data-target="#modal_editar<?= $id_informe; ?>" class="btn btn-success btn-sm icono-blanco"><i class="bi bi-pencil-square"></i></a>
+
+                                                        <!-- INICIO DEL MODAL EDITAR INFORME  -->
+                                                        <div class="modal fade" id="modal_editar<?= $id_informe;?>"
+                                                            tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                            <div class="modal-dialog modal-lg">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header"
+                                                                        style="background-color:#28a745; color:#FFFFFF">
+                                                                        <h5 class="modal-title" id="exampleModalLabel">EDITAR INFORME <i
+                                                                                class="bi bi-chevron-right"></i>
+                                                                            <?= $informe['nombre_materia']; ?>
+                                                                        </h5>
+                                                                        <button type="button" class="close" data-dismiss="modal"
+                                                                            aria-label="Close">
+                                                                            <span aria-hidden="true">&times;</span>
+                                                                        </button>
+                                                                    </div>
+                                                                    <form action="<?= APP_URL; ?>/app/controllers/informes/update.php" method="post">
+                                                                        <div class="modal-body">
+                                                                            <div class="row">
+                                                                                <div class="col-md-12">
+                                                                                    <div class="form-group" style="text-align: left">
+                                                                                        <label for="" class="text-align-left">Fecha de
+                                                                                            Informe</label>
+                                                                                        <input type="text" name="docente_id" value="<?= $docente_id; ?>" hidden>
+                                                                                        <input type="date" value="<?= $informe['fecha_informe']; ?>" name="fecha_informe" class="form-control" name=""
+                                                                                            id="">
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+
+                                                                            <div class="row">
+                                                                                <div class="col-md-12">
+                                                                                    <div class="form-group" style="text-align: left">
+                                                                                        <label for="estudiantes-select" class="text-align-left">Estudiante</label>
+                                                                                        <select name="estudiante_id" class="form-control uppercase" id="estudiantes-select">
+                                                                                            <option value="" disabled selected>Seleccione un estudiante</option>
+                                                                                            <?php
+                                                                                            foreach ($estudiantes as $estudiante) {
+                                                                                                if ($estudiante['id_grado'] == $grado_id) {
+                                                                                                    $id_estudiante = $estudiante['id_estudiante']; ?>
+                                                                                                    <option value="<?= $id_estudiante; ?>" <?= $id_estudiante == $estudiante_id ? 'selected' : '' ?>>
+                                                                                                        <?= strtoupper($estudiante['apellidos'] . ", " . $estudiante['nombres']); ?>
+                                                                                                    </option>
+                                                                                            <?php
+                                                                                                }
+                                                                                            }
+                                                                                            ?>
+                                                                                        </select>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+
+                                                                            <div class="row" hidden>
+                                                                                <div class="col-md-12">
+                                                                                    <div class="form-group" style="text-align: left">
+                                                                                        <label for="" class="text-align-left">Materia</label>
+                                                                                        <input type="text" value="<?= $informe['nombre_materia']; ?>">
+                                                                                        <input type="text" name="materia_id" value="<?= $informe['id_materia']; ?>" hidden>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+
+                                                                            <div class="row">
+                                                                                <div class="col-md-12">
+                                                                                    <div class="form-group" style="text-align: left">
+                                                                                        <label for="" class="text-align-left">Categorización</label>
+                                                                                        <select name="observacion" class="form-control uppercase" id="">
+                                                                                            <option value="" disabled selected>Seleccione una categorización</option>
+                                                                                            <option value="COMPORTAMIENTO Y DISCIPLINA" <?= $informe['observacion'] == "COMPORTAMIENTO Y DISCIPLINA" ? 'selected' : '' ?>>COMPORTAMIENTO Y DISCIPLINA</option>
+                                                                                            <option value="COMUNICACIÓN Y PARTICIPACIÓN" <?= $informe['observacion'] == "COMUNICACIÓN Y PARTICIPACIÓN" ? 'selected' : '' ?>>COMUNICACIÓN Y PARTICIPACIÓN</option>
+                                                                                            <option value="DIAGNÓSTICO INICIAL" <?= $informe['observacion'] == "DIAGNÓSTICO INICIAL" ? 'selected' : '' ?>>DIAGNÓSTICO INICIAL</option>
+                                                                                            <option value="EVOLUCIÓN Y PROGRESO GENERAL" <?= $informe['observacion'] == "EVOLUCIÓN Y PROGRESO GENERAL" ? 'selected' : '' ?>>EVOLUCIÓN Y PROGRESO GENERAL</option>
+                                                                                            <option value="OBSERVACIONES ESPECÍFICAS" <?= $informe['observacion'] == "OBSERVACIONES ESPECÍFICAS" ? 'selected' : '' ?>>OBSERVACIONES ESPECÍFICAS</option>
+                                                                                            <option value="RETOS Y ESTRATEGIAS DE APOYO" <?= $informe['observacion'] == "RETOS Y ESTRATEGIAS DE APOYO" ? 'selected' : '' ?>>RETOS Y ESTRATEGIAS DE APOYO</option>
+                                                                                            <option value="TRABAJO EN GRUPO Y COLABORACIÓN" <?= $informe['observacion'] == "TRABAJO EN GRUPO Y COLABORACIÓN" ? 'selected' : '' ?>>TRABAJO EN GRUPO Y COLABORACIÓN</option>
+
+                                                                                        </select>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+
+                                                                            <div class="row">
+                                                                                <div class="col-md-12">
+                                                                                    <div class="form-group" style="text-align: left">
+                                                                                        <label for="" class="text-align-left">Observaciones</label>
+                                                                                        <textarea name="nota" rows="10" class="form-control" id=""><?= $informe['nota']; ?></textarea>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="modal-footer">
+                                                                            <button type="submit" class="btn btn-success">Actualizar</button>
+                                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                                                        </div>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
                                                         <form action="<?= APP_URL; ?>/app/controllers/estudiantes/delete.php" onclick="preguntar<?= $id_estudiante; ?>(event)" method="post" id="miFormulario<?= $id_estudiante; ?>">
                                                             <input type="text" name="id_estudiante" value="<?= $id_estudiante; ?>" hidden>
                                                             <button type="submit" title="Eliminar" class="btn btn-danger btn-sm" style="border-radius: 0px 5px 5px 0px"><i class="bi bi-trash"></i></button>
@@ -377,7 +479,7 @@ include('../../layout/mensajes.php');
 ?>
 
 <script>
-    $(function () {
+    $(function() {
         $("#example2").DataTable({
             "pageLength": 10,
             "language": {
@@ -399,29 +501,30 @@ include('../../layout/mensajes.php');
                     "previous": "Anterior"
                 }
             },
-            "responsive": true, "lengthChange": true, "autoWidth": false,
+            "responsive": true,
+            "lengthChange": true,
+            "autoWidth": false,
             buttons: [{
-                extend: 'collection',
-                text: 'Reportes',
-                orientation: 'landscape',
-                buttons: [{
-                    text: 'Copiar Texto',
-                    extend: 'copy',
-                }, {
-                    text: 'Descargar en PDF',
-                    extend: 'pdf'
-                },{
-                    text: 'Descargar en CSV',
-                    extend: 'csv'
-                },{
-                    text: 'Descargar en Excel',
-                    extend: 'excel'
-                },{
-                    text: 'Imprimir Reporte',
-                    extend: 'print'
-                }
-                ]
-            },
+                    extend: 'collection',
+                    text: 'Reportes',
+                    orientation: 'landscape',
+                    buttons: [{
+                        text: 'Copiar Texto',
+                        extend: 'copy',
+                    }, {
+                        text: 'Descargar en PDF',
+                        extend: 'pdf'
+                    }, {
+                        text: 'Descargar en CSV',
+                        extend: 'csv'
+                    }, {
+                        text: 'Descargar en Excel',
+                        extend: 'excel'
+                    }, {
+                        text: 'Imprimir Reporte',
+                        extend: 'print'
+                    }]
+                },
                 {
                     extend: 'colvis',
                     text: 'Visor de columnas',
@@ -433,7 +536,7 @@ include('../../layout/mensajes.php');
 </script>
 
 <script>
-    $(function () {
+    $(function() {
         $("#example1").DataTable({
             "pageLength": 25,
             "language": {
@@ -455,29 +558,30 @@ include('../../layout/mensajes.php');
                     "previous": "Anterior"
                 }
             },
-            "responsive": true, "lengthChange": true, "autoWidth": false,
+            "responsive": true,
+            "lengthChange": true,
+            "autoWidth": false,
             buttons: [{
-                extend: 'collection',
-                text: 'Reportes',
-                orientation: 'landscape',
-                buttons: [{
-                    text: 'Copiar Texto',
-                    extend: 'copy',
-                }, {
-                    text: 'Descargar en PDF',
-                    extend: 'pdf'
-                },{
-                    text: 'Descargar en CSV',
-                    extend: 'csv'
-                },{
-                    text: 'Descargar en Excel',
-                    extend: 'excel'
-                },{
-                    text: 'Imprimir Reporte',
-                    extend: 'print'
-                }
-                ]
-            },
+                    extend: 'collection',
+                    text: 'Reportes',
+                    orientation: 'landscape',
+                    buttons: [{
+                        text: 'Copiar Texto',
+                        extend: 'copy',
+                    }, {
+                        text: 'Descargar en PDF',
+                        extend: 'pdf'
+                    }, {
+                        text: 'Descargar en CSV',
+                        extend: 'csv'
+                    }, {
+                        text: 'Descargar en Excel',
+                        extend: 'excel'
+                    }, {
+                        text: 'Imprimir Reporte',
+                        extend: 'print'
+                    }]
+                },
                 {
                     extend: 'colvis',
                     text: 'Visor de columnas',
