@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 22-10-2024 a las 21:38:42
+-- Tiempo de generación: 23-10-2024 a las 02:16:17
 -- Versión del servidor: 8.3.0
 -- Versión de PHP: 8.2.18
 
@@ -75,7 +75,7 @@ CREATE TABLE IF NOT EXISTS `asignaciones` (
 
 INSERT INTO `asignaciones` (`id_asignacion`, `docente_id`, `nivel_id`, `grado_id`, `materia_id`, `fyh_creacion`, `fyh_actualizacion`, `estado`) VALUES
 (1, 1, 1, 1, 1, '2024-10-08', '2024-10-12', '1'),
-(2, 1, 1, 1, 2, '2024-10-08', '2024-10-12', '1'),
+(2, 1, 2, 1, 2, '2024-10-08', '2024-10-22', '1'),
 (3, 5, 2, 2, 1, '2024-10-08', NULL, '1'),
 (4, 5, 2, 2, 2, '2024-10-08', NULL, '1'),
 (9, 1, 1, 1, 3, '2024-10-16', NULL, '1'),
@@ -300,15 +300,16 @@ CREATE TABLE IF NOT EXISTS `informes` (
   KEY `docente_id` (`docente_id`),
   KEY `estudiante_id` (`estudiante_id`),
   KEY `materia_id` (`materia_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `informes`
 --
 
 INSERT INTO `informes` (`id_informe`, `docente_id`, `estudiante_id`, `materia_id`, `fecha_informe`, `observacion`, `nota`, `fyh_creacion`, `fyh_actualizacion`, `estado`) VALUES
-(1, 1, 1, 1, '2024-10-16', 'EVOLUCIÓN Y PROGRESO GENERAL', 'Análisis del avance del alumno a lo largo del tiempo, incluyendo logros y áreas de mejora.', '2024-10-16', NULL, '1'),
-(2, 1, 2, 2, '2024-10-17', 'COMUNICACIÓN Y PARTICIPACIÓN', 'Evaluación de la interacción del alumno en clase, incluyendo su habilidad para expresarse, hacer preguntas y participar en discusiones.', '2024-10-21', NULL, '1');
+(1, 1, 1, 1, '2024-10-14', 'EVOLUCIÓN Y PROGRESO GENERAL', 'Durante el presente ciclo escolar, Santos ha mostrado un avance gradual en la comprensión de los conceptos matemáticos. En las primeras etapas, presentaba algunas dificultades para resolver problemas de lógica y aplicaba incorrectamente ciertas fórmulas. Sin embargo, con esfuerzo y dedicación, ha demostrado una mejora notable en la resolución de ejercicios. Ha adquirido una mayor confianza al enfrentarse a nuevos desafíos y ha comenzado a desarrollar un razonamiento lógico más estructurado. Aún requiere apoyo en temas complejos como las ecuaciones algebraicas, pero ha mejorado significativamente en operaciones básicas y la interpretación de consignas matemáticas. Se recomienda continuar reforzando estos conceptos para mantener su progreso.', '2024-10-16', '2024-10-22', '1'),
+(2, 1, 2, 2, '2024-10-01', 'COMUNICACIÓN Y PARTICIPACIÓN', 'Germán ha demostrado una participación activa en las clases de Lengua y Literatura. Se destaca por su disposición a contribuir en discusiones grupales, ofreciendo ideas claras y bien fundamentadas sobre los textos trabajados. Su capacidad para interpretar y analizar lecturas es sólida, y suele formular preguntas pertinentes que enriquecen el debate en el aula. En cuanto a la comunicación, Germán muestra una gran habilidad para expresar sus opiniones de manera respetuosa y coherente. Sin embargo, en ocasiones puede necesitar más tiempo para estructurar sus respuestas de manera más precisa. Es recomendable seguir promoviendo su participación en actividades orales y escritas para consolidar sus habilidades comunicativas.', '2024-10-21', '2024-10-22', '1'),
+(3, 1, 3, 3, '2024-10-15', 'OBSERVACIONES ESPECÍFICAS', 'A lo largo del ciclo escolar, Adrián ha mostrado un interés fluctuante en la materia de Ciencias Sociales. Aunque tiene una buena comprensión de los contenidos presentados en clase, en algunas ocasiones parece distraído y no siempre participa activamente en las actividades propuestas. Esto se refleja en la entrega tardía de algunos trabajos prácticos y en su falta de iniciativa en debates grupales. No obstante, cuando se le motiva de manera individual, demuestra tener un gran potencial, ya que sus aportes son siempre acertados y bien fundamentados. Se recomienda trabajar en estrategias para mejorar su nivel de concentración y fomentar una mayor participación en las actividades diarias del aula.', '2024-10-22', NULL, '1');
 
 -- --------------------------------------------------------
 
