@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 23-10-2024 a las 02:16:17
+-- Tiempo de generación: 24-10-2024 a las 03:12:34
 -- Versión del servidor: 8.3.0
 -- Versión de PHP: 8.2.18
 
@@ -67,7 +67,7 @@ CREATE TABLE IF NOT EXISTS `asignaciones` (
   KEY `docente_id` (`docente_id`),
   KEY `nivel_id` (`nivel_id`),
   KEY `grado_id` (`grado_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `asignaciones`
@@ -75,11 +75,12 @@ CREATE TABLE IF NOT EXISTS `asignaciones` (
 
 INSERT INTO `asignaciones` (`id_asignacion`, `docente_id`, `nivel_id`, `grado_id`, `materia_id`, `fyh_creacion`, `fyh_actualizacion`, `estado`) VALUES
 (1, 1, 1, 1, 1, '2024-10-08', '2024-10-12', '1'),
-(2, 1, 2, 1, 2, '2024-10-08', '2024-10-22', '1'),
+(2, 1, 1, 1, 2, '2024-10-08', '2024-10-23', '1'),
 (3, 5, 2, 2, 1, '2024-10-08', NULL, '1'),
 (4, 5, 2, 2, 2, '2024-10-08', NULL, '1'),
 (9, 1, 1, 1, 3, '2024-10-16', NULL, '1'),
-(10, 6, 1, 8, 5, '2024-10-16', NULL, '1');
+(10, 6, 1, 8, 5, '2024-10-16', NULL, '1'),
+(11, 1, 1, 1, 4, '2024-10-23', NULL, '1');
 
 -- --------------------------------------------------------
 
@@ -115,9 +116,9 @@ CREATE TABLE IF NOT EXISTS `calificaciones` (
 --
 
 INSERT INTO `calificaciones` (`id_calificacion`, `docente_id`, `estudiante_id`, `materia_id`, `nota1`, `nota2`, `nota3`, `nota4`, `nota5`, `nota6`, `nota7`, `nota8`, `fyh_creacion`, `fyh_actualizacion`, `estado`) VALUES
-(1, 1, 2, 1, 80, 80, 0, 0, 0, 0, 0, 0, '2024-10-13', '2024-10-13', '1'),
-(2, 1, 1, 1, 100, 100, 0, 0, 0, 0, 0, 0, '2024-10-13', '2024-10-13', '1'),
-(3, 1, 3, 1, 60, 80, 0, 0, 0, 0, 0, 0, '2024-10-13', '2024-10-13', '1'),
+(1, 1, 2, 1, 80, 80, 80, 0, 0, 0, 0, 0, '2024-10-13', '2024-10-23', '1'),
+(2, 1, 1, 1, 100, 100, 80, 0, 0, 0, 0, 0, '2024-10-13', '2024-10-23', '1'),
+(3, 1, 3, 1, 60, 80, 80, 0, 0, 0, 0, 0, '2024-10-13', '2024-10-23', '1'),
 (4, 5, 4, 1, 100, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2024-10-13', NULL, '1'),
 (5, 1, 1, 2, 80, 80, 0, 0, 0, 0, 0, 0, '2024-10-13', '2024-10-13', '1'),
 (6, 1, 3, 2, 80, 100, 0, 0, 0, 0, 0, 0, '2024-10-13', '2024-10-13', '1'),
@@ -300,16 +301,16 @@ CREATE TABLE IF NOT EXISTS `informes` (
   KEY `docente_id` (`docente_id`),
   KEY `estudiante_id` (`estudiante_id`),
   KEY `materia_id` (`materia_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `informes`
 --
 
 INSERT INTO `informes` (`id_informe`, `docente_id`, `estudiante_id`, `materia_id`, `fecha_informe`, `observacion`, `nota`, `fyh_creacion`, `fyh_actualizacion`, `estado`) VALUES
-(1, 1, 1, 1, '2024-10-14', 'EVOLUCIÓN Y PROGRESO GENERAL', 'Durante el presente ciclo escolar, Santos ha mostrado un avance gradual en la comprensión de los conceptos matemáticos. En las primeras etapas, presentaba algunas dificultades para resolver problemas de lógica y aplicaba incorrectamente ciertas fórmulas. Sin embargo, con esfuerzo y dedicación, ha demostrado una mejora notable en la resolución de ejercicios. Ha adquirido una mayor confianza al enfrentarse a nuevos desafíos y ha comenzado a desarrollar un razonamiento lógico más estructurado. Aún requiere apoyo en temas complejos como las ecuaciones algebraicas, pero ha mejorado significativamente en operaciones básicas y la interpretación de consignas matemáticas. Se recomienda continuar reforzando estos conceptos para mantener su progreso.', '2024-10-16', '2024-10-22', '1'),
 (2, 1, 2, 2, '2024-10-01', 'COMUNICACIÓN Y PARTICIPACIÓN', 'Germán ha demostrado una participación activa en las clases de Lengua y Literatura. Se destaca por su disposición a contribuir en discusiones grupales, ofreciendo ideas claras y bien fundamentadas sobre los textos trabajados. Su capacidad para interpretar y analizar lecturas es sólida, y suele formular preguntas pertinentes que enriquecen el debate en el aula. En cuanto a la comunicación, Germán muestra una gran habilidad para expresar sus opiniones de manera respetuosa y coherente. Sin embargo, en ocasiones puede necesitar más tiempo para estructurar sus respuestas de manera más precisa. Es recomendable seguir promoviendo su participación en actividades orales y escritas para consolidar sus habilidades comunicativas.', '2024-10-21', '2024-10-22', '1'),
-(3, 1, 3, 3, '2024-10-15', 'OBSERVACIONES ESPECÍFICAS', 'A lo largo del ciclo escolar, Adrián ha mostrado un interés fluctuante en la materia de Ciencias Sociales. Aunque tiene una buena comprensión de los contenidos presentados en clase, en algunas ocasiones parece distraído y no siempre participa activamente en las actividades propuestas. Esto se refleja en la entrega tardía de algunos trabajos prácticos y en su falta de iniciativa en debates grupales. No obstante, cuando se le motiva de manera individual, demuestra tener un gran potencial, ya que sus aportes son siempre acertados y bien fundamentados. Se recomienda trabajar en estrategias para mejorar su nivel de concentración y fomentar una mayor participación en las actividades diarias del aula.', '2024-10-22', NULL, '1');
+(3, 1, 3, 3, '2024-10-15', 'OBSERVACIONES ESPECÍFICAS', 'A lo largo del ciclo escolar, Adrián ha mostrado un interés fluctuante en la materia de Ciencias Sociales. Aunque tiene una buena comprensión de los contenidos presentados en clase, en algunas ocasiones parece distraído y no siempre participa activamente en las actividades propuestas. Esto se refleja en la entrega tardía de algunos trabajos prácticos y en su falta de iniciativa en debates grupales. No obstante, cuando se le motiva de manera individual, demuestra tener un gran potencial, ya que sus aportes son siempre acertados y bien fundamentados. Se recomienda trabajar en estrategias para mejorar su nivel de concentración y fomentar una mayor participación en las actividades diarias del aula.', '2024-10-22', NULL, '1'),
+(5, 1, 1, 1, '2024-10-23', 'EVOLUCIÓN Y PROGRESO GENERAL', 'Durante el presente ciclo escolar, Santos ha mostrado un avance gradual en la comprensión de los conceptos matemáticos. En las primeras etapas, presentaba algunas dificultades para resolver problemas de lógica y aplicaba incorrectamente ciertas fórmulas. Sin embargo, con esfuerzo y dedicación, ha demostrado una mejora notable en la resolución de ejercicios. Ha adquirido una mayor confianza al enfrentarse a nuevos desafíos y ha comenzado a desarrollar un razonamiento lógico más estructurado. Aún requiere apoyo en temas complejos como las ecuaciones algebraicas, pero ha mejorado significativamente en operaciones básicas y la interpretación de consignas matemáticas. Se recomienda continuar reforzando estos conceptos para mantener su progreso.', '2024-10-23', NULL, '1');
 
 -- --------------------------------------------------------
 
@@ -397,9 +398,9 @@ CREATE TABLE IF NOT EXISTS `personas` (
 --
 
 INSERT INTO `personas` (`id_persona`, `usuario_id`, `nombres`, `apellidos`, `dni`, `fecha_nacimiento`, `profesion`, `direccion`, `celular`, `fyh_creacion`, `fyh_actualizacion`, `estado`) VALUES
-(1, 1, 'Leonardo', 'Rodriguez', '36143425', '1991-10-29', 'Analista de Sistemas', 'Ana Maria Janer 1227', '3512558885', '2024-08-30', NULL, '1'),
-(2, 4, 'Pablo', 'Castillo', '36875234', '1992-08-04', 'DESARROLLADOR', 'Sucre 1826', '3513454237', '2024-09-01', '2024-09-01', '1'),
-(3, 5, 'Leonardo', 'Rodriguez', '36143425', '1991-10-29', 'ANALISTA DE SISTEMAS', 'Ana Maria Janer 1227 Piso 3 Depto 10', '3512558885', '2024-09-01', NULL, '1'),
+(1, 1, 'LEONARDO', 'RODRIGUEZ', '36143425', '1991-10-29', 'Analista de Sistemas', 'Ana Maria Janer 1227', '3512558885', '2024-08-30', NULL, '1'),
+(2, 4, 'PABLO', 'CASTILLO', '36875234', '1992-08-04', 'DESARROLLADOR', 'Sucre 1826', '3513454237', '2024-09-01', '2024-09-01', '1'),
+(3, 5, 'LEONARDO', 'RODRIGUEZ', '36143425', '1991-10-29', 'ANALISTA DE SISTEMAS', 'Ana Maria Janer 1227 Piso 3 Depto 10', '3512558885', '2024-09-01', NULL, '1'),
 (4, 6, 'NOELIA', 'ALFONSO', '37453855', '1994-09-09', 'Profesorado en Educación Primaria', 'Miguel de Ardiles 517', '3515237651', '2024-09-07', '2024-09-19', '1'),
 (5, 7, 'ROMINA MICAELA', 'PIZARRO', '34024504', '1987-11-14', 'Licenciatura en Educación', 'PADRE LUIS MONTI 1969', '3584493006', '2024-09-07', '2024-10-08', '1'),
 (6, 8, 'SILVIA DAIANA', 'REINOSO', '350618543', '1990-04-02', 'Licenciada en Educación', 'BVRD DE LOS FRIULANOS 6115', '3514934669', '2024-09-07', '2024-09-08', '1'),
@@ -469,7 +470,6 @@ CREATE TABLE IF NOT EXISTS `roles` (
 
 INSERT INTO `roles` (`id_rol`, `nombre_rol`, `fyh_creacion`, `fyh_actualizacion`, `estado`) VALUES
 (1, 'ADMINISTRADOR', '2024-01-03', NULL, '1'),
-(2, 'DIRECTOR', '2024-01-03', NULL, '1'),
 (3, 'DOCENTE', '2024-01-03', NULL, '1'),
 (4, 'ESTUDIANTE', '2024-09-09', NULL, '1');
 
