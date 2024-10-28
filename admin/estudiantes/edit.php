@@ -162,8 +162,8 @@ include('../../app/controllers/grados/listado_de_grados.php');
                                         <div class="form-group">
                                             <label for="">Integración<b style="color:red">*</b></label>
                                             <select name="integracion" id="" class="form-control" required>
-                                                <option value="NO">NO</option>
-                                                <option value="SI">SI</option>
+                                                <option value="NO" <?php if ($integracion == 'NO') { ?> selected="selected" <?php } ?>>NO</option>
+                                                <option value="SI" <?php if ($integracion == 'SI') { ?> selected="selected" <?php } ?>>SI</option>
                                             </select>
                                         </div>
                                     </div>

@@ -77,14 +77,7 @@ foreach ($materias as $materia) {
                                 <tbody>
                                     <?php
                                     $contador_estudiantes = 0;
-                                    $nota1 = "";
-                                    $nota2 = "";
-                                    $nota3 = "";
-                                    $nota4 = "";
-                                    $nota5 = "";
-                                    $nota6 = "";
-                                    $nota7 = "";
-                                    $nota8 = "";
+                                    
                                     foreach ($estudiantes as $estudiante) {
                                         if ($id_grado_get == $estudiante['id_grado']) {
                                             $id_estudiante = $estudiante['id_estudiante'];
@@ -95,6 +88,14 @@ foreach ($materias as $materia) {
                                                 <td class="uppercase" style="text-align: center"><input type="text" value="<?= $id_estudiante; ?>" name="" id="estudiante_<?= $contador_estudiantes; ?>" hidden><?= $estudiante['apellidos'] . ', ' . $estudiante['nombres']; ?></td>
                                                 <td class="text-center" style="text-align: center"><?= $estudiante['integracion'] == 'NO' ? "NO" : "SI"; ?></td>
                                                 <?php
+                                                $nota1 = "";
+                                                $nota2 = "";
+                                                $nota3 = "";
+                                                $nota4 = "";
+                                                $nota5 = "";
+                                                $nota6 = "";
+                                                $nota7 = "";
+                                                $nota8 = "";
                                                 foreach ($calificaciones as $calificacione) {
                                                     if (($calificacione['docente_id'] == $id_docente_get) && ($calificacione['estudiante_id'] == $id_estudiante) && ($calificacione['materia_id'] == $id_materia_get)) {
                                                         $nota1 = $calificacione['nota1'];

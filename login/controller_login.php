@@ -23,14 +23,14 @@ $password_tabla = '';
 
 foreach ($usuarios as $usuario){
     $password_tabla = $usuario['password'];
-    $nombre_sesion_usuario = $usuario['nombres'].' '.$usuario['apellidos'];
+    $nombre_sesion_usuario = $usuario['apellidos'].', '.$usuario['nombres'];
     $contador++;
 }
 
 if (($contador > 0) && (password_verify($password, $password_tabla))) {
     echo "los datos son correctos";
     session_start();
-    $_SESSION['mensaje'] = "¡Bienvenido/a ".$nombre_sesion_usuario."!";
+    $_SESSION['mensaje'] = "¡Bienvenido/a ". $nombre_sesion_usuario."!";
     $_SESSION['icono'] = "success";
     $_SESSION['timer'] = 4000;  // Duración del mensaje en milisegundos (4 segundos)
     $_SESSION['timerProgressBar'] = true;

@@ -4,6 +4,7 @@ $id_informe = $_GET['id'];
 include('../../app/config.php');
 include('../../admin/layout/parte1.php');
 include('../../app/controllers/informes/datos_informes.php');
+include('../../app/controllers/estudiantes/listado_de_estudiantes.php');
 
 ?>
 
@@ -25,7 +26,16 @@ include('../../app/controllers/informes/datos_informes.php');
     <div class="content">
         <div class="container">
             <div class="row">
-                <h2>CONSULTAR INFORME</h2>
+                <h2>CONSULTAR INFORME <i class="bi bi-chevron-right"></i>
+                <?php
+                                                foreach ($estudiantes as $estudiante) {
+                                                    if ($estudiante['id_estudiante'] == $estudiante_id) { ?>
+                                                            <?= strtoupper($estudiante['apellidos'] . ", " . $estudiante['nombres']); ?>
+                                                <?php
+                                                    }
+                                                }
+                                                ?>
+            </h2>
             </div>
             <br>
             <div class="row">

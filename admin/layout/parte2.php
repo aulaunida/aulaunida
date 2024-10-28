@@ -123,50 +123,7 @@
         });
     });
 </script>
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        var ctx = document.getElementById('myComparisonChart').getContext('2d');
-        var myComparisonChart = new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
-                datasets: [
-                    {
-                        label: 'Cantidad de Alumnos',
-                        data: [30, 28, 32, 35, 30, 33, 31, 34, 32, 33, 30, 31],
-                        backgroundColor: 'rgba(54, 162, 235, 0.7)',
-                        borderColor: 'rgba(54, 162, 235, 1)',
-                        borderWidth: 1
-                    },
-                    {
-                        label: 'Alumnos Integrados',
-                        data: [5, 2, 1, 2, 6, 1, 1, 2, 4, 2, 1, 4],
-                        backgroundColor: 'rgba(255, 99, 132, 0.7)',
-                        borderColor: 'rgba(255, 99, 132, 1)',
-                        borderWidth: 1
-                    }
-                ]
-            },
-            options: {
-                maintainAspectRatio: false,
-                responsive: true,
-                scales: {
-                    x: {
-                        grid: {
-                            display: false,
-                        }
-                    },
-                    y: {
-                        beginAtZero: true,
-                        grid: {
-                            display: true,
-                        }
-                    }
-                }
-            }
-        });
-    });
-</script>
+
 
 <script>
     document.addEventListener("DOMContentLoaded", function () {
