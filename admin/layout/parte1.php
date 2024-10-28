@@ -33,7 +33,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title><?= APP_NAME; ?>®</title>
+    <title><?= APP_NAME; ?></title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -95,7 +95,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-            <a href="<?= APP_URL; ?>/admin" class="nav-link">Instituto Primario <b>Arturo Capdevila</b></a>
+            <a href="<?= APP_URL; ?>/admin" class="nav-link"><i class="bi bi-house-fill"></i>  Instituto Primario <b>Arturo Capdevila</b></a>
 
         </li>
     </ul>
@@ -144,7 +144,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- Brand Logo -->
     <a href="<?= APP_URL; ?>/admin" class="brand-link">
         <img src="<?= APP_URL; ?>/public/images/logoau.png" alt="AulaUnida Logo" class="brand-image" style="width: 36px;">
-        <span class="brand-text d-none d-sm-inline">AULA UNIDA®</span>
+        <span class="brand-text d-none d-sm-inline">Aula Unida®</span>
     </a>
 
     <!-- Sidebar -->
@@ -401,6 +401,25 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         </ul>
                     </li>
 
+                    <li class="nav-item">
+                        <a href="#" class="nav-link active">
+                            <i class="nav-icon fas"><i class="bi bi-clipboard2-check"></i></i>
+                            <p>
+                                Asistencias
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="<?= APP_URL; ?>/admin/asistencias" class="nav-link active">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Consultar asistencias</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
                     <!-- <li class="nav-item">
                         <a href="#" class="nav-link active">
                             <i class="nav-icon fas"><i class="bi bi-people-fill"></i></i>
@@ -541,9 +560,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                     <li class="nav-item">
                         <a href="#" class="nav-link active">
-                            <i class="nav-icon fas"><i class="bi bi-bookshelf"></i></i>
+                            <i class="nav-icon fas"><i class="bi bi-calendar4-week"></i></i>
                             <p>
-                                Niveles educativos
+                                Ciclos lectivos
                                 <i class="right fas fa-angle-left"></i>
                             </p>
                         </a>
@@ -551,7 +570,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <li class="nav-item">
                                 <a href="<?= APP_URL; ?>/admin/niveles" class="nav-link active">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>Consultar niveles</p>
+                                    <p>Consultar ciclos lectivos</p>
                                 </a>
                             </li>
                         </ul>
@@ -577,7 +596,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                     <li class="nav-item">
                         <a href="#" class="nav-link active">
-                            <i class="nav-icon fas"><i class="bi bi-book-half"></i></i></i></i>
+                            <i class="nav-icon fas"><i class="bi bi-journal-bookmark"></i></i></i>
                             <p>
                                 Materias
                                 <i class="right fas fa-angle-left"></i>
@@ -639,7 +658,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                     <li class="nav-item">
                         <a href="#" class="nav-link active">
-                            <i class="nav-icon fas"><i class="bi bi-person-lines-fill"></i></i>
+                            <i class="nav-icon fas"><i class="bi bi-person-square"></i></i>
                             <p>
                                 Estudiantes
                                 <i class="right fas fa-angle-left"></i>

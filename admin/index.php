@@ -17,7 +17,7 @@ include('../app/controllers/docentes/listado_de_asignaciones.php');
     <div class="container">
         <div class="container">
             <div class="row">
-                <h1>MENÚ PRINCIPAL</h1>
+                <h1 style="margin-left: 20px;"><i class="bi bi-house-fill"></i>  Inicio </h1>
             </div>
             <br>
 
@@ -39,35 +39,62 @@ include('../app/controllers/docentes/listado_de_asignaciones.php');
                 }
 
             ?>
-
-                <div class="row">
-                    <!-- <div class="col-md-2"></div> -->
+                <style> /* Aplica flexbox para que ambas tarjetas tengan la misma altura */
+                    .row.equal-height {
+                        display: flex;
+                    }
+                    .equal-height .col-md-6 {
+                        display: flex;
+                        flex-direction: column;
+                    }
+                    .equal-height .card {
+                        flex: 1;
+                    }
+                </style>
+                <div class="row equal-height">
                     <div class="col-md-6">
                         <div class="card card-outline card-primary">
                             <div class="card-header">
-                                <h3 class="card-title">Mis Datos Personales</h3>
+                                <h3 class="card-title"><i class="bi bi-card-list"></i><b> Mis datos personales</b></h3>
                             </div>
                             <div class="card-body">
                                 <table class="table table-sm table-hover table-striped table-bordered">
                                     <tr>
-                                        <td><b>DNI</b></td>
+                                            <td><b>Apellido y Nombres</b></td>
+                                            <td><?= $nombre_sesion_usuario; ?></td>
+                                        </tr>    
+                                    <tr>
+                                        <td><b>Nro. de documento</b></td>
                                         <td><?= $dni; ?></td>
                                     </tr>
+                                   
                                     <tr>
-                                        <td><b>Apellido y Nombre</b></td>
-                                        <td><?= $nombre_sesion_usuario; ?></td>
-                                    </tr>
-                                    <tr>
-                                        <td><b>Fecha de Nacimiento</b></td>
+                                        <td><b>Fecha de nacimiento</b></td>
                                         <td><?= $fecha_nacimiento; ?></td>
                                     </tr>
                                     <tr>
                                         <td><b>Teléfono</b></td>
+                                        <td> - </td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Celular</b></td>
                                         <td><?= $celular; ?></td>
                                     </tr>
                                     <tr>
-                                        <td><b>Email</b></td>
-                                        <td><?= $email_sesion; ?></td>
+                                        <td><b>Correo electrónico</b></td>
+                                        <td style="text-transform: uppercase;"><?= $email_sesion; ?></td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Domicilio</b></td>
+                                        <td style="text-transform: uppercase;"><?= $direccion; ?></td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Barrio</b></td>
+                                        <td style="text-transform: uppercase;">Marqués de sobremonte</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Localidad</b></td>
+                                        <td style="text-transform: uppercase;">Córdoba</td>
                                     </tr>
                                     <tr>
                                         <td><b>Tipo de cargo</b></td>
@@ -85,9 +112,29 @@ include('../app/controllers/docentes/listado_de_asignaciones.php');
                     <div class="col-md-6">
                         <div class="card card-outline card-primary">
                             <div class="card-header">
-                                <h3 class="card-title">Avisos y Novedades</h3>
+                                <h3 class="card-title"><i class="bi bi-megaphone"></i><b> Avisos y novedades</b></h3>
                             </div>
                             <div class="card-body">
+                            <style>
+                                .carousel-control-prev-icon,
+                                .carousel-control-next-icon {
+                                    background-color: transparent; /* Fondo transparente */
+                                    width: 30px; /* Ajusta el tamaño según necesites */
+                                    height: 30px; /* Ajusta el tamaño según necesites */
+                                }
+                                .carousel-control-prev-icon {
+                                    filter: brightness(0) saturate(100%) invert(50%); /* Ajusta el color de la flecha */
+                                }
+                                .carousel-control-next-icon {
+                                    filter: brightness(0) saturate(100%) invert(50%); /* Ajusta el color de la flecha */
+                                }
+                                .carousel-indicators li {
+                                    background-color: gray; /* Color de la barrita (gris) */
+                                }
+                                .carousel-indicators .active {
+                                    background-color: darkgray; /* Color de la barrita activa */
+                                }
+                            </style>
                                 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                                     <ol class="carousel-indicators">
                                         <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -129,51 +176,26 @@ include('../app/controllers/docentes/listado_de_asignaciones.php');
             if ($rol_sesion_usuario == 'ADMINISTRADOR') { ?>
                 <div class="row">
 
-                    <div class="col-lg-3 col-3">
-                        <div class="small-box bg-primary">
+                <div class="col-lg-3 col-3">
+                        <div class="small-box bg-green">
                             <div class="inner">
                                 <?php
-                                $contador_roles = 0;
-                                foreach ($roles as $role) {
-                                    $contador_roles = $contador_roles + 1;
-                                }
+                                $contador_estadisticas = 7;
                                 ?>
-                                <h3><?= $contador_roles; ?></h3>
-                                <p>Roles</p>
+                                <h3><?= $contador_estadisticas; ?></h3>
+                                <p>Estadísticas</p>
                             </div>
-                            <div class="icon">
-                                <i class="fas"><i class="bi bi-bookmarks"></i></i>
+                            <div style="color: white;" class="icon">
+                                <i class="fas"><i class="bi bi-graph-up-arrow"></i></i>
                             </div>
-                            <a href="<?= APP_URL; ?>/admin/roles" class="small-box-footer">
+                            <a href="<?= APP_URL; ?>/admin/estadisticas/asistencia.php" class="small-box-footer">
                                 Más información <i class="fas fa-arrow-circle-right"></i>
                             </a>
                         </div>
                     </div>
 
                     <div class="col-lg-3 col-3">
-                        <div class="small-box bg-info">
-                            <div class="inner">
-                                <?php
-                                $contador_usuarios = 0;
-                                foreach ($usuarios as $usuario) {
-                                    $contador_usuarios = $contador_usuarios + 1;
-                                }
-                                ?>
-                                <h3><?= $contador_usuarios; ?></h3>
-                                <p>Usuarios</p>
-                            </div>
-                            <div class="icon">
-                                <i class="fas"><i class="bi bi-people-fill"></i></i>
-                            </div>
-                            <a href="<?= APP_URL; ?>/admin/usuarios" class="small-box-footer">
-                                Más información <i class="fas fa-arrow-circle-right"></i>
-                            </a>
-                        </div>
-                    </div>
-
-
-                    <div class="col-lg-3 col-3">
-                        <div class="small-box bg-success">
+                        <div class="small-box bg-blue">
                             <div class="inner">
                                 <?php
                                 $contador_niveles = 0;
@@ -182,10 +204,10 @@ include('../app/controllers/docentes/listado_de_asignaciones.php');
                                 }
                                 ?>
                                 <h3><?= $contador_niveles; ?></h3>
-                                <p>Niveles</p>
+                                <p>Ciclos lectivos</p>
                             </div>
                             <div class="icon">
-                                <i class="fas"><i class="bi bi-bookshelf"></i></i></i>
+                                <i class="fas"><i class="bi bi-calendar4-week"></i></i></i>
                             </div>
                             <a href="<?= APP_URL; ?>/admin/niveles" class="small-box-footer">
                                 Más información <i class="fas fa-arrow-circle-right"></i>
@@ -227,7 +249,7 @@ include('../app/controllers/docentes/listado_de_asignaciones.php');
                                 <p>Materias</p>
                             </div>
                             <div class="icon">
-                                <i class="fas"><i class="bi bi-book-half"></i></i>
+                                <i class="fas"><i class="bi bi-journal-bookmark"></i></i>
                             </div>
                             <a href="<?= APP_URL; ?>/admin/materias" class="small-box-footer">
                                 Más información <i class="fas fa-arrow-circle-right"></i>
@@ -269,13 +291,65 @@ include('../app/controllers/docentes/listado_de_asignaciones.php');
                                 <p>Estudiantes</p>
                             </div>
                             <div style="color: white;" class="icon">
-                                <i class="fas"><i class="bi bi-person-lines-fill"></i></i>
+                                <i class="fas"><i class="bi bi-person-square"></i></i>
                             </div>
                             <a href="<?= APP_URL; ?>/admin/estudiantes" class="small-box-footer">
                                 Más información <i class="fas fa-arrow-circle-right"></i>
                             </a>
                         </div>
                     </div>
+
+                <div class="col-lg-3 col-3">
+                        <div class="small-box bg-orange">
+                            <div class="inner">
+                                <?php
+                                $contador_usuarios = 0;
+                                foreach ($usuarios as $usuario) {
+                                    $contador_usuarios = $contador_usuarios + 1;
+                                }
+                                ?>
+                                <h3><?= $contador_usuarios; ?></h3>
+                                <p>Usuarios</p>
+                            </div>
+                            <div class="icon">
+                                <i class="fas"><i class="bi bi-people-fill"></i></i>
+                            </div>
+                            <a href="<?= APP_URL; ?>/admin/usuarios" class="small-box-footer">
+                                Más información <i class="fas fa-arrow-circle-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-3">
+                        <div class="small-box bg-purple">
+                            <div class="inner">
+                                <?php
+                                $contador_roles = 0;
+                                foreach ($roles as $role) {
+                                    $contador_roles = $contador_roles + 1;
+                                }
+                                ?>
+                                <h3><?= $contador_roles; ?></h3>
+                                <p>Configuraciones</p>
+                            </div>
+                            <div class="icon">
+                                <i class="fas"><i class="bi bi-gear"></i></i>
+                            </div>
+                            <a href="<?= APP_URL; ?>/admin/configuraciones" class="small-box-footer">
+                                Más información <i class="fas fa-arrow-circle-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+
+                    
+
+                    
+
+                    
+
+                    
+
+                    
 
 
                 </div>

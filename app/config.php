@@ -10,7 +10,7 @@ define('USUARIO','root');
 define('PASSWORD','');
 define('BD','dbaulaunida');
 
-define('APP_NAME','AULA UNIDA');
+define('APP_NAME','Aula Unida®');
 define('APP_URL','http://localhost/aulaunida');
 define('KEY_API_MAPS','');
 
