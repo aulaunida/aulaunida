@@ -20,7 +20,7 @@ foreach ($usuarios as $usuario){
 if($contador>0){
     //echo "existe este rol en otra tabla, no se puede eliminar";
     session_start();
-    $_SESSION['mensaje'] = "Existe este rol en otra tabla, no se puede eliminar";
+    $_SESSION['mensaje'] = "No es posible eliminar el rol, tiene registros dependientes.";
     $_SESSION['icono'] = "error";
     $_SESSION['timer'] = 6000;  // Duración del mensaje en milisegundos (6 segundos)
     $_SESSION['timerProgressBar'] = true;
