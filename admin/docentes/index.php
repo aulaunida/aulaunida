@@ -22,7 +22,7 @@ include ('../../app/controllers/docentes/listado_de_docentes.php');
     <div class="content">
         <div class="container">
             <div class="row">
-                <h2>DOCENTES <i class="bi bi-chevron-right"></i> CONSULTAR DOCENTES</h2>
+            <h1 style="margin-left: 20px;"><i class="bi bi-person-video3"></i> Docentes</h1>
             </div>
             <br>
             <div class="row">
@@ -80,7 +80,7 @@ include ('../../app/controllers/docentes/listado_de_docentes.php');
                                             <div class="btn-group" role="group" aria-label="Basic example">
                                                 <a href="show.php?id=<?=$id_docente;?>" type="button" title="Consultar detalles" class="btn btn-info btn-sm"><i class="bi bi-eye"></i></a>
                                                 <a href="edit.php?id=<?=$id_docente;?>" type="button" title="Editar" class="btn btn-success btn-sm icono-blanco"><i class="bi bi-pencil-square"></i></a>
-                                                <!-- <form action="<?=APP_URL;?>/app/controllers/docentes/delete.php" onclick="preguntar<?=$id_docente;?>(event)" method="post" id="miFormulario<?=$id_docente;?>">
+                                                <form action="<?=APP_URL;?>/app/controllers/docentes/delete.php" onclick="preguntar<?=$id_docente;?>(event)" method="post" id="miFormulario<?=$id_docente;?>">
                                                     <input type="text" name="id_docente" value="<?=$id_docente;?>" hidden>
                                                     <button type="submit" title="Eliminar" class="btn btn-danger btn-sm" style="border-radius: 0px 5px 5px 0px"><i class="bi bi-trash"></i></button>
                                                 </form>
@@ -104,7 +104,7 @@ include ('../../app/controllers/docentes/listado_de_docentes.php');
                                     }
                                 });
                             }
-                            </script> -->
+                            </script>
                                             </div>
                                         </td>
                                     </tr>
@@ -116,7 +116,7 @@ include ('../../app/controllers/docentes/listado_de_docentes.php');
                             <hr>
                     <div class="row">
                     <div class="col-md-12">
-                        <div class="form-group text-center">
+                        <div class="form-group ">
                         <a href="<?=APP_URL;?>/admin/index.php" class="btn btn-danger">Volver</a>
                         </div>
                      </div>
@@ -142,7 +142,7 @@ include ('../../layout/mensajes.php');
 <script>
     $(function () {
         $("#example1").DataTable({
-            "pageLength": 25,
+            "pageLength": 10,
             "language": {
                 "emptyTable": "No hay información",
                 "info": "Mostrando _START_ - _END_ | _TOTAL_ docentes",
@@ -153,7 +153,7 @@ include ('../../layout/mensajes.php');
                 "lengthMenu": "Mostrar _MENU_ docentes",
                 "loadingRecords": "Cargando...",
                 "processing": "Procesando...",
-                "search": "Buscar docente:",
+                "search": "Buscar docentes:",
                 "zeroRecords": "Sin resultados encontrados",
                 "paginate": {
                     "first": "Primero",
@@ -165,7 +165,7 @@ include ('../../layout/mensajes.php');
             "responsive": true, "lengthChange": true, "autoWidth": false,
             buttons: [{
                 extend: 'collection',
-                text: 'Reportes',
+                text: 'Exportar',
                 orientation: 'landscape',
                 buttons: [{
                     text: 'Copiar Texto',
@@ -187,7 +187,7 @@ include ('../../layout/mensajes.php');
             },
                 {
                     extend: 'colvis',
-                    text: 'Visor de columnas',
+                    text: 'Visualizar',
                     collectionLayout: 'fixed three-column'
                 }
             ],

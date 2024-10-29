@@ -2,10 +2,10 @@
 
 include ('../../../app/config.php');
 
-$id_asignacion = $_POST['id_asignacion'];
-$id_nivel = $_POST['id_nivel'];
-$id_grado = $_POST['id_grado'];
-$id_materia = $_POST['id_materia'];
+$id_asignacion = strtoupper($_POST['id_asignacion']);
+$id_nivel = strtoupper($_POST['id_nivel']);
+$id_grado = strtoupper($_POST['id_grado']);
+$id_materia = strtoupper($_POST['id_materia']);
 
 /////////// ACTUALIZAR A LA TABLA ASIGNACIONES
 
@@ -26,16 +26,16 @@ $sentencia->bindParam('id_asignacion',$id_asignacion);
 if($sentencia->execute()){
 echo 'success';
 session_start();
-         $_SESSION['mensaje'] = "Se actualizó correctamente la asignación de la materia";
+         $_SESSION['mensaje'] = "Se actualizó la asignación de manera correcta.";
          $_SESSION['icono'] = "success";
          $_SESSION['timer'] = 3000;  // Duración del mensaje en milisegundos 
          $_SESSION['timerProgressBar'] = true;
          $_SESSION['showCloseButton'] = true; // Agregar la cruz de cierre
          header('Location:'.APP_URL."/admin/docentes/asignacion.php");
 }else{
-echo 'error al registrar a la base de datos';
+echo 'Error al asignar materia';
 session_start();
-$_SESSION['mensaje'] = "Error al actualizar la asignación de la materia. Comunicarse con el administrador";
+$_SESSION['mensaje'] = "Error al actualizar asignación, comunicarse con el administrador";
 $_SESSION['icono'] = "error";
 $_SESSION['timer'] = 3000;  // Duración del mensaje en milisegundos 
 $_SESSION['timerProgressBar'] = true;

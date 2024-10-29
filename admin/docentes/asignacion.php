@@ -26,7 +26,7 @@ include('../../app/controllers/docentes/listado_de_asignaciones.php');
     <div class="content">
         <div class="container">
             <div class="row">
-                <h2>ASIGNAR MATERIAS <i class="bi bi-chevron-right"></i> Consultar docentes asignados</h2>
+            <h2 style="margin-left: 20px;"><i class="bi bi-file-earmark-plus"></i>  Asignar materias </h2>
             </div>
             <br>
             <div class="row">
@@ -34,7 +34,7 @@ include('../../app/controllers/docentes/listado_de_asignaciones.php');
                 <div class="col-md-12">
                     <div class="card card-outline card-primary">
                         <div class="card-header">
-                            <h3 class="card-title">Docentes asignados</h3>
+                            <h3 class="card-title">Docentes registrados </h3>
                             <div class="card-tools">
                                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal_asignacion"><i class="bi bi-plus-square"></i> Asignar materia</button>
                             </div>
@@ -44,7 +44,7 @@ include('../../app/controllers/docentes/listado_de_asignaciones.php');
                                 <thead>
                                     <tr>
                                         <th>
-                                            <center>Nombre del docente</center>
+                                            <center>Docente</center>
                                         </th>
                                         <!-- <th><center>Rol</center></th> -->
                                         <!-- <th><center>DNI</center></th> -->
@@ -87,7 +87,7 @@ include('../../app/controllers/docentes/listado_de_asignaciones.php');
                                                     <div class="modal-dialog modal-lg">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
-                                                                <h5 class="modal-title" id="exampleModalLabel"><b>Materias asignadas a <?= $docente['apellidos'] . ', ' . $docente['nombres']; ?></b></h5>
+                                                                <h5 class="modal-title" id="exampleModalLabel">Materias asignadas para:  <b><?= $docente['apellidos'] . ', ' . $docente['nombres']; ?></b></h5>
                                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                                     <span aria-hidden="true">&times;</span>
                                                                 </button>
@@ -159,7 +159,7 @@ include('../../app/controllers/docentes/listado_de_asignaciones.php');
                                                                                                                 <div class="col-md-12">
                                                                                                                     <div class="form-group">
                                                                                                                         <input type="text" name="id_asignacion" value="<?=$id_asignacion;?>" hidden>
-                                                                                                                        <label for="">Seleccionar nivel</label>
+                                                                                                                        <label for="">Seleccionar nivel y turno</label>
                                                                                                                         <select name="id_nivel" id="" class="form-control">
                                                                                                                             <?php
                                                                                                                             foreach ($niveles as $nivele) {
@@ -173,7 +173,7 @@ include('../../app/controllers/docentes/listado_de_asignaciones.php');
                                                                                                                 </div>
                                                                                                                 <div class="col-md-12">
                                                                                                                     <div class="form-group">
-                                                                                                                        <label for="">Seleccionar grado</label>
+                                                                                                                        <label for="">Seleccionar grado y división</label>
                                                                                                                         <select name="id_grado" id="" class="form-control">
                                                                                                                             <?php
                                                                                                                             foreach ($grados as $grado) {
@@ -202,7 +202,7 @@ include('../../app/controllers/docentes/listado_de_asignaciones.php');
                                                                                                             </div>
                                                                                                             <div class="modal-footer">
                                                                                                                 <button type="submit" class="btn btn-success">Actualizar</button>
-                                                                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                                                                                                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
                                                                                                             </div>
                                                                                                         </form>
 
@@ -220,7 +220,7 @@ include('../../app/controllers/docentes/listado_de_asignaciones.php');
                                                                                             function preguntar<?= $id_asignacion; ?>(event) {
                                                                                                 event.preventDefault();
                                                                                                 Swal.fire({
-                                                                                                    title: 'Eliminar asignación existente',
+                                                                                                    title: 'Eliminar asignación',
                                                                                                     text: '¿Desea eliminar esta asignación?',
                                                                                                     icon: 'question',
                                                                                                     showDenyButton: true,
@@ -232,7 +232,7 @@ include('../../app/controllers/docentes/listado_de_asignaciones.php');
                                                                                                     if (result.isConfirmed) {
                                                                                                         var form = $('#miFormulario<?= $id_asignacion; ?>');
                                                                                                         form.submit();
-                                                                                                        Swal.fire('Eliminado', 'Se eliminó la asignación correctamente', 'success');
+                                                                                                        Swal.fire('Eliminado', 'Se eliminó la asignación de manera correcta.', 'success');
                                                                                                     }
                                                                                                 });
                                                                                             }
@@ -292,7 +292,7 @@ include('../../layout/mensajes.php');
 <script>
     $(function() {
         $("#example1").DataTable({
-            "pageLength": 25,
+            "pageLength": 10    ,
             "language": {
                 "emptyTable": "No hay información",
                 "info": "Mostrando _START_ - _END_ | _TOTAL_ docentes",
@@ -303,7 +303,7 @@ include('../../layout/mensajes.php');
                 "lengthMenu": "Mostrar _MENU_ docentes",
                 "loadingRecords": "Cargando...",
                 "processing": "Procesando...",
-                "search": "Buscar docente:",
+                "search": "Buscar docentes:",
                 "zeroRecords": "Sin resultados encontrados",
                 "paginate": {
                     "first": "Primero",
@@ -317,7 +317,7 @@ include('../../layout/mensajes.php');
             "autoWidth": false,
             buttons: [{
                     extend: 'collection',
-                    text: 'Reportes',
+                    text: 'Exportar',
                     orientation: 'landscape',
                     buttons: [{
                         text: 'Copiar Texto',
@@ -338,7 +338,7 @@ include('../../layout/mensajes.php');
                 },
                 {
                     extend: 'colvis',
-                    text: 'Visor de columnas',
+                    text: 'Visualizar',
                     collectionLayout: 'fixed three-column'
                 }
             ],
@@ -349,7 +349,7 @@ include('../../layout/mensajes.php');
 <div class="modal fade" id="modal_asignacion" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-header">
+            <div class="modal-header" style="background-color:#17a2b8">
                 <h5 class="modal-title" id="exampleModalLabel"><b>Asignar materia</b></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
@@ -374,7 +374,7 @@ include('../../layout/mensajes.php');
                         </div>
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label for="">Seleccionar nivel</label>
+                                <label for="">Seleccionar nivel y turno</label>
                                 <select name="id_nivel" id="" class="form-control">
                                     <?php
                                     foreach ($niveles as $nivele) {
@@ -388,7 +388,7 @@ include('../../layout/mensajes.php');
                         </div>
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label for="">Seleccionar grado</label>
+                                <label for="">Seleccionar grado y división</label>
                                 <select name="id_grado" id="" class="form-control">
                                     <?php
                                     foreach ($grados as $grado) {
@@ -417,7 +417,7 @@ include('../../layout/mensajes.php');
                     </div>
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-primary">Registrar</button>
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
                     </div>
                 </form>
 

@@ -2,22 +2,22 @@
 
 include ('../../../app/config.php');
 
-$id_docente = $_POST['id_docente'];
-$id_usuario = $_POST['id_usuario'];
-$id_persona = $_POST['id_persona'];
+$id_docente = strtoupper($_POST['id_docente']);
+$id_usuario = strtoupper($_POST['id_usuario']);
+$id_persona = strtoupper($_POST['id_persona']);
 
 $rol_id = $_POST['rol_id'];
-$nombres = $_POST['nombres'];
-$apellidos = $_POST['apellidos'];
-$email = $_POST['email'];
+$nombres = strtoupper($_POST['nombres']);
+$apellidos = strtoupper($_POST['apellidos']);
+$email = strtoupper($_POST['email']);
 $dni = $_POST['dni'];
 $fecha_nacimiento = $_POST['fecha_nacimiento'];
 $celular = $_POST['celular'];
-$profesion = $_POST['profesion'];
-$direccion = $_POST['direccion'];
+$profesion = strtoupper($_POST['profesion']);
+$direccion = strtoupper($_POST['direccion']);
 
 $integrador = $_POST['integrador'];
-$tipo_cargo = $_POST['tipo_cargo'];
+$tipo_cargo = strtoupper($_POST['tipo_cargo']);
 
 $pdo->beginTransaction();
 
@@ -83,17 +83,17 @@ if($sentencia->execute()){
 echo 'success';
 $pdo->commit();
 session_start();
-         $_SESSION['mensaje'] = "Se actualizó correctamente el docente";
+         $_SESSION['mensaje'] = "Se actualizó al docente de manera correcta.";
          $_SESSION['icono'] = "success";
          $_SESSION['timer'] = 3000;  // Duración del mensaje en milisegundos 
          $_SESSION['timerProgressBar'] = true;
          $_SESSION['showCloseButton'] = true; // Agregar la cruz de cierre
          header('Location:'.APP_URL."/admin/docentes");
 }else{
-echo 'error al registrar a la base de datos';
+echo 'Error al actualizar docente';
 $pdo->rollBack();
 session_start();
-$_SESSION['mensaje'] = "Error al actualizar el docente. Comunicarse con el administrador";
+$_SESSION['mensaje'] = "Error al actualizar docente, comunicarse con el administrador";
 $_SESSION['icono'] = "error";
 $_SESSION['timer'] = 3000;  // Duración del mensaje en milisegundos 
 $_SESSION['timerProgressBar'] = true;

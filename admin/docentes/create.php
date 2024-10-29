@@ -11,7 +11,7 @@ include('../../app/controllers/roles/listado_de_roles.php');
     <div class="content">
         <div class="container">
             <div class="row">
-                <h2>DOCENTES <i class="bi bi-chevron-right"></i> REGISTRAR DOCENTE</h2>
+            <h2 style="margin-left: 20px;"><i class="bi bi-plus-square"></i>  Registrar docente </h2>
             </div>
             <br>
             <div class="row">
@@ -19,7 +19,7 @@ include('../../app/controllers/roles/listado_de_roles.php');
                 <div class="col-md-12">
                     <div class="card card-outline card-primary">
                         <div class="card-header">
-                            <h3 class="card-title">Complete los siguientes datos</h3>
+                            <h3 class="card-title">Completar los siguientes datos:</h3>
                         </div>
                         <div class="card-body">
                             <form action="<?= APP_URL; ?>/app/controllers/docentes/create.php" method="post">
@@ -38,65 +38,61 @@ include('../../app/controllers/roles/listado_de_roles.php');
                                                 </select> 
                                         </div>
                                     </div>
-                                    <div class="col-md-3">
+                                    </div>
+                                <div class="row">
+                                    <div class="col-md-4">
                                         <div class="form-group">
-                                            <label for="">DNI<b style="color:red">*</b></label>
+                                            <label for="">Nro. de documento<b style="color:red">*</b></label>
                                             <input type="number" name="dni" class="form-control" required>
                                         </div>
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-4">
                                         <div class="form-group">
-                                            <label for="">Apellido<b style="color:red">*</b></label>
+                                            <label for="">Apellidos<b style="color:red">*</b></label>
                                             <input type="text" name="apellidos" class="form-control" required>
                                         </div>
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-4">
                                         <div class="form-group">
-                                            <label for="">Nombre<b style="color:red">*</b></label>
+                                            <label for="">Nombres<b style="color:red">*</b></label>
                                             <input type="text" name="nombres" class="form-control" required>
                                         </div>
                                     </div>
-                                    
-                                    <div class="col-md-3">
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
                                         <div class="form-group">
-                                            <label for="">Fecha de Nacimiento<b style="color:red">*</b></label>
+                                            <label for="">Fecha de nacimiento<b style="color:red">*</b></label>
                                             <input type="date" name="fecha_nacimiento" class="form-control" required>
                                         </div>
                                     </div>
-
-
-                                </div>
-                                <div class="row">
-                                <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="form-group">
-                                            <label for="">Dirección<b style="color:red">*</b></label>
+                                            <label for="">Domicilio<b style="color:red">*</b></label>
                                             <input type="address" name="direccion" class="form-control" required>
                                         </div>
                                     </div>
-                                    
-                                    <div class="col-md-3">
+                                    <div class="col-md-4">
                                         <div class="form-group">
-                                            <label for="">Correo Electrónico<b style="color:red">*</b></label>
+                                            <label for="">Correo electrónico<b style="color:red">*</b></label>
                                             <input type="email" name="email" class="form-control" required>
                                         </div>
                                     </div>
-                                    <div class="col-md-3">
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
                                         <div class="form-group">
-                                            <label for="">Celular<b style="color:red">*</b></label>
+                                            <label for="">Nro. de celular<b style="color:red">*</b></label>
                                             <input type="number" name="celular" class="form-control" required>
                                         </div>
                                     </div>
-                                    
-                                </div>
-                                <div class="row">
-                                    
-                                <div class="col-md-3">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="">Título<b style="color:red">*</b></label>
                                             <input type="text" name="profesion" class="form-control" required>
                                         </div>
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="">Integrador<b style="color:red">*</b></label>
                                             <select name="integrador" id="" class="form-control" required>
@@ -105,7 +101,9 @@ include('../../app/controllers/roles/listado_de_roles.php');
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-md-3">
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="">Tipo de cargo<b style="color:red">*</b></label>
                                             <select name="tipo_cargo" id="" class="form-control" required>
@@ -120,7 +118,7 @@ include('../../app/controllers/roles/listado_de_roles.php');
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <button type="submit" class="btn btn-primary">Registrar</button>
-                                            <a href="<?= APP_URL; ?>/admin/docentes" class="btn btn-secondary">Cancelar</a>
+                                            <a href="<?= APP_URL; ?>/admin/docentes" class="btn btn-danger">Cancelar</a>
                                         </div>
                                     </div>
                                 </div>

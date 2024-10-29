@@ -11,7 +11,7 @@ $sentencia->bindParam('id_asignacion',$id_asignacion);
 
 if($sentencia->execute()){
     session_start();
-    $_SESSION['mensaje'] = "Se eliminó la asignación de manera correcta en la base de datos";
+    $_SESSION['mensaje'] = "Se eliminó la asignación de manera correcta.";
     $_SESSION['icono'] = "success";
     $_SESSION['timer'] = 6000;  // Duración del mensaje en milisegundos (6 segundos)
     $_SESSION['timerProgressBar'] = true;
@@ -19,7 +19,7 @@ if($sentencia->execute()){
     header('Location:'.APP_URL."/admin/docentes/asignacion.php");
 }else{
     session_start();
-    $_SESSION['mensaje'] = "Error no se pudo eliminar la asignación en la base datos, comuníquese con el administrador";
+    $_SESSION['mensaje'] = "Error al asignar materia, comunicarse con el administrador";
     $_SESSION['icono'] = "warning";
     $_SESSION['timer'] = 6000;  // Duración del mensaje en milisegundos (6 segundos)
     $_SESSION['timerProgressBar'] = true;
