@@ -2,7 +2,7 @@
 
 include ('../../../app/config.php');
 
-$nombre_materia = $_POST['nombre_materia'];
+$nombre_materia = strtoupper($_POST['nombre_materia']);
 
 $sentencia = $pdo->prepare('INSERT INTO materias
 (nombre_materia, fyh_creacion, estado)
@@ -16,7 +16,7 @@ $sentencia->bindParam('estado',$estado_de_registro);
 if($sentencia->execute()){
     echo 'success';
     session_start();
-    $_SESSION['mensaje'] = "Materia registrada de manera correcta en la base de datos";
+    $_SESSION['mensaje'] = "Se registró la materia de manera correcta.";
     $_SESSION['icono'] = "success";
     $_SESSION['timer'] = 6000;  // Duración del mensaje en milisegundos (6 segundos)
     $_SESSION['timerProgressBar'] = true;
@@ -24,9 +24,9 @@ if($sentencia->execute()){
     header('Location:'.APP_URL."/admin/materias");
 //header('Location:' .$URL.'/');
 }else{
-    echo 'Error al registrar materia a la base de datos';
+    echo 'Error al registrar materia!';
     session_start();
-    $_SESSION['mensaje'] = "Error al registrar materia en la base datos, comuníquese con el administrador";
+    $_SESSION['mensaje'] = "Error al registrar materia, comunicarse con el administrador";
     $_SESSION['icono'] = "warning";
     $_SESSION['timer'] = 6000;  // Duración del mensaje en milisegundos (6 segundos)
     $_SESSION['timerProgressBar'] = true;

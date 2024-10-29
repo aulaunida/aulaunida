@@ -3,7 +3,7 @@
 include ('../../../app/config.php');
 
 $id_materia = $_POST['id_materia'];
-$nombre_materia = $_POST['nombre_materia'];
+$nombre_materia = strtoupper($_POST['nombre_materia']);
 
 $sentencia = $pdo->prepare('UPDATE materias
 SET nombre_materia=:nombre_materia, 
@@ -18,7 +18,7 @@ $sentencia->bindParam('id_materia',$id_materia);
 if($sentencia->execute()){
     echo 'success';
     session_start();
-    $_SESSION['mensaje'] = "Se actualizó correctamente el nivel";
+    $_SESSION['mensaje'] = "Se actualizó la materia de manera correcta.";
     $_SESSION['icono'] = "success";
     $_SESSION['timer'] = 6000;  // Duración del mensaje en milisegundos (6 segundos)
     $_SESSION['timerProgressBar'] = true;
@@ -26,9 +26,9 @@ if($sentencia->execute()){
     header('Location:'.APP_URL."/admin/materias");
 //header('Location:' .$URL.'/');
 }else{
-    echo 'Error al registrar materia a la base de datos';
+    echo 'Error al actualizar materia';
     session_start();
-    $_SESSION['mensaje'] = "Error al actualizar la materia. Comunicarse con el administrador";
+    $_SESSION['mensaje'] = "Error al actualizar materia, comunicarse con el administrador";
     $_SESSION['icono'] = "warning";
     $_SESSION['timer'] = 6000;  // Duración del mensaje en milisegundos (6 segundos)
     $_SESSION['timerProgressBar'] = true;

@@ -14,7 +14,7 @@ include('../../app/controllers/materias/datos_materias.php');
     <div class="content">
         <div class="container">
             <div class="row">
-                <h2>CONSULTAR DETALLES <i class="bi bi-chevron-right"></i> <?= $nombre_materia; ?></h2>
+                <h2 style="margin-left: 20px;"><i class="bi bi-eye"></i> Consultar detalles: </i><b><?= $nombre_materia; ?></b>  </h2>
             </div>
             <br>
             <div class="row">
@@ -22,13 +22,13 @@ include('../../app/controllers/materias/datos_materias.php');
                 <div class="col-md-12">
                     <div class="card card-outline card-info">
                         <div class="card-header">
-                            <h3 class="card-title">Datos registrados</h3>
+                            <h3 class="card-title">Datos registrados:</h3>
                         </div>
                         <div class="card-body">
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label for="">Materia</label>
+                                            <label for="">Nombre materia</label>
                                             <p><?= $nombre_materia; ?></p>
                                         </div>
                                     </div>
@@ -57,7 +57,7 @@ include('../../app/controllers/materias/datos_materias.php');
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <a href="<?= APP_URL; ?>/admin/materias" class="btn btn-secondary">Volver</a>
+                                            <a href="<?= APP_URL; ?>/admin/materias" class="btn btn-danger">Volver</a>
                                         </div>
                                     </div>
                                 </div>

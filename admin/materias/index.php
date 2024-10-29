@@ -12,7 +12,7 @@ include ('../../app/controllers/materias/listado_de_materias.php');
     <div class="content">
         <div class="container">
             <div class="row">
-                <h2>MATERIAS <i class="bi bi-chevron-right"></i> CONSULTAR MATERIAS</h2>
+            <h1 style="margin-left: 20px;"><i class="bi bi-journal-bookmark"></i> Materias</h1>
             </div>
             <br>
             <div class="row">
@@ -67,7 +67,7 @@ include ('../../app/controllers/materias/listado_de_materias.php');
                                                     function preguntar<?=$id_materia;?>(event) {
                                                         event.preventDefault();
                                                         Swal.fire({
-                                                            title: 'Eliminar registro',
+                                                            title: 'Eliminar materia',
                                                             text: '¿Desea eliminar este registro?',
                                                             icon: 'question',
                                                             showDenyButton: true,
@@ -94,7 +94,7 @@ include ('../../app/controllers/materias/listado_de_materias.php');
                             <hr>
                             <div class="row">
                                 <div class="col-md-12">
-                                    <div class="form-group text-center">
+                                    <div class="form-group">
                                         <a href="<?= APP_URL; ?>/admin" class="btn btn-danger">Volver</a>
                                     </div>
                                 </div>
@@ -120,7 +120,7 @@ include ('../../layout/mensajes.php');
 <script>
     $(function () {
         $("#example1").DataTable({
-            "pageLength": 25,
+            "pageLength": 10,
             "language": {
                 "emptyTable": "No hay información",
                 "info": "Mostrando _START_ - _END_ | _TOTAL_ Materias",
@@ -131,7 +131,7 @@ include ('../../layout/mensajes.php');
                 "lengthMenu": "Mostrar _MENU_ Materias",
                 "loadingRecords": "Cargando...",
                 "processing": "Procesando...",
-                "search": "Buscar materia:",
+                "search": "Buscar materias:",
                 "zeroRecords": "Sin resultados encontrados",
                 "paginate": {
                     "first": "Primero",
@@ -143,7 +143,7 @@ include ('../../layout/mensajes.php');
             "responsive": true, "lengthChange": true, "autoWidth": false,
             buttons: [{
                 extend: 'collection',
-                text: 'Reportes',
+                text: 'Exportar',
                 orientation: 'landscape',
                 buttons: [{
                     text: 'Copiar Texto',
@@ -165,7 +165,7 @@ include ('../../layout/mensajes.php');
             },
                 {
                     extend: 'colvis',
-                    text: 'Visor de columnas',
+                    text: 'Visualizar',
                     collectionLayout: 'fixed three-column'
                 }
             ],
