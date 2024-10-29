@@ -14,7 +14,7 @@ include ('../../app/controllers/configuraciones/gestion/listado_de_gestiones.php
     <div class="content">
         <div class="container">
             <div class="row">
-                <h2>EDITAR NIVEL EDUCATIVO <i class="bi bi-chevron-right"></i> <?=$nivel;?></h2>
+            <h2 style="margin-left: 20px;"><i class="bi bi-pencil-square"></i> Editar ciclo: <b><?=$gestion;?></b> </h2>
             </div>
             <br>
             <div class="row">
@@ -22,7 +22,7 @@ include ('../../app/controllers/configuraciones/gestion/listado_de_gestiones.php
                 <div class="col-md-12">
                     <div class="card card-outline card-success">
                         <div class="card-header">
-                            <h3 class="card-title">Complete los siguientes datos:</h3>
+                            <h3 class="card-title">Editar los siguientes campos:</h3>
                         </div>
                         <div class="card-body">
                             <form action="<?=APP_URL;?>/app/controllers/niveles/update.php" method="post">
@@ -51,11 +51,11 @@ include ('../../app/controllers/configuraciones/gestion/listado_de_gestiones.php
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label for="">Niveles<b style="color:red">*</b></label>
+                                            <label for="">Nivel<b style="color:red">*</b></label>
                                             <select name="nivel" id="" class="form-control">
                                                 <option value="INICIAL"<?php if($nivel=='INICIAL'){ ?> selected="selected" <?php } ?>>INICIAL</option>
-                                                <option value="PRIMARIA"<?php if($nivel=='PRIMARIA'){ ?> selected="selected" <?php } ?>>PRIMARIA</option>
-                                                <option value="SECUNDARIA"<?php if($nivel=='SECUNDARIA'){ ?> selected="selected" <?php } ?>>SECUNDARIA</option>
+                                                <option value="PRIMARIO"<?php if($nivel=='PRIMARIO'){ ?> selected="selected" <?php } ?>>PRIMARIO</option>
+                                                <option value="SECUNDARIO"<?php if($nivel=='SECUNDARIO'){ ?> selected="selected" <?php } ?>>SECUNDARIO</option>
                                             </select>
                                         </div>
                                     </div>
@@ -63,7 +63,7 @@ include ('../../app/controllers/configuraciones/gestion/listado_de_gestiones.php
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label for="">Turnos<b style="color:red">*</b></label>
+                                            <label for="">Turno<b style="color:red">*</b></label>
                                             <select name="turno" id="" class="form-control">
                                                 <option value="MAÑANA"<?php if($turno=='MAÑANA'){ ?> selected="selected" <?php } ?>>MAÑANA</option>
                                                 <option value="TARDE"<?php if($turno=='TARDE'){ ?> selected="selected" <?php } ?>>TARDE</option>
@@ -76,7 +76,7 @@ include ('../../app/controllers/configuraciones/gestion/listado_de_gestiones.php
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <button type="submit" class="btn btn-success">Actualizar</button>
-                                            <a href="<?=APP_URL;?>/admin/niveles" class="btn btn-secondary">Cancelar</a>
+                                            <a href="<?=APP_URL;?>/admin/niveles" class="btn btn-danger">Cancelar</a>
                                         </div>
                                     </div>
                                 </div>

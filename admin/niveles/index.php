@@ -12,7 +12,7 @@ include ('../../app/controllers/niveles/listado_de_niveles.php');
     <div class="content">
         <div class="container">
             <div class="row">
-                <h2>NIVELES EDUCATIVOS <i class="bi bi-chevron-right"></i> CONSULTAR NIVELES</h2>
+            <h2 style="margin-left: 20px;"><i class="bi bi-calendar4-week"></i>  Ciclos lectivos </h2>
             </div>
             <br>
             <div class="row">
@@ -20,9 +20,9 @@ include ('../../app/controllers/niveles/listado_de_niveles.php');
                 <div class="col-md-12">
                     <div class="card card-outline card-primary">
                         <div class="card-header">
-                            <h3 class="card-title">Niveles registrados</h3>
+                            <h3 class="card-title">Ciclos lectivos registrados</h3>
                             <div class="card-tools">
-                                <a href="create.php" class="btn btn-primary"><i class="bi bi-plus-square"></i> Registrar nivel educativo</a>
+                                <a href="create.php" class="btn btn-primary"><i class="bi bi-plus-square"></i> Registrar ciclo lectivo</a>
                             </div>
                         </div>
                         <div class="card-body">
@@ -63,7 +63,7 @@ include ('../../app/controllers/niveles/listado_de_niveles.php');
                                             <div class="btn-group" role="group" aria-label="Basic example">
                                                 <a href="show.php?id=<?=$id_nivel;?>" type="button" title="Consultar detalles" class="btn btn-info btn-sm"><i class="bi bi-eye"></i></a>
                                                 <a href="edit.php?id=<?=$id_nivel;?>" type="button" title="Editar" class="btn btn-success btn-sm"><i class="bi bi-pencil"></i></a>
-                                                <!-- <form action="<?=APP_URL;?>/app/controllers/niveles/delete.php" onclick="preguntar<?=$id_nivel;?>(event)" method="post" id="miFormulario<?=$id_nivel;?>">
+                                                <form action="<?=APP_URL;?>/app/controllers/niveles/delete.php" onclick="preguntar<?=$id_nivel;?>(event)" method="post" id="miFormulario<?=$id_nivel;?>">
                                                     <input type="text" name="id_nivel" value="<?=$id_nivel;?>" hidden>
                                                     <button type="submit" title="Eliminar" class="btn btn-danger btn-sm" style="border-radius: 0px 5px 5px 0px"><i class="bi bi-trash"></i></button>
                                                 </form>
@@ -71,7 +71,7 @@ include ('../../app/controllers/niveles/listado_de_niveles.php');
                                                     function preguntar<?=$id_nivel;?>(event) {
                                                         event.preventDefault();
                                                         Swal.fire({
-                                                            title: 'Eliminar registro',
+                                                            title: 'Eliminar ciclo lectivo',
                                                             text: '¿Desea eliminar este registro?',
                                                             icon: 'question',
                                                             showDenyButton: true,
@@ -86,7 +86,7 @@ include ('../../app/controllers/niveles/listado_de_niveles.php');
                                                             }
                                                         });
                                                     }
-                                                </script> -->
+                                                </script>
                                             </div>
                                         </td>
                                     </tr>
@@ -98,7 +98,7 @@ include ('../../app/controllers/niveles/listado_de_niveles.php');
                             <hr>
                             <div class="row">
                                 <div class="col-md-12">
-                                    <div class="form-group text-center">
+                                    <div class="form-group">
                                         <a href="<?= APP_URL; ?>/admin" class="btn btn-danger">Volver</a>
                                     </div>
                                 </div>
@@ -124,18 +124,18 @@ include ('../../layout/mensajes.php');
 <script>
     $(function () {
         $("#example1").DataTable({
-            "pageLength": 25,
+            "pageLength": 10,
             "language": {
                 "emptyTable": "No hay información",
-                "info": "Mostrando _START_ - _END_ | _TOTAL_ Niveles",
-                "infoEmpty": "Mostrando 0 - 0 | 0 Niveles",
+                "info": "Mostrando _START_ - _END_ | _TOTAL_ Ciclos lectivos",
+                "infoEmpty": "Mostrando 0 - 0 | 0 Ciclos lectivos",
                 "infoFiltered": "(Filtrado de _MAX_ total Niveles)",
                 "infoPostFix": "",
                 "thousands": ",",
-                "lengthMenu": "Mostrar _MENU_ Niveles",
+                "lengthMenu": "Mostrar _MENU_ Ciclos lectivos",
                 "loadingRecords": "Cargando...",
                 "processing": "Procesando...",
-                "search": "Buscar nivel:",
+                "search": "Buscar ciclos lectivos:",
                 "zeroRecords": "Sin resultados encontrados",
                 "paginate": {
                     "first": "Primero",
@@ -147,10 +147,10 @@ include ('../../layout/mensajes.php');
             "responsive": true, "lengthChange": true, "autoWidth": false,
             buttons: [{
                 extend: 'collection',
-                text: 'Reportes',
+                text: 'Exportar',
                 orientation: 'landscape',
                 buttons: [{
-                    text: 'Copiar Texto',
+                    text: 'Copiar todo el texto',
                     extend: 'copy',
                 }, {
                     text: 'Descargar en PDF',
@@ -169,7 +169,7 @@ include ('../../layout/mensajes.php');
             },
                 {
                     extend: 'colvis',
-                    text: 'Visor de columnas',
+                    text: 'Visualizar ',
                     collectionLayout: 'fixed three-column'
                 }
             ],

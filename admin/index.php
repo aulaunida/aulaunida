@@ -53,7 +53,7 @@ include('../app/controllers/docentes/listado_de_asignaciones.php');
                 </style>
                 <div class="row equal-height">
                     <div class="col-md-6">
-                        <div class="card card-outline card-primary">
+                        <div class="card card-outline card-success">
                             <div class="card-header">
                                 <h3 class="card-title"><i class="bi bi-card-list"></i><b> Mis datos personales</b></h3>
                             </div>
@@ -110,7 +110,7 @@ include('../app/controllers/docentes/listado_de_asignaciones.php');
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <div class="card card-outline card-primary">
+                        <div class="card card-outline card-warning">
                             <div class="card-header">
                                 <h3 class="card-title"><i class="bi bi-megaphone"></i><b> Avisos y novedades</b></h3>
                             </div>

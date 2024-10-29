@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: HILARIWEB
- * Date: 9/1/2024
- * Time: 16:38
- */
 
 include ('../../../app/config.php');
 
@@ -29,7 +23,7 @@ $sentencia->bindParam('id_nivel',$id_nivel);
 if($sentencia->execute()){
     echo 'success';
     session_start();
-    $_SESSION['mensaje'] = "Se actualizó correctamente el nivel";
+    $_SESSION['mensaje'] = "Se actualizó el ciclo lectivo de manera correcta.";
     $_SESSION['icono'] = "success";
     $_SESSION['timer'] = 6000;  // Duración del mensaje en milisegundos (6 segundos)
     $_SESSION['timerProgressBar'] = true;
@@ -37,9 +31,9 @@ if($sentencia->execute()){
     header('Location:'.APP_URL."/admin/niveles");
 //header('Location:' .$URL.'/');
 }else{
-    echo 'Error al registrar nivel a la base de datos';
+    echo 'Error al actualizar ciclo lectivo!';
     session_start();
-    $_SESSION['mensaje'] = "Error al actualizar el nivel. Comunicarse con el administrador";
+    $_SESSION['mensaje'] = "Error al actualizar ciclo lectivo, comunicarse con el administrador";
     $_SESSION['icono'] = "warning";
     $_SESSION['timer'] = 6000;  // Duración del mensaje en milisegundos (6 segundos)
     $_SESSION['timerProgressBar'] = true;
