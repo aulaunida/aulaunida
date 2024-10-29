@@ -12,7 +12,7 @@ include ('../../app/controllers/grados/listado_de_grados.php');
     <div class="content">
         <div class="container">
             <div class="row">
-                <h2>GRADOS <i class="bi bi-chevron-right"></i> CONSULTAR GRADOS</h2>
+            <h1 style="margin-left: 20px;"><i class="bi bi-bar-chart-steps"></i>  Grados </h1>
             </div>
             <br>
             <div class="row">
@@ -31,7 +31,7 @@ include ('../../app/controllers/grados/listado_de_grados.php');
                                 <tr>
                                     <!-- <th><center>Nro</center></th> -->
                                     <th><center>Nivel</center></th>
-                                    <th><center>Curso</center></th>
+                                    <th><center>Grado</center></th>
                                     <th><center>División</center></th>
                                     <th><center>Turno</center></th>
                                     <th><center>Acciones</center></th>
@@ -53,7 +53,7 @@ include ('../../app/controllers/grados/listado_de_grados.php');
                                             <div class="btn-group" role="group" aria-label="Basic example">
                                                 <a href="show.php?id=<?=$id_grado;?>" type="button" title="Consultar detalles" class="btn btn-info btn-sm"><i class="bi bi-eye"></i></a>
                                                 <a href="edit.php?id=<?=$id_grado;?>" type="button" title="Editar" class="btn btn-success btn-sm"><i class="bi bi-pencil"></i></a>
-                                                <!-- <form action="<?=APP_URL;?>/app/controllers/grados/delete.php" onclick="preguntar<?=$id_grado;?>(event)" method="post" id="miFormulario<?=$id_grado;?>">
+                                                <form action="<?=APP_URL;?>/app/controllers/grados/delete.php" onclick="preguntar<?=$id_grado;?>(event)" method="post" id="miFormulario<?=$id_grado;?>">
                                                     <input type="text" name="id_grado" value="<?=$id_grado;?>" hidden>
                                                     <button type="submit" title="Eliminar" class="btn btn-danger btn-sm" style="border-radius: 0px 5px 5px 0px"><i class="bi bi-trash"></i></button>
                                                 </form>
@@ -61,7 +61,7 @@ include ('../../app/controllers/grados/listado_de_grados.php');
                                                     function preguntar<?=$id_grado;?>(event) {
                                                         event.preventDefault();
                                                         Swal.fire({
-                                                            title: 'Eliminar registro',
+                                                            title: 'Eliminar grado',
                                                             text: '¿Desea eliminar este registro?',
                                                             icon: 'question',
                                                             showDenyButton: true,
@@ -76,7 +76,7 @@ include ('../../app/controllers/grados/listado_de_grados.php');
                                                             }
                                                         });
                                                     }
-                                                </script> -->
+                                                </script>
                                             </div>
                                         </td>
                                     </tr>
@@ -88,7 +88,7 @@ include ('../../app/controllers/grados/listado_de_grados.php');
                             <hr>
                             <div class="row">
                                 <div class="col-md-12">
-                                    <div class="form-group text-center">
+                                    <div class="form-group">
                                         <a href="<?= APP_URL; ?>/admin" class="btn btn-danger">Volver</a>
                                     </div>
                                 </div>
@@ -114,7 +114,7 @@ include ('../../layout/mensajes.php');
 <script>
     $(function () {
         $("#example1").DataTable({
-            "pageLength": 25,
+            "pageLength": 10,
             "language": {
                 "emptyTable": "No hay información",
                 "info": "Mostrando _START_ - _END_ | _TOTAL_ Grados",
@@ -125,7 +125,7 @@ include ('../../layout/mensajes.php');
                 "lengthMenu": "Mostrar _MENU_ Grados",
                 "loadingRecords": "Cargando...",
                 "processing": "Procesando...",
-                "search": "Buscar grado:",
+                "search": "Buscar grados:",
                 "zeroRecords": "Sin resultados encontrados",
                 "paginate": {
                     "first": "Primero",
@@ -137,7 +137,7 @@ include ('../../layout/mensajes.php');
             "responsive": true, "lengthChange": true, "autoWidth": false,
             buttons: [{
                 extend: 'collection',
-                text: 'Reportes',
+                text: 'Exportar',
                 orientation: 'landscape',
                 buttons: [{
                     text: 'Copiar Texto',
@@ -159,7 +159,7 @@ include ('../../layout/mensajes.php');
             },
                 {
                     extend: 'colvis',
-                    text: 'Visor de columnas',
+                    text: 'Visualizar',
                     collectionLayout: 'fixed three-column'
                 }
             ],

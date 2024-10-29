@@ -14,7 +14,7 @@ include('../../app/controllers/niveles/listado_de_niveles.php');
     <div class="content">
         <div class="container">
             <div class="row">
-                <h2>EDITAR GRADO <i class="bi bi-chevron-right"></i> <?=$curso;?></h2>
+                <h2 style="margin-left: 20px;"><i class="bi bi-pencil-square"></i> Editar grado: <b><?=$curso;?></b> </h2>
             </div>
             <br>
             <div class="row">
@@ -22,14 +22,14 @@ include('../../app/controllers/niveles/listado_de_niveles.php');
                 <div class="col-md-12">
                     <div class="card card-outline card-success">
                         <div class="card-header">
-                            <h3 class="card-title">Complete los siguientes datos:</h3>
+                         <h3 class="card-title">Editar los siguientes campos:</h3>
                         </div>
                         <div class="card-body">
                             <form action="<?=APP_URL;?>/app/controllers/grados/update.php" method="post">
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label for="">Nivel<b style="color:red">*</b></label>
+                                            <label for="">Nivel y turno<b style="color:red">*</b></label>
                                             <input type="text" name="id_grado" value="<?=$id_grado;?>" hidden>
                                             <select name="nivel_id" id="" class="form-control">
                                                 <?php
@@ -39,8 +39,6 @@ include('../../app/controllers/niveles/listado_de_niveles.php');
                                                     <?php
                                                 } 
                                                 ?>
-                                                
-                                                ?>
                                             </select>
                                         </div>
                                     </div>
@@ -48,7 +46,7 @@ include('../../app/controllers/niveles/listado_de_niveles.php');
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label for="">Curso<b style="color:red">*</b></label>
+                                            <label for="">Grado<b style="color:red">*</b></label>
                                             <select name="curso" id="" class="form-control">
                                                 <option value="PRIMER GRADO" <?=$curso=='PRIMER GRADO' ? 'selected' : ''?>>PRIMER GRADO</option>
                                                 <option value="SEGUNDO GRADO" <?=$curso=='SEGUNDO GRADO' ? 'selected' : ''?>>SEGUNDO GRADO</option>
@@ -56,12 +54,6 @@ include('../../app/controllers/niveles/listado_de_niveles.php');
                                                 <option value="CUARTO GRADO" <?=$curso=='CUARTO GRADO' ? 'selected' : ''?>>CUARTO GRADO</option>
                                                 <option value="QUINTO GRADO" <?=$curso=='QUINTO GRADO' ? 'selected' : ''?>>QUINTO GRADO</option>
                                                 <option value="SEXTO GRADO" <?=$curso=='SEXTO GRADO' ? 'selected' : ''?>>SEXTO GRADO</option>
-                                                <option value="PRIMER AÑO" <?=$curso=='PRIMER AÑO' ? 'selected' : ''?>>PRIMER AÑO</option>
-                                                <option value="SEGUNDO AÑO" <?=$curso=='SEGUNDO AÑO' ? 'selected' : ''?>>SEGUNDO AÑO</option>
-                                                <option value="TERCER AÑO" <?=$curso=='TERCER AÑO' ? 'selected' : ''?>>TERCER AÑO</option>
-                                                <option value="CUARTO AÑO" <?=$curso=='CUARTO AÑO' ? 'selected' : ''?>>CUARTO AÑO</option>
-                                                <option value="QUINTO AÑO" <?=$curso=='QUINTO AÑO' ? 'selected' : ''?>>QUINTO AÑO</option>
-                                                <option value="SEXTO AÑO" <?=$curso=='SEXTO AÑO' ? 'selected' : ''?>>SEXTO AÑO</option>
                                             </select>
                                         </div>
                                     </div>
@@ -84,7 +76,7 @@ include('../../app/controllers/niveles/listado_de_niveles.php');
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <button type="submit" class="btn btn-success">Actualizar</button>
-                                            <a href="<?=APP_URL;?>/admin/grados" class="btn btn-secondary">Cancelar</a>
+                                            <a href="<?=APP_URL;?>/admin/grados" class="btn btn-danger">Cancelar</a>
                                         </div>
                                     </div>
                                 </div>

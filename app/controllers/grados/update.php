@@ -23,7 +23,7 @@ $sentencia->bindParam('id_grado',$id_grado);
 if($sentencia->execute()){
     echo 'success';
     session_start();
-    $_SESSION['mensaje'] = "Se actualizó correctamente el grado";
+    $_SESSION['mensaje'] = "Se actualizó el grado de manera correcta.";
     $_SESSION['icono'] = "success";
     $_SESSION['timer'] = 6000;  // Duración del mensaje en milisegundos (6 segundos)
     $_SESSION['timerProgressBar'] = true;
@@ -31,9 +31,9 @@ if($sentencia->execute()){
     header('Location:'.APP_URL."/admin/grados");
 //header('Location:' .$URL.'/');
 }else{
-    echo 'Error al registrar grado a la base de datos';
+    echo 'Error al actualizar grado!';
     session_start();
-    $_SESSION['mensaje'] = "Error al actualizar la materia. Comunicarse con el administrador";
+    $_SESSION['mensaje'] = "Error al actualizar grado, comunicarse con el administrador";
     $_SESSION['icono'] = "warning";
     $_SESSION['timer'] = 6000;  // Duración del mensaje en milisegundos (6 segundos)
     $_SESSION['timerProgressBar'] = true;

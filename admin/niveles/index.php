@@ -12,7 +12,7 @@ include ('../../app/controllers/niveles/listado_de_niveles.php');
     <div class="content">
         <div class="container">
             <div class="row">
-            <h2 style="margin-left: 20px;"><i class="bi bi-calendar4-week"></i>  Ciclos lectivos </h2>
+            <h1 style="margin-left: 20px;"><i class="bi bi-calendar4-week"></i>  Ciclos lectivos </h1>
             </div>
             <br>
             <div class="row">

@@ -19,7 +19,7 @@ $sentencia->bindParam('estado',$estado_de_registro);
 if($sentencia->execute()){
     echo 'success';
     session_start();
-    $_SESSION['mensaje'] = "Grado registrado de manera correcta en la base de datos";
+    $_SESSION['mensaje'] = "Se registró el grado de manera correcta.";
     $_SESSION['icono'] = "success";
     $_SESSION['timer'] = 6000;  // Duración del mensaje en milisegundos (6 segundos)
     $_SESSION['timerProgressBar'] = true;
@@ -27,9 +27,9 @@ if($sentencia->execute()){
     header('Location:'.APP_URL."/admin/grados");
 //header('Location:' .$URL.'/');
 }else{
-    echo 'Error al registrar grado a la base de datos';
+    echo 'Error al registrar grado!';
     session_start();
-    $_SESSION['mensaje'] = "Error al registrar grado en la base datos, comuníquese con el administrador";
+    $_SESSION['mensaje'] = "Error al registrar grado, comunicarse con el administrador";
     $_SESSION['icono'] = "warning";
     $_SESSION['timer'] = 6000;  // Duración del mensaje en milisegundos (6 segundos)
     $_SESSION['timerProgressBar'] = true;
