@@ -22,7 +22,7 @@ include ('../../app/controllers/estudiantes/listado_de_estudiantes.php');
     <div class="content">
         <div class="container">
             <div class="row">
-                <h2>ESTUDIANTES <i class="bi bi-chevron-right"></i> CONSULTAR ESTUDIANTES</h2>
+                <h1 style="margin-left: 20px;"><i class="bi bi-person-square"></i></i> Alumnos</h1>
             </div>
             <br>
             <div class="row">
@@ -30,16 +30,16 @@ include ('../../app/controllers/estudiantes/listado_de_estudiantes.php');
                 <div class="col-md-12">
                     <div class="card card-outline card-primary">
                         <div class="card-header">
-                            <h3 class="card-title">Estudiantes registrados</h3>
+                            <h3 class="card-title">Alumnos registrados</h3>
                             <div class="card-tools">
-                                <a href="../inscripciones/create.php" class="btn btn-primary"><i class="bi bi-plus-square"></i> Registrar estudiante</a>
+                                <a href="../inscripciones/create.php" class="btn btn-primary"><i class="bi bi-plus-square"></i> Registrar alumno</a>
                             </div>
                         </div>
                         <div class="card-body">
                             <table id="example1" class="table table-striped table-bordered table-hover table-sm">
                                 <thead>
                                 <tr> 
-                                    <th><center>Estudiante</center></th>
+                                    <th><center>Alumno</center></th>
                                     <th><center>Nivel</center></th>
                                     <th><center>Grado</center></th>
                                     <th><center>Turno</center></th>
@@ -84,8 +84,8 @@ include ('../../app/controllers/estudiantes/listado_de_estudiantes.php');
                             function preguntar<?=$id_estudiante;?>(event) {
                                 event.preventDefault();
                                 Swal.fire({
-                                    title: 'Eliminar estudiante existente',
-                                    text: '¿Desea eliminar este estudiante?',
+                                    title: 'Eliminar alumno',
+                                    text: '¿Desea eliminar este registro?',
                                     icon: 'question',
                                     showDenyButton: true,
                                     confirmButtonText: 'Eliminar',
@@ -96,7 +96,7 @@ include ('../../app/controllers/estudiantes/listado_de_estudiantes.php');
                                     if (result.isConfirmed) {
                                         var form = $('#miFormulario<?=$id_estudiante;?>');
                                         form.submit();
-                                        Swal.fire('Eliminado', 'Se eliminó el estudiante correctamente', 'success');
+                                        Swal.fire('Eliminado', 'Se eliminó el alumno correctamente', 'success');
                                     }
                                 });
                             }
@@ -138,18 +138,18 @@ include ('../../layout/mensajes.php');
 <script>
     $(function () {
         $("#example1").DataTable({
-            "pageLength": 25,
+            "pageLength": 10,
             "language": {
                 "emptyTable": "No hay información",
-                "info": "Mostrando _START_ - _END_ | _TOTAL_ estudiantes",
-                "infoEmpty": "Mostrando 0 - 0 | 0 estudiantes",
-                "infoFiltered": "(Filtrado de _MAX_ total estudiantes)",
+                "info": "Mostrando _START_ - _END_ | _TOTAL_ alumnos",
+                "infoEmpty": "Mostrando 0 - 0 | 0 alumnos",
+                "infoFiltered": "(Filtrado de _MAX_ total alumnos)",
                 "infoPostFix": "",
                 "thousands": ",",
-                "lengthMenu": "Mostrar _MENU_ estudiantes",
+                "lengthMenu": "Mostrar _MENU_ alumnos",
                 "loadingRecords": "Cargando...",
                 "processing": "Procesando...",
-                "search": "Buscar estudiante:",
+                "search": "Buscar alumnos:",
                 "zeroRecords": "Sin resultados encontrados",
                 "paginate": {
                     "first": "Primero",
@@ -161,7 +161,7 @@ include ('../../layout/mensajes.php');
             "responsive": true, "lengthChange": true, "autoWidth": false,
             buttons: [{
                 extend: 'collection',
-                text: 'Reportes',
+                text: 'Exportar',
                 orientation: 'landscape',
                 buttons: [{
                     text: 'Copiar Texto',
@@ -183,7 +183,7 @@ include ('../../layout/mensajes.php');
             },
                 {
                     extend: 'colvis',
-                    text: 'Visor de columnas',
+                    text: 'Visualizar',
                     collectionLayout: 'fixed three-column'
                 }
             ],

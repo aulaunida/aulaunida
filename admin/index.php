@@ -288,7 +288,7 @@ include('../app/controllers/docentes/listado_de_asignaciones.php');
                                 }
                                 ?>
                                 <h3><?= $contador_estudiantes; ?></h3>
-                                <p>Estudiantes</p>
+                                <p>Alumnos</p>
                             </div>
                             <div style="color: white;" class="icon">
                                 <i class="fas"><i class="bi bi-person-square"></i></i>

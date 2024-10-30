@@ -15,7 +15,7 @@ include('../../app/controllers/grados/listado_de_grados.php');
     <div class="content">
         <div class="container">
             <div class="row">
-                <h2>EDITAR ESTUDIANTE <i class="bi bi-chevron-right"></i> <?= strtoupper($apellidos . ', ' . $nombres); ?></h2>
+                <h2 style="margin-left: 20px;"><i class="bi bi-pencil-square"></i> Editar alumno: <b><?= strtoupper($apellidos . ', ' . $nombres); ?></b> </h2>
             </div>
             <br>
 
@@ -25,7 +25,7 @@ include('../../app/controllers/grados/listado_de_grados.php');
                     <div class="col-md-12">
                         <div class="card card-outline card-success">
                             <div class="card-header">
-                                <h3 class="card-title">Datos personales registrados</h3>
+                                <h3 class="card-title">Editar datos personales:</h3>
                             </div>
                             <div class="card-body">
                                 <div class="row">
@@ -49,56 +49,47 @@ include('../../app/controllers/grados/listado_de_grados.php');
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label for="">DNI<b style="color:red">*</b></label>
+                                            <label for="">Nro. de documento<b style="color:red">*</b></label>
                                             <input type="number" name="dni" value="<?= $dni; ?>" class="form-control" required>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label for="">Apellido<b style="color:red">*</b></label>
+                                            <label for="">Apellidos<b style="color:red">*</b></label>
                                             <input type="text" name="apellidos" value="<?= strtoupper($apellidos); ?>" class="form-control" required>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label for="">Nombre<b style="color:red">*</b></label>
+                                            <label for="">Nombres<b style="color:red">*</b></label>
                                             <input type="text" name="nombres" value="<?= strtoupper($nombres); ?>" class="form-control" required>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
-
-
-
-                                    <div class="col-md-3">
+                                    <div class="col-md-4">
                                         <div class="form-group">
-                                            <label for="">Fecha de Nacimiento<b style="color:red">*</b></label>
+                                            <label for="">Fecha de nacimiento<b style="color:red">*</b></label>
                                             <input type="date" name="fecha_nacimiento" value="<?= $fecha_nacimiento; ?>" class="form-control" required>
                                         </div>
                                     </div>
-
-                                    <div class="col-md-3">
-
-
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="">Género<b style="color:red">*</b></label>
                                             <select name="genero" id="" class="form-control" required>
                                                 <option value="MASCULINO" <?php if ($genero == 'MASCULINO') { ?> selected="selected" <?php } ?>>MASCULINO</option>
                                                 <option value="FEMENINO" <?php if ($genero == 'FEMENINO') { ?> selected="selected" <?php } ?>>FEMENINO</option>
                                                 <option value="NO BINARIO" <?php if ($genero == 'NO BINARIO') { ?> selected="selected" <?php } ?>>NO BINARIO</option>
-                                                <option value="PREFIERO NO DECIRLO" <?php if ($genero == 'PREFIERO NO DECIRLO') { ?> selected="selected" <?php } ?>>PREFIERO NO DECIRLO</option>
+                                                <option value="NO ESPECIFICA" <?php if ($genero == 'NO ESPECIFICA') { ?> selected="selected" <?php } ?>>NO ESPECIFICA</option>
                                             </select>
                                         </div>
                                     </div>
-
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="form-group">
-                                            <label for="">Dirección<b style="color:red">*</b></label>
+                                            <label for="">Domicilio<b style="color:red">*</b></label>
                                             <input type="address" name="direccion" value="<?= $direccion; ?>" class="form-control" required>
                                         </div>
                                     </div>
-
-
                                 </div>
                             </div>
                         </div>
@@ -106,18 +97,22 @@ include('../../app/controllers/grados/listado_de_grados.php');
                 </div>
 
                 <div class="row">
-
                     <div class="col-md-12">
                         <div class="card card-outline card-success">
                             <div class="card-header">
-                                <h3 class="card-title">Datos académicos registrados</h3>
+                                <h3 class="card-title">Editar datos académicos:</h3>
                             </div>
                             <div class="card-body">
                                 <div class="row">
-                                    <div class="col-md-3">
+                                    <div class="col-md-4">
                                         <div class="form-group">
-                                            <label for="">Nivel<b style="color:red">*</b></label>
-
+                                            <label for="">Nro. de matrícula<b style="color:red">*</b></label>
+                                            <input type="text" name="matricula" value="<?= $matricula; ?>" class="form-control" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="">Nivel y turno<b style="color:red">*</b></label>
                                             <select name="nivel_id" id="" class="form-control">
                                                 <?php
                                                 foreach ($niveles as $nivele) { ?>
@@ -126,8 +121,6 @@ include('../../app/controllers/grados/listado_de_grados.php');
                                                 }
                                                 ?>
                                             </select>
-
-
                                             <!-- <select name="nivel" id="" class="form-control">
                                                 <option value="INICIAL" <?php if ($nivel == 'INICIAL') { ?> selected="selected" <?php } ?>>INICIAL</option>
                                                 <option value="PRIMARIA" <?php if ($nivel == 'PRIMARIA') { ?> selected="selected" <?php } ?>>PRIMARIA</option>
@@ -135,9 +128,9 @@ include('../../app/controllers/grados/listado_de_grados.php');
                                             </select> -->
                                         </div>
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-4">
                                         <div class="form-group">
-                                            <label for="">Grado<b style="color:red">*</b></label>
+                                            <label for="">Grado y división<b style="color:red">*</b></label>
                                             <select name="grado_id" id="" class="form-control">
                                                 <?php
                                                 foreach ($grados as $grado) { ?>
@@ -150,15 +143,9 @@ include('../../app/controllers/grados/listado_de_grados.php');
                                             </select>
                                         </div>
                                     </div>
-
-                                    <div class="col-md-3">
-                                        <div class="form-group">
-                                            <label for="">Matricula<b style="color:red">*</b></label>
-                                            <input type="text" name="matricula" value="<?= $matricula; ?>" class="form-control" required>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-3">
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="">Integración<b style="color:red">*</b></label>
                                             <select name="integracion" id="" class="form-control" required>
@@ -172,96 +159,81 @@ include('../../app/controllers/grados/listado_de_grados.php');
                         </div>
                     </div>
                 </div>
-
                 <div class="row">
-
                     <div class="col-md-12">
                         <div class="card card-outline card-success">
                             <div class="card-header">
-                                <h3 class="card-title">Datos registrados del padre/madre/tutor</h3>
+                                <h3 class="card-title">Editar datos padre/madre/tutor:</h3>
                             </div>
                             <div class="card-body">
                                 <div class="row">
-                                    <div class="col-md-3">
+                                    <div class="col-md-4">
                                         <div class="form-group">
-                                            <label for="">Nombre y Apellido<b style="color:red">*</b></label>
+                                            <label for="">Apellido y nombre<b style="color:red">*</b></label>
                                             <input type="text" name="nombres_apellidos_ppff" value="<?= strtoupper($nombres_apellidos_ppff);?>" class="form-control"
                                                 required>
                                         </div>
                                     </div>
-
-                                    <div class="col-md-3">
+                                    <div class="col-md-4">
                                         <div class="form-group">
-                                            <label for="">DNI<b style="color:red">*</b></label>
+                                            <label for="">Nro. de documento<b style="color:red">*</b></label>
                                             <input type="number" name="dni_ppff" value="<?= $dni_ppff; ?>" class="form-control" required>
                                         </div>
                                     </div>
-
-
-                                    <div class="col-md-3">
+                                    <div class="col-md-4">
                                         <div class="form-group">
-                                            <label for="">Celular<b style="color:red">*</b></label>
+                                            <label for="">Nro. de celular<b style="color:red">*</b></label>
                                             <input type="number" name="celular_ppff" value="<?= $celular_ppff; ?>" class="form-control" required>
                                         </div>
                                     </div>
-
-                                    <div class="col-md-3">
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="">Correo electrónico<b style="color:red">*</b></label>
                                             <input type="email" name="email" value="<?= $email; ?>" class="form-control" required>
                                         </div>
                                     </div>
-
-
-                                </div>
-                                <div class="row">
-
-                                    <div class="col-md-3">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="">Ocupación<b style="color:red">*</b></label>
                                             <input type="text" name="ocupacion_ppff" value="<?= $ocupacion_ppff; ?>" class="form-control" required>
                                         </div>
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-4">
                                         <div class="form-group">
-                                            <label for="">Contacto adicional emergencia<b style="color:red">*</b></label>
+                                            <label for="">Nombre contacto de emergencia<b style="color:red">*</b></label>
                                             <input type="text" name="ref_nombre" value="<?= strtoupper($ref_nombre);?>" class="form-control" required>
                                         </div>
                                     </div>
-
-                                    <div class="col-md-3">
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
                                         <div class="form-group">
-                                            <label for="">N° de contacto emergencia<b style="color:red">*</b></label>
+                                            <label for="">Nro. contacto de emergencia<b style="color:red">*</b></label>
                                             <input type="number" name="ref_celular" value="<?= $ref_celular; ?>" class="form-control" required>
                                         </div>
                                     </div>
-
-
-                                    <div class="col-md-3">
+                                    <div class="col-md-4">
                                         <div class="form-group">
-                                            <label for="">Parentezco contacto emergencia<b style="color:red">*</b></label>
+                                            <label for="">Parentesco contacto de emergencia<b style="color:red">*</b></label>
                                             <input type="text" name="ref_parentezco" value="<?= $ref_parentezco; ?>" class="form-control" required>
                                         </div>
                                     </div>
-
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
-
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group">
                             <button type="submit" class="btn btn-success">Actualizar</button>
-                            <a href="<?= APP_URL; ?>/admin/estudiantes" class="btn btn-secondary">Cancelar</a>
+                            <a href="<?= APP_URL; ?>/admin/estudiantes" class="btn btn-danger">Cancelar</a>
                         </div>
                     </div>
                 </div>
             </form>
-
-
             <!-- /.row -->
         </div><!-- /.container-fluid -->
     </div>

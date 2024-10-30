@@ -3,30 +3,30 @@
 include('../../../app/config.php');
 
 
-$id_usuario = $_POST['id_usuario'];
-$id_persona = $_POST['id_persona'];
-$id_estudiante = $_POST['id_estudiante'];
-$id_ppff = $_POST['id_ppff'];
+$id_usuario = strtoupper($_POST['id_usuario']);
+$id_persona = strtoupper($_POST['id_persona']);
+$id_estudiante = strtoupper($_POST['id_estudiante']);
+$id_ppff = strtoupper($_POST['id_ppff']);
 
 $rol_id = $_POST['rol_id'];
-$nombres = $_POST['nombres'];
-$apellidos = $_POST['apellidos'];
+$nombres = strtoupper($_POST['nombres']);
+$apellidos = strtoupper($_POST['apellidos']);
 $dni = $_POST['dni'];
 $fecha_nacimiento = $_POST['fecha_nacimiento'];
 $genero = $_POST['genero'];
-$direccion = $_POST['direccion'];
-$email = $_POST['email'];
+$direccion = strtoupper($_POST['direccion']);
+$email = strtoupper($_POST['email']);
 $nivel_id = $_POST['nivel_id'];
 $grado_id = $_POST['grado_id'];
 $matricula = $_POST['matricula'];
 $integracion = $_POST['integracion'];
-$nombres_apellidos_ppff = $_POST['nombres_apellidos_ppff'];
+$nombres_apellidos_ppff = strtoupper($_POST['nombres_apellidos_ppff']);
 $dni_ppff = $_POST['dni_ppff'];
 $celular_ppff = $_POST['celular_ppff'];
-$ocupacion_ppff = $_POST['ocupacion_ppff'];
-$ref_nombre = $_POST['ref_nombre'];
+$ocupacion_ppff = strtoupper($_POST['ocupacion_ppff']);
+$ref_nombre = strtoupper($_POST['ref_nombre']);
 $ref_celular = $_POST['ref_celular'];
-$ref_parentezco = $_POST['ref_parentezco'];
+$ref_parentezco = strtoupper($_POST['ref_parentezco']);
 $profesion = "ESTUDIANTE";
 $celular = 0;
 
@@ -124,7 +124,7 @@ if ($sentencia->execute()) {
     echo 'success';
     $pdo->commit();
     session_start();
-    $_SESSION['mensaje'] = "Se actualizó correctamente el estudiante";
+    $_SESSION['mensaje'] = "Se actualizó al alumno de manera correcta.";
     $_SESSION['icono'] = "success";
     $_SESSION['timer'] = 3000;  // Duración del mensaje en milisegundos 
     $_SESSION['timerProgressBar'] = true;
@@ -134,7 +134,7 @@ if ($sentencia->execute()) {
     echo 'error al registrar a la base de datos';
     $pdo->rollBack();
     session_start();
-    $_SESSION['mensaje'] = "Error al actualizar el estudiante. Comunicarse con el administrador";
+    $_SESSION['mensaje'] = "Error al actualizar alumno, comunicarse con el administrador";
     $_SESSION['icono'] = "error";
     $_SESSION['timer'] = 3000;  // Duración del mensaje en milisegundos 
     $_SESSION['timerProgressBar'] = true;

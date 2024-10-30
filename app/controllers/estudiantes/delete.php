@@ -14,16 +14,16 @@ $sentencia->bindParam('id_estudiante', $id_estudiante);
 try {
     if($sentencia->execute()) {
         session_start();
-        $_SESSION['mensaje'] = "Se eliminó el estudiante de manera correcta.";
+        $_SESSION['mensaje'] = "Se eliminó el alumno de manera correcta.";
         $_SESSION['icono'] = "success";
         $_SESSION['timer'] = 6000;  // Duración del mensaje en milisegundos (6 segundos)
         $_SESSION['timerProgressBar'] = true;
         $_SESSION['showCloseButton'] = true; // Agregar la cruz de cierre
         header('Location:'.APP_URL."/admin/estudiantes");
     } else {
-        echo 'Error al deshabilitar estudiante!';
+        echo 'Error al deshabilitar alumno!';
         session_start();
-        $_SESSION['mensaje'] = "Error al eliminar estudiante, comunicarse con el administrador.";
+        $_SESSION['mensaje'] = "Error al eliminar alumno, comunicarse con el administrador.";
         $_SESSION['icono'] = "warning";
         $_SESSION['timer'] = 6000;  // Duración del mensaje en milisegundos (6 segundos)
         $_SESSION['timerProgressBar'] = true;
@@ -32,7 +32,7 @@ try {
     }
 } catch (Exception $exception) {
     session_start();
-    $_SESSION['mensaje'] = "No es posible eliminar el estudiante, tiene registros dependientes.";
+    $_SESSION['mensaje'] = "No es posible eliminar alumno, tiene registros dependientes.";
     $_SESSION['icono'] = "warning";
     $_SESSION['timer'] = 6000;  // Duración del mensaje en milisegundos (6 segundos)
     $_SESSION['timerProgressBar'] = true;

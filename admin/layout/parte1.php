@@ -660,7 +660,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <a href="#" class="nav-link active">
                             <i class="nav-icon fas"><i class="bi bi-person-square"></i></i>
                             <p>
-                                Estudiantes
+                                Alumnos
                                 <i class="right fas fa-angle-left"></i>
                             </p>
                         </a>
@@ -669,7 +669,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <li class="nav-item">
                                 <a href="<?= APP_URL; ?>/admin/estudiantes" class="nav-link active">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>Consultar estudiantes</p>
+                                    <p>Consultar alumnos</p>
                                 </a>
                             </li>
                         </ul>

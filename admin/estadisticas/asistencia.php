@@ -29,7 +29,7 @@ include ('../../app/controllers/usuarios/listado_de_usuarios.php');
                     <hr>
                     <div class="row">
                     <div class="col-md-12">
-                        <<div class="form-group text-center">
+                        <div class="form-group">
                         <a href="<?=APP_URL;?>/admin/index.php" class="btn btn-danger">Volver</a>
                         </div>
                      </div>
