@@ -113,7 +113,7 @@ include ('../../app/controllers/estudiantes/listado_de_estudiantes.php');
                     <div class="row">
                     <div class="col-md-12">
                         <div class="form-group text-center">
-                        <a href="<?=APP_URL;?>/admin/estudiantes/index.php" class="btn btn-danger">Volver</a>
+                        <a href="<?=APP_URL;?>/admin/index.php" class="btn btn-danger">Volver</a>
                         </div>
                      </div>
                      </div>

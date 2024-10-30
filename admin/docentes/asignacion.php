@@ -266,7 +266,7 @@ include('../../app/controllers/docentes/listado_de_asignaciones.php');
                             <hr>
                             <div class="row">
                                 <div class="col-md-12">
-                                    <div class="form-group text-center">
+                                    <div class="form-group">
                                         <a href="<?= APP_URL; ?>/admin/index.php" class="btn btn-danger">Volver</a>
                                     </div>
                                 </div>
@@ -416,7 +416,7 @@ include('../../layout/mensajes.php');
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary">Registrar</button>
+                        <button type="submit" class="btn btn-primary">Asignar</button>
                         <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
                     </div>
                 </form>
