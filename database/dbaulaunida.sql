@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 30-10-2024 a las 18:33:45
+-- Tiempo de generación: 02-11-2024 a las 18:36:50
 -- Versión del servidor: 8.3.0
 -- Versión de PHP: 8.2.18
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `dbaulaunida`
+-- Base de datos: `dbaulaunida2`
 --
 
 -- --------------------------------------------------------
@@ -85,6 +85,29 @@ INSERT INTO `asignaciones` (`id_asignacion`, `docente_id`, `nivel_id`, `grado_id
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `asistencias`
+--
+
+DROP TABLE IF EXISTS `asistencias`;
+CREATE TABLE IF NOT EXISTS `asistencias` (
+  `id_asistencia` int NOT NULL AUTO_INCREMENT,
+  `docente_id` int NOT NULL,
+  `estudiante_id` int NOT NULL,
+  `materia_id` int NOT NULL,
+  `estado_asistencia` int DEFAULT NULL,
+  `fecha_asistencia` date NOT NULL,
+  `fyh_creacion` date DEFAULT NULL,
+  `fyh_actualizacion` date DEFAULT NULL,
+  `estado` varchar(11) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci DEFAULT NULL,
+  PRIMARY KEY (`id_asistencia`),
+  KEY `docente_id` (`docente_id`),
+  KEY `estudiante_id` (`estudiante_id`),
+  KEY `materia_id` (`materia_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `calificaciones`
 --
 
@@ -109,20 +132,7 @@ CREATE TABLE IF NOT EXISTS `calificaciones` (
   KEY `docente_id` (`docente_id`),
   KEY `estudiante_id` (`estudiante_id`),
   KEY `materia_id` (`materia_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
-
---
--- Volcado de datos para la tabla `calificaciones`
---
-
-INSERT INTO `calificaciones` (`id_calificacion`, `docente_id`, `estudiante_id`, `materia_id`, `nota1`, `nota2`, `nota3`, `nota4`, `nota5`, `nota6`, `nota7`, `nota8`, `fyh_creacion`, `fyh_actualizacion`, `estado`) VALUES
-(1, 1, 2, 1, 80, 80, 80, 0, 0, 0, 0, 0, '2024-10-13', '2024-10-23', '1'),
-(2, 1, 1, 1, 100, 100, 80, 0, 0, 0, 0, 0, '2024-10-13', '2024-10-23', '1'),
-(3, 1, 3, 1, 60, 80, 80, 0, 0, 0, 0, 0, '2024-10-13', '2024-10-23', '1'),
-(4, 5, 4, 1, 100, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2024-10-13', NULL, '1'),
-(5, 1, 1, 2, 80, 80, 0, 0, 0, 0, 0, 0, '2024-10-13', '2024-10-13', '1'),
-(6, 1, 3, 2, 80, 100, 0, 0, 0, 0, 0, 0, '2024-10-13', '2024-10-13', '1'),
-(7, 1, 2, 2, 100, 100, 0, 0, 0, 0, 0, 0, '2024-10-13', '2024-10-13', '1');
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
 -- --------------------------------------------------------
 
@@ -2004,14 +2014,6 @@ ALTER TABLE `asignaciones`
   ADD CONSTRAINT `asignaciones_ibfk_2` FOREIGN KEY (`docente_id`) REFERENCES `docentes` (`id_docente`) ON UPDATE CASCADE,
   ADD CONSTRAINT `asignaciones_ibfk_3` FOREIGN KEY (`nivel_id`) REFERENCES `niveles` (`id_nivel`) ON UPDATE CASCADE,
   ADD CONSTRAINT `asignaciones_ibfk_4` FOREIGN KEY (`grado_id`) REFERENCES `grados` (`id_grado`) ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `calificaciones`
---
-ALTER TABLE `calificaciones`
-  ADD CONSTRAINT `calificaciones_ibfk_1` FOREIGN KEY (`docente_id`) REFERENCES `docentes` (`id_docente`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `calificaciones_ibfk_2` FOREIGN KEY (`estudiante_id`) REFERENCES `estudiantes` (`id_estudiante`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `calificaciones_ibfk_3` FOREIGN KEY (`materia_id`) REFERENCES `materias` (`id_materia`) ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `docentes`

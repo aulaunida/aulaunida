@@ -203,14 +203,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 </a>
                             </li>
                         </ul>
-                        <!-- <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="<?= APP_URL; ?>/admin/estadisticas/alumnos_integrados.php" class="nav-link active">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Alumnos integrados</p>
-                                </a>
-                            </li>
-                        </ul> -->
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
                                 <a href="<?= APP_URL; ?>/admin/estadisticas/gantt.php" class="nav-link active">
@@ -245,123 +237,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         </ul>
                     </li>
 
-                    <!-- <li class="nav-item">
-                        <a href="#" class="nav-link active">
-                            <i class="nav-icon fas"><i class="bi bi-bookshelf"></i></i>
-                            <p>
-                                Niveles educativos
-                                <i class="right fas fa-angle-left"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="<?= APP_URL; ?>/admin/niveles" class="nav-link active">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Consultar niveles</p>
-                                </a>
-                            </li>
-                        </ul>
-                    </li> -->
-
-                    <!-- <li class="nav-item">
-                        <a href="#" class="nav-link active">
-                            <i class="nav-icon fas"><i class="bi bi-bar-chart-steps"></i></i></i>
-                            <p>
-                                Grados
-                                <i class="right fas fa-angle-left"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="<?= APP_URL; ?>/admin/grados" class="nav-link active">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Consultar grados</p>
-                                </a>
-                            </li>
-                        </ul>
-                    </li> -->
-
-                    <!-- <li class="nav-item">
-                        <a href="#" class="nav-link active">
-                            <i class="nav-icon fas"><i class="bi bi-book-half"></i></i></i></i>
-                            <p>
-                                Materias
-                                <i class="right fas fa-angle-left"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="<?= APP_URL; ?>/admin/materias" class="nav-link active">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Consultar materias</p>
-                                </a>
-                            </li>
-                        </ul>
-                    </li> -->
-
-                    <!-- <li class="nav-item">
-                        <a href="#" class="nav-link active">
-                            <i class="nav-icon fas"><i class="bi bi-person-video3"></i></i>
-                            <p>
-                                Administrativos
-                                <i class="right fas fa-angle-left"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="<?= APP_URL; ?>/admin/administrativos" class="nav-link active">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Ver listado de administrativos</p>
-                                </a>
-                            </li>
-                        </ul>
-                    </li> -->
-
-                    <!-- <li class="nav-item">
-                        <a href="#" class="nav-link active">
-                            <i class="nav-icon fas"><i class="bi bi-person-video3"></i></i>
-                            <p>
-                                Docentes
-                                <i class="right fas fa-angle-left"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="<?= APP_URL; ?>/admin/docentes" class="nav-link active">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Consultar docentes</p>
-                                </a>
-                            </li>
-                        </ul>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="<?= APP_URL; ?>/admin/docentes/asignacion.php" class="nav-link active">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Asignar materias</p>
-                                </a>
-                            </li>
-                        </ul>
-                    </li> -->
-
-                    <!-- <li class="nav-item">
-                        <a href="#" class="nav-link active">
-                            <i class="nav-icon fas"><i class="bi bi-person-lines-fill"></i></i>
-                            <p>
-                                Estudiantes
-                                <i class="right fas fa-angle-left"></i>
-                            </p>
-                        </a>
-
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="<?= APP_URL; ?>/admin/estudiantes" class="nav-link active">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Consultar estudiantes</p>
-                                </a>
-                            </li>
-                        </ul>
-                        
-                    </li> -->
 
                     <li class="nav-item">
                         <a href="#" class="nav-link active">
@@ -403,7 +278,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                     <li class="nav-item">
                         <a href="#" class="nav-link active">
-                            <i class="nav-icon fas"><i class="bi bi-clipboard2-check"></i></i>
+                            <i class="nav-icon fas"><i class="bi bi-file-earmark-text"></i></i>
                             <p>
                                 Asistencias
                                 <i class="right fas fa-angle-left"></i>
@@ -420,49 +295,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         </ul>
                     </li>
 
-                    <!-- <li class="nav-item">
-                        <a href="#" class="nav-link active">
-                            <i class="nav-icon fas"><i class="bi bi-people-fill"></i></i>
-                            <p>
-                                Usuarios
-                                <i class="right fas fa-angle-left"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="<?= APP_URL; ?>/admin/usuarios" class="nav-link active">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Consultar usuarios</p>
-                                </a>
-                            </li>
-                        </ul>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="<?= APP_URL; ?>/admin/roles" class="nav-link active">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Consultar roles</p>
-                                </a>
-                            </li>
-                        </ul>
-                    </li> -->
-
-                    <!-- <li class="nav-item">
-                        <a href="#" class="nav-link active">
-                            <i class="nav-icon fas"><i class="bi bi-gear"></i></i>
-                            <p>
-                                Configuraciones
-                                <i class="right fas fa-angle-left"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="<?= APP_URL; ?>/admin/configuraciones" class="nav-link active">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Administrador</p>
-                                </a>
-                            </li>
-                        </ul>
-                    </li> -->
 
                     <li class="nav-item">
                         <a href="<?= APP_URL; ?>/login/logout.php" class="nav-link" style="background-color: #c52510;color:white">
@@ -516,14 +348,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 </a>
                             </li>
                         </ul>
-                        <!-- <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="<?= APP_URL; ?>/admin/estadisticas/alumnos_integrados.php" class="nav-link active">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Alumnos integrados</p>
-                                </a>
-                            </li>
-                        </ul> -->
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
                                 <a href="<?= APP_URL; ?>/admin/estadisticas/gantt.php" class="nav-link active">
@@ -612,23 +436,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         </ul>
                     </li>
 
-                    <!-- <li class="nav-item">
-                        <a href="#" class="nav-link active">
-                            <i class="nav-icon fas"><i class="bi bi-person-video3"></i></i>
-                            <p>
-                                Administrativos
-                                <i class="right fas fa-angle-left"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="<?= APP_URL; ?>/admin/administrativos" class="nav-link active">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Ver listado de administrativos</p>
-                                </a>
-                            </li>
-                        </ul>
-                    </li> -->
 
                     <li class="nav-item">
                         <a href="#" class="nav-link active">
@@ -673,14 +480,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 </a>
                             </li>
                         </ul>
-                        <!-- <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="<?= APP_URL; ?>/admin/inscripciones" class="nav-link active">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Inscribir estudiante</p>
-                                </a>
-                            </li>
-                        </ul> -->
                     </li>
 
                     <li class="nav-item">
