@@ -66,7 +66,7 @@ foreach ($materias as $materia) {
                                         <th>
                                             <center>Fecha Asistencia</center>
                                         </th>
-                                        <th colspan="2">
+                                        <th>
                                             <center>Asistencia</center>
                                         </th>
                                     </tr>
@@ -100,12 +100,9 @@ foreach ($materias as $materia) {
                                                 <!-- AQUI TENGO EL PROBLEMA CON <?= $nota1; ?> -->
                                                 <td>
                                                     <select id="estado_asistencia_<?= $contador_estudiantes; ?>" class="form-control" required>
-                                                        <option type="number" value="1" <?= ($estado_asistencia == '1') ? 'selected' : ''; ?>>PRESENTE</option>
-                                                        <option type="number" value="0" <?= ($estado_asistencia == '0') ? 'selected' : ''; ?>>AUSENTE</option>
+                                                        <option type="number" class="text-center" value="1" <?= ($estado_asistencia == '1') ? 'selected' : ''; ?>>PRESENTE</option>
+                                                        <option type="number" class="text-center" value="0" <?= ($estado_asistencia == '0') ? 'selected' : ''; ?>>AUSENTE</option>
                                                     </select>
-                                                </td>
-                                                <td>
-
                                                 </td>
                                             </tr>
                                     <?php
