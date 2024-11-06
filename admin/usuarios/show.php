@@ -14,7 +14,7 @@ include ('../../app/controllers/usuarios/datos_del_usuario.php');
     <div class="content">
         <div class="container">
             <div class="row">
-                <h2>CONSULTAR DETALLES <i class="bi bi-chevron-right"></i> <?=$email;?></h2>
+            <h2 style="margin-left: 20px;"><i class="bi bi-eye"></i> Consultar detalles: </i><b><?= $email;?></b>  </h2>
             </div>
             <br>
             <div class="row">
@@ -22,14 +22,13 @@ include ('../../app/controllers/usuarios/datos_del_usuario.php');
                 <div class="col-md-12">
                     <div class="card card-outline card-info">
                         <div class="card-header">
-                            <h3 class="card-title">Datos registrados</h3>
+                            <h3 class="card-title">Datos registrados:</h3>
                         </div>
                         <div class="card-body">
-
                                 <div class="row">
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label for="">Nombre del rol</label>
+                                            <label for="">Rol</label>
                                             <p><?=$nombre_rol;?></p>
                                         </div>
                                     </div>
@@ -39,21 +38,20 @@ include ('../../app/controllers/usuarios/datos_del_usuario.php');
                                             <p><?=$nombres.' '.$apellidos;?></p>
                                         </div>
                                     </div> -->
-
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label for="">Correo Electrónico</label>
+                                            <label for="">Correo electrónico</label>
                                             <p><?=$email;?></p>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="">Fecha de creación</label>
                                             <p><?=$fyh_creacion;?></p>
                                         </div>
                                     </div>
+                                </div>
+                                <div class="row">
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="">Estado</label>
@@ -67,7 +65,6 @@ include ('../../app/controllers/usuarios/datos_del_usuario.php');
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group">
-
                                         <a href="<?=APP_URL;?>/admin/usuarios" class="btn btn-danger">Volver</a>
 
                                         </div>

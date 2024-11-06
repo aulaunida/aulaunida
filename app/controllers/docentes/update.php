@@ -83,7 +83,7 @@ if($sentencia->execute()){
 echo 'success';
 $pdo->commit();
 session_start();
-         $_SESSION['mensaje'] = "Se actualizó al docente de manera correcta.";
+         $_SESSION['mensaje'] = "Se actualizó el docente de manera correcta.";
          $_SESSION['icono'] = "success";
          $_SESSION['timer'] = 3000;  // Duración del mensaje en milisegundos 
          $_SESSION['timerProgressBar'] = true;

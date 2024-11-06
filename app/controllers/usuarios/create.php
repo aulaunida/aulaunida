@@ -1,16 +1,9 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: HILARIWEB
- * Date: 4/1/2024
- * Time: 20:39
- */
-
 include ('../../../app/config.php');
 
 //  $nombres = $_POST['nombres'];
  $rol_id = $_POST['rol_id'];
- $email = $_POST['email'];
+ $email = strtoupper($_POST['email']);
  $password = $_POST['password'];
  $password_repet = $_POST['password_repet'];
  
@@ -32,7 +25,7 @@ include ('../../../app/config.php');
      try{
          if ($sentencia->execute()){
          session_start();
-         $_SESSION['mensaje'] = "Se registró correctamente el nuevo usuario";
+         $_SESSION['mensaje'] = "Se registró el usuario de manera correcta";
          $_SESSION['icono'] = "success";
          $_SESSION['timer'] = 3000;  // Duración del mensaje en milisegundos 
          $_SESSION['timerProgressBar'] = true;
@@ -40,7 +33,7 @@ include ('../../../app/config.php');
          header('Location:'.APP_URL."/admin/usuarios");
          }else {
              session_start();
-         $_SESSION['mensaje'] = "Error al registrar nuevo usuario. Comunicarse con el administrador";
+         $_SESSION['mensaje'] = "Error al registrar usuario, comunicarse con el administrador";
          $_SESSION['icono'] = "error";
          $_SESSION['timer'] = 3000;  // Duración del mensaje en milisegundos 
          $_SESSION['timerProgressBar'] = true;

@@ -1,18 +1,11 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: HILARIWEB
- * Date: 4/1/2024
- * Time: 20:39
- */
 
 include ('../../../app/config.php');
 
 $id_usuario = $_POST['id_usuario'];
 // $nombres = $_POST['nombres'];
 $rol_id = $_POST['rol_id'];
-$email = $_POST['email'];
-
+$email = strtoupper($_POST['email']);
 $password = $_POST['password'];
 $password_repet = $_POST['password_repet'];
 
@@ -50,7 +43,7 @@ if($password == ""){
             }
         }catch (Exception $exception){
             session_start();
-            $_SESSION['mensaje'] = "El email de este usuario ya existe";
+            $_SESSION['mensaje'] = "El correo electrónico de este usuario ya existe";
             $_SESSION['icono'] = "error";
             $_SESSION['timer'] = 3000;  // Duración del mensaje en milisegundos 
             $_SESSION['timerProgressBar'] = true;

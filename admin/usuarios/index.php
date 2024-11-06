@@ -17,7 +17,7 @@ include ('../../app/controllers/usuarios/listado_de_usuarios.php');
     <div class="content">
         <div class="container">
             <div class="row">
-                <h2>USUARIOS <i class="bi bi-chevron-right"></i> CONSULTAR USUARIOS</h2>
+            <h1 style="margin-left: 20px;"><i class="bi bi-people-fill"></i></i> Usuarios</h1>
             </div>
             <br>
             <div class="row">
@@ -35,7 +35,7 @@ include ('../../app/controllers/usuarios/listado_de_usuarios.php');
                                 <thead>
                                 <tr>
                                     <!-- <th><center>Orden</center></th> -->
-                                    <!-- <th><center>Nombre del usuario</center></th> -->
+                                    <th><center>Apellido y nombre</center></th>
                                     <th><center>Rol</center></th>
                                     <th><center>Correo electrónico</center></th>
                                     <!-- <th><center>Fecha de creación</center></th> -->
@@ -51,7 +51,7 @@ include ('../../app/controllers/usuarios/listado_de_usuarios.php');
                                     $contador_usuarios = $contador_usuarios +1; ?>
                                     <tr>
                                         <!-- <td style="text-align: center"><?=$contador_usuarios;?></td> -->
-                                        <!-- <td style="text-align: center"><?=$usuario['nombres'].' '.$usuario['apellidos'];?></td> -->
+                                        <td style="text-align: center"><?=$usuario['apellidos'].' , '.$usuario['nombres'];?></td>
                                         <td style="text-align: center"><?=$usuario['nombre_rol'];?></td>
                                         <td style="text-align: center"><?=$usuario['email'];?></td>
                                         <!-- <td>?=$usuario['fyh_creacion'];?></td> -->
@@ -107,7 +107,7 @@ include ('../../app/controllers/usuarios/listado_de_usuarios.php');
                             <hr>
                     <div class="row">
                     <div class="col-md-12">
-                        <div class="form-group text-center">
+                        <div class="form-group">
                         <a href="<?=APP_URL;?>/admin/index.php" class="btn btn-danger">Volver</a>
                         </div>
                      </div>
@@ -133,7 +133,7 @@ include ('../../layout/mensajes.php');
 <script>
     $(function () {
         $("#example1").DataTable({
-            "pageLength": 25,
+            "pageLength": 10,
             "language": {
                 "emptyTable": "No hay información",
                 "info": "Mostrando _START_ - _END_ | _TOTAL_ Usuarios",
@@ -144,7 +144,7 @@ include ('../../layout/mensajes.php');
                 "lengthMenu": "Mostrar _MENU_ Usuarios",
                 "loadingRecords": "Cargando...",
                 "processing": "Procesando...",
-                "search": "Buscar usuario:",
+                "search": "Buscar usuarios:",
                 "zeroRecords": "Sin resultados encontrados",
                 "paginate": {
                     "first": "Primero",
@@ -156,7 +156,7 @@ include ('../../layout/mensajes.php');
             "responsive": true, "lengthChange": true, "autoWidth": false,
             buttons: [{
                 extend: 'collection',
-                text: 'Reportes',
+                text: 'Exportar',
                 orientation: 'landscape',
                 buttons: [{
                     text: 'Copiar Texto',
@@ -178,7 +178,7 @@ include ('../../layout/mensajes.php');
             },
                 {
                     extend: 'colvis',
-                    text: 'Visor de columnas',
+                    text: 'Visualizar',
                     collectionLayout: 'fixed three-column'
                 }
             ],
