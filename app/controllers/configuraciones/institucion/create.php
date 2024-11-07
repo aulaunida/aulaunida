@@ -1,18 +1,12 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: HILARIWEB
- * Date: 8/1/2024
- * Time: 10:15
- */
 
 include ('../../../../app/config.php');
 
-$nombre_institucion = $_POST['nombre_institucion'];
-$direccion = $_POST['direccion'];
-$telefono = $_POST['telefono'];
-$celular = $_POST['celular'];
-$correo = $_POST['correo'];
+$nombre_institucion = strtoupper($_POST['nombre_institucion']);
+$direccion = strtoupper($_POST['direccion']);
+$telefono = strtoupper($_POST['telefono']);
+$celular = strtoupper($_POST['celular']);
+$correo = strtoupper($_POST['correo']);
 
 if($_FILES['file']['name'] != null){
     //echo "existe una imagen";
@@ -42,7 +36,7 @@ $sentencia->bindParam('estado',$estado_de_registro);
 if($sentencia->execute()){
     echo 'success';
     session_start();
-    $_SESSION['mensaje'] = "Se registraron los datos de configuración de manera correcta en la base de datos";
+    $_SESSION['mensaje'] = "Se registró la institución de manera correcta.";
     $_SESSION['icono'] = "success";
     $_SESSION['timer'] = 6000;  // Duración del mensaje en milisegundos (6 segundos)
     $_SESSION['timerProgressBar'] = true;
@@ -52,7 +46,7 @@ if($sentencia->execute()){
 }else{
     //echo 'error al registrar a la base de datos';
     session_start();
-    $_SESSION['mensaje'] = "Error no se pudo registrar en la base datos, comuníquese con el administrador";
+    $_SESSION['mensaje'] = "Error al registrar institución, comunicarse con el administrador";
     $_SESSION['icono'] = "warning";
     $_SESSION['timer'] = 6000;  // Duración del mensaje en milisegundos (6 segundos)
     $_SESSION['timerProgressBar'] = true;

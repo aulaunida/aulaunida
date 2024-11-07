@@ -21,7 +21,6 @@ include ('../../app/controllers/usuarios/listado_de_usuarios.php');
             </div>
             <br>
             <div class="row">
-
                 <div class="col-md-12">
                     <div class="card card-outline card-primary">
                         <div class="card-header">
@@ -35,12 +34,13 @@ include ('../../app/controllers/usuarios/listado_de_usuarios.php');
                                 <thead>
                                 <tr>
                                     <!-- <th><center>Orden</center></th> -->
-                                    <th><center>Apellido y nombre</center></th>
-                                    <th><center>Rol</center></th>
-                                    <th><center>Correo electrónico</center></th>
-                                    <!-- <th><center>Fecha de creación</center></th> -->
-                                    <th><center>Estado</center></th>
-                                    <th><center>Acciones</center></th>
+                                    <th style="text-align: left;">Apellido y nombre</th> 
+                                    <th style="text-align: left;">Rol</th>
+                                    <th style="text-align: left;">Correo electrónico</th>
+                                    <!-- <th style="text-align: left;">Fecha de creación</th> -->
+                                    <th style="text-align: center;">Estado</th>
+                                    <th style="text-align: center;">Acciones</th>
+
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -51,9 +51,9 @@ include ('../../app/controllers/usuarios/listado_de_usuarios.php');
                                     $contador_usuarios = $contador_usuarios +1; ?>
                                     <tr>
                                         <!-- <td style="text-align: center"><?=$contador_usuarios;?></td> -->
-                                        <td style="text-align: center"><?=$usuario['apellidos'].' , '.$usuario['nombres'];?></td>
-                                        <td style="text-align: center"><?=$usuario['nombre_rol'];?></td>
-                                        <td style="text-align: center"><?=$usuario['email'];?></td>
+                                        <td style="text-align: left"><?=$usuario['apellidos'].' , '.$usuario['nombres'];?></td>
+                                        <td style="text-align: left"><?=$usuario['nombre_rol'];?></td>
+                                        <td style="text-align: left"><?=$usuario['email'];?></td>
                                         <!-- <td>?=$usuario['fyh_creacion'];?></td> -->
                                         <!-- <td>?=$usuario['estado'] == '1' ? "Activo" : "Inactivo"; ?></td> -->
                                         <td class="text-center">

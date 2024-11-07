@@ -12,15 +12,14 @@ include ('../../../app/controllers/configuraciones/gestion/datos_gestion.php');
     <div class="content">
         <div class="container">
             <div class="row">
-                <h2>EDITAR CICLO LECTIVO <i class="bi bi-chevron-right"></i> <?=$gestion;?></h2>
+                <h2 style="margin-left: 20px;"><i class="bi bi-pencil-square"></i> Editar ciclo lectivo: <b><?=$gestion;?></b> </h2>
             </div>
             <br>
             <div class="row">
-
                 <div class="col-md-12">
                     <div class="card card-outline card-success">
                         <div class="card-header">
-                            <h3 class="card-title">Complete los siguientes datos:</h3>
+                            <h3 class="card-title">Editar los siguientes campos:</h3>
                         </div>
                         <div class="card-body">
                             <form action="<?=APP_URL;?>/app/controllers/configuraciones/gestion/update.php" method="post">
@@ -28,7 +27,7 @@ include ('../../../app/controllers/configuraciones/gestion/datos_gestion.php');
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <input type="text" name="id_gestion" value="<?=$id_gestion;?>" hidden>
-                                            <label for="">Descripción de Ciclo lectivo<b style="color:red">*</b></label>
+                                            <label for="">Nombre<b style="color:red">*</b></label>
                                             <input type="text" value="<?=$gestion;?>" name="gestion" class="form-control">
                                         </div>
                                     </div>
@@ -56,7 +55,7 @@ include ('../../../app/controllers/configuraciones/gestion/datos_gestion.php');
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <button type="submit" class="btn btn-success">Actualizar</button>
-                                            <a href="<?=APP_URL;?>/admin/configuraciones/gestion" class="btn btn-secondary">Cancelar</a>
+                                            <a href="<?=APP_URL;?>/admin/configuraciones/gestion" class="btn btn-danger">Cancelar</a>
                                         </div>
                                     </div>
                                 </div>

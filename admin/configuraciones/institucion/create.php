@@ -10,15 +10,14 @@ include ('../../../admin/layout/parte1.php');
     <div class="content">
         <div class="container">
             <div class="row">
-                <h2>INSTITUCIONES EDUCATIVAS <i class="bi bi-chevron-right"></i> REGISTRAR INSTITUCIÓN</h2>
+            <h2 style="margin-left: 20px;"><i class="bi bi-plus-square"></i>  Registrar institución </h2>
             </div>
             <br>
             <div class="row">
-
                 <div class="col-md-12">
                     <div class="card card-outline card-primary">
                         <div class="card-header">
-                            <h3 class="card-title">Complete los siguientes datos:</h3>
+                            <h3 class="card-title">Completar los siguientes datos:</h3>
                         </div>
                         <div class="card-body">
                             <form action="<?=APP_URL;?>/app/controllers/configuraciones/institucion/create.php" method="post" enctype="multipart/form-data">
@@ -27,13 +26,13 @@ include ('../../../admin/layout/parte1.php');
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label for="">Nombre de la institución <b style="color:red">*</b></label>
+                                                    <label for="">Nombre<b style="color:red">*</b></label>
                                                     <input type="text" name="nombre_institucion" class="form-control" required>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label for="">Correo de la institución<b style="color:red">*</b></label>
+                                                    <label for="">Correo electrónico<b style="color:red">*</b></label>
                                                     <input type="email" name="correo" class="form-control" required>
                                                 </div>
                                             </div>
@@ -41,13 +40,13 @@ include ('../../../admin/layout/parte1.php');
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label for="">Teléfono<b style="color:red">*</b></label>
-                                                    <input type="number" pattern="\d" minlength="10" maxlength="15" name="telefono" class="form-control" required>
+                                                    <label for="">Nro. de teléfono</label>
+                                                    <input type="number" pattern="\d" minlength="10" maxlength="15" name="telefono" class="form-control">
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label for="">Celular <b style="color:red">*</b></label>
+                                                    <label for="">Nro. de celular <b style="color:red">*</b></label>
                                                     <input type="number" pattern="\d"  minlength="10" maxlength="15" name="celular" class="form-control" required>
                                                 </div>
                                             </div>
@@ -55,7 +54,7 @@ include ('../../../admin/layout/parte1.php');
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <div class="form-group">
-                                                    <label for="">Dirección <b style="color:red">*</b></label>
+                                                    <label for="">Domicilio<b style="color:red">*</b></label>
                                                     <input type="text" name="direccion" class="form-control" required>
                                                 </div>
                                             </div>
@@ -80,7 +79,7 @@ include ('../../../admin/layout/parte1.php');
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <button type="submit" class="btn btn-primary">Registrar</button>
-                                            <a href="<?=APP_URL;?>/admin/configuraciones/institucion" class="btn btn-secondary">Cancelar</a>
+                                            <a href="<?=APP_URL;?>/admin/configuraciones/institucion" class="btn btn-danger">Cancelar</a>
                                         </div>
                                     </div>
                                 </div>

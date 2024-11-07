@@ -10,7 +10,7 @@ include ('../../../admin/layout/parte1.php');
     <div class="content">
         <div class="container">
             <div class="row">
-                <h2>CICLO LECTIVO <i class="bi bi-chevron-right"></i> REGISTRAR CICLO LECTIVO</h2>
+            <h2 style="margin-left: 20px;"><i class="bi bi-plus-square"></i>  Registrar ciclo lectivo </h2>
             </div>
             <br>
             <div class="row">
@@ -18,14 +18,14 @@ include ('../../../admin/layout/parte1.php');
                 <div class="col-md-12">
                     <div class="card card-outline card-primary">
                         <div class="card-header">
-                            <h3 class="card-title">Complete los siguientes datos:</h3>
+                            <h3 class="card-title">Completar los siguientes datos:</h3>
                         </div>
                         <div class="card-body">
                             <form action="<?=APP_URL;?>/app/controllers/configuraciones/gestion/create.php" method="post">
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label for="">Descripción de Ciclo lectivo<b style="color:red">*</b></label>
+                                            <label for="">Nombre<b style="color:red">*</b></label>
                                             <input type="text" name="gestion" class="form-control">
                                         </div>
                                     </div>
@@ -45,7 +45,7 @@ include ('../../../admin/layout/parte1.php');
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <button type="submit" class="btn btn-primary">Registrar</button>
-                                            <a href="<?=APP_URL;?>/admin/configuraciones/gestion" class="btn btn-secondary">Cancelar</a>
+                                            <a href="<?=APP_URL;?>/admin/configuraciones/gestion" class="btn btn-danger">Cancelar</a>
                                         </div>
                                     </div>
                                 </div>

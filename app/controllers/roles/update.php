@@ -1,10 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: HILARIWEB
- * Date: 4/1/2024
- * Time: 15:50
- */
+
 include ('../../../app/config.php');
 
 $id_rol = $_POST['id_rol'];
@@ -32,7 +27,7 @@ $sentencia->bindParam('id_rol',$id_rol);
 try{
   if($sentencia->execute()){ 
   session_start();
-  $_SESSION['mensaje'] = "Se actualizó correctamente el rol";
+  $_SESSION['mensaje'] = "Se actualizó el rol de manera correcta";
   $_SESSION['icono'] = "success";
   $_SESSION['timer'] = 3000;  // Duración del mensaje en milisegundos 
   $_SESSION['timerProgressBar'] = true;
@@ -40,7 +35,7 @@ try{
   header('Location:'.APP_URL."/admin/roles"); // redireccionar
 }else{
   session_start();
-      $_SESSION['mensaje'] = "Error al actualizar el rol. Comunicarse con el administrador";
+      $_SESSION['mensaje'] = "Error, no se pudo actualizar el rol. Comunicarse con el administrador";
       $_SESSION['icono'] = "error";
       $_SESSION['timer'] = 3000;  // Duración del mensaje en milisegundos
       $_SESSION['timerProgressBar'] = true;
@@ -49,7 +44,7 @@ try{
 }
 }catch(Exception $exception) {
   session_start();
-  $_SESSION['mensaje'] = "Error, este rol ya existe en la base de datos";
+  $_SESSION['mensaje'] = "Error, este rol ya existe";
   $_SESSION['icono'] = "error";
   $_SESSION['timer'] = 3000;  // Duración del mensaje en milisegundos 
   $_SESSION['timerProgressBar'] = true;

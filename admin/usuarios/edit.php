@@ -15,7 +15,7 @@ include ('../../app/controllers/roles/listado_de_roles.php');
     <div class="content">
         <div class="container">
             <div class="row">
-            <h2 style="margin-left: 20px;"><i class="bi bi-pencil-square"></i> Editar docente: <b><?= $email ; ?></b> </h2>
+            <h2 style="margin-left: 20px;"><i class="bi bi-pencil-square"></i> Editar docente: <b><?= $email ; ?></b></h2>
             </div>
             <br>
             <div class="row">

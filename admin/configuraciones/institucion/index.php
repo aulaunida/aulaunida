@@ -12,7 +12,8 @@ include ('../../../app/controllers/configuraciones/institucion/listado_de_instit
     <div class="content">
         <div class="container">
             <div class="row">
-                <h2>CONFIGURAR INSTITUCIÓN EDUCATIVA</h2>
+            <h1 style="margin-left: 20px;"><i class="bi bi-hospital"></i> Instituciones</h1>
+
             </div>
             <br>
             <div class="row">
@@ -20,7 +21,7 @@ include ('../../../app/controllers/configuraciones/institucion/listado_de_instit
                 <div class="col-md-12">
                     <div class="card card-outline card-primary">
                         <div class="card-header">
-                            <h3 class="card-title">Instituciones eductativas registradas</h3>
+                            <h3 class="card-title">Instituciones educativas registradas</h3>
                             <div class="card-tools">
                                 <a href="create.php" class="btn btn-primary"><i class="bi bi-plus-square"></i> Registrar institución</a>
                             </div>
@@ -30,12 +31,12 @@ include ('../../../app/controllers/configuraciones/institucion/listado_de_instit
                                 <thead>
                                 <tr>
                                     <!-- <th><center>Orden</center></th> -->
-                                    <th><center>Nombre de la Institución</center></th>
-                                    <th><center>Logo</center></th>
-                                    <th><center>Dirección</center></th>
-                                    <th><center>Teléfono</center></th>
-                                    <th><center>Celular</center></th>
-                                    <th><center>Correo electrónico</center></th>
+                                    <th style="text-align: left;">Nombre</th>
+                                    <th style="text-align: left;">Logo</th>
+                                    <th style="text-align: left;">Dirección</th>
+                                    <!-- <th><center>Teléfono</center></th> -->
+                                    <th style="text-align: left;">Nro. de celular</th>
+                                    <!-- <th><center>Correo electrónico</center></th> -->
                                     <!-- <th><center>Fecha de creación</center></th> -->
                                     <th><center>Estado</center></th>
                                     <th><center>Acciones</center></th>
@@ -49,14 +50,14 @@ include ('../../../app/controllers/configuraciones/institucion/listado_de_instit
                                     $contador_institucion = $contador_institucion +1; ?>
                                     <tr>
                                         <!-- <td style="text-align: center"><?=$contador_institucion;?></td> -->
-                                        <td style="text-align: center"><?=$institucione['nombre_institucion'];?></td>
-                                        <td style="text-align: center">
+                                        <td style="text-align: lefth"><?=$institucione['nombre_institucion'];?></td>
+                                        <td style="text-align: lefth">
                                             <img src="<?=APP_URL."/public/images/configuracion/".$institucione['logo'];?>" width="100px" alt="">
                                         </td>
-                                        <td style="text-align: center"><?=$institucione['direccion'];?></td>
-                                        <td style="text-align: center"><?=$institucione['telefono'];?></td>
-                                        <td style="text-align: center"><?=$institucione['celular'];?></td>
-                                        <td style="text-align: center"><?=$institucione['correo'];?></td>
+                                        <td style="text-align: lefth"><?=$institucione['direccion'];?></td>
+                                        <!-- <td style="text-align: center"><?=$institucione['telefono'];?></td> -->
+                                        <td style="text-align: lefth"><?=$institucione['celular'];?></td>
+                                        <!-- <td style="text-align: center"><?=$institucione['correo'];?></td> -->
                                         <!-- <td>?=$institucione['fyh_creacion'];?></td> -->
                                         <td style="text-align: center">
                                         <?php
@@ -109,7 +110,7 @@ include ('../../../app/controllers/configuraciones/institucion/listado_de_instit
                             <hr>
                             <div class="row">
                                 <div class="col-md-12">
-                                    <div class="form-group text-center">
+                                    <div class="form-group ">
                                         <a href="<?= APP_URL; ?>/admin/configuraciones" class="btn btn-danger">Volver</a>
                                     </div>
                                 </div>
@@ -135,7 +136,7 @@ include ('../../../layout/mensajes.php');
 <script>
     $(function () {
         $("#example1").DataTable({
-            "pageLength": 25,
+            "pageLength": 10,
             "language": {
                 "emptyTable": "No hay información",
                 "info": "Mostrando _START_ - _END_ | _TOTAL_ Instituciones",
@@ -146,7 +147,7 @@ include ('../../../layout/mensajes.php');
                 "lengthMenu": "Mostrar _MENU_ Instituciones",
                 "loadingRecords": "Cargando...",
                 "processing": "Procesando...",
-                "search": "Buscar institución:",
+                "search": "Buscar instituciones:",
                 "zeroRecords": "Sin resultados encontrados",
                 "paginate": {
                     "first": "Primero",
@@ -158,7 +159,7 @@ include ('../../../layout/mensajes.php');
             "responsive": true, "lengthChange": true, "autoWidth": false,
             buttons: [{
                 extend: 'collection',
-                text: 'Reportes',
+                text: 'Exportar',
                 orientation: 'landscape',
                 buttons: [{
                     text: 'Copiar Texto',
@@ -180,7 +181,7 @@ include ('../../../layout/mensajes.php');
             },
                 {
                     extend: 'colvis',
-                    text: 'Visor de columnas',
+                    text: 'Visualizar',
                     collectionLayout: 'fixed three-column'
                 }
             ],

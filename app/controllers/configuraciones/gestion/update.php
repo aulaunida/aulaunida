@@ -1,14 +1,9 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: HILARIWEB
- * Date: 9/1/2024
- * Time: 15:17
- */
+
 include ('../../../../app/config.php');
 
-$id_gestion = $_POST['id_gestion'];
-$gestion = $_POST['gestion'];
+$id_gestion = strtoupper($_POST['id_gestion']);
+$gestion = strtoupper($_POST['gestion']);
 $estado = $_POST['estado'];
 
 if($estado=="ACTIVO"){
@@ -32,7 +27,7 @@ if($sentencia->execute()){
     //echo 'success';
     echo 'success';
     session_start();
-    $_SESSION['mensaje'] = "Se actualizó correctamente el ciclo lectivo";
+    $_SESSION['mensaje'] = "Se actualizó el ciclo lectivo de manera correcta.";
     $_SESSION['icono'] = "success";
     $_SESSION['timer'] = 6000;  // Duración del mensaje en milisegundos (6 segundos)
     $_SESSION['timerProgressBar'] = true;
@@ -42,7 +37,7 @@ if($sentencia->execute()){
 }else{
     echo 'error al registrar a la base de datos';
     session_start();
-    $_SESSION['mensaje'] = "Error al actualizar el ciclo lectivo. Comunicarse con el administrador";
+    $_SESSION['mensaje'] = "Error al actualizar ciclo lectivo, comunicarse con el administrador";
     $_SESSION['icono'] = "warning";
     $_SESSION['timer'] = 6000;  // Duración del mensaje en milisegundos (6 segundos)
     $_SESSION['timerProgressBar'] = true;

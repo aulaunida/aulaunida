@@ -1,10 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: HILARIWEB
- * Date: 3/1/2024
- * Time: 16:58
- */
+
 
 include ('../../../app/config.php');
 
@@ -31,7 +26,7 @@ $sentencia->bindParam('estado', $estado_de_registro);
 try{
     if($sentencia->execute()){ 
     session_start();
-    $_SESSION['mensaje'] = "Se registró correctamente el nuevo rol";
+    $_SESSION['mensaje'] = "Se registró el rol de manera correcta";
     $_SESSION['icono'] = "success";
     $_SESSION['timer'] = 3000;  // Duración del mensaje en milisegundos 
     $_SESSION['timerProgressBar'] = true;
@@ -39,7 +34,7 @@ try{
     header('Location:'.APP_URL."/admin/roles"); // redireccionar
   }else{
     session_start();
-        $_SESSION['mensaje'] = "Error al registrar nuevo rol, comunicarse con el administrador";
+        $_SESSION['mensaje'] = "Error al registrar rol, comunicarse con el administrador";
         $_SESSION['icono'] = "error";
         $_SESSION['timer'] = 3000;  // Duración del mensaje en milisegundos
         $_SESSION['timerProgressBar'] = true;
@@ -48,7 +43,7 @@ try{
   }
 }catch(Exception $exception) {
     session_start();
-    $_SESSION['mensaje'] = "Error, este rol ya existe en la base de datos";
+    $_SESSION['mensaje'] = "El nombre de rol ya existe";
     $_SESSION['icono'] = "error";
     $_SESSION['timer'] = 3000;  // Duración del mensaje en milisegundos 
     $_SESSION['timerProgressBar'] = true;

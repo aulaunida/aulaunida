@@ -14,15 +14,14 @@ include ('../../../app/controllers/configuraciones/institucion/datos_institucion
     <div class="content">
         <div class="container">
             <div class="row">
-                <h2>CONSULTAR DETALLES <i class="bi bi-chevron-right"></i> <?=$nombre_institucion;?></h2>
+            <h2 style="margin-left: 20px;"><i class="bi bi-eye"></i> Consultar detalles: </i><b><?= $nombre_institucion; ?></b>  </h2>
             </div>
             <br>
             <div class="row">
-
                 <div class="col-md-12">
                     <div class="card card-outline card-info">
                         <div class="card-header">
-                            <h3 class="card-title">Datos registrados</h3>
+                            <h3 class="card-title">Datos registrados:</h3>
                         </div>
                         <div class="card-body">
                                 <div class="row">
@@ -30,13 +29,13 @@ include ('../../../app/controllers/configuraciones/institucion/datos_institucion
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label for="">Nombre de la institución</label>
+                                                    <label for="">Nombre</label>
                                                     <p><?=$nombre_institucion;?></p>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label for="">Correo de la institución</label>
+                                                    <label for="">Correo electrónico</label>
                                                     <p><?=$correo;?></p>
                                                 </div>
                                             </div>
@@ -44,13 +43,13 @@ include ('../../../app/controllers/configuraciones/institucion/datos_institucion
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label for="">Teléfono</label>
+                                                    <label for="">Nro. de teléfono</label>
                                                     <p><?=$telefono;?></p>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label for="">Celular</label>
+                                                    <label for="">Nro. de celular</label>
                                                     <p><?=$celular;?></p>
                                                 </div>
                                             </div>
@@ -58,12 +57,10 @@ include ('../../../app/controllers/configuraciones/institucion/datos_institucion
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label for="">Dirección</label>
+                                                    <label for="">Domicilio</label>
                                                     <p><?=$direccion;?></p>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="">Fecha de creación</label>
@@ -89,11 +86,10 @@ include ('../../../app/controllers/configuraciones/institucion/datos_institucion
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <a href="<?=APP_URL;?>/admin/configuraciones/institucion" class="btn btn-secondary">Volver</a>
+                                            <a href="<?=APP_URL;?>/admin/configuraciones/institucion" class="btn btn-danger">Volver</a>
                                         </div>
                                     </div>
                                 </div>
-
                         </div>
                     </div>
                 </div>

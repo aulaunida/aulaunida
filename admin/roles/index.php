@@ -12,11 +12,10 @@ include('../../app/controllers/roles/listado_de_roles.php');
     <div class="content">
         <div class="container">
             <div class="row">
-                <h2>USUARIOS <i class="bi bi-chevron-right"></i> CONSULTAR ROLES</h2>
+            <h1 style="margin-left: 20px;"><i class="bi bi-person-vcard"></i></i> Roles</h1>
             </div>
             <br>
             <div class="row">
-
                 <div class="col-md-12">
                     <div class="card card-outline card-primary">
                         <div class="card-header">
@@ -32,12 +31,9 @@ include('../../app/controllers/roles/listado_de_roles.php');
                                         <!-- <th>
                                             <center>Nro</center>
                                         </th> -->
-                                        <th>
-                                            <center>Nombre del rol</center>
-                                        </th>
-                                        <th>
-                                            <center>Acciones</center>
-                                        </th>
+                                        
+                                        <th style="text-align: left;">Rol</th>
+                                        <th style="text-align: center;">Acciones</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -48,7 +44,7 @@ include('../../app/controllers/roles/listado_de_roles.php');
                                         $contador_rol = $contador_rol + 1; ?>
                                         <tr>
                                             <!-- <td style="text-align: center"><?= $contador_rol; ?></td> -->
-                                            <td style="text-align: center"><?= $role['nombre_rol']; ?></td>
+                                            <td style="text-align: left"><?= $role['nombre_rol']; ?></td>
                                             <td style="text-align: center">
                                                 <div class="btn-group" role="group" aria-label="Basic example">
                                                     <a href="show.php?id=<?= $id_rol; ?>" type="button" title="Consultar detalles" class="btn btn-info btn-sm"><i class="bi bi-eye"></i></a>
@@ -86,12 +82,11 @@ include('../../app/controllers/roles/listado_de_roles.php');
                                     ?>
 
                                 </tbody>
-
                             </table>
                             <hr>
                             <div class="row">
                                 <div class="col-md-12">
-                                    <div class="form-group text-center">
+                                    <div class="form-group ">
                                         <a href="<?= APP_URL; ?>/admin/index.php" class="btn btn-danger">Volver</a>
                                     </div>
                                 </div>
@@ -117,7 +112,7 @@ include('../../layout/mensajes.php');
 <script>
     $(function() {
         $("#example1").DataTable({
-            "pageLength": 25,
+            "pageLength": 10,
             "language": {
                 "emptyTable": "No hay información",
                 "info": "Mostrando _START_ - _END_ | _TOTAL_ Roles",
@@ -128,7 +123,7 @@ include('../../layout/mensajes.php');
                 "lengthMenu": "Mostrar _MENU_ Roles",
                 "loadingRecords": "Cargando...",
                 "processing": "Procesando...",
-                "search": "Buscar rol:",
+                "search": "Buscar roles:",
                 "zeroRecords": "Sin resultados encontrados",
                 "paginate": {
                     "first": "Primero",
@@ -142,7 +137,7 @@ include('../../layout/mensajes.php');
             "autoWidth": false,
             buttons: [{
                     extend: 'collection',
-                    text: 'Reportes',
+                    text: 'Exportar',
                     orientation: 'landscape',
                     buttons: [{
                         text: 'Copiar Texto',
@@ -163,7 +158,7 @@ include('../../layout/mensajes.php');
                 },
                 {
                     extend: 'colvis',
-                    text: 'Visor de columnas',
+                    text: 'Visualizar',
                     collectionLayout: 'fixed three-column'
                 }
             ],

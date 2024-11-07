@@ -12,11 +12,10 @@ include ('../../../app/controllers/configuraciones/gestion/listado_de_gestiones.
     <div class="content">
         <div class="container">
             <div class="row">
-                <h2>CONFIGURAR CICLO LECTIVO</h2>
+            <h1 style="margin-left: 20px;"><i class="bi bi-calendar4-week"></i> Ciclos lectivos</h1>
             </div>
             <br>
             <div class="row">
-
                 <div class="col-md-12">
                     <div class="card card-outline card-primary">
                         <div class="card-header">
@@ -30,8 +29,8 @@ include ('../../../app/controllers/configuraciones/gestion/listado_de_gestiones.
                                 <thead>
                                 <tr>
                                     <!-- <th><center>Nro</center></th> -->
-                                    <th><center>Descripción de Ciclo Lectivo</center></th>
-                                    <th><center>Alta de Ciclo Lectivo</center></th>
+                                    <th><left>Ciclo lectivo</left></th>
+                                    <th><left>Fecha de creación</left></th>
                                     <th><center>Estado</center></th>
                                     <th><center>Acciones</center></th>
                                 </tr>
@@ -44,8 +43,8 @@ include ('../../../app/controllers/configuraciones/gestion/listado_de_gestiones.
                                     $contador_gestiones = $contador_gestiones +1; ?>
                                     <tr>
                                         <!-- <td style="text-align: center"><?=$contador_gestiones;?></td> -->
-                                        <td style="text-align: center"><?=$gestione['gestion'];?></td>
-                                        <td style="text-align: center"><?=$gestione['fyh_creacion'];?></td>
+                                        <td style="text-align: left"><?=$gestione['gestion'];?></td>
+                                        <td style="text-align: left"><?=$gestione['fyh_creacion'];?></td>
                                         <td class="text-center">
                                             <?php
                                             if($gestione['estado'] == "1"){ ?>
@@ -96,7 +95,7 @@ include ('../../../app/controllers/configuraciones/gestion/listado_de_gestiones.
                             <hr>
                             <div class="row">
                                 <div class="col-md-12">
-                                    <div class="form-group text-center">
+                                    <div class="form-group">
                                         <a href="<?= APP_URL; ?>/admin/configuraciones" class="btn btn-danger">Volver</a>
                                     </div>
                                 </div>
@@ -122,18 +121,18 @@ include ('../../../layout/mensajes.php');
 <script>
     $(function () {
         $("#example1").DataTable({
-            "pageLength": 25,
+            "pageLength": 10,
             "language": {
                 "emptyTable": "No hay información",
-                "info": "Mostrando _START_ - _END_ | _TOTAL_ Gestiones",
-                "infoEmpty": "Mostrando 0 - 0 | 0 Gestiones",
-                "infoFiltered": "(Filtrado de _MAX_ total Gestiones)",
+                "info": "Mostrando _START_ - _END_ | _TOTAL_ Ciclos lectivos",
+                "infoEmpty": "Mostrando 0 - 0 | 0 Ciclos lectivos",
+                "infoFiltered": "(Filtrado de _MAX_ total Ciclos lectivos)",
                 "infoPostFix": "",
                 "thousands": ",",
-                "lengthMenu": "Mostrar _MENU_ Gestiones",
+                "lengthMenu": "Mostrar _MENU_ Ciclos lectivos",
                 "loadingRecords": "Cargando...",
                 "processing": "Procesando...",
-                "search": "Buscar ciclo lectivo:",
+                "search": "Buscar ciclos lectivos:",
                 "zeroRecords": "Sin resultados encontrados",
                 "paginate": {
                     "first": "Primero",
@@ -145,7 +144,7 @@ include ('../../../layout/mensajes.php');
             "responsive": true, "lengthChange": true, "autoWidth": false,
             buttons: [{
                 extend: 'collection',
-                text: 'Reportes',
+                text: 'Exportar',
                 orientation: 'landscape',
                 buttons: [{
                     text: 'Copiar Texto',
@@ -167,7 +166,7 @@ include ('../../../layout/mensajes.php');
             },
                 {
                     extend: 'colvis',
-                    text: 'Visor de columnas',
+                    text: 'Visualizar',
                     collectionLayout: 'fixed three-column'
                 }
             ],

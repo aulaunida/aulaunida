@@ -11,15 +11,14 @@ include ('../../admin/layout/parte1.php');
     <div class="content">
         <div class="container">
             <div class="row">
-                <h2>USUARIOS <i class="bi bi-chevron-right"></i> REGISTRAR ROL</h2>
+            <h2 style="margin-left: 20px;"><i class="bi bi-plus-square"></i>  Registrar rol </h2>
             </div>
             <br>
             <div class="row">
-
                 <div class="col-md-12">
                     <div class="card card-outline card-primary">
                         <div class="card-header">
-                            <h3 class="card-title">Complete los siguientes datos:</h3>
+                            <h3 class="card-title">Completar los siguientes datos:</h3>
                         </div>
                         <div class="card-body">
                             <form action="<?=APP_URL;?>/app/controllers/roles/create.php" method="post">

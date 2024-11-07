@@ -18,7 +18,6 @@ include ('../../app/controllers/usuarios/datos_del_usuario.php');
             </div>
             <br>
             <div class="row">
-
                 <div class="col-md-12">
                     <div class="card card-outline card-info">
                         <div class="card-header">

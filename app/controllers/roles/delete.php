@@ -18,7 +18,6 @@ foreach ($usuarios as $usuario){
     $contador = $contador + 1;
 }
 if($contador>0){
-    //echo "existe este rol en otra tabla, no se puede eliminar";
     session_start();
     $_SESSION['mensaje'] = "No es posible eliminar el rol, tiene registros dependientes.";
     $_SESSION['icono'] = "error";
@@ -35,7 +34,7 @@ if($contador>0){
 
     if($sentencia->execute()){
             session_start();
-            $_SESSION['mensaje'] = "Se eliminó el rol de manera correcta en la base de datos";
+            $_SESSION['mensaje'] = "Se eliminó el rol de manera correcta.";
             $_SESSION['icono'] = "success";
             $_SESSION['timer'] = 6000;  // Duración del mensaje en milisegundos (6 segundos)
             $_SESSION['timerProgressBar'] = true;
@@ -43,7 +42,7 @@ if($contador>0){
             header('Location:'.APP_URL."/admin/roles");
         }else{
             session_start();
-            $_SESSION['mensaje'] = "Error, no se pudo eliminar el rol. Comuníquese con el administrador";
+            $_SESSION['mensaje'] = "Error al eliminar rol, comunicarse con el administrador.";
             $_SESSION['icono'] = "warning";
             $_SESSION['timer'] = 6000;  // Duración del mensaje en milisegundos (6 segundos)
             $_SESSION['timerProgressBar'] = true;

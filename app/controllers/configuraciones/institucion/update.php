@@ -8,12 +8,12 @@
 include ('../../../../app/config.php');
 
 $logo = $_POST['logo'];
-$nombre_institucion = $_POST['nombre_institucion'];
-$direccion = $_POST['direccion'];
+$nombre_institucion = strtoupper($_POST['nombre_institucion']);
+$direccion = strtoupper($_POST['direccion']);
 $telefono = $_POST['telefono'];
 $celular = $_POST['celular'];
-$correo = $_POST['correo'];
-$id_config_institucion = $_POST['id_config_institucion'];
+$correo = strtoupper($_POST['correo']);
+$id_config_institucion = strtoupper($_POST['id_config_institucion']);
 
 
 if($_FILES['file']['name'] != null){
@@ -54,7 +54,7 @@ $sentencia->bindParam('id_config_institucion',$id_config_institucion);
 if($sentencia->execute()){
     echo 'success';
     session_start();
-    $_SESSION['mensaje'] = "Se actualizó correctamente la institución educativa";
+    $_SESSION['mensaje'] = "Se actualizó la institución de manera correcta.";
     $_SESSION['icono'] = "success";
     $_SESSION['timer'] = 6000;  // Duración del mensaje en milisegundos (6 segundos)
     $_SESSION['timerProgressBar'] = true;
@@ -64,7 +64,7 @@ if($sentencia->execute()){
 }else{
     //echo 'error al registrar a la base de datos';
     session_start();
-    $_SESSION['mensaje'] = "Error al actualizar la institución educativa. Comunicarse con el administrador";
+    $_SESSION['mensaje'] = "Error al actualizar materia, comunicarse con el administrador";
     $_SESSION['icono'] = "warning";
     $_SESSION['timer'] = 6000;  // Duración del mensaje en milisegundos (6 segundos)
     $_SESSION['timerProgressBar'] = true;

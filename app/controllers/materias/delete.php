@@ -31,7 +31,7 @@ try{
 }
 catch (Exception $exception){
     session_start();
-        $_SESSION['mensaje'] = "No es posible eliminar la materia, tiene registros dependientes.";
+        $_SESSION['mensaje'] = "No es posible eliminar la materia, tiene registros dependientes.";
         $_SESSION['icono'] = "warning";
         $_SESSION['timer'] = 6000;  // Duración del mensaje en milisegundos (6 segundos)
         $_SESSION['timerProgressBar'] = true;

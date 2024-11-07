@@ -13,15 +13,14 @@ include ('../../../app/controllers/configuraciones/institucion/datos_institucion
     <div class="content">
         <div class="container">
             <div class="row">
-                <h2>EDITAR INSTITUCIÓN <i class="bi bi-chevron-right"></i> <?=$nombre_institucion;?></h>
+            <h2 style="margin-left: 20px;"><i class="bi bi-pencil-square"></i> Editar institución: <b><?=$nombre_institucion;?></b> </h2>
             </div>
             <br>
             <div class="row">
-
                 <div class="col-md-12">
                     <div class="card card-outline card-success">
                         <div class="card-header">
-                            <h3 class="card-title">Complete los siguientes datos:</h3>
+                        <h3 class="card-title">Editar los siguientes campos:</h3>
                         </div>
                         <div class="card-body">
                             <form action="<?=APP_URL;?>/app/controllers/configuraciones/institucion/update.php" method="post" enctype="multipart/form-data">
@@ -32,13 +31,13 @@ include ('../../../app/controllers/configuraciones/institucion/datos_institucion
                                                 <div class="form-group">
                                                     <input type="text" name="id_config_institucion" value="<?=$id_config_institucion;?>" hidden>
                                                     <input type="text" name="logo" value="<?=$logo;?>" hidden>
-                                                    <label for="">Nombre de la institución <b style="color:red">*</b></label>
+                                                    <label for="">Nombre<b style="color:red">*</b></label>
                                                     <input type="text" name="nombre_institucion" value="<?=$nombre_institucion;?>" class="form-control" required>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label for="">Correo de la institución<b style="color:red">*</b></label>
+                                                    <label for="">Correo electrónico<b style="color:red">*</b></label>
                                                     <input type="email" name="correo" value="<?=$correo;?>" class="form-control">
                                                 </div>
                                             </div>
@@ -46,13 +45,13 @@ include ('../../../app/controllers/configuraciones/institucion/datos_institucion
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label for="">Teléfono<b style="color:red">*</b></label>
+                                                    <label for="">Nro. de teléfono</label>
                                                     <input type="number" name="telefono" value="<?=$telefono;?>" class="form-control">
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label for="">Celular <b style="color:red">*</b></label>
+                                                    <label for="">Nro. de celular <b style="color:red">*</b></label>
                                                     <input type="number" name="celular" value="<?=$celular;?>" class="form-control" required>
                                                 </div>
                                             </div>
@@ -60,7 +59,7 @@ include ('../../../app/controllers/configuraciones/institucion/datos_institucion
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <div class="form-group">
-                                                    <label for="">Dirección <b style="color:red">*</b></label>
+                                                    <label for="">Domicilio <b style="color:red">*</b></label>
                                                     <input type="text" name="direccion" value="<?=$direccion;?>" class="form-control" required>
                                                 </div>
                                             </div>
@@ -87,7 +86,7 @@ include ('../../../app/controllers/configuraciones/institucion/datos_institucion
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <button type="submit" class="btn btn-success">Actualizar</button>
-                                            <a href="<?=APP_URL;?>/admin/configuraciones/institucion" class="btn btn-secondary">Cancelar</a>
+                                            <a href="<?=APP_URL;?>/admin/configuraciones/institucion" class="btn btn-danger">Cancelar</a>
                                         </div>
                                     </div>
                                 </div>
