@@ -188,7 +188,7 @@ include('../app/controllers/docentes/listado_de_asignaciones.php');
                             <div style="color: white;" class="icon">
                                 <i class="fas"><i class="bi bi-graph-up-arrow"></i></i>
                             </div>
-                            <a href="<?= APP_URL; ?>/admin/estadisticas/asistencia.php" class="small-box-footer">
+                            <a href="<?= APP_URL; ?>/admin/estadisticas/index.php" class="small-box-footer">
                                 Más información <i class="fas fa-arrow-circle-right"></i>
                             </a>
                         </div>

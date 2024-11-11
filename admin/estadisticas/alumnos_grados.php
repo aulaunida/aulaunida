@@ -128,7 +128,7 @@ include('../../app/controllers/estudiantes/reporte_estudiantes_grados.php');
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group text-center">
-                                        <a href="<?= APP_URL; ?>/admin/index.php" class="btn btn-danger">Volver</a>
+                                        <a href="<?= APP_URL; ?>/admin/estadisticas/index.php" class="btn btn-danger">Volver</a>
                                     </div>
                                 </div>
                             </div>

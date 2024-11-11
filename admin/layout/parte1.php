@@ -181,63 +181,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="<?= APP_URL; ?>/admin/estadisticas/asistencia.php" class="nav-link active">
+                                <a href="<?= APP_URL; ?>/admin/estadisticas/index.php" class="nav-link active">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>Asistencia</p>
-                                </a>
-                            </li>
-                        </ul>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="<?= APP_URL; ?>/admin/estadisticas/inasistencia.php" class="nav-link active">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Inasistencia</p>
-                                </a>
-                            </li>
-                        </ul>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="<?= APP_URL; ?>/admin/estadisticas/alumnos_grados.php" class="nav-link active">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Estudiantes por grado</p>
-                                </a>
-                            </li>
-                        </ul>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="<?= APP_URL; ?>/admin/estadisticas/gantt.php" class="nav-link active">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Diagrama de Gantt</p>
-                                </a>
-                            </li>
-                        </ul>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="<?= APP_URL; ?>/admin/estadisticas/spiderchart.php" class="nav-link active">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Gráfico de Radar</p>
-                                </a>
-                            </li>
-                        </ul>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="<?= APP_URL; ?>/admin/estadisticas/scatterplot.php" class="nav-link active">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Gráfico de Dispersión</p>
-                                </a>
-                            </li>
-                        </ul>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="<?= APP_URL; ?>/admin/estadisticas/donut3d.php" class="nav-link active">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Gráfico de Donut 3D</p>
+                                    <p>Consultar gráficos</p>
                                 </a>
                             </li>
                         </ul>
                     </li>
-
-
                     <li class="nav-item">
                         <a href="#" class="nav-link active">
                             <i class="nav-icon fas"><i class="bi bi-clipboard-data"></i></i>
@@ -251,12 +201,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <li class="nav-item">
                                 <a href="<?= APP_URL; ?>/admin/calificaciones" class="nav-link active">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>Cargar calificaciones</p>
+                                    <p>Consultar calificaciones</p>
                                 </a>
                             </li>
                         </ul>
                     </li>
-
                     <li class="nav-item">
                         <a href="#" class="nav-link active">
                             <i class="nav-icon fas"><i class="bi bi-journal-check"></i></i>
@@ -326,57 +275,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="<?= APP_URL; ?>/admin/estadisticas/asistencia.php" class="nav-link active">
+                                <a href="<?= APP_URL; ?>/admin/estadisticas/index.php" class="nav-link active">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>Asistencia</p>
-                                </a>
-                            </li>
-                        </ul>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="<?= APP_URL; ?>/admin/estadisticas/inasistencia.php" class="nav-link active">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Inasistencia</p>
-                                </a>
-                            </li>
-                        </ul>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="<?= APP_URL; ?>/admin/estadisticas/alumnos_grados.php" class="nav-link active">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Estudiantes por grado</p>
-                                </a>
-                            </li>
-                        </ul>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="<?= APP_URL; ?>/admin/estadisticas/gantt.php" class="nav-link active">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Diagrama de Gantt</p>
-                                </a>
-                            </li>
-                        </ul>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="<?= APP_URL; ?>/admin/estadisticas/spiderchart.php" class="nav-link active">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Gráfico de Radar</p>
-                                </a>
-                            </li>
-                        </ul>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="<?= APP_URL; ?>/admin/estadisticas/scatterplot.php" class="nav-link active">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Gráfico de Dispersión</p>
-                                </a>
-                            </li>
-                        </ul>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="<?= APP_URL; ?>/admin/estadisticas/donut3d.php" class="nav-link active">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Gráfico de Donut 3D</p>
+                                    <p>Consultar gráficos</p>
                                 </a>
                             </li>
                         </ul>
