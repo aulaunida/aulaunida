@@ -46,43 +46,34 @@ foreach ($materias as $materia) {
     <div class="content">
         <div class="container">
             <div class="row">
-                <h2>CARGAR ASISTENCIAS<i class="bi bi-chevron-right"></i><?= $curso ?> "<?= $paralelo; ?>" - <?= $nombre_materia; ?></h>
+            <h2 style="margin-left: 20px;"><i class="bi bi-plus-square"></i> Registrar asistencia: <b><?= $curso ?> "<?= $paralelo; ?>" - <?= $nombre_materia; ?></h></b>
             </div>
             <br>
             <div class="row">
-
                 <div class="col-md-12">
                     <div class="card card-outline card-primary">
                         <div class="card-header">
-                            <h3 class="card-title">Estudiantes registrados</h3>
+                            <h3 class="card-title">Alumnos registrados</h3>
                         </div>
                         <div class="card-body">
                             <table id="example1" class="table table-striped table-bordered table-hover table-sm">
                                 <thead>
                                     <tr>
-                                        <th>
-                                            <center>Estudiante</center>
-                                        </th>
-                                        <th>
-                                            <center>Fecha Asistencia</center>
-                                        </th>
-                                        <th>
-                                            <center>Asistencia</center>
-                                        </th>
+                                        <th>Alumnos</th>
+                                        <th><center>Fecha Asistencia</center></th>
+                                        <th><center>Asistencia</center></th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php
                                     $contador_estudiantes = 0;
-
                                     foreach ($estudiantes as $estudiante) {
                                         if ($id_grado_get == $estudiante['id_grado']) {
                                             $id_estudiante = $estudiante['id_estudiante'];
                                             $contador_estudiantes++; ?>
                                             <tr>
-
                                                 <!-- <td style="text-align: center"><?= $contador_estudiantes; ?></td> -->
-                                                <td class="uppercase" style="text-align: center"><input type="text" value="<?= $id_estudiante; ?>" name="" id="estudiante_<?= $contador_estudiantes; ?>" hidden><?= $estudiante['apellidos'] . ', ' . $estudiante['nombres']; ?></td>
+                                                <td class="uppercase"><input type="text" value="<?= $id_estudiante; ?>" name="" id="estudiante_<?= $contador_estudiantes; ?>" hidden><?= $estudiante['apellidos'] . ', ' . $estudiante['nombres']; ?></td>
                                                 <!-- <td class="text-center" style="text-align: center"><?= $estudiante['integracion'] == 'NO' ? "NO" : "SI"; ?></td> -->
                                                 <?php
                                                 $estado_asistencia = "";
@@ -94,9 +85,7 @@ foreach ($materias as $materia) {
                                                     }
                                                 }
                                                 ?>
-
                                                 <td class="text-center" type="date" id="fecha_asistencia_<?= $contador_estudiantes; ?>" class="form-control" style="text-align: center"><?= $fecha_asistencia = $fechaHora; ?></td>
-
                                                 <!-- AQUI TENGO EL PROBLEMA CON <?= $nota1; ?> -->
                                                 <td>
                                                     <select id="estado_asistencia_<?= $contador_estudiantes; ?>" class="form-control" required>
@@ -112,14 +101,11 @@ foreach ($materias as $materia) {
                                     ?>
                                 </tbody>
                             </table>
-
                             <hr>
-
                             <div class="row">
                                 <div class="col-md-12">
-
                                     <div class="form-group text-center">
-                                        <button class="btn btn-primary" id="btn_guardar">Guardar asistencias</button>
+                                        <button class="btn btn-primary" id="btn_guardar">Guardar</button>
                                         <script>
                                             $('#btn_guardar').click(function() {
                                                 var n = '<?= $contador_estudiantes; ?>';
@@ -137,7 +123,6 @@ foreach ($materias as $materia) {
                                                     var k = '#estudiante_' + i;
                                                     var id_estudiante = $(k).val();
 
-
                                                     //alert("id_docente: "+ id_docente + "- id_estudiante: " + id_estudiante + "- id_materia: " + id_materia);
                                                     var url = "../../app/controllers/asistencias/create.php";
                                                     $.get(url, {
@@ -154,7 +139,7 @@ foreach ($materias as $materia) {
                                                 Swal.fire({
                                                     position: "center",
                                                     icon: "success",
-                                                    title: "Asistencias cargadas correctamente.",
+                                                    title: "Se registraron las asistencias de manera correcta.",
                                                     showConfirmButton: false,
                                                     timer: 6000, // Duración del mensaje en milisegundos (6 segundos)
                                                     timerProgressBar: true, // Barra de progreso visual del tiempo
@@ -189,18 +174,18 @@ include('../../layout/mensajes.php');
 <script>
     $(function() {
         $("#example1").DataTable({
-            "pageLength": 25,
+            "pageLength": 10,
             "language": {
                 "emptyTable": "No hay información",
-                "info": "Mostrando _START_ - _END_ | _TOTAL_ estudiantes",
-                "infoEmpty": "Mostrando 0 - 0 | 0 estudiantes",
-                "infoFiltered": "(Filtrado de _MAX_ total estudiantes)",
+                "info": "Mostrando _START_ - _END_ | _TOTAL_ alumnos",
+                "infoEmpty": "Mostrando 0 - 0 | 0 alumnos",
+                "infoFiltered": "(Filtrado de _MAX_ total alumnos)",
                 "infoPostFix": "",
                 "thousands": ",",
-                "lengthMenu": "Mostrar _MENU_ estudiantes",
+                "lengthMenu": "Mostrar _MENU_ alumnos",
                 "loadingRecords": "Cargando...",
                 "processing": "Procesando...",
-                "search": "Buscar estudiante:",
+                "search": "Buscar alumnos:",
                 "zeroRecords": "Sin resultados encontrados",
                 "paginate": {
                     "first": "Primero",
@@ -214,7 +199,7 @@ include('../../layout/mensajes.php');
             "autoWidth": false,
             buttons: [{
                     extend: 'collection',
-                    text: 'Reportes',
+                    text: 'Exportar',
                     orientation: 'landscape',
                     buttons: [{
                         text: 'Copiar Texto',
@@ -235,7 +220,7 @@ include('../../layout/mensajes.php');
                 },
                 {
                     extend: 'colvis',
-                    text: 'Visor de columnas',
+                    text: 'Visualizar',
                     collectionLayout: 'fixed three-column'
                 }
             ],

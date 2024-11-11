@@ -26,7 +26,7 @@ $sentencia->bindParam('estado',$estado_de_registro);
 if($sentencia->execute()){
     echo 'success';
     session_start();
-    $_SESSION['mensaje'] = "Informe registrado de manera correcta en la base de datos";
+    $_SESSION['mensaje'] = "Se registró el informe de manera correcta.";
     $_SESSION['icono'] = "success";
     $_SESSION['timer'] = 6000;  // Duración del mensaje en milisegundos (6 segundos)
     $_SESSION['timerProgressBar'] = true;
@@ -36,7 +36,7 @@ if($sentencia->execute()){
 }else{
     echo 'Error al registrar informe a la base de datos';
     session_start();
-    $_SESSION['mensaje'] = "Error al registrar materia en la base datos, comuníquese con el administrador";
+    $_SESSION['mensaje'] = "Error al registrar informe, comunicarse con el administrador";
     $_SESSION['icono'] = "warning";
     $_SESSION['timer'] = 6000;  // Duración del mensaje en milisegundos (6 segundos)
     $_SESSION['timerProgressBar'] = true;

@@ -240,7 +240,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                     <li class="nav-item">
                         <a href="#" class="nav-link active">
-                            <i class="nav-icon fas"><i class="bi bi-check2-circle"></i></i>
+                            <i class="nav-icon fas"><i class="bi bi-clipboard-data"></i></i>
                             <p>
                                 Calificaciones
                                 <i class="right fas fa-angle-left"></i>
@@ -259,7 +259,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                     <li class="nav-item">
                         <a href="#" class="nav-link active">
-                            <i class="nav-icon fas"><i class="bi bi-file-earmark-text"></i></i>
+                            <i class="nav-icon fas"><i class="bi bi-journal-check"></i></i>
                             <p>
                                 Informes
                                 <i class="right fas fa-angle-left"></i>
@@ -278,7 +278,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                     <li class="nav-item">
                         <a href="#" class="nav-link active">
-                            <i class="nav-icon fas"><i class="bi bi-file-earmark-text"></i></i>
+                            <i class="nav-icon fas"><i class="bi bi-calendar2-check"></i></i>
                             <p>
                                 Asistencias
                                 <i class="right fas fa-angle-left"></i>

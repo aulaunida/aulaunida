@@ -27,7 +27,6 @@ foreach ($materias as $materia) {
     }
 }
 ?>
-
 <style>
     .icono-blanco i {
         color: white;
@@ -46,7 +45,8 @@ foreach ($materias as $materia) {
     <div class="content">
         <div class="container">
             <div class="row">
-                <h2>CARGAR CALIFICACIONES<i class="bi bi-chevron-right"></i><?= $curso ?> "<?= $paralelo;?>" - <?= $nombre_materia;?></h>
+                <!-- <h2>CARGAR CALIFICACIONES<i class="bi bi-chevron-right"></i><?= $curso ?> "<?= $paralelo;?>" - <?= $nombre_materia;?></h> -->
+                <h2 style="margin-left: 20px;"><i class="bi bi-plus-square"></i>  Cargar calificaciones:  <b><?= $curso ?> "<?= $paralelo;?>" - <?= $nombre_materia;?></b></h2>
             </div>
             <br>
             <div class="row">
@@ -54,24 +54,16 @@ foreach ($materias as $materia) {
                 <div class="col-md-12">
                     <div class="card card-outline card-primary">
                         <div class="card-header">
-                            <h3 class="card-title">Estudiantes registrados</h3>
+                            <h3 class="card-title">Alumnos registrados</h3>
                         </div>
                         <div class="card-body">
                             <table id="example1" class="table table-striped table-bordered table-hover table-sm">
                                 <thead>
                                     <tr>
-                                        <th>
-                                            <center>Estudiante</center>
-                                        </th>
-                                        <th>
-                                            <center>Integración</center>
-                                        </th>
-                                        <th colspan="4">
-                                            <center>Primera Etapa</center>
-                                        </th>
-                                        <th colspan="4">
-                                            <center>Segunda Etapa</center>
-                                        </th>
+                                        <th text align="lefth">Alumno</th>
+                                        <th><center>Integración<center></th>
+                                        <th colspan="4"><center>Primera Etapa</center></th>
+                                        <th colspan="4"><center>Segunda Etapa</center></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -85,7 +77,7 @@ foreach ($materias as $materia) {
                                             <tr>
 
                                                 <!-- <td style="text-align: center"><?= $contador_estudiantes; ?></td> -->
-                                                <td class="uppercase" style="text-align: center"><input type="text" value="<?= $id_estudiante; ?>" name="" id="estudiante_<?= $contador_estudiantes; ?>" hidden><?= $estudiante['apellidos'] . ', ' . $estudiante['nombres']; ?></td>
+                                                <td class="uppercase"><input type="text" value="<?= $id_estudiante; ?>" name="" id="estudiante_<?= $contador_estudiantes; ?>" hidden><?= $estudiante['apellidos'] . ', ' . $estudiante['nombres']; ?></td>
                                                 <td class="text-center" style="text-align: center"><?= $estudiante['integracion'] == 'NO' ? "NO" : "SI"; ?></td>
                                                 <?php
                                                 $nota1 = "";
@@ -200,7 +192,7 @@ foreach ($materias as $materia) {
                                 <div class="col-md-12">
 
                                     <div class="form-group text-center">
-                                        <button class="btn btn-primary" id="btn_guardar">Guardar calificaciones</button>
+                                        <button class="btn btn-primary" id="btn_guardar">Guardar </button>
                                         <script>
                                             $('#btn_guardar').click(function() {
                                                 var n = '<?= $contador_estudiantes; ?>';
@@ -259,7 +251,7 @@ foreach ($materias as $materia) {
                                                 Swal.fire({
                                                     position: "center",
                                                     icon: "success",
-                                                    title: "Calificaciones cargadas correctamente.",
+                                                    title: "Se registraron las calificaciones de manera correcta.",
                                                     showConfirmButton: false,
                                                     timer: 6000, // Duración del mensaje en milisegundos (6 segundos)
                                                     timerProgressBar: true, // Barra de progreso visual del tiempo

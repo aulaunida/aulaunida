@@ -24,39 +24,23 @@ include('../../app/controllers/docentes/listado_de_asignaciones.php');
     <div class="content">
         <div class="container">
             <div class="row">
-                <h2>ASISTENCIAS <i class="bi bi-chevron-right"></i> CARGAR ASISTENCIAS</h2>
+            <h1 style="margin-left: 20px;"><i class="bi bi-calendar2-check"></i> Asistencias</h1>
             </div>
             <br>
             <div class="row">
 
                 <div class="col-md-12">
                     <div class="card card-outline card-primary">
-                        <div class="card-header">
-                            <h3 class="card-title">Asistencias por grados</h3>
-                        </div>
                         <div class="card-body">
                             <!-- <?= $email_sesion; ?> -->
                             <table class="table table-striped table-bordered table-hover table-sm">
                                 <thead>
                                     <tr>
-                                        <th>
-                                            <center>Nivel</center>
-                                        </th>
-                                        <th>
-                                            <center>Turno</center>
-                                        </th>
-                                        <th>
-                                            <center>Grado</center>
-                                        </th>
-                                        <th>
-                                            <center>División</center>
-                                        </th>
-                                        <th>
-                                            <center>Materia</center>
-                                        </th>
-                                        <th>
-                                            <center>Acciones</center>
-                                        </th>
+                                        <th>Materia</th>
+                                        <th>Turno</th>
+                                        <th>Grado</th>
+                                        <th><center>División</center></th>
+                                        <th><center>Acciones</center></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -68,25 +52,12 @@ include('../../app/controllers/docentes/listado_de_asignaciones.php');
                                             $id_asignacion = $asignacione['id_asignacion'];
                                             $contador = $contador + 1; ?>
                                             <tr>
-                                                <td>
-                                                    <center><?= $asignacione['nivel']; ?></center>
-                                                </td>
-                                                <td>
-                                                    <center><?= $asignacione['turno']; ?></center>
-                                                </td>
-                                                <td>
-                                                    <center><?= $asignacione['curso']; ?></center>
-                                                </td>
-                                                <td>
-                                                    <center><?= $asignacione['paralelo']; ?></center>
-                                                </td>
-                                                <td>
-                                                    <center><?= $asignacione['nombre_materia']; ?></center>
-                                                </td>
+                                                <td><?= $asignacione['nombre_materia']; ?></td>
+                                                <td><?= $asignacione['turno']; ?></td>
+                                                <td><?= $asignacione['curso']; ?></td>
+                                                <td><center><?= $asignacione['paralelo']; ?></center></td>
                                                 <td style="text-align: center">
-                                                    
-                                                        <a href="create.php?id_grado=<?= $id_grado?>&&id_docente=<?= $asignacione['docente_id'];?>&&id_materia=<?= $asignacione['materia_id'];?>" type="button" title="Cargar asistencia" class="btn btn-primary btn-sm"><i class="bi bi-clipboard-data"></i> Cargar asistencia</a>
-                                                    
+                                                    <a href="create.php?id_grado=<?= $id_grado?>&&id_docente=<?= $asignacione['docente_id'];?>&&id_materia=<?= $asignacione['materia_id'];?>" type="button" title="Cargar asistencia" class="btn btn-primary btn-sm"><i class="bi bi-clipboard-data"></i> Cargar asistencia</a>
                                                 </td>
                                             </tr>
                                     <?php
@@ -98,7 +69,7 @@ include('../../app/controllers/docentes/listado_de_asignaciones.php');
                             <hr>
                             <div class="row">
                                 <div class="col-md-12">
-                                    <div class="form-group text-center">
+                                    <div class="form-group">
                                         <a href="<?= APP_URL; ?>/admin/index.php" class="btn btn-danger">Volver</a>
                                     </div>
                                 </div>
