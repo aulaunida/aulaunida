@@ -1,6 +1,10 @@
 <?php
 include ('../app/config.php');
+require '../libs/phpmailer/PHPMailer.php';
+require '../libs/phpmailer/SMTP.php';
+require '../libs/phpmailer/Exception.php';
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -76,6 +80,7 @@ include ('../app/config.php');
                         </div>
                     </div>
                 </div>
+                <a href="recuperar_password.php"><center>¿Olvidaste tu contraseña?</center></a>
                 <hr>
                 <div class="input-group mb-3">
                     <button class="btn btn-primary btn-block" type="submit">Acceder</button>
