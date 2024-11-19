@@ -426,6 +426,23 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             </li>
                         </ul>
                     </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link active">
+                            <i class="nav-icon fas"><i class="bi bi-question-square"></i></i>
+                            <p>
+                                Ayuda
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="<?= APP_URL; ?>/admin/ayuda" class="nav-link active">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Ver información</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
 
                     <li class="nav-item">
                         <a href="<?= APP_URL; ?>/login/logout.php" class="nav-link" style="background-color: #c52510;color:white">

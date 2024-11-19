@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 18-11-2024 a las 17:22:41
+-- Tiempo de generación: 19-11-2024 a las 00:15:27
 -- Versión del servidor: 8.3.0
 -- Versión de PHP: 8.2.18
 
@@ -45,6 +45,32 @@ CREATE TABLE IF NOT EXISTS `administrativos` (
 INSERT INTO `administrativos` (`id_administrativo`, `persona_id`, `fyh_creacion`, `fyh_actualizacion`, `estado`) VALUES
 (1, 2, '2024-09-01', '2024-09-01', '1'),
 (2, 3, '2024-09-01', NULL, '1');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `archivos`
+--
+
+DROP TABLE IF EXISTS `archivos`;
+CREATE TABLE IF NOT EXISTS `archivos` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `nombre_archivo` varchar(255) COLLATE utf8mb3_spanish_ci NOT NULL,
+  `tipo_archivo` varchar(50) COLLATE utf8mb3_spanish_ci NOT NULL,
+  `ruta_archivo` varchar(255) COLLATE utf8mb3_spanish_ci NOT NULL,
+  `categoria` varchar(50) COLLATE utf8mb3_spanish_ci NOT NULL,
+  `fecha_creacion` datetime DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `archivos`
+--
+
+INSERT INTO `archivos` (`id`, `nombre_archivo`, `tipo_archivo`, `ruta_archivo`, `categoria`, `fecha_creacion`) VALUES
+(18, 'Entregables Administración de proyecto I y II.pdf', '', '../../uploads/aula_unida/Entregables Administración de proyecto I y II.pdf', 'Aula Unida', '2024-11-18 20:55:16'),
+(19, 'Documentación - Proyecto Aula Unida.pdf', '', '../../uploads/documentacion/Documentación - Proyecto Aula Unida.pdf', 'Documentación', '2024-11-18 21:09:10'),
+(20, 'Manual de usuario-Aula Unida.pdf', '', '../../uploads/manual/Manual de usuario-Aula Unida.pdf', 'Manual de usuario', '2024-11-18 21:09:22');
 
 -- --------------------------------------------------------
 
