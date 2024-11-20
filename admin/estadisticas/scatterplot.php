@@ -17,11 +17,11 @@ include ('../../app/controllers/usuarios/listado_de_usuarios.php');
                 <div class="col-md-12">
                 <div class="card card-outline card-primary">
                     <div class="card-header">
-                        <h3 class="card-title">Gráficos</h3>
+                        <h3 class="card-title">Gráfico:</h3>
                     </div>
                 <div class="card-body">  
                     <div class="card-header">
-                        <h3 class="card-title">Gráfico de Dispersión -Scatter Plot-</h3>
+                        <h3 class="card-title">Tiempo de estudio</h3>
                     </div>
                     <div class="card-body">
                         <canvas id="myScatterChart"></canvas>

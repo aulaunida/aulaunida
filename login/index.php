@@ -56,7 +56,7 @@ require '../libs/phpmailer/Exception.php';
         <br>
     </center>
     <div class="login-logo">
-        <h3>Acceso a <b>Aula Unida®</b></h3>
+        <h3>Acceso a <b>Aula Unida</b></h3>
     </div>
     <!-- /.login-logo -->
     <div class="card">

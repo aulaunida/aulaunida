@@ -59,7 +59,7 @@
             data: {
                 labels: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio','Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
                 datasets: [{
-                    label: 'Inasistencia',
+                    label: 'Control de disciplina',
                     data: [1, 12, 3, 14, 5, 16, 7, 18 , 9, 11, 12, 2],
                     backgroundColor: 'rgba(60,141,188,0.2)',
                     borderColor: 'rgba(60,141,188,1)',
@@ -260,7 +260,7 @@
                 }
             },
             title: {
-                text: 'Alumnos aprobados y desaprobados'
+                text: 'Días escolares vs Días reales'
             },
             plotOptions: {
                 pie: {
@@ -269,10 +269,10 @@
                 }
             },
             series: [{
-                name: 'Alumnos',
+                name: 'Días escolares',
                 data: [
-                    ['Aprobados', 75],
-                    ['Desaprobados', 25]
+                    ['Con clases', 75],
+                    ['Sin clases', 25]
                 ]
             }]
         });

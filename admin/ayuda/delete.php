@@ -15,3 +15,10 @@ if ($archivo) {
     echo "Archivo no encontrado.";
 }
 ?>
+<div class="row">
+    <div class="col-md-12">
+        <div class="form-group">
+            <a href="<?=APP_URL;?>/admin/ayuda" class="btn btn-danger">Volver</a>
+        </div>
+    </div>
+</div>

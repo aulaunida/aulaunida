@@ -38,8 +38,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         echo "Error al subir el archivo.";
     }
 }
-?>
 
+?>
 
 <form method="POST" enctype="multipart/form-data">
     <label>Seleccione un archivo:</label>
@@ -52,3 +52,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </select>
     <button type="submit">Subir</button>
 </form>
+<div class="row">
+    <div class="col-md-12">
+        <div class="form-group">
+            <a href="<?=APP_URL;?>/admin/ayuda" class="btn btn-danger">Volver</a>
+        </div>
+    </div>
+</div>
