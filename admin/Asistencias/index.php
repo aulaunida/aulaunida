@@ -40,7 +40,7 @@ include('../../app/controllers/docentes/listado_de_asignaciones.php');
                                         <th>Turno</th>
                                         <th>Grado</th>
                                         <th><center>División</center></th>
-                                        <th><center>Acciones</center></th>
+                                        <th><center>Asistencia</center></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -57,7 +57,8 @@ include('../../app/controllers/docentes/listado_de_asignaciones.php');
                                                 <td><?= $asignacione['curso']; ?></td>
                                                 <td><center><?= $asignacione['paralelo']; ?></center></td>
                                                 <td style="text-align: center">
-                                                    <a href="create.php?id_grado=<?= $id_grado?>&&id_docente=<?= $asignacione['docente_id'];?>&&id_materia=<?= $asignacione['materia_id'];?>" type="button" title="Cargar asistencia" class="btn btn-primary btn-sm"><i class="bi bi-clipboard-data"></i> Cargar asistencia</a>
+                                                    <a href="consultar.php?id_grado=<?= $id_grado?>&&id_docente=<?= $asignacione['docente_id'];?>&&id_materia=<?= $asignacione['materia_id'];?>" type="button" title="Consultar asistencia" class="btn btn-info btn-sm"><i class="bi bi-calendar4-week"></i> Consultar</a>
+                                                    <a href="create.php?id_grado=<?= $id_grado?>&&id_docente=<?= $asignacione['docente_id'];?>&&id_materia=<?= $asignacione['materia_id'];?>" type="button" title="Cargar asistencia" class="btn btn-primary btn-sm"><i class="bi bi-clipboard-data"></i> Cargar</a>
                                                 </td>
                                             </tr>
                                     <?php
