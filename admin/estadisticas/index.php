@@ -84,7 +84,7 @@ include('../../app/controllers/docentes/listado_de_asignaciones.php');
                         <div class="icon">
                             <i class="fas"></i>
                         </div>
-                        <a href="<?= APP_URL; ?>/admin/estadisticas/alumnos_grados.php" class="small-box-footer">
+                        <a href="<?= APP_URL; ?>/admin/estadisticas/integrados.php" class="small-box-footer">
                         Ver gráfico <i class="fas fa-arrow-circle-right"></i>
                         </a>
                     </div>
@@ -129,12 +129,12 @@ include('../../app/controllers/docentes/listado_de_asignaciones.php');
                         <div class="small-box bg-pastel-purple">
                             <div class="inner">
                                 <?php
-                                $contador_disciplina = 5;
+                                $contador_abandono = 5;
                                 ?>
-                                <h3><?= $contador_disciplina; ?></h3>
-                                <p>Disciplina</p>
+                                <h3><?= $contador_abandono; ?></h3>
+                                <p>Deserción escolar</p>
                             </div>
-                            <a href="<?= APP_URL; ?>/admin/estadisticas/inasistencia.php" class="small-box-footer">
+                            <a href="<?= APP_URL; ?>/admin/estadisticas/desercion_escolar.php" class="small-box-footer">
                             Ver gráfico <i class="fas fa-arrow-circle-right"></i>
                             </a>
                         </div>
