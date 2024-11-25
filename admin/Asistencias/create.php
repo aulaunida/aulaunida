@@ -38,6 +38,8 @@ foreach ($materias as $materia) {
         text-transform: uppercase;
         /* Convierte el texto a mayúsculas */
     }
+
+    
 </style>
 
 <!-- Content Wrapper. Contains page content -->
@@ -86,7 +88,6 @@ foreach ($materias as $materia) {
                                                 }
                                                 ?>
                                                 <td class="text-center" type="date" id="fecha_asistencia_<?= $contador_estudiantes; ?>" class="form-control" style="text-align: center"><?= $fecha_asistencia = $fechaHora; ?></td>
-                                                <!-- AQUI TENGO EL PROBLEMA CON <?= $nota1; ?> -->
                                                 <td>
                                                     <select id="estado_asistencia_<?= $contador_estudiantes; ?>" class="form-control" required>
                                                         <option type="number" class="text-center" value="1" <?= ($estado_asistencia == '1') ? 'selected' : ''; ?>>PRESENTE</option>
