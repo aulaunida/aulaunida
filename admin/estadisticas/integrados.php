@@ -166,6 +166,35 @@ document.addEventListener("DOMContentLoaded", function () {
     const tabla = document.getElementById('datosCargados');
     const canvas = document.getElementById('graficoAlumnos').getContext('2d');
 
+    // Inicializa el gráfico vacío
+    const inicializarGrafico = () => {
+        grafico = new Chart(canvas, {
+            type: 'bar',
+            data: {
+                labels: [], // Etiquetas vacías
+                datasets: [] // Sin datasets
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: { display: true },
+                    title: { display: true, text: 'Distribución de Alumnos Integrados' }
+                },
+                scales: {
+                    x: {
+                        stacked: true,
+                        title: { display: true, text: 'Grado' }
+                    },
+                    y: {
+                        stacked: true,
+                        beginAtZero: true,
+                        title: { display: true, text: 'Cantidad de Alumnos' }
+                    }
+                }
+            }
+        });
+    };
+
     document.getElementById('agregarDatos').addEventListener('click', function () {
         const grado = document.getElementById('grado').value;
         const turno = document.getElementById('turno').value;
@@ -247,40 +276,27 @@ document.addEventListener("DOMContentLoaded", function () {
         if (grafico) grafico.destroy();
 
         grafico = new Chart(canvas, {
-    type: 'bar',
-    data: {
-        labels: grados,
-        datasets: categorias.map(categoria => ({
-            label: categoria,
-            data: data[categoria],
-            backgroundColor: getBackgroundColor(categoria),
-            barThickness: 120 // Mantén el grosor definido previamente
-        }))
-    },
-    options: {
-        responsive: true,
-        plugins: {
-            legend: { display: true },
-            title: { display: true, text: 'Distribución de Alumnos Integrados' }
-        },
-        scales: {
-            x: { 
-                stacked: true,
-                barPercentage: 1, // Ancho completo de las barras dentro de la categoría
-                categoryPercentage: 1 // Sin espacio entre categorías
+            type: 'bar',
+            data: {
+                labels: grados,
+                datasets: categorias.map(categoria => ({
+                    label: categoria,
+                    data: data[categoria],
+                    backgroundColor: getBackgroundColor(categoria)
+                }))
             },
-            y: {
-                stacked: true,
-                beginAtZero: true,
-                title: { display: true, text: 'Cantidad de Alumnos' },
-                ticks: {
-                    stepSize: 1 // Escala de 1 en 1
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: { display: true },
+                    title: { display: true, text: 'Distribución de Alumnos Integrados' }
+                },
+                scales: {
+                    x: { stacked: true },
+                    y: { stacked: true, beginAtZero: true }
                 }
             }
-        }
-    }
-});
-
+        });
     };
 
     const getBackgroundColor = (categoria) => {
@@ -292,7 +308,7 @@ document.addEventListener("DOMContentLoaded", function () {
             'TGD': 'rgba(54, 162, 235, 0.6)',
             'Más de una': 'rgba(201, 203, 207, 0.6)',
             'Otras': 'rgba(255, 205, 86, 0.6)',
-            'Sin Plan Integrado': 'rgba(0, 128, 0, 0.6)',
+            'Sin Plan Integrado': 'rgba(0, 128, 0, 0.6)'
         };
         return colores[categoria] || 'rgba(0, 0, 0, 0.6)';
     };
@@ -302,5 +318,8 @@ document.addEventListener("DOMContentLoaded", function () {
         actualizarTabla();
         actualizarGrafico();
     };
+
+    // Llama a la función para inicializar el gráfico vacío
+    inicializarGrafico();
 });
 </script>

@@ -59,15 +59,15 @@ include('../../app/controllers/docentes/listado_de_asignaciones.php');
                         <div class="small-box bg-pastel-blue">
                             <div class="inner">
                                 <?php
-                                $contador_asistencias = 1;
+                                $contador_repitencia = 1;
                                 ?>
-                                <h3><?= $contador_asistencias; ?></h3>
-                                <p>Asistencias / Inasistencias</p>
+                                <h3><?= $contador_repitencia; ?></h3>
+                                <p>Repitencia</p>
                             </div>
                             <div style="color: white;" class="icon">
                                 <i class="fas"></i>
                             </div>
-                            <a href="<?= APP_URL; ?>/admin/estadisticas/asistencia.php" class="small-box-footer">
+                            <a href="<?= APP_URL; ?>/admin/estadisticas/repitencia.php" class="small-box-footer">
                             Ver gráfico <i class="fas fa-arrow-circle-right"></i>
                             </a>
                         </div>
@@ -96,12 +96,12 @@ include('../../app/controllers/docentes/listado_de_asignaciones.php');
                             $contador_calificaciones = 3;
                             ?>
                             <h3><?= $contador_calificaciones; ?></h3>
-                            <p>Calificaciones</p>
+                            <p>Progreso escolar</p>
                         </div>
                         <div class="icon">
                             <i class="fas"></i>
                         </div>
-                        <a href="<?= APP_URL; ?>/admin/estadisticas/spiderchart.php" class="small-box-footer">
+                        <a href="<?= APP_URL; ?>/admin/estadisticas/progreso.php" class="small-box-footer">
                         Ver gráfico <i class="fas fa-arrow-circle-right"></i>
                         </a>
                     </div>
@@ -132,9 +132,9 @@ include('../../app/controllers/docentes/listado_de_asignaciones.php');
                                 $contador_abandono = 5;
                                 ?>
                                 <h3><?= $contador_abandono; ?></h3>
-                                <p>Deserción escolar</p>
+                                <p>Abandono escolar</p>
                             </div>
-                            <a href="<?= APP_URL; ?>/admin/estadisticas/desercion_escolar.php" class="small-box-footer">
+                            <a href="<?= APP_URL; ?>/admin/estadisticas/abandono_escolar.php" class="small-box-footer">
                             Ver gráfico <i class="fas fa-arrow-circle-right"></i>
                             </a>
                         </div>

@@ -8,7 +8,7 @@ include('../../admin/layout/parte1.php');
     <div class="content">
         <div class="container">
             <div class="row">
-            <h1 style="margin-left: 20px;"><i class="bi bi-toggles2"></i> Deserción escolar</h1>
+            <h1 style="margin-left: 20px;"><i class="bi bi-bar-chart-line"></i> Abandono escolar</h1>
             </div>
             <br>
             <div class="row">
