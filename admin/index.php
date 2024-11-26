@@ -139,13 +139,21 @@ include('../app/controllers/docentes/listado_de_asignaciones.php');
                                     <ol class="carousel-indicators">
                                         <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
                                         <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                                        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                                        <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
                                     </ol>
                                     <div class="carousel-inner">
                                         <div class="carousel-item active">
-                                            <img src="../public/images/imagen1.jpg" class="d-block w-100" alt="...">
+                                            <img src="../public/images/imagen1.png" class="d-block w-100" alt="...">
                                         </div>
                                         <div class="carousel-item">
-                                            <img src="../public/images/imagen2.jpg" class="d-block w-100" alt="...">
+                                            <img src="../public/images/imagen2.png" class="d-block w-100" alt="...">
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img src="../public/images/imagen3.png" class="d-block w-100" alt="...">
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img src="../public/images/imagen4.png" class="d-block w-100" alt="...">
                                         </div>
                                     </div>
                                     <button class="carousel-control-prev" type="button" data-target="#carouselExampleIndicators" data-slide="prev">

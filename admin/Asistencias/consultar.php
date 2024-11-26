@@ -72,7 +72,7 @@ $dias_en_espanol = [
         <div class="container">
             <div class="row">
                 <h2 style="margin-left: 20px;">
-                    <i class="bi bi-plus-square"></i> Registrar asistencia: 
+                <i class="bi bi-eye"></i> Consultar asistencia: 
                     <b><?= $curso ?> "<?= $paralelo; ?>" - <?= $nombre_materia; ?></b>
                 </h2>
             </div>

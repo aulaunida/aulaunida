@@ -3,6 +3,7 @@ include('../../app/config.php');
 include('../../admin/layout/parte1.php');
 ?>
 <div class="content-wrapper">
+<br>
     <div class="content">
         <div class="container">
             <div class="row">
@@ -10,6 +11,7 @@ include('../../admin/layout/parte1.php');
             </div>
             <br>
             <div class="row">
+                <div class="col-md-2"></div>
                 <div class="col-md-12">
                     <div class="card card-outline card-primary">
                         <div class="card-header">
@@ -135,7 +137,9 @@ include('../../admin/layout/parte1.php');
                                     ?>
 
                                 </div>
-                                <button type="button" class="btn btn-primary" id="agregarDatos">Agregar</button>
+                                <div class="form-group">
+                                    <button type="button" class="btn btn-primary" id="agregarDatos">Agregar</button>
+                                </div>
                             </form>
                             <hr>
                             <div id="tablaDatos">
@@ -158,19 +162,26 @@ include('../../admin/layout/parte1.php');
                         <div class="card-body">
                           <canvas id="graficoRadar" width="400" height="400"></canvas>
                         </div>
-   
-                    </div>
+                        
+                        <hr>
                     <div class="row">
                         <div class="col-md-12 text-center">
                             <a href="<?= APP_URL; ?>/admin/estadisticas/index.php" class="btn btn-danger">Volver</a>
                         </div>
                     </div>
+                    <br>
+                    </div>
+
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<?php include('../../admin/layout/parte2.php'); ?>
+
+
+<?php 
+include('../../admin/layout/parte2.php'); 
+?>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="script.js"></script>

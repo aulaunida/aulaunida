@@ -115,12 +115,12 @@ include('../../app/controllers/docentes/listado_de_asignaciones.php');
                                 $contador_tiempo = 4;
                                 ?>
                                 <h3><?= $contador_tiempo; ?></h3>
-                                <p>Tiempo de estudio</p>
+                                <p>Participación de la familia</p>
                             </div>
                             <div class="icon">
                                 <i class="fas"></i>
                             </div>
-                            <a href="<?= APP_URL; ?>/admin/estadisticas/scatterplot.php" class="small-box-footer">
+                            <a href="<?= APP_URL; ?>/admin/estadisticas/familia.php" class="small-box-footer">
                                 Ver gráfico <i class="fas fa-arrow-circle-right"></i>
                             </a>
                         </div>
@@ -139,7 +139,7 @@ include('../../app/controllers/docentes/listado_de_asignaciones.php');
                             </a>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-4">
+                    <!-- <div class="col-lg-4 col-4">
                         <div class="small-box bg-pastel-mint">
                             <div class="inner">
                                 <?php
@@ -152,7 +152,7 @@ include('../../app/controllers/docentes/listado_de_asignaciones.php');
                             Ver gráfico <i class="fas fa-arrow-circle-right"></i>
                             </a>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
                 <div class="row">
                                 <div class="col-md-12">
