@@ -126,12 +126,18 @@ $dias_en_espanol = [
                                             ?>
                                             <th><?= $dia ?> <small>(<?= $nombre_dia_espanol ?>)</small></th>
                                         <?php endforeach; ?>
+                                        <th>Total Inasistencias</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php foreach ($estudiantes as $estudiante) :
+                                    <?php
+                                    $total_inasistencias_curso = 0; // Contador total de inasistencias para el curso
+                                    $total_asistencias_curso = 0; // Contador total de asistencias para el curso
+                                    foreach ($estudiantes as $estudiante) :
                                         if ($id_grado_get == $estudiante['id_grado']) :
-                                            $id_estudiante = $estudiante['id_estudiante']; ?>
+                                            $id_estudiante = $estudiante['id_estudiante'];
+                                            $inasistencias_por_alumno = 0; // Contador individual de inasistencias
+                                    ?>
                                             <tr>
                                                 <td class="uppercase"><?= $estudiante['apellidos'] . ', ' . $estudiante['nombres']; ?></td>
                                                 <?php
@@ -146,10 +152,14 @@ $dias_en_espanol = [
                                                             $asistencia_dia = ($asistencia['estado_asistencia'] == 1) ? 'P' : 'A';
                                                         }
                                                     }
+                                                    if ($asistencia_dia == 'A') {
+                                                        $inasistencias_por_alumno++;
+                                                    } else if ($asistencia_dia == 'P') {
+                                                        $total_asistencias_curso++; // Sumar asistencia
+                                                    }
                                                 ?>
                                                     <td class="text-center">
                                                         <?php
-                                                        // Establecer el color según la asistencia
                                                         if ($asistencia_dia == 'P') {
                                                             echo "<span style='color: green;'>P</span>";
                                                         } else if ($asistencia_dia == 'A') {
@@ -158,14 +168,35 @@ $dias_en_espanol = [
                                                         ?>
                                                     </td>
                                                 <?php endforeach; ?>
+                                                <td class="text-center">
+                                                    <b><?= $inasistencias_por_alumno; ?></b>
+                                                </td>
                                             </tr>
                                     <?php
+                                            $total_inasistencias_curso += $inasistencias_por_alumno; // Acumular en el total del curso
                                         endif;
                                     endforeach;
                                     ?>
                                 </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <td colspan="<?= count($dias_habiles) + 1; ?>" class="text-right"><b>Total Inasistencias del Curso:</b></td>
+                                        <td class="text-center"><b><?= $total_inasistencias_curso; ?></b></td>
+                                    </tr>
+                                </tfoot>
                             </table>
                             <!-- Fin de la tabla -->
+
+                            <!-- Gráfico de estadísticas -->
+                            <div class="row mt-4">
+                            <div class="col-md-4">
+                                    
+                                </div>
+                                <div class="col-md-4">
+                                    <h4 class="text-center">Estadística General de Asistencias</h4>
+                                    <canvas id="asistenciaChart" height="100"></canvas>
+                                </div>
+                            </div>
 
                             <hr>
                             <div class="row">
@@ -183,5 +214,31 @@ $dias_en_espanol = [
     <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
+
+<!-- Librería Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    const ctx = document.getElementById('asistenciaChart').getContext('2d');
+    const asistenciaChart = new Chart(ctx, {
+        type: 'pie', // Cambiar a 'bar' si prefieres barras
+        data: {
+            labels: ['Asistencias', 'Inasistencias'],
+            datasets: [{
+                label: 'Asistencias vs Inasistencias',
+                data: [<?= $total_asistencias_curso; ?>, <?= $total_inasistencias_curso; ?>],
+                backgroundColor: ['#4CAF50', '#F44336'],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'top',
+                },
+            }
+        }
+    });
+</script>
 
 <?php include('../../admin/layout/parte2.php'); ?>
