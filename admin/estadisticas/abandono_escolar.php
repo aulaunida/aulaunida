@@ -1,11 +1,15 @@
 <?php
 include('../../app/config.php');
 include('../../admin/layout/parte1.php');
-include('../../app/controllers/docentes/listado_de_docentes.php');
+include('../../app/controllers/roles/listado_de_roles.php');
+include('../../app/controllers/usuarios/listado_de_usuarios.php');
 include('../../app/controllers/niveles/listado_de_niveles.php');
 include('../../app/controllers/grados/listado_de_grados.php');
 include('../../app/controllers/materias/listado_de_materias.php');
+include('../../app/controllers/docentes/listado_de_docentes.php');
+include('../../app/controllers/estudiantes/listado_de_estudiantes.php');
 include('../../app/controllers/docentes/listado_de_asignaciones.php');
+include('../../app/controllers/estudiantes/reporte_estudiantes_grados.php');
 include('../../app/controllers/configuraciones/gestion/listado_de_gestiones.php');
 ?>
 <!-- Content Wrapper -->
