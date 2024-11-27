@@ -60,10 +60,13 @@ foreach ($materias as $materia) {
                             <table id="example1" class="table table-striped table-bordered table-hover table-sm">
                                 <thead>
                                     <tr>
-                                        <th text align="lefth">Alumno</th>
+                                        <th text align="left">Alumno</th>
                                         <th><center>Integración<center></th>
                                         <th colspan="4"><center>Primera Etapa</center></th>
+                                        <th><center>Nota Final</center></th>
                                         <th colspan="4"><center>Segunda Etapa</center></th>
+                                        <th><center>Nota Final</center></th>
+
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -88,6 +91,8 @@ foreach ($materias as $materia) {
                                                 $nota6 = "";
                                                 $nota7 = "";
                                                 $nota8 = "";
+                                                $nota9 = "";
+                                                $nota10 = "";
                                                 foreach ($calificaciones as $calificacione) {
                                                     if (($calificacione['docente_id'] == $id_docente_get) && ($calificacione['estudiante_id'] == $id_estudiante) && ($calificacione['materia_id'] == $id_materia_get)) {
                                                         $nota1 = $calificacione['nota1'];
@@ -98,6 +103,8 @@ foreach ($materias as $materia) {
                                                         $nota6 = $calificacione['nota6'];
                                                         $nota7 = $calificacione['nota7'];
                                                         $nota8 = $calificacione['nota8'];
+                                                        $nota9 = $calificacione['nota9'];
+                                                        $nota10 = $calificacione['nota10'];
                                                     }
                                                 }
                                                 ?>
@@ -177,6 +184,24 @@ foreach ($materias as $materia) {
                                                         <option type="number" value="20" <?= ($nota8 == '20') ? 'selected' : ''; ?>>NS</option>
                                                     </select>
                                                 </td>
+                                                <td> <select id="nota9_<?= $contador_estudiantes; ?>" class="form-control" required>
+                                                        <option type="number" value="" <?= ($nota9 == '') ? 'selected' : ''; ?>>-</option>
+                                                        <option type="number" value="100" <?= ($nota9 == '100') ? 'selected' : ''; ?>>E</option>
+                                                        <option type="number" value="80" <?= ($nota9 == '80') ? 'selected' : ''; ?>>MB</option>
+                                                        <option type="number" value="60" <?= ($nota9 == '60') ? 'selected' : ''; ?>>B</option>
+                                                        <option type="number" value="40" <?= ($nota9 == '40') ? 'selected' : ''; ?>>S</option>
+                                                        <option type="number" value="20" <?= ($nota9 == '20') ? 'selected' : ''; ?>>NS</option>
+                                                    </select>
+                                                </td>
+                                                <td> <select id="nota10_<?= $contador_estudiantes; ?>" class="form-control" required>
+                                                        <option type="number" value="" <?= ($nota10 == '') ? 'selected' : ''; ?>>-</option>
+                                                        <option type="number" value="100" <?= ($nota10 == '100') ? 'selected' : ''; ?>>E</option>
+                                                        <option type="number" value="80" <?= ($nota10 == '80') ? 'selected' : ''; ?>>MB</option>
+                                                        <option type="number" value="60" <?= ($nota10 == '60') ? 'selected' : ''; ?>>B</option>
+                                                        <option type="number" value="40" <?= ($nota10 == '40') ? 'selected' : ''; ?>>S</option>
+                                                        <option type="number" value="20" <?= ($nota10 == '20') ? 'selected' : ''; ?>>NS</option>
+                                                    </select>
+                                                </td>
                                             </tr>
                                     <?php
                                         }
@@ -225,6 +250,12 @@ foreach ($materias as $materia) {
                                                     var h = '#nota8_' + i;
                                                     var nota8 = $(h).val();
 
+                                                    var l = '#nota9_' + i;
+                                                    var nota9 = $(l).val();
+
+                                                    var m = '#nota10_' + i;
+                                                    var nota10 = $(m).val();
+
                                                     var k = '#estudiante_' + i;
                                                     var id_estudiante = $(k).val();
 
@@ -242,9 +273,11 @@ foreach ($materias as $materia) {
                                                         nota5: nota5,
                                                         nota6: nota6,
                                                         nota7: nota7,
-                                                        nota8: nota8
+                                                        nota8: nota8,
+                                                        nota9: nota9,
+                                                        nota10: nota10
                                                     }, function(datos) {
-                                                        // alert("mando las notas");
+                                                        //alert("mando las notas");
                                                         $('#respuesta').html(datos);
                                                     });
                                                 }

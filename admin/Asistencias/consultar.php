@@ -72,7 +72,7 @@ $dias_en_espanol = [
         <div class="container">
             <div class="row">
                 <h2 style="margin-left: 20px;">
-                <i class="bi bi-eye"></i> Consultar asistencia: 
+                    <i class="bi bi-eye"></i> Consultar asistencia:
                     <b><?= $curso ?> "<?= $paralelo; ?>" - <?= $nombre_materia; ?></b>
                 </h2>
             </div>
@@ -95,9 +95,18 @@ $dias_en_espanol = [
                                         <select name="mes" class="form-control" id="mes_seleccionado">
                                             <?php
                                             $meses = [
-                                                1 => "ENERO", 2 => "FEBRERO", 3 => "MARZO", 4 => "ABRIL",
-                                                5 => "MAYO", 6 => "JUNIO", 7 => "JULIO", 8 => "AGOSTO",
-                                                9 => "SEPTIEMBRE", 10 => "OCTUBRE", 11 => "NOVIEMBRE", 12 => "DICIEMBRE"
+                                                1 => "ENERO",
+                                                2 => "FEBRERO",
+                                                3 => "MARZO",
+                                                4 => "ABRIL",
+                                                5 => "MAYO",
+                                                6 => "JUNIO",
+                                                7 => "JULIO",
+                                                8 => "AGOSTO",
+                                                9 => "SEPTIEMBRE",
+                                                10 => "OCTUBRE",
+                                                11 => "NOVIEMBRE",
+                                                12 => "DICIEMBRE"
                                             ];
                                             foreach ($meses as $key => $nombre_mes) {
                                                 $selected = ($key == $mes_actual) ? "selected" : "";
@@ -106,9 +115,14 @@ $dias_en_espanol = [
                                             ?>
                                         </select>
                                     </div>
-                                    <div class="col-md-2">
+                                    <div class="col-md-4">
                                         <button type="submit" class="btn btn-primary">Consultar</button>
                                     </div>
+
+                                    <div class="col-md-4">
+                                    <!-- <h4 class="text-center">Estadística General de Asistencias</h4> -->
+                                    <canvas id="asistenciaChart" height="100"></canvas>
+                                </div>
                                 </div>
                             </form>
                             <!-- Fin del formulario -->
@@ -145,10 +159,12 @@ $dias_en_espanol = [
                                                     $fecha_actual = sprintf('%04d-%02d-%02d', $año_actual, $mes_actual, $dia);
                                                     $asistencia_dia = '';
                                                     foreach ($asistencias as $asistencia) {
-                                                        if ($asistencia['docente_id'] == $id_docente_get &&
+                                                        if (
+                                                            $asistencia['docente_id'] == $id_docente_get &&
                                                             $asistencia['estudiante_id'] == $id_estudiante &&
                                                             $asistencia['materia_id'] == $id_materia_get &&
-                                                            $asistencia['fecha_asistencia'] == $fecha_actual) {
+                                                            $asistencia['fecha_asistencia'] == $fecha_actual
+                                                        ) {
                                                             $asistencia_dia = ($asistencia['estado_asistencia'] == 1) ? 'P' : 'A';
                                                         }
                                                     }
@@ -187,17 +203,6 @@ $dias_en_espanol = [
                             </table>
                             <!-- Fin de la tabla -->
 
-                            <!-- Gráfico de estadísticas -->
-                            <div class="row mt-4">
-                            <div class="col-md-4">
-                                    
-                                </div>
-                                <div class="col-md-4">
-                                    <h4 class="text-center">Estadística General de Asistencias</h4>
-                                    <canvas id="asistenciaChart" height="100"></canvas>
-                                </div>
-                            </div>
-
                             <hr>
                             <div class="row">
                                 <div class="col-md-12 text-center">
@@ -220,7 +225,7 @@ $dias_en_espanol = [
 <script>
     const ctx = document.getElementById('asistenciaChart').getContext('2d');
     const asistenciaChart = new Chart(ctx, {
-        type: 'pie', // Cambiar a 'bar' si prefieres barras
+        type: 'bar', // Cambiar a 'bar' si prefieres barras
         data: {
             labels: ['Asistencias', 'Inasistencias'],
             datasets: [{
