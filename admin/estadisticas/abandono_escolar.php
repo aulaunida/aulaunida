@@ -84,66 +84,91 @@ include('../../app/controllers/configuraciones/gestion/listado_de_gestiones.php'
                                     </div>
                                 </div>
                                 <hr>
-                                <h6>Motivos de Abandono:</h6>
-                                <hr>
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label for="economico">Factores socioeconómicos:<b style="color:red">*</b></label>
-                                            <input type="number" id="economico" name="economico" class="form-control" placeholder="Cantidad de abandonos" required>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label for="personal">Factores personales:<b style="color:red">*</b></label>
-                                            <input type="number" id="personal" name="personal" class="form-control" placeholder="Cantidad de abandonos" required>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label for="educativo">Factores educativos:<b style="color:red">*</b></label>
-                                            <input type="number" id="educativo" name="educativo" class="form-control" placeholder="Cantidad de abandonos" required>
-                                        </div>
+                            <h6>Motivos de Abandono:</h6>
+                            <hr>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="economico">Factores socioeconómicos:<b style="color:red">*</b></label>
+                                        <input type="number" id="economico" class="form-control" placeholder="Cantidad de abandonos" required>
                                     </div>
                                 </div>
-                                <!-- Otros campos aquí -->
-                                <div class="form-group">
-                                    <button type="button" class="btn btn-primary" id="agregarDatos">Agregar</button>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="personal">Factores personales:<b style="color:red">*</b></label>
+                                        <input type="number" id="personal" class="form-control" placeholder="Cantidad de abandonos" required>
+                                    </div>
                                 </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="educativo">Factores educativos:<b style="color:red">*</b></label>
+                                        <input type="number" id="educativo" class="form-control" placeholder="Cantidad de abandonos" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="familia">Problemas familiares:<b style="color:red">*</b></label>
+                                        <input type="number" id="familia" class="form-control" placeholder="Cantidad de abandonos" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="infraestructura">Falta de infraestructura:<b style="color:red">*</b></label>
+                                        <input type="number" id="infraestructura" class="form-control" placeholder="Cantidad de abandonos" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="otros">Otros factores:<b style="color:red">*</b></label>
+                                        <input type="number" id="otros" class="form-control" placeholder="Cantidad de abandonos" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <button type="button" class="btn btn-primary" id="agregarDatos">Agregar</button>
+                            </div>
                             </form>
+                            <hr>
+                            <div id="tablaDatos">
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>Grado</th>
+                                            <th>Turno</th>
+                                            <th>Ciclo</th>
+                                            <th>Matriculados</th>
+                                            <th>Total abandonos</th>
+                                            <th>% Abandono</th>
+                                            <th>Acción</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="datosCargados">
+                                        <!-- Aquí se añadirán los datos -->
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
-                        <div id="tablaDatos">
-                            <table class="table table-bordered">
-                                <thead>
-                                    <tr>
-                                        <th>Grado</th>
-                                        <th>Turno</th>
-                                        <th>Ciclo</th>
-                                        <th>Matriculados</th>
-                                        <th>Total abandonos</th>
-                                        <th>% Abandono</th>
-                                        <th>Acción</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="datosCargados">
-                                    <!-- Aquí se añadirán los datos -->
-                                </tbody>
-                            </table>
-                        </div>
+
                         <div class="card-body">
                             <canvas id="graficoPareto" width="400" height="200"></canvas>
                         </div>
                         <hr>
-                        <div class="form-group text-center">
-                            <a href="<?= APP_URL; ?>/admin/estadisticas/index.php" class="btn btn-danger">Volver</a>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group text-center">
+                                    <a href="<?= APP_URL; ?>/admin/estadisticas/index.php" class="btn btn-danger">Volver</a>
+                                </div>
+                            </div>
                         </div>
+
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
 <?php
 include('../../admin/layout/parte2.php');
 ?>
