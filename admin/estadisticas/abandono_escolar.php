@@ -31,7 +31,7 @@ include('../../app/controllers/configuraciones/gestion/listado_de_gestiones.php'
                         <div class="card-body">
                             <form id="formDatosAbandono">
                                 <div class="row">
-                                <div class="col-md-3">
+                                    <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="ciclo">Ciclo Lectivo:<b style="color:red">*</b></label>
                                             <select name="id_gestion" id="ciclo" class="form-control" required>
@@ -39,7 +39,7 @@ include('../../app/controllers/configuraciones/gestion/listado_de_gestiones.php'
                                                 <?php
                                                 foreach ($gestiones as $gestione) {
                                                     $id_gestion = $gestione['id_gestion']; ?>
-                                                    <option value="<?= $id_gestion; ?>"><?= $gestione['gestion']; ?></option>
+                                                    <option value="<?= $gestione['gestion']; ?>"><?= $gestione['gestion']; ?></option>
                                                 <?php
                                                 }
                                                 ?>
@@ -54,7 +54,7 @@ include('../../app/controllers/configuraciones/gestion/listado_de_gestiones.php'
                                                 <?php
                                                 foreach ($niveles as $nivele) {
                                                     $id_nivel = $nivele['id_nivel']; ?>
-                                                    <option value="<?= $id_nivel; ?>"><?= $nivele['nivel']; ?> - TURNO <?= $nivele['turno']; ?></option>
+                                                    <option value="<?= $nivele['nivel'];?> - TURNO <?= $nivele['turno']; ?>"><?= $nivele['nivel']; ?> - TURNO <?= $nivele['turno']; ?></option>
                                                 <?php
                                                 }
                                                 ?>
@@ -69,7 +69,7 @@ include('../../app/controllers/configuraciones/gestion/listado_de_gestiones.php'
                                                 <?php
                                                 foreach ($grados as $grado) {
                                                     $id_grado = $grado['id_grado']; ?>
-                                                    <option value="<?= $id_grado; ?>"><?= $grado['curso']; ?> - TURNO <?= $grado['paralelo']; ?></option>
+                                                    <option value="<?= $id_grado; ?>" data-display="<?= $grado['curso']; ?> - TURNO <?= $grado['paralelo']; ?>"><?= $grado['curso']; ?> - DIVISIÓN <?= $grado['paralelo']; ?></option>
                                                 <?php
                                                 }
                                                 ?>
@@ -77,8 +77,8 @@ include('../../app/controllers/configuraciones/gestion/listado_de_gestiones.php'
 
                                         </div>
                                     </div>
-                                    
-                                    
+
+
 
                                     <?php
                                     $contador = 0;
@@ -139,19 +139,19 @@ include('../../app/controllers/configuraciones/gestion/listado_de_gestiones.php'
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="economico">Factores socioeconómicos:<b style="color:red">*</b></label>
-                                            <input type="number" id="economico" class="form-control" placeholder="Cantidad de abandonos" required>
+                                            <input type="number" id="economico" class="form-control" value="0" placeholder="Cantidad de abandonos" required>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="personal">Factores personales:<b style="color:red">*</b></label>
-                                            <input type="number" id="personal" class="form-control" placeholder="Cantidad de abandonos" required>
+                                            <input type="number" id="personal" class="form-control" value="0" placeholder="Cantidad de abandonos" required>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="educativo">Factores educativos:<b style="color:red">*</b></label>
-                                            <input type="number" id="educativo" class="form-control" placeholder="Cantidad de abandonos" required>
+                                            <input type="number" id="educativo" class="form-control" value="0" placeholder="Cantidad de abandonos" required>
                                         </div>
                                     </div>
                                 </div>
@@ -159,19 +159,19 @@ include('../../app/controllers/configuraciones/gestion/listado_de_gestiones.php'
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="familia">Problemas familiares:<b style="color:red">*</b></label>
-                                            <input type="number" id="familia" class="form-control" placeholder="Cantidad de abandonos" required>
+                                            <input type="number" id="familia" class="form-control" value="0" placeholder="Cantidad de abandonos" required>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="infraestructura">Falta de infraestructura:<b style="color:red">*</b></label>
-                                            <input type="number" id="infraestructura" class="form-control" placeholder="Cantidad de abandonos" required>
+                                            <input type="number" id="infraestructura" class="form-control" value="0" placeholder="Cantidad de abandonos" required>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="otros">Otros factores:<b style="color:red">*</b></label>
-                                            <input type="number" id="otros" class="form-control" placeholder="Cantidad de abandonos" required>
+                                            <input type="number" id="otros" class="form-control" value="0" placeholder="Cantidad de abandonos" required>
                                         </div>
                                     </div>
                                 </div>
@@ -235,7 +235,9 @@ include('../../admin/layout/parte2.php');
 
         // Manejar clic del botón "Agregar"
         document.getElementById('agregarDatos').addEventListener('click', function() {
-            const grado = document.getElementById('selectGrado').value;
+            const gradoElement = document.getElementById('selectGrado');
+            const grado = gradoElement.value; // Esto sigue siendo el `value` para validaciones
+            const gradoDisplay = gradoElement.options[gradoElement.selectedIndex].getAttribute('data-display'); // Obtiene el texto para mostrar en la tabla
             const turno = document.getElementById('turno').value;
             const ciclo = document.getElementById('ciclo').value;
             const matriculados = parseInt(document.getElementById('matriculados').value);
@@ -262,7 +264,8 @@ include('../../admin/layout/parte2.php');
             const porcentajeAbandono = ((totalAbandono / matriculados) * 100).toFixed(2);
 
             datos.push({
-                grado,
+                grado, // Para validaciones
+                gradoDisplay, // Para mostrar en la tabla
                 turno,
                 ciclo,
                 matriculados,
@@ -285,18 +288,19 @@ include('../../admin/layout/parte2.php');
             tabla.innerHTML = ''; // Limpiar la tabla
             datos.forEach((dato, index) => {
                 tabla.innerHTML += `
-                <tr>
-                    <td>${dato.grado}</td>
-                    <td>${dato.turno}</td>
-                    <td>${dato.ciclo}</td>
-                    <td>${dato.matriculados}</td>
-                    <td>${dato.totalAbandono}</td>
-                    <td>${dato.porcentajeAbandono}%</td>
-                    <td><button class="btn btn-danger btn-sm" onclick="eliminarDato(${index})">Eliminar</button></td>
-                </tr>
-            `;
+        <tr>
+            <td>${dato.gradoDisplay}</td>
+            <td>${dato.turno}</td>
+            <td>${dato.ciclo}</td>
+            <td>${dato.matriculados}</td>
+            <td>${dato.totalAbandono}</td>
+            <td>${dato.porcentajeAbandono}%</td>
+            <td><button class="btn btn-danger btn-sm" onclick="eliminarDato(${index})">Eliminar</button></td>
+        </tr>
+    `;
             });
         };
+
 
         window.eliminarDato = (index) => {
             datos.splice(index, 1);
