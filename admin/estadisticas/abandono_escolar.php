@@ -31,6 +31,36 @@ include('../../app/controllers/configuraciones/gestion/listado_de_gestiones.php'
                         <div class="card-body">
                             <form id="formDatosAbandono">
                                 <div class="row">
+                                <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label for="ciclo">Ciclo Lectivo:<b style="color:red">*</b></label>
+                                            <select name="id_gestion" id="ciclo" class="form-control" required>
+                                                <option value="" disabled selected>Seleccionar ciclo lectivo</option>
+                                                <?php
+                                                foreach ($gestiones as $gestione) {
+                                                    $id_gestion = $gestione['id_gestion']; ?>
+                                                    <option value="<?= $id_gestion; ?>"><?= $gestione['gestion']; ?></option>
+                                                <?php
+                                                }
+                                                ?>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label for="turno">Turno:<b style="color:red">*</b></label>
+                                            <select name="id_nivel" id="turno" class="form-control" required>
+                                                <option value="" disabled selected>Seleccionar turno</option>
+                                                <?php
+                                                foreach ($niveles as $nivele) {
+                                                    $id_nivel = $nivele['id_nivel']; ?>
+                                                    <option value="<?= $id_nivel; ?>"><?= $nivele['nivel']; ?> - TURNO <?= $nivele['turno']; ?></option>
+                                                <?php
+                                                }
+                                                ?>
+                                            </select>
+                                        </div>
+                                    </div>
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="grado">Grado y división:<b style="color:red">*</b></label>
@@ -47,36 +77,8 @@ include('../../app/controllers/configuraciones/gestion/listado_de_gestiones.php'
 
                                         </div>
                                     </div>
-                                    <div class="col-md-3">
-                                        <div class="form-group">
-                                            <label for="turno">Turno:<b style="color:red">*</b></label>
-                                            <select name="id_nivel" id="" class="form-control" required>
-                                                <option value="" disabled selected>Seleccionar turno</option>
-                                                <?php
-                                                foreach ($niveles as $nivele) {
-                                                    $id_nivel = $nivele['id_nivel']; ?>
-                                                    <option value="<?= $id_nivel; ?>"><?= $nivele['nivel']; ?> - TURNO <?= $nivele['turno']; ?></option>
-                                                <?php
-                                                }
-                                                ?>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <div class="form-group">
-                                            <label for="ciclo">Ciclo Lectivo:<b style="color:red">*</b></label>
-                                            <select name="id_gestion" id="" class="form-control" required>
-                                                <option value="" disabled selected>Seleccionar ciclo lectivo</option>
-                                                <?php
-                                                foreach ($gestiones as $gestione) {
-                                                    $id_gestion = $gestione['id_gestion']; ?>
-                                                    <option value="<?= $id_gestion; ?>"><?= $gestione['gestion']; ?></option>
-                                                <?php
-                                                }
-                                                ?>
-                                            </select>
-                                        </div>
-                                    </div>
+                                    
+                                    
 
                                     <?php
                                     $contador = 0;
@@ -233,7 +235,7 @@ include('../../admin/layout/parte2.php');
 
         // Manejar clic del botón "Agregar"
         document.getElementById('agregarDatos').addEventListener('click', function() {
-            const grado = document.getElementById('grado').value;
+            const grado = document.getElementById('selectGrado').value;
             const turno = document.getElementById('turno').value;
             const ciclo = document.getElementById('ciclo').value;
             const matriculados = parseInt(document.getElementById('matriculados').value);
