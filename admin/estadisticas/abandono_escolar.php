@@ -69,7 +69,7 @@ include('../../app/controllers/configuraciones/gestion/listado_de_gestiones.php'
                                                 <?php
                                                 foreach ($grados as $grado) {
                                                     $id_grado = $grado['id_grado']; ?>
-                                                    <option value="<?= $id_grado; ?>" data-display="<?= $grado['curso']; ?> - TURNO <?= $grado['paralelo']; ?>"><?= $grado['curso']; ?> - DIVISIÓN <?= $grado['paralelo']; ?></option>
+                                                    <option value="<?= $id_grado; ?>" data-display="<?= $grado['curso']; ?> - DIVISIÓN <?= $grado['paralelo']; ?>"><?= $grado['curso']; ?> - DIVISIÓN <?= $grado['paralelo']; ?></option>
                                                 <?php
                                                 }
                                                 ?>
