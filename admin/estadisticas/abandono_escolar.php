@@ -128,7 +128,7 @@ include('../../app/controllers/configuraciones/gestion/listado_de_gestiones.php'
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="matriculados">Alumnos Matriculados:<b style="color:red">*</b></label>
-                                            <input type="number" id="matriculados" value="" name="matriculados" class="form-control" placeholder="Cantidad de alumnos" required>
+                                            <input type="number" id="matriculados" value="" name="matriculados" class="form-control" placeholder="" disabled required>
                                         </div>
                                     </div>
                                 </div>
