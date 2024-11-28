@@ -61,6 +61,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
+     <!-- Place the first <script> tag in your HTML's <head> -->
+     <script src="https://cdn.tiny.cloud/1/7bc9bpvjffgio737txzw1xbe5vzipzqaald4o4ol8n6xue0f/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
+
+
    
 
 </head>

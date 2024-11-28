@@ -26,7 +26,7 @@ include('../../app/controllers/informes/listado_de_informes.php');
     <div class="content">
         <div class="container">
             <div class="row">
-            <h1 style="margin-left: 20px;"><i class="bi bi-journal-check"></i> Informes</h1>
+                <h1 style="margin-left: 20px;"><i class="bi bi-journal-check"></i> Informes</h1>
             </div>
             <br>
             <div class="row">
@@ -40,8 +40,12 @@ include('../../app/controllers/informes/listado_de_informes.php');
                                         <th>Materia</th>
                                         <th>Turno</th>
                                         <th>Grado</th>
-                                        <th><center>División</center></th>
-                                        <th><center>Acciones</center></th>
+                                        <th>
+                                            <center>División</center>
+                                        </th>
+                                        <th>
+                                            <center>Acciones</center>
+                                        </th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -57,144 +61,146 @@ include('../../app/controllers/informes/listado_de_informes.php');
                                                 <td><?= $asignacione['nombre_materia']; ?></td>
                                                 <td><?= $asignacione['turno']; ?></td>
                                                 <td><?= $asignacione['curso']; ?></td>
-                                                <td><center><?= $asignacione['paralelo']; ?></center></td>
+                                                <td>
+                                                    <center><?= $asignacione['paralelo']; ?></center>
+                                                </td>
                                                 <td style="text-align: center">
                                                     <a class="btn btn-info btn-sm" data-toggle="modal"
                                                         data-target="#exampleModal<?= $id_asignacion; ?>">
                                                         <i class="bi bi-plus"></i> Redactar informe</a>
 
 
-                                <!-- INICIO DEL MODAL REGISTRAR INFORME  -->
-                                <div class="modal fade" id="exampleModal<?= $id_asignacion; ?>"
-                                    tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog modal-lg">
-                                        <div class="modal-content">
-                                            <div class="modal-header"
-                                                style="background-color:#17a2b8; color:#FFFFFF">
-                                                <h5 class="modal-title" id="exampleModalLabel"><i class="bi bi-plus-square"></i> Redactar informe: </i><b><?= $asignacione['curso']; ?>
-                                                    "<?= $asignacione['paralelo']; ?>" -
-                                                    <?= $asignacione['nombre_materia']; ?></b>
-                                                </h5>
-                                                <button type="button" class="close" data-dismiss="modal"
-                                                    aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <form action="<?= APP_URL; ?>/app/controllers/informes/create.php" method="post">
-                                                <div class="modal-body">
-                                                    <div class="row">
-                                                        <div class="col-md-12">
-                                                            <div class="form-group" style="text-align: left">
-                                                                <label for="" class="text-align-left">Fecha de informe</label>
-                                                                <input type="text" name="docente_id" value="<?= $docente_id; ?>" hidden>
-                                                                <input type="date" name="fecha_informe" class="form-control" name=""id="">
+                                                    <!-- INICIO DEL MODAL REGISTRAR INFORME  -->
+                                                    <div class="modal fade" id="exampleModal<?= $id_asignacion; ?>"
+                                                        tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                        <div class="modal-dialog modal-lg">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header"
+                                                                    style="background-color:#17a2b8; color:#FFFFFF">
+                                                                    <h5 class="modal-title" id="exampleModalLabel"><i class="bi bi-plus-square"></i> Redactar informe: </i><b><?= $asignacione['curso']; ?>
+                                                                            "<?= $asignacione['paralelo']; ?>" -
+                                                                            <?= $asignacione['nombre_materia']; ?></b>
+                                                                    </h5>
+                                                                    <button type="button" class="close" data-dismiss="modal"
+                                                                        aria-label="Close">
+                                                                        <span aria-hidden="true">&times;</span>
+                                                                    </button>
+                                                                </div>
+                                                                <form action="<?= APP_URL; ?>/app/controllers/informes/create.php" method="post">
+                                                                    <div class="modal-body">
+                                                                        <div class="row">
+                                                                            <div class="col-md-12">
+                                                                                <div class="form-group" style="text-align: left">
+                                                                                    <label for="" class="text-align-left">Fecha de informe</label>
+                                                                                    <input type="text" name="docente_id" value="<?= $docente_id; ?>" hidden>
+                                                                                    <input type="date" name="fecha_informe" class="form-control" name="" id="">
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row">
+                                                                            <div class="col-md-12">
+                                                                                <div class="form-group" style="text-align: left">
+                                                                                    <label for="estudiantes-select" class="text-align-left">Alumno</label>
+                                                                                    <select name="estudiante_id" class="form-control uppercase" id="estudiantes-select" onchange="actualizarIntegracion()">
+                                                                                        <option value="" disabled selected>Seleccione un alumno</option>
+                                                                                        <?php
+                                                                                        foreach ($estudiantes as $estudiante) {
+                                                                                            if ($estudiante['id_grado'] == $asignacione['grado_id']) {
+                                                                                                $id_estudiante = $estudiante['id_estudiante']; ?>
+                                                                                                <option value="<?= $id_estudiante; ?>"
+                                                                                                    data-integracion="<?= $estudiante['integracion']; ?>">
+                                                                                                    <?= strtoupper($estudiante['apellidos'] . ", " . $estudiante['nombres']); ?>
+                                                                                                </option>
+                                                                                        <?php
+                                                                                            }
+                                                                                        }
+                                                                                        ?>
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <script>
+                                                                            function actualizarIntegracion() {
+                                                                                // Obtener el select de estudiantes
+                                                                                const selectEstudiantes = document.getElementById('estudiantes-select');
+
+                                                                                // Obtener la opción seleccionada
+                                                                                const estudianteSeleccionado = selectEstudiantes.options[selectEstudiantes.selectedIndex];
+
+                                                                                // Obtener el valor de integración de la opción seleccionada (usamos data-integracion)
+                                                                                const integracion = estudianteSeleccionado.getAttribute('data-integracion');
+
+                                                                                // Obtener el input donde se mostrará la integración
+                                                                                const inputIntegracion = document.getElementById('integracion-input');
+
+                                                                                // Aplicar la lógica para mostrar "SI" o "NO"
+                                                                                inputIntegracion.value = integracion === 'NO' ? "NO" : "SI";
+                                                                            }
+                                                                        </script>
+
+                                                                        <!-- Aquí agregamos el input para mostrar la integración automáticamente -->
+                                                                        <div class="row" hidden>
+                                                                            <div class="col-md-12">
+                                                                                <div class="form-group" style="text-align: left">
+                                                                                    <label for="integracion-input" class="text-align-left">Integración</label>
+                                                                                    <input type="text" class="form-control" id="integracion-input" readonly required>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="row" hidden>
+                                                                            <div class="col-md-12">
+                                                                                <div class="form-group" style="text-align: left">
+                                                                                    <label for="" class="text-align-left">Materia</label>
+                                                                                    <input type="text" name="materia_id" value="<?= $asignacione['id_materia']; ?>">
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="row">
+                                                                            <div class="col-md-12">
+                                                                                <div class="form-group" style="text-align: left">
+                                                                                    <label for="" class="text-align-left">Categoria</label>
+                                                                                    <select name="observacion" class="form-control uppercase" id="">
+                                                                                        <option value="" disabled selected>Seleccione una categoria</option>
+                                                                                        <option value="COMPORTAMIENTO Y DISCIPLINA">COMPORTAMIENTO Y DISCIPLINA</option>
+                                                                                        <option value="COMUNICACIÓN Y PARTICIPACIÓN">COMUNICACIÓN Y PARTICIPACIÓN</option>
+                                                                                        <option value="DIAGNÓSTICO INICIAL">DIAGNÓSTICO INICIAL</option>
+                                                                                        <option value="EVOLUCIÓN Y PROGRESO GENERAL">EVOLUCIÓN Y PROGRESO GENERAL</option>
+                                                                                        <option value="OBSERVACIONES ESPECÍFICAS">OBSERVACIONES ESPECÍFICAS</option>
+                                                                                        <option value="RETOS Y ESTRATEGIAS DE APOYO">RETOS Y ESTRATEGIAS DE APOYO</option>
+                                                                                        <option value="TRABAJO EN GRUPO Y COLABORACIÓN">TRABAJO EN GRUPO Y COLABORACIÓN</option>
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="row">
+                                                                            <div class="col-md-12">
+                                                                                <div class="form-group" style="text-align: left">
+                                                                                    <label for="" class="text-align-left">Observaciones</label>
+                                                                                    <textarea name="nota" rows="10" class="form-control" id=""></textarea>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="submit" class="btn btn-info">Registrar</button>
+                                                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                                                                    </div>
+                                                                </form>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="row">
-                                                        <div class="col-md-12">
-                                                            <div class="form-group" style="text-align: left">
-                                                                <label for="estudiantes-select" class="text-align-left">Alumno</label>
-                                                                <select name="estudiante_id" class="form-control uppercase" id="estudiantes-select" onchange="actualizarIntegracion()">
-                                                                    <option value="" disabled selected>Seleccione un alumno</option>
-                                                                    <?php
-                                                                    foreach ($estudiantes as $estudiante) {
-                                                                        if ($estudiante['id_grado'] == $asignacione['grado_id']) {
-                                                                            $id_estudiante = $estudiante['id_estudiante']; ?>
-                                                                            <option value="<?= $id_estudiante; ?>"
-                                                                                data-integracion="<?= $estudiante['integracion']; ?>">
-                                                                                <?= strtoupper($estudiante['apellidos'] . ", " . $estudiante['nombres']); ?>
-                                                                            </option>
-                                                                    <?php
-                                                                        }
-                                                                    }
-                                                                    ?>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                    <script>
-                                                        function actualizarIntegracion() {
-                                                            // Obtener el select de estudiantes
-                                                            const selectEstudiantes = document.getElementById('estudiantes-select');
-
-                                                            // Obtener la opción seleccionada
-                                                            const estudianteSeleccionado = selectEstudiantes.options[selectEstudiantes.selectedIndex];
-
-                                                            // Obtener el valor de integración de la opción seleccionada (usamos data-integracion)
-                                                            const integracion = estudianteSeleccionado.getAttribute('data-integracion');
-
-                                                            // Obtener el input donde se mostrará la integración
-                                                            const inputIntegracion = document.getElementById('integracion-input');
-
-                                                            // Aplicar la lógica para mostrar "SI" o "NO"
-                                                            inputIntegracion.value = integracion === 'NO' ? "NO" : "SI";
-                                                        }
-                                                    </script>
-
-                                                    <!-- Aquí agregamos el input para mostrar la integración automáticamente -->
-                                                    <div class="row" hidden>
-                                                        <div class="col-md-12">
-                                                            <div class="form-group" style="text-align: left">
-                                                                <label for="integracion-input" class="text-align-left">Integración</label>
-                                                                <input type="text" class="form-control" id="integracion-input" readonly required>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="row" hidden>
-                                                        <div class="col-md-12">
-                                                            <div class="form-group" style="text-align: left">
-                                                                <label for="" class="text-align-left">Materia</label>
-                                                                <input type="text" name="materia_id" value="<?= $asignacione['id_materia']; ?>">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="row">
-                                                        <div class="col-md-12">
-                                                            <div class="form-group" style="text-align: left">
-                                                                <label for="" class="text-align-left">Categoria</label>
-                                                                <select name="observacion" class="form-control uppercase" id="">
-                                                                    <option value="" disabled selected>Seleccione una categoria</option>
-                                                                    <option value="COMPORTAMIENTO Y DISCIPLINA">COMPORTAMIENTO Y DISCIPLINA</option>
-                                                                    <option value="COMUNICACIÓN Y PARTICIPACIÓN">COMUNICACIÓN Y PARTICIPACIÓN</option>
-                                                                    <option value="DIAGNÓSTICO INICIAL">DIAGNÓSTICO INICIAL</option>
-                                                                    <option value="EVOLUCIÓN Y PROGRESO GENERAL">EVOLUCIÓN Y PROGRESO GENERAL</option>
-                                                                    <option value="OBSERVACIONES ESPECÍFICAS">OBSERVACIONES ESPECÍFICAS</option>
-                                                                    <option value="RETOS Y ESTRATEGIAS DE APOYO">RETOS Y ESTRATEGIAS DE APOYO</option>
-                                                                    <option value="TRABAJO EN GRUPO Y COLABORACIÓN">TRABAJO EN GRUPO Y COLABORACIÓN</option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="row">
-                                                        <div class="col-md-12">
-                                                            <div class="form-group" style="text-align: left">
-                                                                <label for="" class="text-align-left">Observaciones</label>
-                                                                <textarea name="nota" rows="10" class="form-control" id=""></textarea>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="submit" class="btn btn-info">Registrar</button>
-                                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                <?php
-                    }
-                }
-                ?>
-            </tbody>
-        </table>
+                                                </td>
+                                            </tr>
+                                    <?php
+                                        }
+                                    }
+                                    ?>
+                                </tbody>
+                            </table>
                             <!-- <hr>
                             <div class="row">
                                 <div class="col-md-12">
@@ -230,8 +236,12 @@ include('../../app/controllers/informes/listado_de_informes.php');
                                         <!-- <th>
                                             <center>Observación</center>
                                         </th> -->
-                                        <th><center>Fecha de informe</center></th>
-                                        <th><center>Acciones</center></th>
+                                        <th>
+                                            <center>Fecha de informe</center>
+                                        </th>
+                                        <th>
+                                            <center>Acciones</center>
+                                        </th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -250,7 +260,9 @@ include('../../app/controllers/informes/listado_de_informes.php');
                                                         <td><?= strtoupper($estudiante['apellidos'] . ", " . $estudiante['nombres']); ?></td>
                                                         <td><?= $informe['nombre_materia']; ?></td>
                                                         <td><?= $informe['observacion']; ?></td>
-                                                        <td><center><?= $informe['fecha_informe']; ?></center></td>
+                                                        <td>
+                                                            <center><?= $informe['fecha_informe']; ?></center>
+                                                        </td>
                                                         <!-- <td>
                                                             <center><?= $informe['nota']; ?></center>
                                                         </td> -->
@@ -344,6 +356,37 @@ include('../../app/controllers/informes/listado_de_informes.php');
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
+
+                                                                           
+                                                                            <!-- Place the following <script> and <textarea> tags your HTML's <body> -->
+                                                                            <script>
+                                                                                tinymce.init({
+                                                                                    selector: 'textarea',
+                                                                                    language: 'es',
+                                                                                    plugins: [
+                                                                                        // Core editing features
+                                                                                        'anchor', 'autolink', 'charmap', 'codesample', 'emoticons', 'image', 'link', 'lists', 'media', 'searchreplace', 'table', 'visualblocks', 'wordcount',
+                                                                                        // Your account includes a free trial of TinyMCE premium features
+                                                                                        // Try the most popular premium features until Dec 11, 2024:
+                                                                                        'checklist', 'mediaembed', 'casechange', 'export', 'formatpainter', 'pageembed', 'a11ychecker', 'tinymcespellchecker', 'permanentpen', 'powerpaste', 'advtable', 'advcode', 'editimage', 'advtemplate', 'ai', 'mentions', 'tinycomments', 'tableofcontents', 'footnotes', 'mergetags', 'autocorrect', 'typography', 'inlinecss', 'markdown',
+                                                                                        // Early access to document converters
+                                                                                        'importword', 'exportword', 'exportpdf'
+                                                                                    ],
+                                                                                    toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | addcomment showcomments | spellcheckdialog a11ycheck typography | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
+                                                                                    tinycomments_mode: 'embedded',
+                                                                                    tinycomments_author: 'Author name',
+                                                                                    mergetags_list: [{
+                                                                                            value: 'First.Name',
+                                                                                            title: 'First Name'
+                                                                                        },
+                                                                                        {
+                                                                                            value: 'Email',
+                                                                                            title: 'Email'
+                                                                                        },
+                                                                                    ],
+                                                                                    ai_request: (request, respondWith) => respondWith.string(() => Promise.reject('See docs to implement AI Assistant')),
+                                                                                });
+                                                                            </script>
 
                                                                             <div class="row">
                                                                                 <div class="col-md-12">
