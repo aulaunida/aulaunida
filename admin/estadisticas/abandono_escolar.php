@@ -34,7 +34,7 @@ include('../../app/controllers/configuraciones/gestion/listado_de_gestiones.php'
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="grado">Grado y división:<b style="color:red">*</b></label>
-                                            <select name="grado" id="" class="form-control" required>
+                                            <select name="grado" id="selectGrado" class="form-control" required>
                                                 <option value="" disabled selected>Seleccionar grado</option>
                                                 <?php
                                                 foreach ($grados as $grado) {
@@ -44,6 +44,7 @@ include('../../app/controllers/configuraciones/gestion/listado_de_gestiones.php'
                                                 }
                                                 ?>
                                             </select>
+
                                         </div>
                                     </div>
                                     <div class="col-md-3">
@@ -76,59 +77,105 @@ include('../../app/controllers/configuraciones/gestion/listado_de_gestiones.php'
                                             </select>
                                         </div>
                                     </div>
+
+                                    <?php
+                                    $contador = 0;
+                                    $contador_primergrado_a = 0;
+                                    $contador_segundogrado_a = 0;
+                                    $contador_tercergrado_a = 0;
+                                    $contador_cuartogrado_a = 0;
+                                    $contador_quintogrado_a = 0;
+                                    $contador_sextogrado_a = 0;
+                                    $contador_primergrado_b = 0;
+                                    $contador_segundogrado_b = 0;
+                                    $contador_tercergrado_b = 0;
+                                    $contador_cuartogrado_b = 0;
+                                    $contador_quintogrado_b = 0;
+                                    $contador_sextogrado_b = 0;
+
+
+                                    foreach ($reporte_estudiantes as $reporte_estudiante) {
+                                        if ($reporte_estudiante['grado_id'] == "1") $contador_primergrado_a = $contador_primergrado_a + 1;
+                                        if ($reporte_estudiante['grado_id'] == "2") $contador_primergrado_b = $contador_primergrado_b + 1;
+                                        if ($reporte_estudiante['grado_id'] == "8") $contador_segundogrado_a = $contador_segundogrado_a + 1;
+                                        if ($reporte_estudiante['grado_id'] == "9") $contador_segundogrado_b = $contador_segundogrado_b + 1;
+                                        if ($reporte_estudiante['grado_id'] == "10") $contador_tercergrado_a = $contador_tercergrado_a + 1;
+                                        if ($reporte_estudiante['grado_id'] == "11") $contador_tercergrado_b = $contador_tercergrado_b + 1;
+                                        if ($reporte_estudiante['grado_id'] == "12") $contador_cuartogrado_a = $contador_cuartogrado_a + 1;
+                                        if ($reporte_estudiante['grado_id'] == "13") $contador_cuartogrado_b = $contador_cuartogrado_b + 1;
+                                        if ($reporte_estudiante['grado_id'] == "14") $contador_quintogrado_a = $contador_quintogrado_a + 1;
+                                        if ($reporte_estudiante['grado_id'] == "15") $contador_quintogrado_b = $contador_quintogrado_b + 1;
+                                        if ($reporte_estudiante['grado_id'] == "16") $contador_sextogrado_a = $contador_sextogrado_a + 1;
+                                        if ($reporte_estudiante['grado_id'] == "17") $contador_sextogrado_b = $contador_sextogrado_b + 1;
+                                    }
+                                    $datos_reportes_estudiantes =
+                                        $contador_primergrado_a . "," .
+                                        $contador_primergrado_b . "," .
+                                        $contador_segundogrado_a . "," .
+                                        $contador_segundogrado_b . "," .
+                                        $contador_tercergrado_a . "," .
+                                        $contador_tercergrado_b . "," .
+                                        $contador_cuartogrado_a . "," .
+                                        $contador_cuartogrado_b . "," .
+                                        $contador_quintogrado_a . "," .
+                                        $contador_quintogrado_b . "," .
+                                        $contador_sextogrado_a . "," .
+                                        $contador_sextogrado_b;
+                                    ?>
+
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="matriculados">Alumnos Matriculados:<b style="color:red">*</b></label>
-                                            <input type="number" id="matriculados" name="matriculados" class="form-control" placeholder="Cantidad de alumnos" required>
+                                            <input type="number" id="matriculados" value="" name="matriculados" class="form-control" placeholder="Cantidad de alumnos" required>
                                         </div>
                                     </div>
                                 </div>
                                 <hr>
-                            <h6>Motivos de Abandono:</h6>
-                            <hr>
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label for="economico">Factores socioeconómicos:<b style="color:red">*</b></label>
-                                        <input type="number" id="economico" class="form-control" placeholder="Cantidad de abandonos" required>
+                                <h6>Motivos de Abandono:</h6>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="economico">Factores socioeconómicos:<b style="color:red">*</b></label>
+                                            <input type="number" id="economico" class="form-control" placeholder="Cantidad de abandonos" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="personal">Factores personales:<b style="color:red">*</b></label>
+                                            <input type="number" id="personal" class="form-control" placeholder="Cantidad de abandonos" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="educativo">Factores educativos:<b style="color:red">*</b></label>
+                                            <input type="number" id="educativo" class="form-control" placeholder="Cantidad de abandonos" required>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label for="personal">Factores personales:<b style="color:red">*</b></label>
-                                        <input type="number" id="personal" class="form-control" placeholder="Cantidad de abandonos" required>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="familia">Problemas familiares:<b style="color:red">*</b></label>
+                                            <input type="number" id="familia" class="form-control" placeholder="Cantidad de abandonos" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="infraestructura">Falta de infraestructura:<b style="color:red">*</b></label>
+                                            <input type="number" id="infraestructura" class="form-control" placeholder="Cantidad de abandonos" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="otros">Otros factores:<b style="color:red">*</b></label>
+                                            <input type="number" id="otros" class="form-control" placeholder="Cantidad de abandonos" required>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label for="educativo">Factores educativos:<b style="color:red">*</b></label>
-                                        <input type="number" id="educativo" class="form-control" placeholder="Cantidad de abandonos" required>
-                                    </div>
+                                <div class="form-group">
+                                    <button type="button" class="btn btn-primary" id="agregarDatos">Agregar</button>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label for="familia">Problemas familiares:<b style="color:red">*</b></label>
-                                        <input type="number" id="familia" class="form-control" placeholder="Cantidad de abandonos" required>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label for="infraestructura">Falta de infraestructura:<b style="color:red">*</b></label>
-                                        <input type="number" id="infraestructura" class="form-control" placeholder="Cantidad de abandonos" required>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label for="otros">Otros factores:<b style="color:red">*</b></label>
-                                        <input type="number" id="otros" class="form-control" placeholder="Cantidad de abandonos" required>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <button type="button" class="btn btn-primary" id="agregarDatos">Agregar</button>
-                            </div>
                             </form>
                             <hr>
                             <div id="tablaDatos">
@@ -355,5 +402,34 @@ include('../../admin/layout/parte2.php');
                 },
             });
         };
+    });
+</script>
+
+<script>
+    // Datos de los contadores por grado
+    const contadoresPorGrado = {
+        1: <?= $contador_primergrado_a; ?>,
+        2: <?= $contador_primergrado_b; ?>,
+        8: <?= $contador_segundogrado_a; ?>,
+        9: <?= $contador_segundogrado_b; ?>,
+        10: <?= $contador_tercergrado_a; ?>,
+        11: <?= $contador_tercergrado_b; ?>,
+        12: <?= $contador_cuartogrado_a; ?>,
+        13: <?= $contador_cuartogrado_b; ?>,
+        14: <?= $contador_quintogrado_a; ?>,
+        15: <?= $contador_quintogrado_b; ?>,
+        16: <?= $contador_sextogrado_a; ?>,
+        17: <?= $contador_sextogrado_b; ?>
+    };
+
+    // Referencia al select y al input
+    const selectGrado = document.getElementById('selectGrado');
+    const inputMatriculados = document.getElementById('matriculados');
+
+    // Escuchar cambios en el select
+    selectGrado.addEventListener('change', (event) => {
+        const gradoSeleccionado = event.target.value;
+        // Actualizar el input con el valor correspondiente
+        inputMatriculados.value = contadoresPorGrado[gradoSeleccionado] || '';
     });
 </script>
