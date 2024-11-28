@@ -107,38 +107,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
 
-        <!-- Notifications Dropdown Menu -->
-        <!-- <li class="nav-item dropdown">
-                <a class="nav-link" data-toggle="dropdown" href="#">
-                    <i class="far fa-bell"></i>
-                    <span class="badge badge-success navbar-badge">7</span>
-                </a>
-                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                    <span class="dropdown-header">7 Notificaciones</span>
-                    <div class="dropdown-divider"></div>
-                    <a href="#" class="dropdown-item">
-                        <i class="fas fa-envelope mr-2"></i> 4 nuevos mensajes
-                        <span class="float-right text-muted text-sm">3 mins</span>
-                    </a>
-                    <div class="dropdown-divider"></div>
-                    <a href="#" class="dropdown-item">
-                        <i class="fas fa-file mr-2"></i> 3 nuevos reportes
-                        <span class="float-right text-muted text-sm">2 días</span>
-                    </a>
-                    <div class="dropdown-divider"></div>
-                    <a href="#" class="dropdown-item dropdown-footer">Ver todas las notificaciones</a>
-                </div>
-            </li> -->
         <li class="nav-item">
             <a class="nav-link" data-widget="fullscreen" href="#" role="button">
                 <i class="fas fa-expand-arrows-alt"></i>
             </a>
         </li>
-        <!-- <li class="nav-item">
-                <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
-                    <i class="fas fa-th-large"></i>
-                </a>
-            </li> -->
     </ul>
 </nav>
 <!-- /.navbar -->
@@ -162,8 +135,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <a href="#" class="d-block"><?= $nombre_sesion_usuario; ?></a>
             </div>
         </div>
-
-
         <!-- Sidebar Menu -->
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
@@ -179,7 +150,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <a href="#" class="nav-link active">
                             <i class="nav-icon fas"><i class="bi bi-graph-up-arrow"></i></i>
                             <p>
-                                Estadísticas
+                                Indicadores
                                 <i class="right fas fa-angle-left"></i>
                             </p>
                         </a>
@@ -187,7 +158,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <li class="nav-item">
                                 <a href="<?= APP_URL; ?>/admin/estadisticas/index.php" class="nav-link active">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>Consultar gráficos</p>
+                                    <p>Consultar indicadores</p>
                                 </a>
                             </li>
                         </ul>
@@ -290,7 +261,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <a href="#" class="nav-link active">
                             <i class="nav-icon fas"><i class="bi bi-graph-up-arrow"></i></i>
                             <p>
-                                Estadísticas
+                                Indicadores
                                 <i class="right fas fa-angle-left"></i>
                             </p>
                         </a>
@@ -298,7 +269,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <li class="nav-item">
                                 <a href="<?= APP_URL; ?>/admin/estadisticas/index.php" class="nav-link active">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>Consultar gráficos</p>
+                                    <p>Consultar indicadores</p>
                                 </a>
                             </li>
                         </ul>

@@ -5,6 +5,8 @@ include('../../app/config.php');
 include('../../admin/layout/parte1.php');
 include('../../app/controllers/informes/datos_informes.php');
 include('../../app/controllers/estudiantes/listado_de_estudiantes.php');
+require('../../admin/librerias/fpdf186/fpdf.php');
+
 
 ?>
 
@@ -77,11 +79,10 @@ include('../../app/controllers/estudiantes/listado_de_estudiantes.php');
                             </div>
                             <hr>
                             <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <a href="<?= APP_URL; ?>/admin/informes" class="btn btn-danger">Volver</a>
-                                    </div>
-                                </div>
+                            <div class="form-group">
+                            <a href="<?= APP_URL; ?>/admin/informes" class="btn btn-danger">Volver</a>
+                            <a href="generar_pdf.php?id=<?= $id_informe; ?>" class="btn btn-primary" target="_blank">Exportar PDF</a>
+                        </div>
                             </div>
                         </div>
                     </div>
