@@ -63,27 +63,23 @@ include('../../app/controllers/estudiantes/datos_estudiantes.php');
                                         <p><?= $fecha_nacimiento; ?></p>
                                     </div>
                                 </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label for="">Género</label>
-                                        <p class="uppercase"><?= $genero; ?></p>
-                                    </div>
-                                </div>
+                                
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="">Domicilio</label>
                                         <p><?= $direccion; ?></p>
                                     </div>
                                 </div>
-                            </div>
-                            <hr>
-                            <div class="row">
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="">Nro de matrícula</label>
                                         <p><?= $matricula; ?></p>
                                     </div>
                                 </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="">Nivel</label>
@@ -96,14 +92,15 @@ include('../../app/controllers/estudiantes/datos_estudiantes.php');
                                         <p><?= $turno; ?></p>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row">
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="">Grado</label>
                                         <p><?= $curso; ?></p>
                                     </div>
-                                </div>    
+                                </div> 
+                            </div>
+                            <div class="row">
+                                   
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="">División</label>
@@ -114,6 +111,12 @@ include('../../app/controllers/estudiantes/datos_estudiantes.php');
                                     <div class="form-group">
                                         <label for="">Integración</label>
                                         <p><?= $integracion; ?></p>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="">Motivo de integración</label>
+                                        <p class="uppercase"><?= $genero; ?></p>
                                     </div>
                                 </div>
                             </div>
