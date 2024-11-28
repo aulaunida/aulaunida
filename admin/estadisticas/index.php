@@ -51,7 +51,7 @@ include('../../app/controllers/docentes/listado_de_asignaciones.php');
     <div class="container">
         <div class="container">
             <div class="row">
-                <h1 style="margin-left: 20px;"><i class="bi bi-graph-up-arrow"></i> Estadísticas</h1>
+                <h1 style="margin-left: 20px;"><i class="bi bi-graph-up-arrow"></i> Indicadores educativos</h1>
             </div>
             <br>
             <div class="row">
