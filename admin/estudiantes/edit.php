@@ -40,7 +40,7 @@ include('../../app/controllers/grados/listado_de_grados.php');
                                             <select name="rol_id" id="" class="form-control">
                                                 <?php
                                                 foreach ($roles as $role) { ?>
-                                                    <option value="<?= $role['id_rol']; ?>"<?= $role['nombre_rol'] == 'ESTUDIANTE' ? 'selected' : '' ?>><?= $role['nombre_rol']; ?></option>
+                                                    <option value="<?= $role['id_rol']; ?>" <?= $role['nombre_rol'] == 'ESTUDIANTE' ? 'selected' : '' ?>><?= $role['nombre_rol']; ?></option>
                                                 <?php
                                                 }
                                                 ?>
@@ -73,17 +73,7 @@ include('../../app/controllers/grados/listado_de_grados.php');
                                             <input type="date" name="fecha_nacimiento" value="<?= $fecha_nacimiento; ?>" class="form-control" required>
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label for="">Género<b style="color:red">*</b></label>
-                                            <select name="genero" id="" class="form-control" required>
-                                                <option value="MASCULINO" <?php if ($genero == 'MASCULINO') { ?> selected="selected" <?php } ?>>MASCULINO</option>
-                                                <option value="FEMENINO" <?php if ($genero == 'FEMENINO') { ?> selected="selected" <?php } ?>>FEMENINO</option>
-                                                <option value="NO BINARIO" <?php if ($genero == 'NO BINARIO') { ?> selected="selected" <?php } ?>>NO BINARIO</option>
-                                                <option value="NO ESPECIFICA" <?php if ($genero == 'NO ESPECIFICA') { ?> selected="selected" <?php } ?>>NO ESPECIFICA</option>
-                                            </select>
-                                        </div>
-                                    </div>
+
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="">Domicilio<b style="color:red">*</b></label>
@@ -116,7 +106,7 @@ include('../../app/controllers/grados/listado_de_grados.php');
                                             <select name="nivel_id" id="" class="form-control">
                                                 <?php
                                                 foreach ($niveles as $nivele) { ?>
-                                                    <option value="<?= $nivele['id_nivel']; ?>" <?= $nivele['id_nivel'] ==$nivel_id ? 'selected' : '' ?>><?= $nivele['nivel'] . ' ' . '- TURNO' . ' ' . $nivele['turno']; ?></option>
+                                                    <option value="<?= $nivele['id_nivel']; ?>" <?= $nivele['id_nivel'] == $nivel_id ? 'selected' : '' ?>><?= $nivele['nivel'] . ' ' . '- TURNO' . ' ' . $nivele['turno']; ?></option>
                                                 <?php
                                                 }
                                                 ?>
@@ -134,7 +124,7 @@ include('../../app/controllers/grados/listado_de_grados.php');
                                             <select name="grado_id" id="" class="form-control">
                                                 <?php
                                                 foreach ($grados as $grado) { ?>
-                                                    <option value="<?= $grado['id_grado']; ?>" <?= $grado['id_grado'] ==$grado_id ? 'selected' : '' ?>>
+                                                    <option value="<?= $grado['id_grado']; ?>" <?= $grado['id_grado'] == $grado_id ? 'selected' : '' ?>>
                                                         <?= $grado['curso'] . ' - ' . $grado['paralelo']; ?>
                                                     </option>
                                                 <?php
@@ -154,7 +144,22 @@ include('../../app/controllers/grados/listado_de_grados.php');
                                             </select>
                                         </div>
                                     </div>
+                                    <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="">Motivo de Integración<b style="color:red"></b></label>
+                                        <select name="genero" id="" class="form-control">
+                                            <option value=""></option>
+                                            <option value="DISCAPACIDAD INTELECTUAL">DISCAPACIDAD INTELECTUAL</option>
+                                            <option value="SORDERA O HIPOACUSIA">SORDERA O HIPOACUSIA</option>
+                                            <option value="CEGUERA O DISMINUCION VISUAL">CEGUERA O DISMINUCIÓN VISUAL</option>
+                                            <option value="MOTORA O NEUMOMOTORA">MOTORA O NEUMOMOTORA</option>
+                                            <option value="TGD O TEA">TGD O TEA</option>
+                                            <option value="OTRO MOTIVO">OTRO MOTIVO</option>
+                                        </select>
+                                    </div>
                                 </div>
+                                </div>
+                                
                             </div>
                         </div>
                     </div>
@@ -170,7 +175,7 @@ include('../../app/controllers/grados/listado_de_grados.php');
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="">Apellido y nombre<b style="color:red">*</b></label>
-                                            <input type="text" name="nombres_apellidos_ppff" value="<?= strtoupper($nombres_apellidos_ppff);?>" class="form-control"
+                                            <input type="text" name="nombres_apellidos_ppff" value="<?= strtoupper($nombres_apellidos_ppff); ?>" class="form-control"
                                                 required>
                                         </div>
                                     </div>
@@ -203,7 +208,7 @@ include('../../app/controllers/grados/listado_de_grados.php');
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="">Nombre contacto de emergencia<b style="color:red">*</b></label>
-                                            <input type="text" name="ref_nombre" value="<?= strtoupper($ref_nombre);?>" class="form-control" required>
+                                            <input type="text" name="ref_nombre" value="<?= strtoupper($ref_nombre); ?>" class="form-control" required>
                                         </div>
                                     </div>
                                 </div>

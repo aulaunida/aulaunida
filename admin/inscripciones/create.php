@@ -11,7 +11,8 @@ include('../../app/controllers/grados/listado_de_grados.php');
     <div class="content">
         <div class="container">
             <div class="row">
-            <h2 style="margin-left: 20px;"><i class="bi bi-plus-square"></i>  Registrar alumno </h2>            </div>
+                <h2 style="margin-left: 20px;"><i class="bi bi-plus-square"></i> Registrar alumno </h2>
+            </div>
             <br>
             <form action="<?= APP_URL; ?>/app/controllers/inscripciones/create.php" method="post">
                 <div class="row">
@@ -32,7 +33,7 @@ include('../../app/controllers/grados/listado_de_grados.php');
                                                         <?= $role['nombre_rol'] == 'ESTUDIANTE' ? 'selected' : '' ?>>
                                                         <?= $role['nombre_rol']; ?>
                                                     </option>
-                                                    <?php
+                                                <?php
                                                 }
                                                 ?>
                                             </select>
@@ -66,17 +67,7 @@ include('../../app/controllers/grados/listado_de_grados.php');
                                             <input type="date" name="fecha_nacimiento" class="form-control" required>
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label for="">Género<b style="color:red">*</b></label>
-                                            <select name="genero" id="" class="form-control" required>
-                                                <option value="MASCULINO">MASCULINO</option>
-                                                <option value="FEMENINO">FEMENINO</option>
-                                                <option value="NO BINARIO">NO BINARIO</option>
-                                                <option value="NO ESPECIFICA">NO ESPECIFICA</option>
-                                            </select>
-                                        </div>
-                                    </div>
+
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="">Domicilio<b style="color:red">*</b></label>
@@ -111,7 +102,7 @@ include('../../app/controllers/grados/listado_de_grados.php');
                                                     <option value="<?= $nivele['id_nivel']; ?>">
                                                         <?= $nivele['nivel'] . ' ' . '- TURNO' . ' ' . $nivele['turno']; ?>
                                                     </option>
-                                                    <?php
+                                                <?php
                                                 }
                                                 ?>
                                             </select>
@@ -126,7 +117,7 @@ include('../../app/controllers/grados/listado_de_grados.php');
                                                     <option value="<?= $grado['id_grado']; ?>">
                                                         <?= $grado['curso'] . ' - ' . $grado['paralelo']; ?>
                                                     </option>
-                                                    <?php
+                                                <?php
                                                 }
                                                 ?>
                                             </select>
@@ -134,13 +125,27 @@ include('../../app/controllers/grados/listado_de_grados.php');
                                     </div>
                                 </div>
                                 <div class="row">
-                                
+
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="">Integración<b style="color:red">*</b></label>
                                             <select name="integracion" id="" class="form-control" required>
                                                 <option value="NO">NO</option>
                                                 <option value="SI">SI</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="">Motivo de Integración<b style="color:red"></b></label>
+                                            <select name="genero" id="" class="form-control">
+                                                <option value=""></option>
+                                                <option value="DISCAPACIDAD INTELECTUAL">DISCAPACIDAD INTELECTUAL</option>
+                                                <option value="SORDERA O HIPOACUSIA">SORDERA O HIPOACUSIA</option>
+                                                <option value="CEGUERA O DISMINUCION VISUAL">CEGUERA O DISMINUCIÓN VISUAL</option>
+                                                <option value="MOTORA O NEUMOMOTORA">MOTORA O NEUMOMOTORA</option>
+                                                <option value="TGD O TEA">TGD O TEA</option>
+                                                <option value="OTRO MOTIVO">OTRO MOTIVO</option>
                                             </select>
                                         </div>
                                     </div>
