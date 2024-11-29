@@ -203,38 +203,38 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Función para obtener alumnos matriculados
     const obtenerMatriculados = () => {
-    const grado = gradoSelect.value;
+        const grado = gradoSelect.value;
 
-    // Verificar que se haya seleccionado grado
-    console.log('Grado seleccionado:', grado); // Depuración
-
-    if (grado) {
-        fetch(`/aulaunida/app/controllers/estadisticas/obtener_matriculados.php?grado=${grado}`)
-
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error("Error en la solicitud");
-                }
-                return response.json();
-            })
-            .then(data => {
-                console.log('Datos recibidos:', data); // Depuración
-                matriculadosInput.value = data.total || 0; // Actualizar el campo con la cantidad de matriculados
-            })
-            .catch(error => {
-                console.error("Error al obtener los matriculados:", error);
-                matriculadosInput.value = 0; // En caso de error, colocar valor 0
-            });
-    } else {
-        matriculadosInput.value = ""; // Limpiar el campo si faltan datos
-    }
-};
+        if (grado) {
+            // Construye la URL con el parámetro grado
+            const url = `/aulaunida/app/controllers/estadisticas/obtener_matriculados.php?grado=${grado}`;
+            fetch(url)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error("Error en la solicitud");
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    // Si todo va bien, actualiza el campo de matriculados
+                    console.log("Datos recibidos:", data); // Para depuración
+                    matriculadosInput.value = data.total || 0; // Si no hay datos, coloca 0
+                })
+                .catch(error => {
+                    console.error("Error al obtener los matriculados:", error);
+                    matriculadosInput.value = 0; // Valor predeterminado en caso de error
+                });
+        } else {
+            // Si no hay grado seleccionado, limpia el campo
+            matriculadosInput.value = "";
+        }
+    };
 
     // Escuchar cambios en el select de grado
     gradoSelect.addEventListener("change", obtenerMatriculados);
 
-    // Resto del código para manejar el gráfico y datos
-    let datos = []; // Array para almacenar los datos ingresados
+    // Manejo del gráfico y datos
+    let datos = []; // Almacena los datos ingresados
     let grafico; // Variable para el gráfico
     const tabla = document.getElementById("datosCargados");
     const canvas = document.getElementById("graficoRepetencia").getContext("2d");
@@ -244,8 +244,8 @@ document.addEventListener("DOMContentLoaded", function () {
         grafico = new Chart(canvas, {
             type: "line",
             data: {
-                labels: [], // Etiquetas vacías (ciclos)
-                datasets: [], // Sin datasets
+                labels: [], // Etiquetas iniciales vacías
+                datasets: [], // Sin datasets inicialmente
             },
             options: {
                 responsive: true,
@@ -254,28 +254,23 @@ document.addEventListener("DOMContentLoaded", function () {
                     title: { display: true, text: "Tasa de Repetencia por Grado" },
                 },
                 scales: {
-                    y: {
-                        beginAtZero: true,
-                        title: { display: true, text: "Tasa de Repetencia (%)" },
-                    },
-                    x: {
-                        title: { display: true, text: "Grado" },
-                    },
+                    y: { beginAtZero: true, title: { display: true, text: "Tasa de Repetencia (%)" } },
+                    x: { title: { display: true, text: "Grado" } },
                 },
             },
         });
     };
 
     document.getElementById("agregarDatos").addEventListener("click", function () {
-        const ciclo = cicloSelect.options[cicloSelect.selectedIndex].text;
-        const turno = turnoSelect.options[turnoSelect.selectedIndex].text;
-        const grado = gradoSelect.options[gradoSelect.selectedIndex].text;
+        const ciclo = cicloSelect.options[cicloSelect.selectedIndex]?.text || "";
+        const turno = turnoSelect.options[turnoSelect.selectedIndex]?.text || "";
+        const grado = gradoSelect.options[gradoSelect.selectedIndex]?.text || "";
         const matriculados = parseInt(matriculadosInput.value);
         const repetidores = parseInt(document.getElementById("repetidores").value);
 
         if (!ciclo || !turno || !grado || isNaN(matriculados) || isNaN(repetidores)) {
-        alert("Por favor, completa todos los campos correctamente.");
-        return;
+            alert("Por favor, completa todos los campos correctamente.");
+            return;
         }
 
         if (repetidores > matriculados) {
@@ -312,8 +307,8 @@ document.addEventListener("DOMContentLoaded", function () {
         const grados = [...new Set(datos.map(d => d.grado))];
 
         const datasets = grados.map(grado => {
-            const data = grados.map(grado => {
-                const item = datos.find(d => d.grado === grado);
+            const data = grados.map(g => {
+                const item = datos.find(d => d.grado === g);
                 return item ? parseFloat(item.porcentajeRepetencia) : 0;
             });
 
@@ -332,10 +327,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         grafico = new Chart(canvas, {
             type: "line",
-            data: {
-                labels: grados,
-                datasets: datasets,
-            },
+            data: { labels: grados, datasets: datasets },
             options: {
                 responsive: true,
                 plugins: {
@@ -343,13 +335,8 @@ document.addEventListener("DOMContentLoaded", function () {
                     title: { display: true, text: "Tasa de Repetencia por Grado" },
                 },
                 scales: {
-                    y: {
-                        beginAtZero: true,
-                        title: { display: true, text: "Tasa de Repetencia (%)" },
-                    },
-                    x: {
-                        title: { display: true, text: "Grado" },
-                    },
+                    y: { beginAtZero: true, title: { display: true, text: "Tasa de Repetencia (%)" } },
+                    x: { title: { display: true, text: "Grado" } },
                 },
             },
         });
@@ -369,4 +356,5 @@ document.addEventListener("DOMContentLoaded", function () {
 
     inicializarGrafico();
 });
+
 </script>

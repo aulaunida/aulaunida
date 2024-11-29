@@ -159,7 +159,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <li class="nav-item">
                                 <a href="<?= APP_URL; ?>/admin/estadisticas/index.php" class="nav-link active">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>Consultar estadísticas</p>
+                                    <p>Consultar indicadores</p>
                                 </a>
                             </li>
                         </ul>
@@ -262,7 +262,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <a href="#" class="nav-link active">
                             <i class="nav-icon fas"><i class="bi bi-graph-up-arrow"></i></i>
                             <p>
-                            Indicadores educativos
+                            Indicadores 
                                 <i class="right fas fa-angle-left"></i>
                             </p>
                         </a>
@@ -270,7 +270,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <li class="nav-item">
                                 <a href="<?= APP_URL; ?>/admin/estadisticas/index.php" class="nav-link active">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>Consultar estadísticas</p>
+                                    <p>Consultar indicadores</p>
                                 </a>
                             </li>
                         </ul>

@@ -64,9 +64,9 @@ include('../../app/controllers/ayuda/listado_ayuda.php');
                     <div class="card card-outline card-primary">
                         <div class="card-header">
                             <h3 class="card-title">Material descargable</h3>
-                            <div class="card-tools">
+                            <!-- <div class="card-tools">
                                 <a href="create.php" class="btn btn-primary"><i class="bi bi-plus-square"></i> Subir material</a>
-                            </div>
+                            </div> -->
                         </div>
                         <div class="btn-group">
                             <a href="show.php?categoria=manual" class="button button-1">Manual de Usuario</a>
