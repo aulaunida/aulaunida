@@ -278,6 +278,12 @@
         });
     });
 </script>
+<script>
+    function confirmarCierreSesion() {
+        return confirm("¿Estás seguro de que deseas cerrar sesión?");
+    }
+</script>
+
 
 </body>
 </html>

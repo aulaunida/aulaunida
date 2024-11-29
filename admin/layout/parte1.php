@@ -238,13 +238,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     </li>
 
 
+                    <!-- Botón de Cerrar Sesión -->
                     <li class="nav-item">
-                        <a href="<?= APP_URL; ?>/login/logout.php" class="nav-link" style="background-color: #c52510;color:white">
-                            <i class="nav-icon fas"><i class="bi bi-door-open"></i></i>
-                            <p>
-                                Cerrar sesión
-                            </p>
-                        </a>
+                        <a href="<?= APP_URL; ?>/login/logout.php" class="nav-link" style="background-color: #c52510;color:white" class="btn btn-danger btn-block" onclick="return confirmarCierreSesion();" >
+                           <i class="nav-icon fas"><i class="bi bi-door-open"></i></i>
+                            <p>Cerrar Sesión </p>
+                    </a>
                     </li>
 
 
@@ -258,7 +257,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                 <?php
                 if ($rol_sesion_usuario == 'ADMINISTRADOR') { ?>
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a href="#" class="nav-link active">
                             <i class="nav-icon fas"><i class="bi bi-graph-up-arrow"></i></i>
                             <p>
@@ -274,7 +273,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 </a>
                             </li>
                         </ul>
-                    </li>
+                    </li> -->
 
                     <li class="nav-item">
                         <a href="#" class="nav-link active">
@@ -402,7 +401,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         </ul>
                     </li>
 
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a href="#" class="nav-link active">
                             <i class="nav-icon fas"><i class="bi bi-gear"></i></i>
                             <p>
@@ -418,7 +417,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 </a>
                             </li>
                         </ul>
-                    </li>
+                    </li> -->
                     <li class="nav-item">
                         <a href="#" class="nav-link active">
                             <i class="nav-icon fas"><i class="bi bi-question-square"></i></i>
@@ -436,15 +435,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             </li>
                         </ul>
                     </li>
-
+                    <!-- Botón de Cerrar Sesión -->
                     <li class="nav-item">
-                        <a href="<?= APP_URL; ?>/login/logout.php" class="nav-link" style="background-color: #c52510;color:white">
-                            <i class="nav-icon fas"><i class="bi bi-door-open"></i></i>
-                            <p>
-                                Cerrar sesión
-                            </p>
-                        </a>
+                        <a href="<?= APP_URL; ?>/login/logout.php" class="nav-link" style="background-color: #c52510;color:white" class="btn btn-danger btn-block" onclick="return confirmarCierreSesion();" >
+                           <i class="nav-icon fas"><i class="bi bi-door-open"></i></i>
+                            <p>Cerrar Sesión </p>
+                    </a>
                     </li>
+                    
+
+                    
 
 
                 <?php

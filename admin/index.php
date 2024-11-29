@@ -184,14 +184,14 @@ include('../app/controllers/docentes/listado_de_asignaciones.php');
             if ($rol_sesion_usuario == 'ADMINISTRADOR') { ?>
                 <div class="row">
 
-                <div class="col-lg-3 col-3">
+                <!-- <div class="col-lg-3 col-3">
                         <div class="small-box bg-green">
                             <div class="inner">
                                 <?php
-                                $contador_estadisticas = 7;
+                                $contador_indicadores = 7;
                                 ?>
-                                <h3><?= $contador_estadisticas; ?></h3>
-                                <p>Estadísticas</p>
+                                <h3><?= $contador_indicadores; ?></h3>
+                                <p>Indicadores </p>
                             </div>
                             <div style="color: white;" class="icon">
                                 <i class="fas"><i class="bi bi-graph-up-arrow"></i></i>
@@ -200,7 +200,7 @@ include('../app/controllers/docentes/listado_de_asignaciones.php');
                                 Más información <i class="fas fa-arrow-circle-right"></i>
                             </a>
                         </div>
-                    </div>
+                    </div> -->
 
                     <div class="col-lg-3 col-3">
                         <div class="small-box bg-blue">
@@ -224,7 +224,7 @@ include('../app/controllers/docentes/listado_de_asignaciones.php');
                     </div>
 
                     <div class="col-lg-3 col-3">
-                        <div class="small-box bg-warning">
+                        <div class="small-box bg-warning ">
                             <div class="inner">
                                 <?php
                                 $contador_grados = 0;
@@ -266,7 +266,7 @@ include('../app/controllers/docentes/listado_de_asignaciones.php');
                     </div>
 
                     <div class="col-lg-3 col-3">
-                        <div class="small-box bg-light">
+                        <div class="small-box bg-indigo   ">
                             <div class="inner">
                                 <?php
                                 $contador_docentes = 0;
@@ -287,7 +287,7 @@ include('../app/controllers/docentes/listado_de_asignaciones.php');
                     </div>
 
                     <div class="col-lg-3 col-3">
-                        <div class="small-box bg-dark">
+                        <div class="small-box bg-olive ">
                             <div class="inner">
                                 <?php
                                 $contador_estudiantes = 0;
@@ -328,7 +328,7 @@ include('../app/controllers/docentes/listado_de_asignaciones.php');
                         </div>
                     </div>
                     <div class="col-lg-3 col-3">
-                        <div class="small-box bg-purple">
+                        <div class="small-box bg-info">
                             <div class="inner">
                                 <?php
                                 $contador_roles = 0;
@@ -337,12 +337,12 @@ include('../app/controllers/docentes/listado_de_asignaciones.php');
                                 }
                                 ?>
                                 <h3><?= $contador_roles; ?></h3>
-                                <p>Configuraciones</p>
+                                <p>Ayuda</p>
                             </div>
                             <div class="icon">
-                                <i class="fas"><i class="bi bi-gear"></i></i>
+                                <i class="fas"><i class="bi bi-question-square"></i></i>
                             </div>
-                            <a href="<?= APP_URL; ?>/admin/configuraciones" class="small-box-footer">
+                            <a href="<?= APP_URL; ?>/admin/ayuda/" class="small-box-footer">
                                 Más información <i class="fas fa-arrow-circle-right"></i>
                             </a>
                         </div>
