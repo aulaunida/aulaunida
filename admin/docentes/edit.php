@@ -6,7 +6,19 @@ include('../../admin/layout/parte1.php');
 include('../../app/controllers/docentes/datos_docentes.php');
 include('../../app/controllers/roles/listado_de_roles.php');
 ?>
-
+<?php
+$profesiones = [
+    "PROFESORADO EN EDUCACIÓN PRIMARIA",
+    "PROFESORADO EN EDUCACIÓN ESPECIAL",
+    "PROFESORADO EN EDUCACIÓN FÍSICA",
+    "PROFESORADO EN LENGUAS EXTRANJERAS",
+    "PROFESORADO EN MÚSICA",
+    "PROFESORADO EN CIENCIAS",
+    "PROFESORADO EN MATEMÁTICA",
+    "LICENCIATURA EN CIENCIAS DE LA EDUCACIÓN",
+    "DIPLOMATURAS EN EDUCACIÓN INCLUSIVA"
+];
+?>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <br>
@@ -95,9 +107,16 @@ include('../../app/controllers/roles/listado_de_roles.php');
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="">Título</label>
-                                            <input type="text" name="profesion" value="<?=$profesion;?>"   class="form-control" required>
+                                            <select name="profesion" id="" class="form-control" required>
+                                                <?php foreach ($profesiones as $opcion) { ?>
+                                                    <option value="<?= $opcion; ?>" <?= ($profesion == $opcion) ? 'selected="selected"' : ''; ?>>
+                                                        <?= $opcion; ?>
+                                                    </option>
+                                                <?php } ?>
+                                            </select>
                                         </div>
                                     </div>
+
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="">Integrador</label>

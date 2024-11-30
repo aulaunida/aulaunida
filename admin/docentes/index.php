@@ -1,7 +1,6 @@
 <?php
 include ('../../app/config.php');
 include ('../../admin/layout/parte1.php');
-
 include ('../../app/controllers/docentes/listado_de_docentes.php');
 
 
@@ -62,7 +61,7 @@ include ('../../app/controllers/docentes/listado_de_docentes.php');
                                         <!-- <td style="text-align: center"><?=$docente['nombre_rol'];?></td> -->
                                         <!-- <td style="text-align: center"><?=$docente['dni'];?></td> -->
                                         <!-- <td style="text-align: center"><?=$docente['fecha_nacimiento'];?></td> -->
-                                        <td style="text-align: center"><?=$docente['email'];?></td>
+                                        <td class="uppercase" style="text-align: center"><?=$docente['email'];?></td>
                                         <td class="text-center"><?= $docente['integrador'] == 'NO' ? "NO" : "SI";?></td>
                                         <td class="text-center"><?= $docente['tipo_cargo'] == 'TITULAR' ? "TITULAR" : "SUPLENTE";?></td>
                                         <td class="text-center">

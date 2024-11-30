@@ -88,8 +88,19 @@ include('../../app/controllers/roles/listado_de_roles.php');
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label for="">Título<b style="color:red">*</b></label>
-                                            <input type="text" name="profesion" class="form-control" required>
+                                        <label for="">Título<b style="color:red">*</b></label>
+                                            <select name="profesion" id="" class="form-control" required>
+                                                <option value="PROFESORADO EN EDUCACIÓN PRIMARIA">PROFESORADO EN EDUCACIÓN PRIMARIA</option>
+                                                <option value="PROFESORADO EN EDUCACIÓN ESPECIAL">PROFESORADO EN EDUCACIÓN ESPECIAL</option>
+                                                <option value="PROFESORADO EN EDUCACIÓN FÍSICA">PROFESORADO EN EDUCACIÓN FÍSICA</option>
+                                                <option value="PROFESORADO EN LENGUAS EXTRANJERAS">PROFESORADO EN LENGUAS EXTRANJERAS</option>
+                                                <option value="PROFESORADO EN MÚSICA">PROFESORADO EN MÚSICA</option>
+                                                <option value="PROFESORADO EN CIENCIAS">PROFESORADO EN CIENCIAS</option>
+                                                <option value="PROFESORADO EN MATEMÁTICA">PROFESORADO EN CIENCIAS</option>
+                                                <option value="LICENCIATURA EN CIENCIAS DE LA EDUCACIÓN">LICENCIATURA EN CIENCIAS DE LA EDUCACIÓN</option>
+                                                <option value="DIPLOMATURAS EN EDUCACIÓN INCLUSIVA">DIPLOMATURAS EN EDUCACIÓN INCLUSIVA</option>
+
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="col-md-4">

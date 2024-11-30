@@ -73,7 +73,7 @@ include('../../app/controllers/docentes/datos_docentes.php');
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="">Correo electrónico</label>
-                                        <p><?= $email; ?></p>
+                                        <p ><?= $email; ?></p>
                                     </div>
                                 </div>
                             </div>

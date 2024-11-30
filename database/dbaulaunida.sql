@@ -1659,10 +1659,33 @@ INSERT INTO `docentes` (`id_docente`, `persona_id`, `integrador`, `tipo_cargo`, 
 (1, 4, 'NO', 'TITULAR', '2024-09-07', '2024-09-19', '1'),
 (2, 5, 'SI', 'TITULAR', '2024-09-07', '2024-10-08', '1'),
 (3, 6, 'NO', 'TITULAR', '2024-09-07', '2024-09-08', '1'),
-(4, 7, 'SI', 'TITULAR', '2024-09-07', NULL, '1'),
+(4, 7, 'SI', 'TITULAR', '2024-09-07', '2024-09-08', '1'),
 (5, 8, 'NO', 'TITULAR', '2024-09-07', '2024-10-08', '1'),
 (6, 9, 'NO', 'SUPLENTE', '2024-09-07', '2024-10-08', '1'),
-(7, 10, 'SI', 'SUPLENTE', '2024-09-07', '2024-10-08', '1');
+(7, 10, 'SI', 'SUPLENTE', '2024-09-07', '2024-10-08', '1'),
+(8, 382, 'NO', 'TITULAR', '2024-09-07', '2024-09-19', '1'),
+(9, 383, 'NO', 'TITULAR', '2024-09-07', '2024-09-19', '1'),
+(10, 384, 'NO', 'TITULAR', '2024-09-07', '2024-09-19', '1'),
+(11, 385, 'SI', 'TITULAR', '2024-09-07', '2024-09-19', '1'),
+(12, 386, 'NO', 'TITULAR', '2024-09-07', '2024-09-19', '1'),
+(13, 387, 'NO', 'TITULAR', '2024-09-07', '2024-09-19', '1'),
+(14, 388, 'NO', 'TITULAR', '2024-09-07', '2024-09-19', '1'),
+(15, 389, 'SI', 'TITULAR', '2024-09-07', '2024-09-19', '1'),
+(16, 390, 'NO', 'TITULAR', '2024-09-07', '2024-09-19', '1'),
+(17, 391, 'NO', 'TITULAR', '2024-09-07', '2024-09-19', '1'),
+(18, 392, 'SI', 'SUPLENTE', '2024-09-07', '2024-09-19', '1'),
+(19, 393, 'NO', 'TITULAR', '2024-09-07', '2024-09-19', '1'),
+(20, 394, 'NO', 'TITULAR', '2024-09-07', '2024-09-19', '1'),
+(21, 395, 'NO', 'TITULAR', '2024-09-07', '2024-09-19', '1'),
+(22, 396, 'SI', 'TITULAR', '2024-09-07', '2024-09-19', '1'),
+(23, 397, 'NO', 'TITULAR', '2024-09-07', '2024-09-19', '1'),
+(24, 398, 'SI', 'SUPLENTE', '2024-09-07', '2024-09-19', '1'),
+(25, 399, 'NO', 'TITULAR', '2024-09-07', '2024-09-19', '1'),
+(26, 400, 'SI', 'TITULAR', '2024-09-07', '2024-09-19', '1'),
+(27, 401, 'NO', 'TITULAR', '2024-09-07', '2024-09-19', '1'),
+(28, 402, 'NO', 'SUPLENTE', '2024-09-07', '2024-09-19', '1'),
+(29, 403, 'NO', 'TITULAR', '2024-09-07', '2024-09-19', '1'),
+(30, 404, 'SI', 'TITULAR', '2024-09-07', '2024-09-19', '1');
 
 -- --------------------------------------------------------
 
@@ -2223,7 +2246,7 @@ INSERT INTO `niveles` (`id_nivel`, `gestion_id`, `nivel`, `turno`, `fyh_creacion
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `personas`
+-- Estructura de tabla para la tabla `usuarios`
 --
 
 DROP TABLE IF EXISTS `personas`;
@@ -2630,7 +2653,30 @@ INSERT INTO `personas` (`id_persona`, `usuario_id`, `nombres`, `apellidos`, `dni
 (379, 382, 'YOHANA CECILIA', 'LINOSSI', '45353827', '41433', 'd21', '24 DE SEPTIEMBRE 1042', 'd20', '2024-10-30', NULL, '1'),
 (380, 383, 'DANIEL SILVA', 'SILVA', '45997123', '41435', 'd21', 'OLAGUER Y FELIU VIRREY 2461', 'd20', '2024-10-30', NULL, '1'),
 (381, 384, 'FACUNDO TOMAS', 'JAEGGI', '45887171', '41434', 'd21', 'INT. LEONELLI HUGO 267', 'd20', '2024-10-30', NULL, '1'),
-(382, 385, 'YULIANA MICAELA', 'VADALA', '4576286', '41436', 'd21', 'PARANA 208', 'd20', '2024-10-30', NULL, '1');
+(382, 385, 'MICAELA', 'VADALA', '35762861', '1984-12-01', 'Profesorado en Educación Primaria', 'PARANA 208', '3515237651', '2024-10-30', '2024-09-19', '1'),
+(383, 386, 'MIRIAM', 'MINA', '15561963', '1974-09-06', 'Profesorado en Educación Primaria', 'SAN MARTIN 1595', '3515237651', '2024-10-30', '2024-09-19', '1'),
+(384, 387, 'VALENTINA', 'QUINTEROS', '35809752', '1994-01-04', 'Profesorado en Educación Primaria', 'GENERAL PAZ 250', '3515237651', '2024-10-30', '2024-09-19', '1'),
+(385, 388, 'EUGENIA', 'MARTINEZ', '3533105', '1992-10-11', 'Profesorado en Educación Primaria', 'SAENZ PEÑA LUIS PTE. 1754', '3515237651', '2024-10-30', '2024-09-19', '1'),
+(386, 389, 'MARIELA ', 'NARDI', '25676159', '1993-12-09', 'Profesorado en Educación Primaria', 'LAMADRID 701', '3515237651', '2024-10-30', '2024-09-19', '1'),
+(387, 390, 'ADRIANA', 'FERNANDEZ', '18466558', '1965-04-14', 'Profesorado en Educación Primaria', 'AMBROSIO OLMOS 895', '3515237651', '2024-10-30', '2024-09-19', '1'),
+(388, 391, 'FERNANDO ', 'BARRERA', '16465983', '1966-09-21', 'Profesorado en Educación Primaria', 'AV. SAN MARTÍN 3667', '3515237651', '2024-10-30', '2024-09-19', '1'),
+(389, 392, 'KAREN ', 'SANCHEZ', '37903486', '1993-02-08', 'Profesorado en Educación Primaria', 'BV PTE ARTURO UMBERTO ILLIA 368', '3515237651', '2024-10-30', '2024-09-19', '1'),
+(390, 393, 'VANINA', 'FILIPPA', '28275095', '1984-03-19', 'Profesorado en Educación Primaria', 'INDEPENDENCIA 281', '3515237651', '2024-10-30', '2024-09-19', '1'),
+(391, 394, 'JULIETA ', 'CALARCO', '33579711', '1989-12-18', 'Profesorado en Educación Primaria', 'CHILE 325', '3515237651', '2024-10-30', '2024-09-19', '1'),
+(392, 395, 'VERONICA', 'RODA', '40283082', '1996-03-15', 'Profesorado en Educación Primaria', 'EL TAJAMAR 1611', '3515237651', '2024-10-30', '2024-09-19', '1'),
+(393, 396, 'CLAUDIA', 'ARMONIA', '37510547', '1993-04-19', 'Profesorado en Educación Primaria', 'JUAREZ CELMAN PRES MIGUEL 567', '3515237651', '2024-10-30', '2024-09-19', '1'),
+(394, 397, 'VICTORIA', 'EGEA', '35562204', '1992-05-28', 'Profesorado en Educación Primaria', 'BV. 25 DE MAYO 2100', '3515237651', '2024-10-30', '2024-09-19', '1'),
+(395, 398, 'ANDREA', 'MOLINERO', '36151283', '1991-01-29', 'Profesorado en Educación Primaria', 'CASTELLI 2168', '3515237651', '2024-10-30', '2024-09-19', '1'),
+(396, 399, 'IRMA', 'VIGONI', '15515502', '1964-09-01', 'Profesorado en Educación Primaria', 'DR. GOLLAN FUNES 171', '3515237651', '2024-10-30', '2024-09-19', '1'),
+(397, 400, 'MARIO', 'VOLPATO', '17808928', '1966-10-30', 'Profesorado en Educación Primaria', 'FLORENCIO SANCHEZ 1140', '3515237651', '2024-10-30', '2024-09-19', '1'),
+(398, 401, 'YAMILA CELESTE', 'DIAZ', '40193737', '1999-05-18', 'Profesorado en Educación Primaria', 'ELPIDIO GONZALEZ 375', '3515237651', '2024-10-30', '2024-09-19', '1'),
+(399, 402, 'AGUSTINA', 'WEHRLI', '41695015', '2000-10-16', 'Profesorado en Educación Primaria', 'ZONA RURAL ', '3515237651', '2024-10-30', '2024-09-19', '1'),
+(400, 403, 'BELEN', 'OLIVERES', '35977008', '1991-09-09', 'Profesorado en Educación Primaria', 'URQUIZA 168', '3515237651', '2024-10-30', '2024-09-19', '1'),
+(401, 404, 'YASMIN ', 'CHAIB', '39370205', '1995-06-19', 'Profesorado en Educación Primaria', 'RIVADAVIA BERNARDINO 761', '3515237651', '2024-10-30', '2024-09-19', '1'),
+(402, 405, 'MARICEL', 'DE LOURDES', '23603517', '1954-07-24', 'Profesorado en Educación Primaria', 'BELGRANO DR MANUEL 1285', '3515237651', '2024-10-30', '2024-09-19', '1'),
+(403, 406, 'CECILIA', 'LINOSSI', '24353827', '1954-09-09', 'Profesorado en Educación Primaria', '24 DE SEPTIEMBRE 1042', '3515237651', '2024-10-30', '2024-09-19', '1'),
+(404, 407, 'DANIEL ', 'SILVA', '25997123', '1952-10-09', 'Profesorado en Educación Primaria', 'OLAGUER Y FELIU VIRREY 2461', '3515237651', '2024-10-30', '2024-09-19', '1'),
+(405, 408, 'OLGA', 'NAVARRO', '38453855', '1994-03-13', 'Profesorado en Educación Primaria', 'Miguel de Ardiles 517', '3515237651', '2024-09-07', '2024-09-19', '1');
 
 -- --------------------------------------------------------
 
@@ -3337,7 +3383,7 @@ INSERT INTO `usuarios` (`id_usuario`, `rol_id`, `email`, `password`, `fyh_creaci
 (250, 4, 'mariaconstanzaosuna@gmail.com', '$2y$10$8vIvQRuGRSg9DBhRuNjtDOSor.BTJ51Db5KvnUEhF0M6VcDHbZdxK', '2024-10-30', NULL, '1', NULL, NULL),
 (251, 4, 'mariaraquelanthonioz@live.com', '$2y$10$Dv9a/QEGVzadLo8pp6b5Yehbcm66Q5XvQH4T/gWsTmr1yCebdtZPK', '2024-10-30', NULL, '1', NULL, NULL),
 (252, 4, 'mariaumicarnicer@gmail.com', '$2y$10$6zgFwo8bLkl/4V7VKqH7vOXR3HkTmoh1t6pwg/a84TQjl0kKPkaX.', '2024-10-30', NULL, '1', NULL, NULL),
-(253, 4, 'mariaangelmoya@hotmail.com                     ', '$2y$10$yvq2W4fIbgzPFFBDTXljLu6Irst35A2MXSzzzRrICAu.Ih4zeFzhC', '2024-10-30', NULL, '1', NULL, NULL),
+(253, 4, 'mariaangelmoya@hotmail.com', '$2y$10$yvq2W4fIbgzPFFBDTXljLu6Irst35A2MXSzzzRrICAu.Ih4zeFzhC', '2024-10-30', NULL, '1', NULL, NULL),
 (254, 4, 'maricelleantro@gmail.com', '$2y$10$fvR7FsgQWTwuGMYShRR1CunvIk8TEIdmTveHFu/8GHS80DTj7uFHa', '2024-10-30', NULL, '1', NULL, NULL),
 (255, 4, 'marisolgiraudo7@gmail.com', '$2y$10$HXsjC5wfO4xGMvl.wxafJug6fcAQtyOhQYnJjEGzvE8qBzkaVERcC', '2024-10-30', NULL, '1', NULL, NULL),
 (256, 4, 'martinezvegatomas@gmail.com', '$2y$10$eQp7LgdR85rWAbdDfHjC5erskkS4469pCEU1criUWozaVP6bxAfum', '2024-10-30', NULL, '1', NULL, NULL),
@@ -3427,7 +3473,7 @@ INSERT INTO `usuarios` (`id_usuario`, `rol_id`, `email`, `password`, `fyh_creaci
 (340, 4, 'serruvinsky@hotmail.com', '$2y$10$2YfRVUIJ4AZ66X.8R2tGP.XJQEx91G36Unr0G0cUYGaLkyV0g.mku', '2024-10-30', NULL, '1', NULL, NULL),
 (341, 4, 'silvanaghl@hotmail.com', '$2y$10$mH99I2lfNrRRJkG5bQTbN.ocUuxsRbK58uYUWUp2mgnlzTbgDGkWG', '2024-10-30', NULL, '1', NULL, NULL),
 (342, 4, 'silviaalexandragonzalez@gmail.com', '$2y$10$ZmNKEfFKDLJ3Lgr08dO43eH8oZM1JRxFKQLvBRKHmg5KNqfT/JKke', '2024-10-30', NULL, '1', NULL, NULL),
-(343, 4, 'silviamaldonado41@gmail.com                                                  ', '$2y$10$M8VVN2CWi6jNFOaTH0QdVuqLQ7SHwvnPIe1RX45d1rU7IoIDnm.DK', '2024-10-30', NULL, '1', NULL, NULL),
+(343, 4, 'silviamaldonado41@gmail.com', '$2y$10$M8VVN2CWi6jNFOaTH0QdVuqLQ7SHwvnPIe1RX45d1rU7IoIDnm.DK', '2024-10-30', NULL, '1', NULL, NULL),
 (344, 4, 'sofiadiaz032@gmail.com', '$2y$10$UVda48j4lGtUGNVuLiezmO7Y56milSepv.GT8kRfFSdLDp0ZP6iny', '2024-10-30', NULL, '1', NULL, NULL),
 (345, 4, 'solanamilagrosdelvalle@gmail.com', '$2y$10$8gH8zADK5yFtNK5GFMnB4.EE5rKqdtkU9V8W3gCInimf9ya9PKeUS', '2024-10-30', NULL, '1', NULL, NULL),
 (346, 4, 'soledadq816@gmail.com', '$2y$10$DdpDjrxJ.vTNEWNRgtsR/.nb4TJi0zD.N8g4ibBKmV6lalC2YfuH2', '2024-10-30', NULL, '1', NULL, NULL),
@@ -3449,8 +3495,7 @@ INSERT INTO `usuarios` (`id_usuario`, `rol_id`, `email`, `password`, `fyh_creaci
 (362, 4, 'vale6942@gmail.com', '$2y$10$7pFZk0zBI/5Ym8YWA7gOHejIIwxK9QM4tlNO6.qsthf/TGSJNxQX6', '2024-10-30', NULL, '1', NULL, NULL),
 (363, 4, 'valentinaquinteros814@gmail.com', '$2y$10$MHgK4U5vDC8hNeiijBEgZ.viJSq1nGrh/.KSuFaxUH4Oon0Dp805S', '2024-10-30', NULL, '1', NULL, NULL),
 (364, 4, 'valeemartinez756@gmail.com', '$2y$10$G3xKWoZvfU5cKJFEYL8OzOhdWxsfmviuOnw31MOz7Xfw0F23zPSNu', '2024-10-30', NULL, '1', NULL, NULL),
-(365, 4, 'valeatletico@hotmail.com.ar', '$2y$10$SR0eTWP9uOvwgAILvuxeJeJsbm6tf8tb1SJkIvfHlajDnPNgvgVFC', '2024-10-30', NULL, '1', NULL, NULL);
-INSERT INTO `usuarios` (`id_usuario`, `rol_id`, `email`, `password`, `fyh_creacion`, `fyh_actualizacion`, `estado`, `reset_token`, `reset_expiration`) VALUES
+(365, 4, 'valeatletico@hotmail.com.ar', '$2y$10$SR0eTWP9uOvwgAILvuxeJeJsbm6tf8tb1SJkIvfHlajDnPNgvgVFC', '2024-10-30', NULL, '1', NULL, NULL),
 (366, 4, 'valee_2017fernandez@outlook.com', '$2y$10$Fpy2koI/SDBWZnLNvdqcQ.tu0Ui6SY1qhf3gwociW81Ty4QFe8ODC', '2024-10-30', NULL, '1', NULL, NULL),
 (367, 4, 'valevottero@hotmail.com', '$2y$10$Zwacuj7b18vC/8/1GvtGyO/Q.UQNHLMQMEKH2F9pmW0B8kGuP8fmu', '2024-10-30', NULL, '1', NULL, NULL),
 (368, 4, 'vanesasanchez@hotmail.com', '$2y$10$8OS2tIW0GIKBsWRFtkiEC.//DvpXaRilwL0I./aSFkuadV9058uVq', '2024-10-30', NULL, '1', NULL, NULL),
@@ -3470,7 +3515,31 @@ INSERT INTO `usuarios` (`id_usuario`, `rol_id`, `email`, `password`, `fyh_creaci
 (382, 4, 'yohanalinossi16@gmail.com', '$2y$10$1I7ymMnIqyNefepLjRnkmeHV6sk/rJW6B/rvHK3xC4t2MA5kyr7te', '2024-10-30', NULL, '1', NULL, NULL),
 (383, 4, 'yonicn97@gmail.com', '$2y$10$aQ8451ABbjVXx2nsZ7MfXeLUTD10pqJdpxb07EIacOeONpWlIdDq6', '2024-10-30', NULL, '1', NULL, NULL),
 (384, 4, 'yolandabarrozo@hotmail.com', '$2y$10$u3fga6y5OlLPTY7rS/eruuKSCiBDMbn8iVyM/alQK84JwBM.lA/1i', '2024-10-30', NULL, '1', NULL, NULL),
-(385, 4, 'yulianavadala@hotmail.com', '$2y$10$OZC9mW9XYOaf8Rw0MlCulu6TKXfmYnANcOvQ87NjGkC9IU1u7mtai', '2024-10-30', NULL, '1', NULL, NULL);
+(385, 4, 'micavadala@gmail.com', '$2y$10$OZC9mW9XYOaf8Rw0MlCulu6TKXfmYnANcOvQ87NjGkC9IU1u7mtai', '2024-10-30', NULL, '1', NULL, NULL),
+(386, 3, 'miriammina@gmail.com', '$2y$10$JU16A61jANNO8hcqxzBtG.WOLw1rC5TQJ76g0VDVhyBDrw49.HgHK', '2024-09-07', '2024-09-19', '1', NULL, NULL),
+(387, 3, 'valequinteros@gmail.com', '$2y$10$JU16A61jANNO8hcqxzBtG.WOLw1rC5TQJ76g0VDVhyBDrw49.HgHK', '2024-09-07', '2024-09-19', '1', NULL, NULL),
+(388, 3, 'eugemartinez@gmail.com', '$2y$10$JU16A61jANNO8hcqxzBtG.WOLw1rC5TQJ76g0VDVhyBDrw49.HgHK', '2024-09-07', '2024-09-19', '1', NULL, NULL),
+(389, 3, 'marielanardi@gmail.com', '$2y$10$JU16A61jANNO8hcqxzBtG.WOLw1rC5TQJ76g0VDVhyBDrw49.HgHK', '2024-09-07', '2024-09-19', '1', NULL, NULL),
+(390, 3, 'adrifernandez@gmail.com', '$2y$10$JU16A61jANNO8hcqxzBtG.WOLw1rC5TQJ76g0VDVhyBDrw49.HgHK', '2024-09-07', '2024-09-19', '1', NULL, NULL),
+(391, 3, 'ferbarrera@gmail.com', '$2y$10$JU16A61jANNO8hcqxzBtG.WOLw1rC5TQJ76g0VDVhyBDrw49.HgHK', '2024-09-07', '2024-09-19', '1', NULL, NULL),
+(392, 3, 'karensanchez@gmail.com', '$2y$10$JU16A61jANNO8hcqxzBtG.WOLw1rC5TQJ76g0VDVhyBDrw49.HgHK', '2024-09-07', '2024-09-19', '1', NULL, NULL),
+(393, 3, 'vaninafilippa@gmail.com', '$2y$10$JU16A61jANNO8hcqxzBtG.WOLw1rC5TQJ76g0VDVhyBDrw49.HgHK', '2024-09-07', '2024-09-19', '1', NULL, NULL),
+(394, 3, 'julicalarco@gmail.com', '$2y$10$JU16A61jANNO8hcqxzBtG.WOLw1rC5TQJ76g0VDVhyBDrw49.HgHK', '2024-09-07', '2024-09-19', '1', NULL, NULL),
+(395, 3, 'veroroda@gmail.com', '$2y$10$JU16A61jANNO8hcqxzBtG.WOLw1rC5TQJ76g0VDVhyBDrw49.HgHK', '2024-09-07', '2024-09-19', '1', NULL, NULL),
+(396, 3, 'clauarmonia@gmail.com', '$2y$10$JU16A61jANNO8hcqxzBtG.WOLw1rC5TQJ76g0VDVhyBDrw49.HgHK', '2024-09-07', '2024-09-19', '1', NULL, NULL),
+(397, 3, 'victoriaegea@gmail.com', '$2y$10$JU16A61jANNO8hcqxzBtG.WOLw1rC5TQJ76g0VDVhyBDrw49.HgHK', '2024-09-07', '2024-09-19', '1', NULL, NULL),
+(398, 3, 'andremolinero@gmail.com', '$2y$10$JU16A61jANNO8hcqxzBtG.WOLw1rC5TQJ76g0VDVhyBDrw49.HgHK', '2024-09-07', '2024-09-19', '1', NULL, NULL),
+(399, 3, 'irmavigoni@gmail.com', '$2y$10$JU16A61jANNO8hcqxzBtG.WOLw1rC5TQJ76g0VDVhyBDrw49.HgHK', '2024-09-07', '2024-09-19', '1', NULL, NULL),
+(400, 3, 'mariovolpato@gmail.com', '$2y$10$JU16A61jANNO8hcqxzBtG.WOLw1rC5TQJ76g0VDVhyBDrw49.HgHK', '2024-09-07', '2024-09-19', '1', NULL, NULL),
+(401, 3, 'yamidiaz@gmail.com', '$2y$10$JU16A61jANNO8hcqxzBtG.WOLw1rC5TQJ76g0VDVhyBDrw49.HgHK', '2024-09-07', '2024-09-19', '1', NULL, NULL),
+(402, 3, 'aguswehrli@gmail.com', '$2y$10$JU16A61jANNO8hcqxzBtG.WOLw1rC5TQJ76g0VDVhyBDrw49.HgHK', '2024-09-07', '2024-09-19', '1', NULL, NULL),
+(403, 3, 'beluoliveres@gmail.com', '$2y$10$JU16A61jANNO8hcqxzBtG.WOLw1rC5TQJ76g0VDVhyBDrw49.HgHK', '2024-09-07', '2024-09-19', '1', NULL, NULL),
+(404, 3, 'yaschaib@gmail.com', '$2y$10$JU16A61jANNO8hcqxzBtG.WOLw1rC5TQJ76g0VDVhyBDrw49.HgHK', '2024-09-07', '2024-09-19', '1', NULL, NULL),
+(405, 3, 'mariceldelourdes@gmail.com', '$2y$10$JU16A61jANNO8hcqxzBtG.WOLw1rC5TQJ76g0VDVhyBDrw49.HgHK', '2024-09-07', '2024-09-19', '1', NULL, NULL),
+(406, 3, 'cecilinossi@gmail.com', '$2y$10$JU16A61jANNO8hcqxzBtG.WOLw1rC5TQJ76g0VDVhyBDrw49.HgHK', '2024-09-07', '2024-09-19', '1', NULL, NULL),
+(407, 3, 'danisilva@gmail.com', '$2y$10$JU16A61jANNO8hcqxzBtG.WOLw1rC5TQJ76g0VDVhyBDrw49.HgHK', '2024-09-07', '2024-09-19', '1', NULL, NULL),
+(408, 3, 'olganavarro@gmail.com', '$2y$10$JU16A61jANNO8hcqxzBtG.WOLw1rC5TQJ76g0VDVhyBDrw49.HgHK', '2024-09-07', '2024-09-19', '1', NULL, NULL);
+
 
 --
 -- Restricciones para tablas volcadas
