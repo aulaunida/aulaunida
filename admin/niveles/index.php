@@ -12,7 +12,7 @@ include ('../../app/controllers/niveles/listado_de_niveles.php');
     <div class="content">
         <div class="container">
             <div class="row">
-            <h1 style="margin-left: 20px;"><i class="bi bi-calendar4-week"></i>  Ciclos lectivos </h1>
+            <h2 style="margin-left: 20px;"><i class="bi bi-file-earmark-plus"></i>  Asignar ciclos lectivos </h2>
             </div>
             <br>
             <div class="row">
@@ -22,7 +22,7 @@ include ('../../app/controllers/niveles/listado_de_niveles.php');
                         <div class="card-header">
                             <h3 class="card-title">Ciclos lectivos registrados</h3>
                             <div class="card-tools">
-                                <a href="create.php" class="btn btn-primary"><i class="bi bi-plus-square"></i> Registrar ciclo lectivo</a>
+                                <a href="create.php" class="btn btn-primary"><i class="bi bi-plus-square"></i> Asignar ciclo lectivo</a>
                             </div>
                         </div>
                         <div class="card-body">

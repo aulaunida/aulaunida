@@ -2087,8 +2087,11 @@ CREATE TABLE IF NOT EXISTS `gestiones` (
 --
 
 INSERT INTO `gestiones` (`id_gestion`, `gestion`, `fyh_creacion`, `fyh_actualizacion`, `estado`) VALUES
-(1, 'CICLO LECTIVO 2023', '2023-01-16', '2024-08-25', '0'),
-(2, 'CICLO LECTIVO 2024', '2024-01-08', '2024-08-24', '1');
+(1, 'CICLO LECTIVO 2025', '2023-01-16', '2024-08-25', '1'),
+(2, 'CICLO LECTIVO 2024', '2024-01-08', '2024-08-24', '1'),
+(3, 'CICLO LECTIVO 2023', '2024-01-08', '2024-08-24', '1'),
+(4, 'CICLO LECTIVO 2022', '2024-01-08', '2024-08-24', '1'),
+(5, 'CICLO LECTIVO 2021', '2024-01-08', '2024-08-24', '1');
 
 -- --------------------------------------------------------
 

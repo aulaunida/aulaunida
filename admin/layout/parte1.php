@@ -285,9 +285,17 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="<?= APP_URL; ?>/admin/niveles" class="nav-link active">
+                                <a href="<?= APP_URL; ?>/admin/configuraciones/gestion" class="nav-link active">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Consultar ciclos lectivos</p>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="<?= APP_URL; ?>/admin/niveles" class="nav-link active">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Asignar ciclos lectivos</p>
                                 </a>
                             </li>
                         </ul>

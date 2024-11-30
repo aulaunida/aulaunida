@@ -96,7 +96,7 @@ include ('../../../app/controllers/configuraciones/gestion/listado_de_gestiones.
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <a href="<?= APP_URL; ?>/admin/configuraciones" class="btn btn-danger">Volver</a>
+                                        <a href="<?= APP_URL; ?>/admin/" class="btn btn-danger">Volver</a>
                                     </div>
                                 </div>
                             </div>
