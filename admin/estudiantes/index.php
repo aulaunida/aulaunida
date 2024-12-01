@@ -39,7 +39,7 @@ include ('../../app/controllers/estudiantes/listado_de_estudiantes.php');
                             <table id="example1" class="table table-striped table-bordered table-hover table-sm">
                                 <thead>
                                 <tr> 
-                                    <th><center>Alumno</center></th>
+                                    <th>Alumno</th>
                                     <th><center>Nivel</center></th>
                                     <th><center>Grado</center></th>
                                     <th><center>Turno</center></th>
@@ -56,7 +56,7 @@ include ('../../app/controllers/estudiantes/listado_de_estudiantes.php');
                                     $contador_estudiantes = $contador_estudiantes +1; ?>
                                     <tr>
                                         <!-- <td style="text-align: center"><?=$contador_estudiantes;?></td> -->
-                                        <td class="uppercase" style="text-align: center"><?=$estudiante['apellidos'] .', '. $estudiante['nombres'];?></td>
+                                        <td class="uppercase" ><?=$estudiante['apellidos'] .', '. $estudiante['nombres'];?></td>
                                         <td style="text-align: center"><?=$estudiante['nivel'];?></td>
                                         <td class="uppercase" style="text-align: center"><?=$estudiante['curso'] .' - '. $estudiante['paralelo'];?></td>
                                         <td class="text-center"><?= $estudiante['turno'];?></td>

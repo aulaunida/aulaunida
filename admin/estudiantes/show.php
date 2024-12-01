@@ -33,7 +33,7 @@ include('../../app/controllers/estudiantes/datos_estudiantes.php');
                 <div class="col-md-12">
                     <div class="card card-outline card-info">
                         <div class="card-header">
-                            <h3 class="card-title">Datos registrados:</h3>
+                            <h3 class="card-title">Datos personales:</h3>
                         </div>
                         <div class="card-body">
                             <div class="row">
@@ -77,9 +77,11 @@ include('../../app/controllers/estudiantes/datos_estudiantes.php');
                                     </div>
                                 </div>
                             </div>
-                            <hr>
+                            <div class="card-header">
+                            <h3 class="card-title">Datos académicos:</h3>
+                            </div>
+                            <br>
                             <div class="row">
-                                
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="">Nivel</label>
@@ -100,7 +102,6 @@ include('../../app/controllers/estudiantes/datos_estudiantes.php');
                                 </div> 
                             </div>
                             <div class="row">
-                                   
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="">División</label>
@@ -120,11 +121,14 @@ include('../../app/controllers/estudiantes/datos_estudiantes.php');
                                     </div>
                                 </div>
                             </div>
-                            <hr>
+                            <div class="card-header">
+                                <h3 class="card-title">Datos padre/madre/tutor:</h3>
+                            </div>
+                            <br>
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label for="">Nombre padre/madre/tutor</label>
+                                        <label for="">Tutor 1 (Apellido y nombre)</label>
                                         <p class="uppercase"><?= $nombres_apellidos_ppff; ?></p>
                                     </div>
                                 </div>
@@ -144,31 +148,37 @@ include('../../app/controllers/estudiantes/datos_estudiantes.php');
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label for="">Ocupación</label>
-                                        <p><?= $ocupacion_ppff; ?></p>
+                                        <label for="">Correo electrónico</label>
+                                        <p><?= $email; ?></p>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label for="">Nombre contacto de emergencia</label>
+                                        <label for="">Tutor 2 (Apellido y nombre)</label>
                                         <p class="uppercase"><?= $ref_nombre; ?></p>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label for="">Nro. de contacto emergencia</label>
-                                        <p class="uppercase"><?= $ref_celular; ?></p>
+                                        <label for="">Nro. de documento</label>
+                                        <p><?= $ocupacion_ppff; ?></p>
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label for="">Parentesco contacto de emergencia</label>
-                                        <p><?= $ref_parentezco; ?></p>
+                                        <label for="">Nro. de celular</label>
+                                        <p class="uppercase"><?= $ref_celular; ?></p>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="">Correo electrónico</label>
+                                        <p><?= $ref_parentezco; ?></p>
+                                    </div>
+                                </div>
+                                <!-- <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="">Estado del alumno</label>
                                         <p>
@@ -178,7 +188,7 @@ include('../../app/controllers/estudiantes/datos_estudiantes.php');
                                             ?>
                                         </p>
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
                             <hr>
                             <div class="row">

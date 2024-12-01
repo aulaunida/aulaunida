@@ -168,60 +168,58 @@ include('../../app/controllers/grados/listado_de_grados.php');
                     <div class="col-md-12">
                         <div class="card card-outline card-success">
                             <div class="card-header">
-                                <h3 class="card-title">Editar datos padre/madre/tutor:</h3>
+                                <h3 class="card-title">Editar datos del padre/madre/tutor:</h3>
                             </div>
                             <div class="card-body">
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-3">
                                         <div class="form-group">
-                                            <label for="">Apellido y nombre<b style="color:red">*</b></label>
+                                            <label for="">Tutor 1 (Apellido y nombre)<b style="color:red">*</b></label>
                                             <input type="text" name="nombres_apellidos_ppff" value="<?= strtoupper($nombres_apellidos_ppff); ?>" class="form-control"
                                                 required>
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="">Nro. de documento<b style="color:red">*</b></label>
                                             <input type="number" name="dni_ppff" value="<?= $dni_ppff; ?>" class="form-control" required>
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="">Nro. de celular<b style="color:red">*</b></label>
                                             <input type="number" name="celular_ppff" value="<?= $celular_ppff; ?>" class="form-control" required>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="">Correo electrónico<b style="color:red">*</b></label>
                                             <input type="email" name="email" value="<?= $email; ?>" class="form-control" required>
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-3">
                                         <div class="form-group">
-                                            <label for="">Ocupación<b style="color:red">*</b></label>
-                                            <input type="text" name="ocupacion_ppff" value="<?= $ocupacion_ppff; ?>" class="form-control" required>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label for="">Nombre contacto de emergencia<b style="color:red">*</b></label>
+                                            <label for="">Tutor 2 (Apellido y nombre)<b style="color:red">*</b></label>
                                             <input type="text" name="ref_nombre" value="<?= strtoupper($ref_nombre); ?>" class="form-control" required>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-3">
                                         <div class="form-group">
-                                            <label for="">Nro. contacto de emergencia<b style="color:red">*</b></label>
+                                            <label for="">Nro. de documento<b style="color:red">*</b></label>
+                                            <input type="text" name="ocupacion_ppff" value="<?= $ocupacion_ppff; ?>" class="form-control" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label for="">Nro. de celular<b style="color:red">*</b></label>
                                             <input type="number" name="ref_celular" value="<?= $ref_celular; ?>" class="form-control" required>
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-3">
                                         <div class="form-group">
-                                            <label for="">Parentesco contacto de emergencia<b style="color:red">*</b></label>
+                                            <label for="">Correo electrónico<b style="color:red">*</b></label>
                                             <input type="text" name="ref_parentezco" value="<?= $ref_parentezco; ?>" class="form-control" required>
                                         </div>
                                     </div>
