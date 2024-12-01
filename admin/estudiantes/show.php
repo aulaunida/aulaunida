@@ -126,69 +126,57 @@ include('../../app/controllers/estudiantes/datos_estudiantes.php');
                             </div>
                             <br>
                             <div class="row">
-                                <div class="col-md-4">
+                                <div class="col-md-3">
                                     <div class="form-group">
                                         <label for="">Tutor 1 (Apellido y nombre)</label>
                                         <p class="uppercase"><?= $nombres_apellidos_ppff; ?></p>
                                     </div>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-3">
                                     <div class="form-group">
                                         <label for="">Nro. de documento </label>
                                         <p class="uppercase"><?= $dni_ppff; ?></p>
                                     </div>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-3">
                                     <div class="form-group">
                                         <label for="">Nro. de celular</label>
                                         <p><?= $celular_ppff; ?></p>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-4">
+                                <div class="col-md-3">
                                     <div class="form-group">
                                         <label for="">Correo electrónico</label>
                                         <p><?= $email; ?></p>
                                     </div>
                                 </div>
-                                <div class="col-md-4">
+                            </div>
+                            <div class="row">
+                                
+                                <div class="col-md-3">
                                     <div class="form-group">
                                         <label for="">Tutor 2 (Apellido y nombre)</label>
                                         <p class="uppercase"><?= $ref_nombre; ?></p>
                                     </div>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-3">
                                     <div class="form-group">
                                         <label for="">Nro. de documento</label>
                                         <p><?= $ocupacion_ppff; ?></p>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-4">
+                                <div class="col-md-3">
                                     <div class="form-group">
                                         <label for="">Nro. de celular</label>
                                         <p class="uppercase"><?= $ref_celular; ?></p>
                                     </div>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-3">
                                     <div class="form-group">
                                         <label for="">Correo electrónico</label>
                                         <p><?= $ref_parentezco; ?></p>
                                     </div>
                                 </div>
-                                <!-- <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label for="">Estado del alumno</label>
-                                        <p>
-                                            <?php
-                                            if ($estado == "1") echo "ACTIVO";
-                                            else echo "INACTIVO";
-                                            ?>
-                                        </p>
-                                    </div>
-                                </div> -->
                             </div>
                             <hr>
                             <div class="row">
