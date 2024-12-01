@@ -203,7 +203,7 @@ $niveles = $stmtNiveles->fetchAll(PDO::FETCH_ASSOC);
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="sordera">Sordera o Hipoacusia:<b style="color:red">*</b></label>
-                                            <input type="number" id="sordera" class="form-control"  value="0" placeholder="Cantidad" required>
+                                            <input type="number" id="sordera" class="form-control" placeholder="Cantidad" required readonly>
                                         </div>
                                     </div>
                                     <div class="col-md-3">
@@ -294,6 +294,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const matriculadosInput = document.getElementById('matriculados');
     const repetidoresInput = document.getElementById('repetidores');
     const intelectualInput = document.getElementById('intelectual');
+    const sorderaInput = document.getElementById('sordera');
 
     // Inicializa el gráfico vacío
     const inicializarGrafico = () => {
@@ -381,11 +382,30 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     };
 
+    // Obtener sordera
+    const obtenerSordera = () => {
+        const grado = gradoSelect.value;
+        if (grado) {
+            const url = `<?= APP_URL; ?>/app/controllers/estadisticas/obtener_sordera.php?grado=${grado}`;
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    sorderaInput.value = data.total || 0;
+                })
+                .catch(error => {
+                    console.error("Error al obtener sordera:", error);
+                    sorderaInput.value = 0;
+                });
+        } else {
+            sorderaInput.value = "";
+        }
+    };
     // Escuchar cambios en el select de grado
     gradoSelect.addEventListener('change', function () {
         obtenerMatriculados();
         obtenerRepetidores();
         obtenerIntelectual();
+        obtenerSordera();
     });
 
     document.getElementById('agregarDatos').addEventListener('click', function () {
@@ -395,7 +415,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const matriculados = parseInt(matriculadosInput.value);
         const repetidores = parseInt(repetidoresInput.value);
         const intelectual = parseInt(intelectualInput.value);
-        const sordera = parseInt(document.getElementById('sordera').value);
+        const sordera = parseInt(sorderaInput.value);
         const ceguera = parseInt(document.getElementById('ceguera').value);
         const motora = parseInt(document.getElementById('motora').value);
         const tgd = parseInt(document.getElementById('tgd').value);
