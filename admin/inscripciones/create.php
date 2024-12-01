@@ -145,6 +145,7 @@ include('../../app/controllers/grados/listado_de_grados.php');
                                                 <option value="CEGUERA O DISMINUCION VISUAL">CEGUERA O DISMINUCIÓN VISUAL</option>
                                                 <option value="MOTORA O NEUMOMOTORA">MOTORA O NEUMOMOTORA</option>
                                                 <option value="TGD O TEA">TGD O TEA</option>
+                                                <option value="MAS DE UNA DISCAPACIDAD">MÁS DE UNA DISCAPACIDAD</option>
                                                 <option value="OTRO MOTIVO">OTRO MOTIVO</option>
                                             </select>
                                         </div>
