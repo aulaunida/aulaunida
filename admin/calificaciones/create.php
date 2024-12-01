@@ -61,7 +61,7 @@ foreach ($materias as $materia) {
                                 <thead>
                                     <tr>
                                         <th text align="left">Alumno</th>
-                                        <th><center>Integración<center></th>
+                                        <!-- <th><center>Integración<center></th> -->
                                         <th colspan="4"><center>Primera Etapa</center></th>
                                         <th><center>Nota Final</center></th>
                                         <th colspan="4"><center>Segunda Etapa</center></th>
@@ -81,7 +81,7 @@ foreach ($materias as $materia) {
 
                                                 <!-- <td style="text-align: center"><?= $contador_estudiantes; ?></td> -->
                                                 <td class="uppercase"><input type="text" value="<?= $id_estudiante; ?>" name="" id="estudiante_<?= $contador_estudiantes; ?>" hidden><?= $estudiante['apellidos'] . ', ' . $estudiante['nombres']; ?></td>
-                                                <td class="text-center" style="text-align: center"><?= $estudiante['integracion'] == 'NO' ? "NO" : "SI"; ?></td>
+                                                <!-- <td class="text-center" style="text-align: center"><?= $estudiante['integracion'] == 'NO' ? "NO" : "SI"; ?></td> -->
                                                 <?php
                                                 $nota1 = "";
                                                 $nota2 = "";
