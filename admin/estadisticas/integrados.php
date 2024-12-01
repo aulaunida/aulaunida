@@ -82,6 +82,7 @@ $niveles = $stmtNiveles->fetchAll(PDO::FETCH_ASSOC);
                                             </select>
                                         </div>
                                     </div>
+                                    <!-- Matriculados -->
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="matriculados">Alumnos matriculados:<b style="color:red">*</b></label>
@@ -181,10 +182,8 @@ $niveles = $stmtNiveles->fetchAll(PDO::FETCH_ASSOC);
                                 ?>
                                 <!-- Alumnos Matriculados -->
                                 <div class="row">
-                                    <!-- Matriculados -->
                                     
-
-                                    <!-- Repetidores -->
+                                    <!-- Integrados -->
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="repetidores">Alumnos integrados:<b style="color:red">*</b></label>
@@ -198,7 +197,7 @@ $niveles = $stmtNiveles->fetchAll(PDO::FETCH_ASSOC);
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="intelectual">Discapacidad intelectual:<b style="color:red">*</b></label>
-                                            <input type="number" id="intelectual" class="form-control"  value="0" placeholder="Cantidad" required>
+                                            <input type="number" id="intelectual" class="form-control"  placeholder="Cantidad" required readonly>
                                         </div>
                                     </div>
                                     <div class="col-md-3">
@@ -294,6 +293,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const gradoSelect = document.getElementById('grado');
     const matriculadosInput = document.getElementById('matriculados');
     const repetidoresInput = document.getElementById('repetidores');
+    const intelectualInput = document.getElementById('intelectual');
 
     // Inicializa el gráfico vacío
     const inicializarGrafico = () => {
@@ -362,10 +362,30 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     };
 
+    // Obtener intelectual
+    const obtenerIntelectual = () => {
+        const grado = gradoSelect.value;
+        if (grado) {
+            const url = `<?= APP_URL; ?>/app/controllers/estadisticas/obtener_intelectual.php?grado=${grado}`;
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    intelectualInput.value = data.total || 0;
+                })
+                .catch(error => {
+                    console.error("Error al obtener intelectual:", error);
+                    intelectualInput.value = 0;
+                });
+        } else {
+            intelectualInput.value = "";
+        }
+    };
+
     // Escuchar cambios en el select de grado
     gradoSelect.addEventListener('change', function () {
         obtenerMatriculados();
         obtenerRepetidores();
+        obtenerIntelectual();
     });
 
     document.getElementById('agregarDatos').addEventListener('click', function () {
@@ -374,7 +394,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const ciclo = document.getElementById('ciclo').value;
         const matriculados = parseInt(matriculadosInput.value);
         const repetidores = parseInt(repetidoresInput.value);
-        const intelectual = parseInt(document.getElementById('intelectual').value);
+        const intelectual = parseInt(intelectualInput.value);
         const sordera = parseInt(document.getElementById('sordera').value);
         const ceguera = parseInt(document.getElementById('ceguera').value);
         const motora = parseInt(document.getElementById('motora').value);
