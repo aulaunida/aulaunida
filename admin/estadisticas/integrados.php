@@ -48,7 +48,7 @@ $niveles = $stmtNiveles->fetchAll(PDO::FETCH_ASSOC);
                                             <select name="id_gestion" id="ciclo" class="form-control" required>
                                                 <option value="" disabled selected>Seleccionar ciclo lectivo</option>
                                                 <?php foreach ($gestiones as $gestione): ?>
-                                                    <option value="<?= $gestione['id_gestion']; ?>">
+                                                    <option value="<?= $gestione['gestion']; ?>">
                                                         <?= $gestione['gestion']; ?>
                                                     </option>
                                                 <?php endforeach; ?>
@@ -61,7 +61,7 @@ $niveles = $stmtNiveles->fetchAll(PDO::FETCH_ASSOC);
                                             <select name="id_nivel" id="turno" class="form-control" required>
                                                 <option value="" disabled selected>Seleccionar turno</option>
                                                 <?php foreach ($niveles as $nivele): ?>
-                                                    <option value="<?= $nivele['id_nivel']; ?>">
+                                                    <option value="<?= $nivele['turno']; ?>">
                                                         <?= $nivele['turno']; ?> <!-- Solo imprime el turno -->
                                                     </option>
                                                 <?php endforeach; ?>
