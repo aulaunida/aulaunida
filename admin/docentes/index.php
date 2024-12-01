@@ -3,29 +3,26 @@ include ('../../app/config.php');
 include ('../../admin/layout/parte1.php');
 include ('../../app/controllers/docentes/listado_de_docentes.php');
 
-
 ?>
+
 <style>
 .icono-blanco i {
-    color: white; /* Cambia el color del icono a blanco */
+    color: white;
 }
-
 .uppercase {
-    text-transform: uppercase; /* Convierte el texto a mayúsculas */
+    text-transform: uppercase;
 }
 </style>
 
-<!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <br>
     <div class="content">
         <div class="container">
             <div class="row">
-            <h1 style="margin-left: 20px;"><i class="bi bi-person-video3"></i> Docentes</h1>
+                <h1 style="margin-left: 20px;"><i class="bi bi-person-video3"></i> Docentes</h1>
             </div>
             <br>
             <div class="row">
-
                 <div class="col-md-12">
                     <div class="card card-outline card-primary">
                         <div class="card-header">
@@ -35,13 +32,24 @@ include ('../../app/controllers/docentes/listado_de_docentes.php');
                             </div>
                         </div>
                         <div class="card-body">
+                            <!-- Mostrar mensajes de la sesión si existen -->
+                            <?php if (isset($_SESSION['mensaje'])) { ?>
+                                <script>
+                                    Swal.fire({
+                                        icon: '<?=$_SESSION['icono'];?>',
+                                        title: '<?=$_SESSION['mensaje'];?>',
+                                        timer: <?=$_SESSION['timer'];?>,
+                                        timerProgressBar: <?=$_SESSION['timerProgressBar'] ? 'true' : 'false';?>,
+                                        showCloseButton: <?=$_SESSION['showCloseButton'] ? 'true' : 'false';?>
+                                    });
+                                </script>
+                            <?php
+                                unset($_SESSION['mensaje'], $_SESSION['icono'], $_SESSION['timer'], $_SESSION['timerProgressBar'], $_SESSION['showCloseButton']);
+                            } ?>
                             <table id="example1" class="table table-striped table-bordered table-hover table-sm">
                                 <thead>
-                                <tr> 
-                                    <th><center>Docente</center></th>
-                                    <!-- <th><center>Rol</center></th> -->
-                                    <!-- <th><center>DNI</center></th> -->
-                                    <!-- <th><center>Fecha de nacimiento</center></th> -->
+                                <tr>
+                                    <th>Docente</th>
                                     <th><center>Correo electrónico</center></th>
                                     <th><center>Integrador</center></th>
                                     <th><center>Tipo de cargo</center></th>
@@ -52,58 +60,28 @@ include ('../../app/controllers/docentes/listado_de_docentes.php');
                                 <tbody>
                                 <?php
                                 $contador_docentes = 0;
-                                foreach ($docentes as $docente){
+                                foreach ($docentes as $docente) {
                                     $id_docente = $docente['id_docente'];
-                                    $contador_docentes = $contador_docentes +1; ?>
+                                    $contador_docentes++; ?>
                                     <tr>
-                                        <!-- <td style="text-align: center"><?=$contador_docentes;?></td> -->
-                                        <td class="uppercase" style="text-align: center"><?=$docente['apellidos'] .', '. $docente['nombres'];?></td>
-                                        <!-- <td style="text-align: center"><?=$docente['nombre_rol'];?></td> -->
-                                        <!-- <td style="text-align: center"><?=$docente['dni'];?></td> -->
-                                        <!-- <td style="text-align: center"><?=$docente['fecha_nacimiento'];?></td> -->
-                                        <td class="uppercase" style="text-align: center"><?=$docente['email'];?></td>
-                                        <td class="text-center"><?= $docente['integrador'] == 'NO' ? "NO" : "SI";?></td>
-                                        <td class="text-center"><?= $docente['tipo_cargo'] == 'TITULAR' ? "TITULAR" : "SUPLENTE";?></td>
+                                        <td class="uppercase"><?=$docente['apellidos'] . ', ' . $docente['nombres'];?></td>
+                                        <td class="uppercase text-center"><?=$docente['email'];?></td>
+                                        <td class="text-center"><?=$docente['integrador'] == 'NO' ? "NO" : "SI";?></td>
+                                        <td class="text-center"><?=$docente['tipo_cargo'] == 'TITULAR' ? "TITULAR" : "SUPLENTE";?></td>
                                         <td class="text-center">
-                                            <?php
-                                            if($docente['estado'] == "1"){ ?>
+                                            <?php if ($docente['estado'] == "1") { ?>
                                                 <button class="btn btn-success btn-sm" style="border-radius: 20px">ACTIVO</button>
-                                            <?php
-                                            }else{ ?>
+                                            <?php } else { ?>
                                                 <button class="btn btn-danger btn-sm" style="border-radius: 20px">INACTIVO</button>
-                                            <?php
-                                            }
-                                            ?>
+                                            <?php } ?>
                                         </td>
-                                        <td style="text-align: center">
-                                            <div class="btn-group" role="group" aria-label="Basic example">
-                                                <a href="show.php?id=<?=$id_docente;?>" type="button" title="Consultar detalles" class="btn btn-info btn-sm"><i class="bi bi-eye"></i></a>
-                                                <a href="edit.php?id=<?=$id_docente;?>" type="button" title="Editar" class="btn btn-success btn-sm icono-blanco"><i class="bi bi-pencil-square"></i></a>
-                                                <form action="<?=APP_URL;?>/app/controllers/docentes/delete.php" onclick="preguntar<?=$id_docente;?>(event)" method="post" id="miFormulario<?=$id_docente;?>">
-                                                    <input type="text" name="id_docente" value="<?=$id_docente;?>" hidden>
-                                                    <button type="submit" title="Eliminar" class="btn btn-danger btn-sm" style="border-radius: 0px 5px 5px 0px"><i class="bi bi-trash"></i></button>
-                                                </form>
-                                                <script>
-                            function preguntar<?=$id_docente;?>(event) {
-                                event.preventDefault();
-                                Swal.fire({
-                                    title: 'Eliminar docente existente',
-                                    text: '¿Desea eliminar este docente?',
-                                    icon: 'question',
-                                    showDenyButton: true,
-                                    confirmButtonText: 'Eliminar',
-                                    confirmButtonColor: '#a5161d',
-                                    denyButtonColor: '#270a0a',
-                                    denyButtonText: 'Cancelar',
-                                }).then((result) => {
-                                    if (result.isConfirmed) {
-                                        var form = $('#miFormulario<?=$id_docente;?>');
-                                        form.submit();
-                                        Swal.fire('Eliminado', 'Se eliminó el docente correctamente', 'success');
-                                    }
-                                });
-                            }
-                            </script>
+                                        <td class="text-center">
+                                            <div class="btn-group" role="group">
+                                                <a href="show.php?id=<?=$id_docente;?>" class="btn btn-info btn-sm" title="Consultar detalles"><i class="bi bi-eye"></i></a>
+                                                <a href="edit.php?id=<?=$id_docente;?>" class="btn btn-success btn-sm icono-blanco" title="Editar"><i class="bi bi-pencil-square"></i></a>
+                                                <button class="btn btn-danger btn-sm" style="border-radius: 0px 5px 5px 0px" title="Eliminar" onclick="eliminarDocente(<?=$id_docente;?>)">
+                                                    <i class="bi bi-trash"></i>
+                                                </button>
                                             </div>
                                         </td>
                                     </tr>
@@ -113,29 +91,21 @@ include ('../../app/controllers/docentes/listado_de_docentes.php');
                                 </tbody>
                             </table>
                             <hr>
-                    <div class="row">
-                    <div class="col-md-12">
-                        <div class="form-group ">
-                        <a href="<?=APP_URL;?>/admin/index.php" class="btn btn-danger">Volver</a>
-                        </div>
-                     </div>
-                     </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <a href="<?=APP_URL;?>/admin/index.php" class="btn btn-danger">Volver</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- /.row -->
-        </div><!-- /.container-fluid -->
+        </div>
     </div>
-    <!-- /.content -->
 </div>
-<!-- /.content-wrapper -->
 
 <?php
-
 include ('../../admin/layout/parte2.php');
-include ('../../layout/mensajes.php');
-
 ?>
 
 <script>
@@ -147,8 +117,6 @@ include ('../../layout/mensajes.php');
                 "info": "Mostrando _START_ - _END_ | _TOTAL_ docentes",
                 "infoEmpty": "Mostrando 0 - 0 | 0 docentes",
                 "infoFiltered": "(Filtrado de _MAX_ total docentes)",
-                "infoPostFix": "",
-                "thousands": ",",
                 "lengthMenu": "Mostrar _MENU_ docentes",
                 "loadingRecords": "Cargando...",
                 "processing": "Procesando...",
@@ -156,40 +124,40 @@ include ('../../layout/mensajes.php');
                 "zeroRecords": "Sin resultados encontrados",
                 "paginate": {
                     "first": "Primero",
-                    "last": "Ultimo",
+                    "last": "Último",
                     "next": "Siguiente",
                     "previous": "Anterior"
                 }
             },
-            "responsive": true, "lengthChange": true, "autoWidth": false,
-            buttons: [{
-                extend: 'collection',
-                text: 'Exportar',
-                orientation: 'landscape',
-                buttons: [{
-                    text: 'Copiar Texto',
-                    extend: 'copy',
-                }, {
-                    text: 'Descargar en PDF',
-                    extend: 'pdf'
-                },{
-                    text: 'Descargar en CSV',
-                    extend: 'csv'
-                },{
-                    text: 'Descargar en Excel',
-                    extend: 'excel'
-                },{
-                    text: 'Imprimir Reporte',
-                    extend: 'print'
-                }
-                ]
-            },
-                {
-                    extend: 'colvis',
-                    text: 'Visualizar',
-                    collectionLayout: 'fixed three-column'
-                }
-            ],
-        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+            "responsive": true,
+            "lengthChange": true,
+            "autoWidth": false
+        });
     });
+
+    function eliminarDocente(id) {
+        Swal.fire({
+            title: 'Eliminar docente',
+            text: '¿Desea eliminar este docente?',
+            icon: 'question',
+            showDenyButton: true,
+            confirmButtonText: 'Eliminar',
+            confirmButtonColor: '#a5161d',
+            denyButtonText: 'Cancelar',
+            denyButtonColor: '#6c757d'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                let form = document.createElement('form');
+                form.method = 'POST';
+                form.action = '<?=APP_URL;?>/app/controllers/docentes/delete.php';
+                let input = document.createElement('input');
+                input.type = 'hidden';
+                input.name = 'id_docente';
+                input.value = id;
+                form.appendChild(input);
+                document.body.appendChild(form);
+                form.submit();
+            }
+        });
+    }
 </script>

@@ -7,6 +7,17 @@ include ('../../admin/layout/parte1.php');
 include ('../../app/controllers/usuarios/datos_del_usuario.php');
 
 ?>
+<style>
+    .icono-blanco i {
+        color: white;
+        /* Cambia el color del icono a blanco */
+    }
+
+    .uppercase {
+        text-transform: uppercase;
+        /* Convierte el texto a mayúsculas */
+    }
+</style>
 
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
@@ -28,7 +39,7 @@ include ('../../app/controllers/usuarios/datos_del_usuario.php');
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="">Rol</label>
-                                            <p><?=$nombre_rol;?></p>
+                                            <p class="uppercase"><?=$nombre_rol;?></p>
                                         </div>
                                     </div>
                                     <!-- <div class="col-md-4">
@@ -40,7 +51,7 @@ include ('../../app/controllers/usuarios/datos_del_usuario.php');
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="">Correo electrónico</label>
-                                            <p><?=$email;?></p>
+                                            <p class="uppercase"><?=$email;?></p>
                                         </div>
                                     </div>
                                     <div class="col-md-4">

@@ -7,7 +7,10 @@ include ('../../app/controllers/usuarios/listado_de_usuarios.php');
 ?>
 <style>
 .icono-blanco i {
-    color: white; /* Cambia el color del icono a blanco */
+    color: white;
+}
+.uppercase {
+    text-transform: uppercase;
 }
 </style>
 
@@ -26,7 +29,7 @@ include ('../../app/controllers/usuarios/listado_de_usuarios.php');
                         <div class="card-header">
                             <h3 class="card-title">Usuarios registrados</h3>
                             <div class="card-tools">
-                                <a href="create.php" class="btn btn-primary"><i class="bi bi-plus-square"></i> Registrar usuario</a>
+                                <a href="create.php" class="btn btn-primary"><i class="bi bi-plus-square"></i> Registrar usuario administrador</a>
                             </div>
                         </div>
                         <div class="card-body">
@@ -53,7 +56,7 @@ include ('../../app/controllers/usuarios/listado_de_usuarios.php');
                                         <!-- <td style="text-align: center"><?=$contador_usuarios;?></td> -->
                                         <td style="text-align: left"><?=$usuario['apellidos'].' , '.$usuario['nombres'];?></td>
                                         <td style="text-align: left"><?=$usuario['nombre_rol'];?></td>
-                                        <td style="text-align: left"><?=$usuario['email'];?></td>
+                                        <td class="uppercase" style="text-align: left"><?=$usuario['email'];?></td>
                                         <!-- <td>?=$usuario['fyh_creacion'];?></td> -->
                                         <!-- <td>?=$usuario['estado'] == '1' ? "Activo" : "Inactivo"; ?></td> -->
                                         <td class="text-center">
