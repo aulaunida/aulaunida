@@ -186,7 +186,7 @@ $niveles = $stmtNiveles->fetchAll(PDO::FETCH_ASSOC);
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="repetidores">Alumnos que debieron repetir:<b style="color:red">*</b></label>
-                                            <input type="number" id="repetidores" class="form-control" placeholder="Cantidad de repetidores" required readonly>
+                                            <input type="number" id="repetidores" class="form-control" placeholder="Cantidad de repitentes" required readonly>
                                         </div>
                                     </div>
                                 </div>
@@ -203,7 +203,7 @@ $niveles = $stmtNiveles->fetchAll(PDO::FETCH_ASSOC);
                                             <th>Turno</th>
                                             <th>Grado y división</th>
                                             <th>Matriculados</th>
-                                            <th>Repetidores</th>
+                                            <th>Repitentes</th>
                                             <th>% Repitencia</th>
                                             <th>Acción</th>
                                         </tr>
@@ -294,11 +294,11 @@ include('../../admin/layout/parte2.php');
                     })
                     .then(data => {
                         // Si todo va bien, actualiza el campo de repetidores
-                        console.log("Datos recibidos (repetidores):", data); // Para depuración
+                        console.log("Datos recibidos (repitentes):", data); // Para depuración
                         repetidoresInput.value = data.total || 0; // Si no hay datos, coloca 0
                     })
                     .catch(error => {
-                        console.error("Error al obtener los repetidores:", error);
+                        console.error("Error al obtener los repitentes:", error);
                         repetidoresInput.value = 0; // Valor predeterminado en caso de error
                     });
             } else {
@@ -335,7 +335,7 @@ include('../../admin/layout/parte2.php');
                         },
                         title: {
                             display: true,
-                            text: "Tasa de Repetencia por Grado"
+                            text: "Tasa de Repitencia por Grado"
                         },
                     },
                     scales: {
@@ -343,7 +343,7 @@ include('../../admin/layout/parte2.php');
                             beginAtZero: true,
                             title: {
                                 display: true,
-                                text: "Tasa de Repetencia (%)"
+                                text: "Tasa de Repitencia (%)"
                             }
                         },
                         x: {
@@ -442,7 +442,7 @@ include('../../admin/layout/parte2.php');
                         },
                         title: {
                             display: true,
-                            text: "Tasa de Repetencia por Grado"
+                            text: "Tasa de Repitencia por Grado"
                         },
                     },
                     scales: {
@@ -450,7 +450,7 @@ include('../../admin/layout/parte2.php');
                             beginAtZero: true,
                             title: {
                                 display: true,
-                                text: "Tasa de Repetencia (%)"
+                                text: "Tasa de Repitencia (%)"
                             }
                         },
                         x: {
