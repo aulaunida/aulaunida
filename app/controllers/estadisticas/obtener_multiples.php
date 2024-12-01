@@ -8,7 +8,7 @@ if (isset($_GET['grado'])) {
 
     try {
         // Prepara la consulta para contar los estudiantes integrados en el grado seleccionado
-        $query = "SELECT COUNT(*) AS total FROM estudiantes WHERE grado_id = :grado AND genero = 'TGD O TEA'";
+        $query = "SELECT COUNT(*) AS total FROM estudiantes WHERE grado_id = :grado AND genero = 'MAS DE UNA DISCAPACIDAD'";
         $stmt = $pdo->prepare($query);
         $stmt->bindParam(':grado', $grado, PDO::PARAM_INT);
         $stmt->execute();

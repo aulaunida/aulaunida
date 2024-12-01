@@ -229,7 +229,7 @@ $niveles = $stmtNiveles->fetchAll(PDO::FETCH_ASSOC);
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="multiples">Más de una discapacidad:<b style="color:red">*</b></label>
-                                            <input type="number" id="multiples" class="form-control" value="0" placeholder="Cantidad" required>
+                                            <input type="number" id="multiples" class="form-control" value="0" placeholder="Cantidad" required readonly>
                                         </div>
                                     </div>
                                     <div class="col-md-3">
@@ -298,6 +298,7 @@ include('../../admin/layout/parte2.php');
         const cegueraInput = document.getElementById('ceguera');
         const motoraInput = document.getElementById('motora');
         const tgdInput = document.getElementById('tgd');
+        const multiplesInput = document.getElementById('multiples');
 
         // Inicializa el gráfico vacío
         const inicializarGrafico = () => {
@@ -454,7 +455,7 @@ include('../../admin/layout/parte2.php');
             }
         };
 
-        // Obtener motora
+        // Obtener tgd
         const obtenerTgd = () => {
             const grado = gradoSelect.value;
             if (grado) {
@@ -473,6 +474,27 @@ include('../../admin/layout/parte2.php');
             }
         };
 
+         // Obtener multiples
+         const obtenerMultiples = () => {
+            const grado = gradoSelect.value;
+            if (grado) {
+                const url = `<?= APP_URL; ?>/app/controllers/estadisticas/obtener_multiples.php?grado=${grado}`;
+                fetch(url)
+                    .then(response => response.json())
+                    .then(data => {
+                        multiplesInput.value = data.total || 0;
+                    })
+                    .catch(error => {
+                        console.error("Error al obtener multiples:", error);
+                        multiplesInput.value = 0;
+                    });
+            } else {
+                multiplesInput.value = "";
+            }
+        };
+
+
+
 
 
 
@@ -485,6 +507,7 @@ include('../../admin/layout/parte2.php');
             obtenerCeguera();
             obtenerMotora();
             obtenerTgd();
+            obtenerMultiples();
         });
 
         document.getElementById('agregarDatos').addEventListener('click', function() {
@@ -498,7 +521,7 @@ include('../../admin/layout/parte2.php');
             const ceguera = parseInt(cegueraInput.value);
             const motora = parseInt(motoraInput.value);
             const tgd = parseInt(tgdInput.value);
-            const multiples = parseInt(document.getElementById('multiples').value);
+            const multiples = parseInt(multiplesInput.value);
             const otras = parseInt(document.getElementById('otras').value);
 
             if (!grado || !turno || !ciclo || isNaN(matriculados) || isNaN(repetidores) || isNaN(intelectual) ||
@@ -543,7 +566,6 @@ include('../../admin/layout/parte2.php');
                     <td>${dato.turno}</td>
                     <td>${dato.grado}</td>
                     <td>${dato.matriculados}</td>
-                    <td>${dato.repetidores}</td>
                     <td>${totalIntegrados}</td>
                     <td><button class="btn btn-danger btn-sm" onclick="eliminarDato(${index})">Eliminar</button></td>
                 </tr>

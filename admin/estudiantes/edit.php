@@ -148,13 +148,14 @@ include('../../app/controllers/grados/listado_de_grados.php');
                                     <div class="form-group">
                                         <label for="">Motivo de Integración<b style="color:red"></b></label>
                                         <select name="genero" id="" class="form-control">
-                                            <option value=""></option>
-                                            <option value="DISCAPACIDAD INTELECTUAL">DISCAPACIDAD INTELECTUAL</option>
-                                            <option value="SORDERA O HIPOACUSIA">SORDERA O HIPOACUSIA</option>
-                                            <option value="CEGUERA O DISMINUCION VISUAL">CEGUERA O DISMINUCIÓN VISUAL</option>
-                                            <option value="MOTORA O NEUMOMOTORA">MOTORA O NEUMOMOTORA</option>
-                                            <option value="TGD O TEA">TGD O TEA</option>
-                                            <option value="OTRO MOTIVO">OTRO MOTIVO</option>
+                                            <option value="" <?php if ($genero == '') { ?> selected="selected" <?php } ?>></option>
+                                            <option value="DISCAPACIDAD INTELECTUAL" <?php if ($genero == 'DISCAPACIDAD INTELECTUAL') { ?> selected="selected" <?php } ?>>DISCAPACIDAD INTELECTUAL</option>
+                                            <option value="SORDERA O HIPOACUSIA" <?php if ($genero == 'SORDERA O HIPOACUSIA') { ?> selected="selected" <?php } ?>>SORDERA O HIPOACUSIA</option>
+                                            <option value="CEGUERA O DISMINUCION VISUAL" <?php if ($genero == 'CEGUERA O DISMINUCION VISUAL') { ?> selected="selected" <?php } ?>>CEGUERA O DISMINUCIÓN VISUAL</option>
+                                            <option value="MOTORA O NEUMOMOTORA" <?php if ($genero == 'MOTORA O NEUMOMOTORA') { ?> selected="selected" <?php } ?>>MOTORA O NEUMOMOTORA</option>
+                                            <option value="TGD O TEA" <?php if ($genero == 'TGD O TEA') { ?> selected="selected" <?php } ?>>TGD O TEA</option>
+                                            <option value="MAS DE UNA DISCAPACIDAD" <?php if ($genero == 'MAS DE UNA DISCAPACIDAD') { ?> selected="selected" <?php } ?>>MÁS DE UNA DISCAPACIDAD</option>
+                                            <option value="OTRO MOTIVO" <?php if ($genero == 'OTRO MOTIVO') { ?> selected="selected" <?php } ?>>OTRO MOTIVO</option>
                                         </select>
                                     </div>
                                 </div>
