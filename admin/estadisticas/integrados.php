@@ -137,7 +137,7 @@ $niveles = $stmtNiveles->fetchAll(PDO::FETCH_ASSOC);
                                     $contador_sextogrado_b;
 
 
-                                    $contador = 0;
+                                $contador = 0;
                                 $contador_primergrado_a_r = 0;
                                 $contador_segundogrado_a_r = 0;
                                 $contador_tercergrado_a_r = 0;
@@ -182,7 +182,7 @@ $niveles = $stmtNiveles->fetchAll(PDO::FETCH_ASSOC);
                                 ?>
                                 <!-- Alumnos Matriculados -->
                                 <div class="row">
-                                    
+
                                     <!-- Integrados -->
                                     <div class="col-md-3">
                                         <div class="form-group">
@@ -197,7 +197,7 @@ $niveles = $stmtNiveles->fetchAll(PDO::FETCH_ASSOC);
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="intelectual">Discapacidad intelectual:<b style="color:red">*</b></label>
-                                            <input type="number" id="intelectual" class="form-control"  placeholder="Cantidad" required readonly>
+                                            <input type="number" id="intelectual" class="form-control" placeholder="Cantidad" required readonly>
                                         </div>
                                     </div>
                                     <div class="col-md-3">
@@ -215,7 +215,7 @@ $niveles = $stmtNiveles->fetchAll(PDO::FETCH_ASSOC);
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="motora">Motora o Neuromotora:<b style="color:red">*</b></label>
-                                            <input type="number" id="motora" class="form-control"  value="0" placeholder="Cantidad" required>
+                                            <input type="number" id="motora" class="form-control" placeholder="Cantidad" required readonly>
                                         </div>
                                     </div>
                                 </div>
@@ -223,26 +223,26 @@ $niveles = $stmtNiveles->fetchAll(PDO::FETCH_ASSOC);
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="tgd">TGD o TEA:<b style="color:red">*</b></label>
-                                            <input type="number" id="tgd" class="form-control"  value="0" placeholder="Cantidad" required>
+                                            <input type="number" id="tgd" class="form-control" value="0" placeholder="Cantidad" required>
                                         </div>
                                     </div>
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="multiples">Más de una discapacidad:<b style="color:red">*</b></label>
-                                            <input type="number" id="multiples" class="form-control"  value="0" placeholder="Cantidad" required>
+                                            <input type="number" id="multiples" class="form-control" value="0" placeholder="Cantidad" required>
                                         </div>
                                     </div>
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="otras">Otro motivo:<b style="color:red">*</b></label>
-                                            <input type="number" id="otras" class="form-control"   value="0" placeholder="Cantidad" required>
+                                            <input type="number" id="otras" class="form-control" value="0" placeholder="Cantidad" required>
                                         </div>
                                     </div>
                                 </div>
                             </form>
                             <div class="form-group">
-                                    <button type="button" class="btn btn-primary" id="agregarDatos">Agregar</button>
-                                </div>
+                                <button type="button" class="btn btn-primary" id="agregarDatos">Agregar</button>
+                            </div>
                             <hr>
                             <div id="tablaDatos">
                                 <table class="table table-bordered">
@@ -269,7 +269,7 @@ $niveles = $stmtNiveles->fetchAll(PDO::FETCH_ASSOC);
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group text-center">
-                                    <a href="<?=APP_URL;?>/admin/estadisticas/index.php" class="btn btn-danger">Volver</a>
+                                    <a href="<?= APP_URL; ?>/admin/estadisticas/index.php" class="btn btn-danger">Volver</a>
                                 </div>
                             </div>
                         </div>
@@ -285,190 +285,237 @@ include('../../admin/layout/parte2.php');
 <!-- Incluye Chart.js -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
-document.addEventListener("DOMContentLoaded", function () {
-    let datos = [];
-    let grafico;
-    const tabla = document.getElementById('datosCargados');
-    const canvas = document.getElementById('graficoAlumnos').getContext('2d');
-    const gradoSelect = document.getElementById('grado');
-    const matriculadosInput = document.getElementById('matriculados');
-    const repetidoresInput = document.getElementById('repetidores');
-    const intelectualInput = document.getElementById('intelectual');
-    const sorderaInput = document.getElementById('sordera');
-    const cegueraInput = document.getElementById('ceguera');
+    document.addEventListener("DOMContentLoaded", function() {
+        let datos = [];
+        let grafico;
+        const tabla = document.getElementById('datosCargados');
+        const canvas = document.getElementById('graficoAlumnos').getContext('2d');
+        const gradoSelect = document.getElementById('grado');
+        const matriculadosInput = document.getElementById('matriculados');
+        const repetidoresInput = document.getElementById('repetidores');
+        const intelectualInput = document.getElementById('intelectual');
+        const sorderaInput = document.getElementById('sordera');
+        const cegueraInput = document.getElementById('ceguera');
+        const motoraInput = document.getElementById('motora');
 
-    // Inicializa el gráfico vacío
-    const inicializarGrafico = () => {
-        grafico = new Chart(canvas, {
-            type: 'bar',
-            data: {
-                labels: [], // Etiquetas vacías
-                datasets: [] // Sin datasets
-            },
-            options: {
-                responsive: true,
-                plugins: {
-                    legend: { display: true },
-                    title: { display: true, text: 'Distribución de Alumnos Integrados' }
+        // Inicializa el gráfico vacío
+        const inicializarGrafico = () => {
+            grafico = new Chart(canvas, {
+                type: 'bar',
+                data: {
+                    labels: [], // Etiquetas vacías
+                    datasets: [] // Sin datasets
                 },
-                scales: {
-                    x: {
-                        stacked: true,
-                        title: { display: true, text: 'Grado' }
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            display: true
+                        },
+                        title: {
+                            display: true,
+                            text: 'Distribución de Alumnos Integrados'
+                        }
                     },
-                    y: {
-                        stacked: true,
-                        beginAtZero: true,
-                        title: { display: true, text: 'Cantidad de Alumnos' }
+                    scales: {
+                        x: {
+                            stacked: true,
+                            title: {
+                                display: true,
+                                text: 'Grado'
+                            }
+                        },
+                        y: {
+                            stacked: true,
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'Cantidad de Alumnos'
+                            }
+                        }
                     }
                 }
+            });
+        };
+
+        // Obtener matriculados
+        const obtenerMatriculados = () => {
+            const grado = gradoSelect.value;
+            if (grado) {
+                const url = `<?= APP_URL; ?>/app/controllers/estadisticas/obtener_matriculados.php?grado=${grado}`;
+                fetch(url)
+                    .then(response => response.json())
+                    .then(data => {
+                        matriculadosInput.value = data.total || 0;
+                    })
+                    .catch(error => {
+                        console.error("Error al obtener matriculados:", error);
+                        matriculadosInput.value = 0;
+                    });
+            } else {
+                matriculadosInput.value = "";
             }
+        };
+
+        // Obtener repetidores
+        const obtenerRepetidores = () => {
+            const grado = gradoSelect.value;
+            if (grado) {
+                const url = `<?= APP_URL; ?>/app/controllers/estadisticas/obtener_integrados.php?grado=${grado}`;
+                fetch(url)
+                    .then(response => response.json())
+                    .then(data => {
+                        repetidoresInput.value = data.total || 0;
+                    })
+                    .catch(error => {
+                        console.error("Error al obtener repetidores:", error);
+                        repetidoresInput.value = 0;
+                    });
+            } else {
+                repetidoresInput.value = "";
+            }
+        };
+
+        // Obtener intelectual
+        const obtenerIntelectual = () => {
+            const grado = gradoSelect.value;
+            if (grado) {
+                const url = `<?= APP_URL; ?>/app/controllers/estadisticas/obtener_intelectual.php?grado=${grado}`;
+                fetch(url)
+                    .then(response => response.json())
+                    .then(data => {
+                        intelectualInput.value = data.total || 0;
+                    })
+                    .catch(error => {
+                        console.error("Error al obtener intelectual:", error);
+                        intelectualInput.value = 0;
+                    });
+            } else {
+                intelectualInput.value = "";
+            }
+        };
+
+        // Obtener sordera
+        const obtenerSordera = () => {
+            const grado = gradoSelect.value;
+            if (grado) {
+                const url = `<?= APP_URL; ?>/app/controllers/estadisticas/obtener_sordera.php?grado=${grado}`;
+                fetch(url)
+                    .then(response => response.json())
+                    .then(data => {
+                        sorderaInput.value = data.total || 0;
+                    })
+                    .catch(error => {
+                        console.error("Error al obtener sordera:", error);
+                        sorderaInput.value = 0;
+                    });
+            } else {
+                sorderaInput.value = "";
+            }
+        };
+
+        // Obtener ceguera
+        const obtenerCeguera = () => {
+            const grado = gradoSelect.value;
+            if (grado) {
+                const url = `<?= APP_URL; ?>/app/controllers/estadisticas/obtener_ceguera.php?grado=${grado}`;
+                fetch(url)
+                    .then(response => response.json())
+                    .then(data => {
+                        cegueraInput.value = data.total || 0;
+                    })
+                    .catch(error => {
+                        console.error("Error al obtener ceguera:", error);
+                        cegueraInput.value = 0;
+                    });
+            } else {
+                cegueraInput.value = "";
+            }
+        };
+
+        
+        // Obtener motora
+        const obtenerMotora = () => {
+            const grado = gradoSelect.value;
+            if (grado) {
+                const url = `<?= APP_URL; ?>/app/controllers/estadisticas/obtener_motora.php?grado=${grado}`;
+                fetch(url)
+                    .then(response => response.json())
+                    .then(data => {
+                        motoraInput.value = data.total || 0;
+                    })
+                    .catch(error => {
+                        console.error("Error al obtener motora:", error);
+                        motoraInput.value = 0;
+                    });
+            } else {
+                motoraInput.value = "";
+            }
+        };
+
+
+
+        // Escuchar cambios en el select de grado
+        gradoSelect.addEventListener('change', function() {
+            obtenerMatriculados();
+            obtenerRepetidores();
+            obtenerIntelectual();
+            obtenerSordera();
+            obtenerCeguera();
+            obtenerMotora();
         });
-    };
 
-    // Obtener matriculados
-    const obtenerMatriculados = () => {
-        const grado = gradoSelect.value;
-        if (grado) {
-            const url = `<?= APP_URL; ?>/app/controllers/estadisticas/obtener_matriculados.php?grado=${grado}`;
-            fetch(url)
-                .then(response => response.json())
-                .then(data => {
-                    matriculadosInput.value = data.total || 0;
-                })
-                .catch(error => {
-                    console.error("Error al obtener matriculados:", error);
-                    matriculadosInput.value = 0;
-                });
-        } else {
-            matriculadosInput.value = "";
-        }
-    };
+        document.getElementById('agregarDatos').addEventListener('click', function() {
+            const grado = gradoSelect.value;
+            const turno = document.getElementById('turno').value;
+            const ciclo = document.getElementById('ciclo').value;
+            const matriculados = parseInt(matriculadosInput.value);
+            const repetidores = parseInt(repetidoresInput.value);
+            const intelectual = parseInt(intelectualInput.value);
+            const sordera = parseInt(sorderaInput.value);
+            const ceguera = parseInt(cegueraInput.value);
+            const motora = parseInt(motoraInput.value);
+            const tgd = parseInt(document.getElementById('tgd').value);
+            const multiples = parseInt(document.getElementById('multiples').value);
+            const otras = parseInt(document.getElementById('otras').value);
 
-    // Obtener repetidores
-    const obtenerRepetidores = () => {
-        const grado = gradoSelect.value;
-        if (grado) {
-            const url = `<?= APP_URL; ?>/app/controllers/estadisticas/obtener_integrados.php?grado=${grado}`;
-            fetch(url)
-                .then(response => response.json())
-                .then(data => {
-                    repetidoresInput.value = data.total || 0;
-                })
-                .catch(error => {
-                    console.error("Error al obtener repetidores:", error);
-                    repetidoresInput.value = 0;
-                });
-        } else {
-            repetidoresInput.value = "";
-        }
-    };
+            if (!grado || !turno || !ciclo || isNaN(matriculados) || isNaN(repetidores) || isNaN(intelectual) ||
+                isNaN(sordera) || isNaN(ceguera) || isNaN(motora) || isNaN(tgd) || isNaN(multiples) || isNaN(otras)) {
+                alert('Por favor, completa todos los campos correctamente.');
+                return;
+            }
 
-    // Obtener intelectual
-    const obtenerIntelectual = () => {
-        const grado = gradoSelect.value;
-        if (grado) {
-            const url = `<?= APP_URL; ?>/app/controllers/estadisticas/obtener_intelectual.php?grado=${grado}`;
-            fetch(url)
-                .then(response => response.json())
-                .then(data => {
-                    intelectualInput.value = data.total || 0;
-                })
-                .catch(error => {
-                    console.error("Error al obtener intelectual:", error);
-                    intelectualInput.value = 0;
-                });
-        } else {
-            intelectualInput.value = "";
-        }
-    };
+            const totalIntegrados = intelectual + sordera + ceguera + motora + tgd + multiples + otras;
+            if (totalIntegrados > matriculados) {
+                alert('La suma de los alumnos integrados no puede superar el total de alumnos.');
+                return;
+            }
 
-    // Obtener sordera
-    const obtenerSordera = () => {
-        const grado = gradoSelect.value;
-        if (grado) {
-            const url = `<?= APP_URL; ?>/app/controllers/estadisticas/obtener_sordera.php?grado=${grado}`;
-            fetch(url)
-                .then(response => response.json())
-                .then(data => {
-                    sorderaInput.value = data.total || 0;
-                })
-                .catch(error => {
-                    console.error("Error al obtener sordera:", error);
-                    sorderaInput.value = 0;
-                });
-        } else {
-            sorderaInput.value = "";
-        }
-    };
+            datos.push({
+                ciclo,
+                turno,
+                grado,
+                matriculados,
+                repetidores,
+                intelectual,
+                sordera,
+                ceguera,
+                motora,
+                tgd,
+                multiples,
+                otras
+            });
 
-    // Obtener ceguera
-    const obtenerCeguera = () => {
-        const grado = gradoSelect.value;
-        if (grado) {
-            const url = `<?= APP_URL; ?>/app/controllers/estadisticas/obtener_ceguera.php?grado=${grado}`;
-            fetch(url)
-                .then(response => response.json())
-                .then(data => {
-                    cegueraInput.value = data.total || 0;
-                })
-                .catch(error => {
-                    console.error("Error al obtener ceguera:", error);
-                    cegueraInput.value = 0;
-                });
-        } else {
-            cegueraInput.value = "";
-        }
-    };
+            actualizarTabla();
+            actualizarGrafico();
+            document.getElementById('formDatosAlumnos').reset();
+        });
 
-
-    // Escuchar cambios en el select de grado
-    gradoSelect.addEventListener('change', function () {
-        obtenerMatriculados();
-        obtenerRepetidores();
-        obtenerIntelectual();
-        obtenerSordera();
-        obtenerCeguera();
-    });
-
-    document.getElementById('agregarDatos').addEventListener('click', function () {
-        const grado = gradoSelect.value;
-        const turno = document.getElementById('turno').value;
-        const ciclo = document.getElementById('ciclo').value;
-        const matriculados = parseInt(matriculadosInput.value);
-        const repetidores = parseInt(repetidoresInput.value);
-        const intelectual = parseInt(intelectualInput.value);
-        const sordera = parseInt(sorderaInput.value);
-        const ceguera = parseInt(cegueraInput.value);
-        const motora = parseInt(document.getElementById('motora').value);
-        const tgd = parseInt(document.getElementById('tgd').value);
-        const multiples = parseInt(document.getElementById('multiples').value);
-        const otras = parseInt(document.getElementById('otras').value);
-
-        if (!grado || !turno || !ciclo || isNaN(matriculados) || isNaN(repetidores) || isNaN(intelectual) ||
-            isNaN(sordera) || isNaN(ceguera) || isNaN(motora) || isNaN(tgd) || isNaN(multiples) || isNaN(otras)) {
-            alert('Por favor, completa todos los campos correctamente.');
-            return;
-        }
-
-        const totalIntegrados = intelectual + sordera + ceguera + motora + tgd + multiples + otras;
-        if (totalIntegrados > matriculados) {
-            alert('La suma de los alumnos integrados no puede superar el total de alumnos.');
-            return;
-        }
-
-        datos.push({ ciclo,turno,grado,matriculados, repetidores, intelectual, sordera, ceguera, motora, tgd, multiples, otras });
-
-        actualizarTabla();
-        actualizarGrafico();
-        document.getElementById('formDatosAlumnos').reset();
-    });
-
-    const actualizarTabla = () => {
-        tabla.innerHTML = '';
-        datos.forEach((dato, index) => {
-            const totalIntegrados = dato.intelectual + dato.sordera + dato.ceguera + dato.motora + dato.tgd + dato.multiples + dato.otras;
-            tabla.innerHTML += `
+        const actualizarTabla = () => {
+            tabla.innerHTML = '';
+            datos.forEach((dato, index) => {
+                const totalIntegrados = dato.intelectual + dato.sordera + dato.ceguera + dato.motora + dato.tgd + dato.multiples + dato.otras;
+                tabla.innerHTML += `
                 <tr>
                     <td>${dato.ciclo}</td>
                     <td>${dato.turno}</td>
@@ -479,76 +526,93 @@ document.addEventListener("DOMContentLoaded", function () {
                     <td><button class="btn btn-danger btn-sm" onclick="eliminarDato(${index})">Eliminar</button></td>
                 </tr>
             `;
-        });
-    };
-
-    const actualizarGrafico = () => {
-        const grados = [...new Set(datos.map(dato => dato.grado))];
-        const categorias = ['Intelectual', 'Sordera', 'Ceguera', 'Motora', 'TGD', 'Más de una', 'Otras'];
-
-        const data = {
-            'Intelectual': Array(grados.length).fill(0),
-            'Sordera': Array(grados.length).fill(0),
-            'Ceguera': Array(grados.length).fill(0),
-            'Motora': Array(grados.length).fill(0),
-            'TGD': Array(grados.length).fill(0),
-            'Más de una': Array(grados.length).fill(0),
-            'Otras': Array(grados.length).fill(0),
+            });
         };
 
-        datos.forEach(dato => {
-            const gradoIndex = grados.indexOf(dato.grado);
-            data['Intelectual'][gradoIndex] += dato.intelectual;
-            data['Sordera'][gradoIndex] += dato.sordera;
-            data['Ceguera'][gradoIndex] += dato.ceguera;
-            data['Motora'][gradoIndex] += dato.motora;
-            data['TGD'][gradoIndex] += dato.tgd;
-            data['Más de una'][gradoIndex] += dato.multiples;
-            data['Otras'][gradoIndex] += dato.otras;
-        });
+        const actualizarGrafico = () => {
+            const grados = [...new Set(datos.map(dato => dato.grado))];
+            const categorias = ['Intelectual', 'Sordera', 'Ceguera', 'Motora', 'TGD', 'Más de una', 'Otras'];
 
-        const datasets = Object.keys(data).map(categoria => ({
-            label: categoria,
-            data: data[categoria],
-            backgroundColor: getRandomColor(),
-        }));
+            const data = {
+                'Intelectual': Array(grados.length).fill(0),
+                'Sordera': Array(grados.length).fill(0),
+                'Ceguera': Array(grados.length).fill(0),
+                'Motora': Array(grados.length).fill(0),
+                'TGD': Array(grados.length).fill(0),
+                'Más de una': Array(grados.length).fill(0),
+                'Otras': Array(grados.length).fill(0),
+            };
 
-        if (grafico) {
-            grafico.destroy();
-        }
+            datos.forEach(dato => {
+                const gradoIndex = grados.indexOf(dato.grado);
+                data['Intelectual'][gradoIndex] += dato.intelectual;
+                data['Sordera'][gradoIndex] += dato.sordera;
+                data['Ceguera'][gradoIndex] += dato.ceguera;
+                data['Motora'][gradoIndex] += dato.motora;
+                data['TGD'][gradoIndex] += dato.tgd;
+                data['Más de una'][gradoIndex] += dato.multiples;
+                data['Otras'][gradoIndex] += dato.otras;
+            });
 
-        grafico = new Chart(canvas, {
-            type: 'bar',
-            data: {
-                labels: grados,
-                datasets: datasets
-            },
-            options: {
-                responsive: true,
-                plugins: {
-                    legend: { display: true },
-                    title: { display: true, text: 'Distribución de Alumnos Integrados' }
-                },
-                scales: {
-                    x: { stacked: true, title: { display: true, text: 'Grado' } },
-                    y: { stacked: true, beginAtZero: true, title: { display: true, text: 'Cantidad de Alumnos' } }
-                }
+            const datasets = Object.keys(data).map(categoria => ({
+                label: categoria,
+                data: data[categoria],
+                backgroundColor: getRandomColor(),
+            }));
+
+            if (grafico) {
+                grafico.destroy();
             }
-        });
-    };
 
-    const getRandomColor = () => {
-        const colores = ['#FF5733', '#33FF57', '#3357FF', '#FF33A1', '#F4FF33'];
-        return colores[Math.floor(Math.random() * colores.length)];
-    };
+            grafico = new Chart(canvas, {
+                type: 'bar',
+                data: {
+                    labels: grados,
+                    datasets: datasets
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            display: true
+                        },
+                        title: {
+                            display: true,
+                            text: 'Distribución de Alumnos Integrados'
+                        }
+                    },
+                    scales: {
+                        x: {
+                            stacked: true,
+                            title: {
+                                display: true,
+                                text: 'Grado'
+                            }
+                        },
+                        y: {
+                            stacked: true,
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'Cantidad de Alumnos'
+                            }
+                        }
+                    }
+                }
+            });
+        };
 
-    window.eliminarDato = (index) => {
-        datos.splice(index, 1);
-        actualizarTabla();
-        actualizarGrafico();
-    };
+        const getRandomColor = () => {
+            const colores = ['#FF5733', '#33FF57', '#3357FF', '#FF33A1', '#F4FF33'];
+            return colores[Math.floor(Math.random() * colores.length)];
+        };
 
-    inicializarGrafico();
-});
+        window.eliminarDato = (index) => {
+            datos.splice(index, 1);
+            actualizarTabla();
+            actualizarGrafico();
+        };
+
+        inicializarGrafico();
+    });
 </script>
-
