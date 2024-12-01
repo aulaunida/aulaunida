@@ -209,7 +209,7 @@ $niveles = $stmtNiveles->fetchAll(PDO::FETCH_ASSOC);
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="ceguera">Ceguera o Disminución visual:<b style="color:red">*</b></label>
-                                            <input type="number" id="ceguera" class="form-control"  value="0" placeholder="Cantidad" required>
+                                            <input type="number" id="ceguera" class="form-control" placeholder="Cantidad" required readonly>
                                         </div>
                                     </div>
                                     <div class="col-md-3">
@@ -295,6 +295,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const repetidoresInput = document.getElementById('repetidores');
     const intelectualInput = document.getElementById('intelectual');
     const sorderaInput = document.getElementById('sordera');
+    const cegueraInput = document.getElementById('ceguera');
 
     // Inicializa el gráfico vacío
     const inicializarGrafico = () => {
@@ -400,12 +401,34 @@ document.addEventListener("DOMContentLoaded", function () {
             sorderaInput.value = "";
         }
     };
+
+    // Obtener ceguera
+    const obtenerCeguera = () => {
+        const grado = gradoSelect.value;
+        if (grado) {
+            const url = `<?= APP_URL; ?>/app/controllers/estadisticas/obtener_ceguera.php?grado=${grado}`;
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    cegueraInput.value = data.total || 0;
+                })
+                .catch(error => {
+                    console.error("Error al obtener ceguera:", error);
+                    cegueraInput.value = 0;
+                });
+        } else {
+            cegueraInput.value = "";
+        }
+    };
+
+
     // Escuchar cambios en el select de grado
     gradoSelect.addEventListener('change', function () {
         obtenerMatriculados();
         obtenerRepetidores();
         obtenerIntelectual();
         obtenerSordera();
+        obtenerCeguera();
     });
 
     document.getElementById('agregarDatos').addEventListener('click', function () {
@@ -416,7 +439,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const repetidores = parseInt(repetidoresInput.value);
         const intelectual = parseInt(intelectualInput.value);
         const sordera = parseInt(sorderaInput.value);
-        const ceguera = parseInt(document.getElementById('ceguera').value);
+        const ceguera = parseInt(cegueraInput.value);
         const motora = parseInt(document.getElementById('motora').value);
         const tgd = parseInt(document.getElementById('tgd').value);
         const multiples = parseInt(document.getElementById('multiples').value);
