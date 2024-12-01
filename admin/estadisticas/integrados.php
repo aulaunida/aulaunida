@@ -197,25 +197,25 @@ $niveles = $stmtNiveles->fetchAll(PDO::FETCH_ASSOC);
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="intelectual">Discapacidad intelectual:<b style="color:red">*</b></label>
-                                            <input type="number" id="intelectual" class="form-control" placeholder="Cantidad" required>
+                                            <input type="number" id="intelectual" class="form-control"  value="0" placeholder="Cantidad" required>
                                         </div>
                                     </div>
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="sordera">Sordera o Hipoacusia:<b style="color:red">*</b></label>
-                                            <input type="number" id="sordera" class="form-control" placeholder="Cantidad" required>
+                                            <input type="number" id="sordera" class="form-control"  value="0" placeholder="Cantidad" required>
                                         </div>
                                     </div>
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="ceguera">Ceguera o Disminución visual:<b style="color:red">*</b></label>
-                                            <input type="number" id="ceguera" class="form-control" placeholder="Cantidad" required>
+                                            <input type="number" id="ceguera" class="form-control"  value="0" placeholder="Cantidad" required>
                                         </div>
                                     </div>
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="motora">Motora o Neuromotora:<b style="color:red">*</b></label>
-                                            <input type="number" id="motora" class="form-control" placeholder="Cantidad" required>
+                                            <input type="number" id="motora" class="form-control"  value="0" placeholder="Cantidad" required>
                                         </div>
                                     </div>
                                 </div>
@@ -223,19 +223,19 @@ $niveles = $stmtNiveles->fetchAll(PDO::FETCH_ASSOC);
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="tgd">TGD o TEA:<b style="color:red">*</b></label>
-                                            <input type="number" id="tgd" class="form-control" placeholder="Cantidad" required>
+                                            <input type="number" id="tgd" class="form-control"  value="0" placeholder="Cantidad" required>
                                         </div>
                                     </div>
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="multiples">Más de una discapacidad:<b style="color:red">*</b></label>
-                                            <input type="number" id="multiples" class="form-control" placeholder="Cantidad" required>
+                                            <input type="number" id="multiples" class="form-control"  value="0" placeholder="Cantidad" required>
                                         </div>
                                     </div>
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="otras">Otro motivo:<b style="color:red">*</b></label>
-                                            <input type="number" id="otras" class="form-control" placeholder="Cantidad" required>
+                                            <input type="number" id="otras" class="form-control"   value="0" placeholder="Cantidad" required>
                                         </div>
                                     </div>
                                 </div>
@@ -248,9 +248,9 @@ $niveles = $stmtNiveles->fetchAll(PDO::FETCH_ASSOC);
                                 <table class="table table-bordered">
                                     <thead>
                                         <tr>
-                                            <th>Grado</th>
-                                            <th>Turno</th>
                                             <th>Ciclo</th>
+                                            <th>Turno</th>
+                                            <th>Grado</th>
                                             <th>Total alumnos</th>
                                             <th>Alumnos integrados</th>
                                             <th>Acción</th>
@@ -393,7 +393,7 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
-        datos.push({ grado, turno, ciclo, matriculados, repetidores, intelectual, sordera, ceguera, motora, tgd, multiples, otras });
+        datos.push({ ciclo,turno,grado,matriculados, repetidores, intelectual, sordera, ceguera, motora, tgd, multiples, otras });
 
         actualizarTabla();
         actualizarGrafico();
@@ -406,9 +406,9 @@ document.addEventListener("DOMContentLoaded", function () {
             const totalIntegrados = dato.intelectual + dato.sordera + dato.ceguera + dato.motora + dato.tgd + dato.multiples + dato.otras;
             tabla.innerHTML += `
                 <tr>
-                    <td>${dato.grado}</td>
-                    <td>${dato.turno}</td>
                     <td>${dato.ciclo}</td>
+                    <td>${dato.turno}</td>
+                    <td>${dato.grado}</td>
                     <td>${dato.matriculados}</td>
                     <td>${dato.repetidores}</td>
                     <td>${totalIntegrados}</td>

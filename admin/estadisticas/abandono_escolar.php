@@ -184,9 +184,9 @@ include('../../app/controllers/configuraciones/gestion/listado_de_gestiones.php'
                                 <table class="table table-bordered">
                                     <thead>
                                         <tr>
-                                            <th>Grado</th>
-                                            <th>Turno</th>
                                             <th>Ciclo</th>
+                                            <th>Turno</th>
+                                            <th>Grado</th>
                                             <th>Matriculados</th>
                                             <th>Total abandonos</th>
                                             <th>% Abandono</th>
@@ -289,9 +289,9 @@ include('../../admin/layout/parte2.php');
             datos.forEach((dato, index) => {
                 tabla.innerHTML += `
         <tr>
-            <td>${dato.gradoDisplay}</td>
-            <td>${dato.turno}</td>
             <td>${dato.ciclo}</td>
+            <td>${dato.turno}</td>
+            <td>${dato.gradoDisplay}</td>
             <td>${dato.matriculados}</td>
             <td>${dato.totalAbandono}</td>
             <td>${dato.porcentajeAbandono}%</td>
