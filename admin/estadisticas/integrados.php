@@ -229,13 +229,13 @@ $niveles = $stmtNiveles->fetchAll(PDO::FETCH_ASSOC);
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="multiples">Más de una discapacidad:<b style="color:red">*</b></label>
-                                            <input type="number" id="multiples" class="form-control" value="0" placeholder="Cantidad" required readonly>
+                                            <input type="number" id="multiples" class="form-control" placeholder="Cantidad" required readonly>
                                         </div>
                                     </div>
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="otras">Otro motivo:<b style="color:red">*</b></label>
-                                            <input type="number" id="otras" class="form-control" value="0" placeholder="Cantidad" required>
+                                            <input type="number" id="otras" class="form-control" placeholder="Cantidad" required readonly>
                                         </div>
                                     </div>
                                 </div>
@@ -299,6 +299,7 @@ include('../../admin/layout/parte2.php');
         const motoraInput = document.getElementById('motora');
         const tgdInput = document.getElementById('tgd');
         const multiplesInput = document.getElementById('multiples');
+        const otrasInput = document.getElementById('otras');
 
         // Inicializa el gráfico vacío
         const inicializarGrafico = () => {
@@ -435,7 +436,7 @@ include('../../admin/layout/parte2.php');
             }
         };
 
-        
+
         // Obtener motora
         const obtenerMotora = () => {
             const grado = gradoSelect.value;
@@ -474,8 +475,8 @@ include('../../admin/layout/parte2.php');
             }
         };
 
-         // Obtener multiples
-         const obtenerMultiples = () => {
+        // Obtener multiples
+        const obtenerMultiples = () => {
             const grado = gradoSelect.value;
             if (grado) {
                 const url = `<?= APP_URL; ?>/app/controllers/estadisticas/obtener_multiples.php?grado=${grado}`;
@@ -493,7 +494,24 @@ include('../../admin/layout/parte2.php');
             }
         };
 
-
+        // Obtener otras
+        const obtenerOtras = () => {
+            const grado = gradoSelect.value;
+            if (grado) {
+                const url = `<?= APP_URL; ?>/app/controllers/estadisticas/obtener_otras.php?grado=${grado}`;
+                fetch(url)
+                    .then(response => response.json())
+                    .then(data => {
+                        otrasInput.value = data.total || 0;
+                    })
+                    .catch(error => {
+                        console.error("Error al obtener multiples:", error);
+                        otrasInput.value = 0;
+                    });
+            } else {
+                otrasInput.value = "";
+            }
+        };
 
 
 
@@ -508,6 +526,7 @@ include('../../admin/layout/parte2.php');
             obtenerMotora();
             obtenerTgd();
             obtenerMultiples();
+            obtenerOtras();
         });
 
         document.getElementById('agregarDatos').addEventListener('click', function() {
@@ -522,7 +541,7 @@ include('../../admin/layout/parte2.php');
             const motora = parseInt(motoraInput.value);
             const tgd = parseInt(tgdInput.value);
             const multiples = parseInt(multiplesInput.value);
-            const otras = parseInt(document.getElementById('otras').value);
+            const otras = parseInt(otrasInput.value);
 
             if (!grado || !turno || !ciclo || isNaN(matriculados) || isNaN(repetidores) || isNaN(intelectual) ||
                 isNaN(sordera) || isNaN(ceguera) || isNaN(motora) || isNaN(tgd) || isNaN(multiples) || isNaN(otras)) {
