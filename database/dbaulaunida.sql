@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 26-11-2024 a las 15:45:34
+-- Tiempo de generación: 01-12-2024 a las 18:56:48
 -- Versión del servidor: 8.3.0
 -- Versión de PHP: 8.2.18
 
@@ -108,6 +108,7 @@ INSERT INTO `asignaciones` (`id_asignacion`, `docente_id`, `nivel_id`, `grado_id
 (10, 6, 1, 8, 5, '2024-10-16', NULL, '1'),
 (11, 1, 1, 1, 4, '2024-10-23', NULL, '1');
 
+-- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `asignaciones_indicadores`
@@ -128,7 +129,7 @@ CREATE TABLE IF NOT EXISTS `asignaciones_indicadores` (
   KEY `docente_id` (`docente_id`),
   KEY `nivel_id` (`nivel_id`),
   KEY `grado_id` (`grado_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `asignaciones_indicadores`
@@ -141,8 +142,10 @@ INSERT INTO `asignaciones_indicadores` (`id_asignacion_indicadores`, `docente_id
 (4, 5, 2, 2, 2, '2024-10-08', NULL, '1'),
 (5, 1, 1, 1, 3, '2024-10-16', NULL, '1'),
 (6, 6, 1, 8, 5, '2024-10-16', NULL, '1'),
-(7, 1, 1, 1, 4, '2024-10-23', NULL, '1');
-
+(7, 1, 1, 1, 4, '2024-10-23', NULL, '1'),
+(13, 1, 1, 1, 5, '2024-12-01', NULL, '1'),
+(14, 1, 1, 2, 1, '2024-12-01', NULL, '1'),
+(15, 1, 1, 8, 1, '2024-12-01', NULL, '1');
 
 -- --------------------------------------------------------
 
@@ -1601,70 +1604,46 @@ CREATE TABLE IF NOT EXISTS `calificaciones` (
 --
 
 INSERT INTO `calificaciones` (`id_calificacion`, `docente_id`, `estudiante_id`, `materia_id`, `nota1`, `nota2`, `nota3`, `nota4`, `nota5`, `nota6`, `nota7`, `nota8`, `nota9`, `nota10`, `fyh_creacion`, `fyh_actualizacion`, `estado`) VALUES
-(1, 1, 7, 1, 100, 0, 0, 0, 0, 0, 0, 0,0, 0, '2024-11-25', '2024-11-25', '1'),
-(2, 1, 11, 1, 100, 0, 0, 0, 0, 0, 0, 0,0, 0, '2024-11-25', '2024-11-25', '1'),
-(3, 1, 32, 1, 100, 0, 0, 0, 0, 0, 0, 0,0, 0, '2024-11-25', '2024-11-25', '1'),
-(4, 1, 8, 1, 0, 0, 0, 0, 0, 0, 0, 0,0, 0, '2024-11-25', '2024-11-25', '1'),
-(5, 1, 21, 1, 80, 0, 0, 0, 0, 0, 0, 0,0, 0, '2024-11-25', '2024-11-25', '1'),
-(6, 1, 27, 1, 0, 0, 0, 0, 0, 0, 0, 0,0, 0, '2024-11-25', '2024-11-25', '1'),
-(7, 1, 23, 1, 0, 0, 0, 0, 0, 0, 0, 0,0, 0, '2024-11-25', '2024-11-25', '1'),
-(8, 1, 31, 1, 80, 0, 0, 0, 0, 0, 0, 0,0, 0, '2024-11-25', '2024-11-25', '1'),
-(9, 1, 10, 1, 100, 0, 0, 0, 0, 0, 0, 0,0, 0, '2024-11-25', '2024-11-25', '1'),
-(10, 1, 18, 1, 0, 0, 0, 0, 0, 0, 0, 0,0, 0, '2024-11-25', '2024-11-25', '1'),
-(11, 1, 29, 1, 0, 0, 0, 0, 0, 0, 0, 0,0, 0, '2024-11-25', '2024-11-25', '1'),
-(12, 1, 13, 1, 0, 0, 0, 0, 0, 0, 0, 0,0, 0, '2024-11-25', '2024-11-25', '1'),
-(13, 1, 12, 1, 0, 0, 0, 0, 0, 0, 0, 0,0, 0, '2024-11-25', '2024-11-25', '1'),
-(14, 1, 17, 1, 0, 0, 0, 0, 0, 0, 0, 0,0, 0, '2024-11-25', '2024-11-25', '1'),
-(15, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0,0, 0, '2024-11-25', '2024-11-25', '1'),
-(16, 1, 33, 1, 0, 0, 0, 0, 0, 0, 0, 0,0, 0, '2024-11-25', '2024-11-25', '1'),
-(17, 1, 28, 1, 0, 0, 0, 0, 0, 0, 0, 0,0, 0, '2024-11-25', '2024-11-25', '1'),
-(18, 1, 36, 1, 0, 0, 0, 0, 0, 0, 0, 0,0, 0, '2024-11-25', '2024-11-25', '1'),
-(19, 1, 16, 1, 0, 0, 0, 0, 0, 0, 0, 0,0, 0, '2024-11-25', '2024-11-25', '1'),
-(20, 1, 19, 1, 0, 0, 0, 0, 0, 0, 0, 0,0, 0, '2024-11-25', '2024-11-25', '1'),
-(21, 1, 2, 1, 0, 0, 0, 0, 0, 0, 0, 0,0, 0, '2024-11-25', '2024-11-25', '1'),
-(22, 1, 34, 1, 0, 0, 0, 0, 0, 0, 0, 0,0, 0, '2024-11-25', '2024-11-25', '1'),
-(23, 1, 25, 1, 0, 0, 0, 0, 0, 0, 0, 0,0, 0, '2024-11-25', '2024-11-25', '1'),
-(24, 1, 20, 1, 0, 0, 0, 0, 0, 0, 0, 0,0, 0, '2024-11-25', '2024-11-25', '1'),
-(25, 1, 14, 1, 0, 0, 0, 0, 0, 0, 0, 0,0, 0, '2024-11-25', '2024-11-25', '1'),
-(26, 1, 30, 1, 0, 0, 0, 0, 0, 0, 0, 0,0, 0, '2024-11-25', '2024-11-25', '1'),
-(27, 1, 15, 1, 0, 0, 0, 0, 0, 0, 0, 0,0, 0, '2024-11-25', '2024-11-25', '1'),
-(28, 1, 35, 1, 0, 0, 0, 0, 0, 0, 0, 0,0, 0, '2024-11-25', '2024-11-25', '1'),
-(29, 1, 3, 1, 0, 0, 0, 0, 0, 0, 0, 0,0, 0, '2024-11-25', '2024-11-25', '1'),
-(30, 1, 22, 1, 0, 0, 0, 0, 0, 0, 0, 0,0, 0, '2024-11-25', '2024-11-25', '1'),
-(31, 1, 5, 1, 0, 0, 0, 0, 0, 0, 0, 0,0, 0, '2024-11-25', '2024-11-25', '1'),
-(32, 1, 37, 1, 0, 0, 0, 0, 0, 0, 0, 0,0, 0, '2024-11-25', '2024-11-25', '1'),
-(33, 1, 6, 1, 0, 0, 0, 0, 0, 0, 0, 0,0, 0, '2024-11-25', '2024-11-25', '1'),
-(34, 1, 38, 1, 0, 0, 0, 0, 0, 0, 0, 0,0, 0, '2024-11-25', '2024-11-25', '1'),
-(35, 1, 26, 1, 0, 0, 0, 0, 0, 0, 0, 0,0, 0, '2024-11-25', '2024-11-25', '1'),
-(36, 1, 4, 1, 0, 0, 0, 0, 0, 0, 0, 0,0, 0, '2024-11-25', '2024-11-25', '1'),
-(37, 1, 9, 1, 0, 0, 0, 0, 0, 0, 0, 0,0, 0, '2024-11-25', '2024-11-25', '1'),
-(38, 1, 24, 1, 0, 0, 0, 0, 0, 0, 0, 0,0, 0, '2024-11-25', '2024-11-25', '1');
+(1, 1, 7, 1, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2024-11-25', '2024-11-25', '1'),
+(2, 1, 11, 1, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2024-11-25', '2024-11-25', '1'),
+(3, 1, 32, 1, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2024-11-25', '2024-11-25', '1'),
+(4, 1, 8, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2024-11-25', '2024-11-25', '1'),
+(5, 1, 21, 1, 80, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2024-11-25', '2024-11-25', '1'),
+(6, 1, 27, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2024-11-25', '2024-11-25', '1'),
+(7, 1, 23, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2024-11-25', '2024-11-25', '1'),
+(8, 1, 31, 1, 80, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2024-11-25', '2024-11-25', '1'),
+(9, 1, 10, 1, 100, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2024-11-25', '2024-11-25', '1'),
+(10, 1, 18, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2024-11-25', '2024-11-25', '1'),
+(11, 1, 29, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2024-11-25', '2024-11-25', '1'),
+(12, 1, 13, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2024-11-25', '2024-11-25', '1'),
+(13, 1, 12, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2024-11-25', '2024-11-25', '1'),
+(14, 1, 17, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2024-11-25', '2024-11-25', '1'),
+(15, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2024-11-25', '2024-11-25', '1'),
+(16, 1, 33, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2024-11-25', '2024-11-25', '1'),
+(17, 1, 28, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2024-11-25', '2024-11-25', '1'),
+(18, 1, 36, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2024-11-25', '2024-11-25', '1'),
+(19, 1, 16, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2024-11-25', '2024-11-25', '1'),
+(20, 1, 19, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2024-11-25', '2024-11-25', '1'),
+(21, 1, 2, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2024-11-25', '2024-11-25', '1'),
+(22, 1, 34, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2024-11-25', '2024-11-25', '1'),
+(23, 1, 25, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2024-11-25', '2024-11-25', '1'),
+(24, 1, 20, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2024-11-25', '2024-11-25', '1'),
+(25, 1, 14, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2024-11-25', '2024-11-25', '1'),
+(26, 1, 30, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2024-11-25', '2024-11-25', '1'),
+(27, 1, 15, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2024-11-25', '2024-11-25', '1'),
+(28, 1, 35, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2024-11-25', '2024-11-25', '1'),
+(29, 1, 3, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2024-11-25', '2024-11-25', '1'),
+(30, 1, 22, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2024-11-25', '2024-11-25', '1'),
+(31, 1, 5, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2024-11-25', '2024-11-25', '1'),
+(32, 1, 37, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2024-11-25', '2024-11-25', '1'),
+(33, 1, 6, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2024-11-25', '2024-11-25', '1'),
+(34, 1, 38, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2024-11-25', '2024-11-25', '1'),
+(35, 1, 26, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2024-11-25', '2024-11-25', '1'),
+(36, 1, 4, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2024-11-25', '2024-11-25', '1'),
+(37, 1, 9, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2024-11-25', '2024-11-25', '1'),
+(38, 1, 24, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2024-11-25', '2024-11-25', '1');
 
 -- --------------------------------------------------------
-
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `repitencias`
---
-
-DROP TABLE IF EXISTS `repitencias`;
-CREATE TABLE IF NOT EXISTS `repitencias` (
-  `id_repitencia` int NOT NULL AUTO_INCREMENT,
-  `docente_id` int NOT NULL,
-  `estudiante_id` int NOT NULL,
-  `indicador_id` int NOT NULL,
-  `nota1` int DEFAULT NULL,
-  `fyh_creacion` date DEFAULT NULL,
-  `fyh_actualizacion` date DEFAULT NULL,
-  `estado` varchar(11) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci DEFAULT NULL,
-  PRIMARY KEY (`id_repitencia`),
-  KEY `docente_id` (`docente_id`),
-  KEY `estudiante_id` (`estudiante_id`),
-  KEY `indicador_id` (`indicador_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
-
 
 --
 -- Estructura de tabla para la tabla `configuracion_instituciones`
@@ -1709,7 +1688,7 @@ CREATE TABLE IF NOT EXISTS `docentes` (
   `estado` varchar(11) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci DEFAULT NULL,
   PRIMARY KEY (`id_docente`),
   KEY `persona_id` (`persona_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `docentes`
@@ -1786,7 +1765,7 @@ INSERT INTO `estudiantes` (`id_estudiante`, `persona_id`, `nivel_id`, `grado_id`
 (8, 18, 1, 1, '506905', 'NO', 'MASCULINO', '2024-10-30', NULL, '1'),
 (9, 19, 1, 1, '503120', 'NO', 'MASCULINO', '2024-10-30', NULL, '1'),
 (10, 20, 1, 1, '506058', 'NO', 'MASCULINO', '2024-10-30', NULL, '1'),
-(11, 21, 1, 1, '501729', 'SI', 'MASCULINO', '2024-10-30', NULL, '1'),
+(11, 21, 1, 1, '501729', 'SI', 'DISCAPACIDAD INTELECTUAL', '2024-10-30', '2024-12-01', '1'),
 (12, 22, 1, 1, '506727', 'NO', 'MASCULINO', '2024-10-30', NULL, '1'),
 (13, 23, 1, 1, '506059', 'NO', 'MASCULINO', '2024-10-30', NULL, '1'),
 (14, 24, 1, 1, '506725', 'NO', 'MASCULINO', '2024-10-30', NULL, '1'),
@@ -1820,7 +1799,7 @@ INSERT INTO `estudiantes` (`id_estudiante`, `persona_id`, `nivel_id`, `grado_id`
 (42, 52, 2, 2, '507009', 'NO', 'MASCULINO', '2024-10-30', NULL, '1'),
 (43, 53, 2, 2, '508276', 'NO', 'MASCULINO', '2024-10-30', NULL, '1'),
 (44, 54, 2, 2, '502964', 'NO', 'MASCULINO', '2024-10-30', NULL, '1'),
-(45, 55, 2, 2, '508595', 'NO', 'MASCULINO', '2024-10-30', NULL, '1'),
+(45, 55, 2, 2, '508595', 'SI', '', '2024-10-30', '2024-12-01', '1'),
 (46, 56, 2, 2, '509661', 'NO', 'MASCULINO', '2024-10-30', NULL, '1'),
 (47, 57, 2, 2, '506999', 'NO', 'MASCULINO', '2024-10-30', NULL, '1'),
 (48, 58, 2, 2, '508132', 'NO', 'MASCULINO', '2024-10-30', NULL, '1'),
@@ -1976,7 +1955,7 @@ INSERT INTO `estudiantes` (`id_estudiante`, `persona_id`, `nivel_id`, `grado_id`
 (198, 208, 1, 12, '476037', 'NO', 'MASCULINO', '2024-10-30', NULL, '1'),
 (199, 209, 1, 12, '473689', 'NO', 'MASCULINO', '2024-10-30', NULL, '1'),
 (200, 210, 1, 12, '472502', 'NO', 'MASCULINO', '2024-10-30', NULL, '1'),
-(201, 211, 1, 12, '478117', 'SI', 'MASCULINO', '2024-10-30', NULL, '1'),
+(201, 211, 1, 12, '478117', 'SI', 'TGD O TEA', '2024-10-30', '2024-12-01', '1'),
 (202, 212, 1, 12, '471271', 'NO', 'MASCULINO', '2024-10-30', NULL, '1'),
 (203, 213, 1, 12, '477629', 'NO', 'MASCULINO', '2024-10-30', NULL, '1'),
 (204, 214, 1, 12, '476912', 'NO', 'MASCULINO', '2024-10-30', NULL, '1'),
@@ -2098,7 +2077,7 @@ INSERT INTO `estudiantes` (`id_estudiante`, `persona_id`, `nivel_id`, `grado_id`
 (320, 330, 1, 16, '458881', 'NO', 'MASCULINO', '2024-10-30', NULL, '1'),
 (321, 331, 1, 16, '452522', 'NO', 'MASCULINO', '2024-10-30', NULL, '1'),
 (322, 332, 1, 16, '459250', 'NO', 'MASCULINO', '2024-10-30', NULL, '1'),
-(323, 333, 1, 16, '456940', 'SI', 'MASCULINO', '2024-10-30', NULL, '1'),
+(323, 333, 1, 16, '456940', 'SI', 'CEGUERA O DISMINUCION VISUAL', '2024-10-30', '2024-12-01', '1'),
 (324, 334, 1, 16, '455790', 'SI', 'MASCULINO', '2024-10-30', NULL, '1'),
 (325, 335, 1, 16, '457086', 'NO', 'MASCULINO', '2024-10-30', NULL, '1'),
 (326, 336, 1, 16, '455330', 'NO', 'MASCULINO', '2024-10-30', NULL, '1'),
@@ -2163,7 +2142,7 @@ CREATE TABLE IF NOT EXISTS `gestiones` (
   `fyh_actualizacion` date DEFAULT NULL,
   `estado` varchar(11) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci DEFAULT NULL,
   PRIMARY KEY (`id_gestion`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `gestiones`
@@ -2212,6 +2191,33 @@ INSERT INTO `grados` (`id_grado`, `nivel_id`, `curso`, `paralelo`, `fyh_creacion
 (15, 2, 'QUINTO GRADO', 'B', '2024-08-25', NULL, '1'),
 (16, 1, 'SEXTO GRADO', 'A', '2024-08-25', NULL, '1'),
 (17, 2, 'SEXTO GRADO', 'B', '2024-08-25', NULL, '1');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `indicadores`
+--
+
+DROP TABLE IF EXISTS `indicadores`;
+CREATE TABLE IF NOT EXISTS `indicadores` (
+  `id_indicador` int NOT NULL AUTO_INCREMENT,
+  `nombre_indicador` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NOT NULL,
+  `fyh_creacion` date DEFAULT NULL,
+  `fyh_actualizacion` date DEFAULT NULL,
+  `estado` varchar(11) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci DEFAULT NULL,
+  PRIMARY KEY (`id_indicador`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `indicadores`
+--
+
+INSERT INTO `indicadores` (`id_indicador`, `nombre_indicador`, `fyh_creacion`, `fyh_actualizacion`, `estado`) VALUES
+(1, 'REPITENCIA', '2024-08-26', '2024-08-30', '1'),
+(2, 'ALUMNOS INTEGRADOS', '2024-08-26', '2024-08-27', '1'),
+(3, 'PROGRESO ESCOLAR', '2024-08-26', NULL, '1'),
+(4, 'PARTICIPACIÓN FAMILIAR', '2024-08-26', '2024-08-30', '1'),
+(5, 'ABANDONO ESCOLAR', '2024-08-26', '2024-08-30', '1');
 
 -- --------------------------------------------------------
 
@@ -2276,35 +2282,6 @@ INSERT INTO `materias` (`id_materia`, `nombre_materia`, `fyh_creacion`, `fyh_act
 (7, 'EDUCACIÓN ARTÍSTICA', '2024-08-26', '2024-08-30', '1'),
 (8, 'CIUDADANÍA Y PARTICIPACIÓN', '2024-08-26', '2024-08-30', '1');
 
-
-
-
---
--- Estructura de tabla para la tabla `indicadores`
---
-
-DROP TABLE IF EXISTS `indicadores`;
-CREATE TABLE IF NOT EXISTS `indicadores` (
-  `id_indicador` int NOT NULL AUTO_INCREMENT,
-  `nombre_indicador` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NOT NULL,
-  `fyh_creacion` date DEFAULT NULL,
-  `fyh_actualizacion` date DEFAULT NULL,
-  `estado` varchar(11) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci DEFAULT NULL,
-  PRIMARY KEY (`id_indicador`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
-
---
--- Volcado de datos para la tabla `indicadores`
---
-
-INSERT INTO `indicadores` (`id_indicador`, `nombre_indicador`, `fyh_creacion`, `fyh_actualizacion`, `estado`) VALUES
-(1, 'REPITENCIA', '2024-08-26', '2024-08-30', '1'),
-(2, 'ALUMNOS INTEGRADOS', '2024-08-26', '2024-08-27', '1'),
-(3, 'PROGRESO ESCOLAR', '2024-08-26', NULL, '1'),
-(4, 'PARTICIPACIÓN FAMILIAR', '2024-08-26', '2024-08-30', '1'),
-(5, 'ABANDONO ESCOLAR', '2024-08-26', '2024-08-30', '1');
-
-
 -- --------------------------------------------------------
 
 --
@@ -2335,7 +2312,7 @@ INSERT INTO `niveles` (`id_nivel`, `gestion_id`, `nivel`, `turno`, `fyh_creacion
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `usuarios`
+-- Estructura de tabla para la tabla `personas`
 --
 
 DROP TABLE IF EXISTS `personas`;
@@ -2354,7 +2331,7 @@ CREATE TABLE IF NOT EXISTS `personas` (
   `estado` varchar(11) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci DEFAULT NULL,
   PRIMARY KEY (`id_persona`),
   KEY `usuario_id` (`usuario_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=383 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=406 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `personas`
@@ -2381,7 +2358,7 @@ INSERT INTO `personas` (`id_persona`, `usuario_id`, `nombres`, `apellidos`, `dni
 (18, 20, 'ABIGAIL', 'BARENGO', '50690513', '43279', 'd21', 'ARISTOBULO DEL VALLE 910', 'd20', '2024-10-30', NULL, '1'),
 (19, 21, 'ABRIL', 'VALDEZ CORREA', '50312053', '43414', 'd21', 'KOWALK 46', 'd20', '2024-10-30', NULL, '1'),
 (20, 22, 'FLORENCIA MICAELA', 'ATTIVUOOD', '50605871', '43144', 'd21', 'SAN MARTIN 176', 'd20', '2024-10-30', NULL, '1'),
-(21, 23, 'MAGALI PRISCILA', 'ACCOSSATTO', '50172997', '43374', 'd21', 'BELGRANO 111', 'd20', '2024-10-30', NULL, '1'),
+(21, 23, 'MAGALI PRISCILA', 'ACCOSSATTO', '50172997', '2018-06-05', 'ESTUDIANTE', 'BELGRANO 111', '0', '2024-10-30', '2024-12-01', '1'),
 (22, 24, 'AGOSTINA NAHIR', 'DELDOTTO', '50672758', '43279', 'd21', 'BV. 25 DE MAYO 1519', 'd20', '2024-10-30', NULL, '1'),
 (23, 25, 'AGUSTIN', 'CAVAGLIA', '50605910', '43414', 'd21', '12 DE OCTUBRE 130', 'd20', '2024-10-30', NULL, '1'),
 (24, 26, 'AGUSTINA', 'ONGARO', '50672557', '43191', 'd21', 'BELGRANO 111', 'd20', '2024-10-30', NULL, '1'),
@@ -2415,7 +2392,7 @@ INSERT INTO `personas` (`id_persona`, `usuario_id`, `nombres`, `apellidos`, `dni
 (52, 54, 'FABRIZZIO', 'BUTTIGLIERO', '50700983', '43144', 'd21', 'NERUDA PABLO 220', 'd20', '2024-10-30', NULL, '1'),
 (53, 55, 'ANTONINO', 'COCCO', '50827665', '43279', 'd21', 'SAN SEBASTIAN 32', 'd20', '2024-10-30', NULL, '1'),
 (54, 56, 'MILENA ARACELI', 'GALVAN', '50296404', '43414', 'd21', 'SAN JERONIMO 80', 'd20', '2024-10-30', NULL, '1'),
-(55, 57, 'SOFIA AGOSTINA', 'PICCO', '5085953', '43191', 'd21', 'ALBERDI 192', 'd20', '2024-10-30', NULL, '1'),
+(55, 57, 'SOFIA AGOSTINA', 'PICCO', '5085953', '2018-05-05', 'ESTUDIANTE', 'ALBERDI 192', '0', '2024-10-30', '2024-12-01', '1'),
 (56, 58, 'CRISTIAN AARON', 'BAZAN', '50966132', '43253', 'd21', 'AV URQUIZA 840', 'd20', '2024-10-30', NULL, '1'),
 (57, 59, 'VALENTINA CANDELARIA', 'STIEFKENS', '50699957', '43254', 'd21', 'Bedoya 1953', 'd20', '2024-10-30', NULL, '1'),
 (58, 60, 'ASTRID', 'BIDONDO', '50813286', '43255', 'd21', 'Colon 1475', 'd20', '2024-10-30', NULL, '1'),
@@ -2571,7 +2548,7 @@ INSERT INTO `personas` (`id_persona`, `usuario_id`, `nombres`, `apellidos`, `dni
 (208, 210, 'JULIETA ', 'PAIARO', '47603735', '42318', 'd21', '9 DE JULIO 6', 'd20', '2024-10-30', NULL, '1'),
 (209, 211, 'JULIETA ', 'ESCOBAR', '47368917', '42183', 'd21', 'SOLDADO A RUIZ 1873', 'd20', '2024-10-30', NULL, '1'),
 (210, 212, 'FRANCISCO ', 'JEREZ', '47250255', '42095', 'd21', 'OLMOS 945', 'd20', '2024-10-30', NULL, '1'),
-(211, 213, 'KEVIN JOEL', 'ALONSO', '47811771', '42158', 'd21', 'FELIX FRIAS 155', 'd20', '2024-10-30', NULL, '1'),
+(211, 213, 'KEVIN JOEL', 'ALONSO', '47811771', '2018-04-04', 'ESTUDIANTE', 'FELIX FRIAS 155', '0', '2024-10-30', '2024-12-01', '1'),
 (212, 214, 'AXEL ANIBAL', 'BECCARIA', '47127191', '42159', 'd21', 'CAPANDEGUI 163', 'd20', '2024-10-30', NULL, '1'),
 (213, 215, 'THOMAS BIANCHI', 'BIANCHI', '47762952', '42278', 'd21', 'DIEZ 124', 'd20', '2024-10-30', NULL, '1'),
 (214, 216, 'KATIA ESMERALDA', 'BEAS', '47691254', '42157', 'd21', '27 DE ABRIL 411', 'd20', '2024-10-30', NULL, '1'),
@@ -2693,7 +2670,7 @@ INSERT INTO `personas` (`id_persona`, `usuario_id`, `nombres`, `apellidos`, `dni
 (330, 333, 'SANTIAGO ', 'SARMIENTO', '45888189', '41386', 'd21', 'AVDA SAVIO 1263', 'd20', '2024-10-30', NULL, '1'),
 (331, 334, 'SANTIAGO GABRIEL', 'TELLO', '45252272', '41383', 'd21', 'RIOJA 694', 'd20', '2024-10-30', NULL, '1'),
 (332, 335, 'SANTIAGO EZEQUIEL', 'JAIME', '45925080', '41384', 'd21', '.PASAJE CURIE 2619', 'd20', '2024-10-30', NULL, '1'),
-(333, 336, 'SANTINO', 'BARRIONUEVO', '45694080', '41387', 'd21', '27 DE ABRIL 411', 'd20', '2024-10-30', NULL, '1'),
+(333, 336, 'SANTINO', 'BARRIONUEVO', '45694080', '2018-08-10', 'ESTUDIANTE', '27 DE ABRIL 411', '0', '2024-10-30', '2024-12-01', '1'),
 (334, 337, 'GALMES ', 'GALMES', '45579073', '41388', 'd21', 'RECREO 68', 'd20', '2024-10-30', NULL, '1'),
 (335, 338, 'CARLOS', 'GHISIGLIERI', '45708624', '41389', 'd21', 'FELIX FRIAS 155', 'd20', '2024-10-30', NULL, '1'),
 (336, 339, 'SERGIO GABRIEL', 'FIGUEROA', '45533071', '41390', 'd21', 'MONACO 493', 'd20', '2024-10-30', NULL, '1'),
@@ -2806,7 +2783,7 @@ INSERT INTO `ppffs` (`id_ppff`, `estudiante_id`, `nombres_apellidos_ppff`, `dni_
 (8, 8, 'BARENGO, AGOSTINA NAHIR', '35687397', '3513406279', 'INDEPENDIENTE', 'NIETO FARIAS ANSELMO', 'SEGUNDO TUTOR', '3513504654', '2024-10-30', NULL, '1'),
 (9, 9, 'VALDEZ CORREA, AGUSTIN', '35691983', '3514406456', 'INDEPENDIENTE', 'ALVAREZ AURELIO JESUS', 'SEGUNDO TUTOR', '3514428926', '2024-10-30', NULL, '1'),
 (10, 10, 'ATTIVUOOD, AGUSTIN', '35784467', '3517593364', 'RELACION DE DEPENDENCIA', 'CASALES HILARIO PANCRACIO', 'SEGUNDO TUTOR', '3514533215', '2024-10-30', NULL, '1'),
-(11, 11, 'ACCOSSATTO, AGUSTIN', '35694193', '3511622117', 'RELACION DE DEPENDENCIA', 'LUDUEÑA EUSTAQUIO LEONOR', 'SEGUNDO TUTOR', '3511500571', '2024-10-30', NULL, '1'),
+(11, 11, 'ACCOSSATTO, AGUSTIN', '35694193', '3511622117', 'RELACION DE DEPENDENCIA', 'LUDUEÑA EUSTAQUIO LEONOR', 'SEGUNDO TUTOR', '3511500571', '2024-10-30', '2024-12-01', '1'),
 (12, 12, 'DELDOTTO, AGUSTIN', '35789750', '3511556028', 'INDEPENDIENTE', 'FERREYRA LORENZO OSCAR', 'SEGUNDO TUTOR', '3511513084', '2024-10-30', NULL, '1'),
 (13, 13, 'CAVAGLIA, AGUSTIN FERRARA', '35798486', '3514402902', 'RELACION DE DEPENDENCIA', 'ROSS JUAN MIGUEL', 'SEGUNDO TUTOR', '3514429270', '2024-10-30', NULL, '1'),
 (14, 14, 'ONGARO, AGUSTIN JEREMIAS', '35801705', '3517630732', 'RELACION DE DEPENDENCIA', 'BROCHERO JOSE M', 'SEGUNDO TUTOR', '3517503210', '2024-10-30', NULL, '1'),
@@ -2840,7 +2817,7 @@ INSERT INTO `ppffs` (`id_ppff`, `estudiante_id`, `nombres_apellidos_ppff`, `dni_
 (42, 42, 'BUTTIGLIERO, ANTONINO', '36577094', '3516342393', 'INDEPENDIENTE', 'TOLANTINO DIAZ HEREDIA Y', 'SEGUNDO TUTOR', '3514520129', '2024-10-30', NULL, '1'),
 (43, 43, 'COCCO, ANTONIO ', '36577669', '3516488007', 'RELACION DE DEPENDENCIA', 'DIAZ JUAN GUILLERMO', 'SEGUNDO TUTOR', '3516468947', '2024-10-30', NULL, '1'),
 (44, 44, 'GALVAN, ARIEL ', '36621658', '3516001739', 'RELACION DE DEPENDENCIA', 'SALAS DELFOR JUAN', 'SEGUNDO TUTOR', '3514724593', '2024-10-30', NULL, '1'),
-(45, 45, 'PICCO, ASTRID', '36626613', '3517593491', 'INDEPENDIENTE', 'TAPIA ERNESTO', 'SEGUNDO TUTOR', '3517499465', '2024-10-30', NULL, '1'),
+(45, 45, 'PICCO, ASTRID', '36626613', '3517593491', 'INDEPENDIENTE', 'TAPIA ERNESTO', 'SEGUNDO TUTOR', '3517499465', '2024-10-30', '2024-12-01', '1'),
 (46, 46, 'BAZAN, ATILIO', '36644182', '3517635373', 'RELACION DE DEPENDENCIA', 'RENCORET DE GONZALEZ MARIA DE LAS MERCEDES', 'SEGUNDO TUTOR', '3517435177', '2024-10-30', NULL, '1'),
 (47, 47, 'STIEFKENS, AXEL ANIBAL', '36646278', '3515431009', 'INDEPENDIENTE', 'FERNANDEZ DE FERRANTE M A', 'SEGUNDO TUTOR', '3515427364', '2024-10-30', NULL, '1'),
 (48, 48, 'BIDONDO, AXEL LEONEL', '36670963', '3511584790', 'INDEPENDIENTE', 'FERREYA VASQUEZ DE MARTIN', 'SEGUNDO TUTOR', '3511449022', '2024-10-30', NULL, '1'),
@@ -2996,7 +2973,7 @@ INSERT INTO `ppffs` (`id_ppff`, `estudiante_id`, `nombres_apellidos_ppff`, `dni_
 (198, 198, 'PAIARO, JULIAN SANTOS', '39306480', '3513542085', 'INDEPENDIENTE', 'GRANATA Y CIA', 'SEGUNDO TUTOR', '3514854081', '2024-10-30', NULL, '1'),
 (199, 199, 'ESCOBAR, JUAN PABLO', '39302787', '3513639059', 'INDEPENDIENTE', 'MOLINA AMERICO', 'SEGUNDO TUTOR', '3513500105', '2024-10-30', NULL, '1'),
 (200, 200, 'JEREZ, JULIETA', '39338966', '3513283491', 'RELACION DE DEPENDENCIA', 'DORATELLI ELIO', 'SEGUNDO TUTOR', '3514944279', '2024-10-30', NULL, '1'),
-(201, 201, 'ALONSO, JULIETA ', '39362087', '3515598354', 'INDEPENDIENTE', 'ORLANDO LUCIA', 'SEGUNDO TUTOR', '3515487813', '2024-10-30', NULL, '1'),
+(201, 201, 'ALONSO, JULIETA ', '39362087', '3515598354', 'INDEPENDIENTE', 'ORLANDO LUCIA', 'SEGUNDO TUTOR', '3515487813', '2024-10-30', '2024-12-01', '1'),
 (202, 202, 'BECCARIA, JULIETA MARIA', '39431818', '3512524893', 'RELACION DE DEPENDENCIA', 'ARROYO GABINO ERNESTO', 'SEGUNDO TUTOR', '3512411662', '2024-10-30', NULL, '1'),
 (203, 203, 'BIANCHI, JUNCOS LUCAS', '39439614', '3516007105', 'RELACION DE DEPENDENCIA', 'RIAÑO GREGORIO MACARIO', 'SEGUNDO TUTOR', '3514828156', '2024-10-30', NULL, '1'),
 (204, 204, 'BEAS, JULIETA ', '39348218', '3517726648', 'RELACION DE DEPENDENCIA', 'BERTINATTI DE CRUCIANELLI', 'SEGUNDO TUTOR', '3513603599', '2024-10-30', NULL, '1'),
@@ -3119,7 +3096,7 @@ INSERT INTO `ppffs` (`id_ppff`, `estudiante_id`, `nombres_apellidos_ppff`, `dni_
 (320, 320, 'SARMIENTO, SANTINO', '31459143', '3512769245', 'RELACION DE DEPENDENCIA', 'BRACHETTA PINNA NICOLASA', 'SEGUNDO TUTOR', '3514796155', '2024-10-30', NULL, '1'),
 (321, 321, 'TELLO, SANTIAGO ', '31407515', '3513950841', 'RELACION DE DEPENDENCIA', 'GARCIA MARTINEZ RAMON', 'SEGUNDO TUTOR', '3514624332', '2024-10-30', NULL, '1'),
 (322, 322, 'JAIME, SANTIAGO EZEQUIEL', '31408820', '3514629956', 'RELACION DE DEPENDENCIA', 'CALCATERRERA DE CRABERO M', 'SEGUNDO TUTOR', '3514427347', '2024-10-30', NULL, '1'),
-(323, 323, 'BARRIONUEVO, SEBASTIAN', '31473741', '3512157847', 'RELACION DE DEPENDENCIA', 'COMPTA DE HERRERO A', 'SEGUNDO TUTOR', '3513407427', '2024-10-30', NULL, '1'),
+(323, 323, 'BARRIONUEVO, SEBASTIAN', '31473741', '3512157847', 'RELACION DE DEPENDENCIA', 'COMPTA DE HERRERO A', 'SEGUNDO TUTOR', '3513407427', '2024-10-30', '2024-12-01', '1'),
 (324, 324, 'GALMES, SERGIO GABRIEL', '31514269', '3515644382', 'INDEPENDIENTE', 'ZACARIAS DE FRIZZA MARIA', 'SEGUNDO TUTOR', '3515475655', '2024-10-30', NULL, '1'),
 (325, 325, 'GHISIGLIERI, SILVINA', '31617474', '3514231761', 'RELACION DE DEPENDENCIA', 'BALLATORA ALEJANDRO', 'SEGUNDO TUTOR', '3514622058', '2024-10-30', NULL, '1'),
 (326, 326, 'FIGUEROA, SOFIA', '31620426', '3513709461', 'INDEPENDIENTE', 'DICHIARA VICENTE', 'SEGUNDO TUTOR', '3514947592', '2024-10-30', NULL, '1'),
@@ -3169,6 +3146,132 @@ INSERT INTO `ppffs` (`id_ppff`, `estudiante_id`, `nombres_apellidos_ppff`, `dni_
 (370, 370, 'SILVA, YULIANA ABIGAIL', '32082692', '3512244366', 'INDEPENDIENTE', 'RANZUGLIA PEDRO', 'SEGUNDO TUTOR', '3514795864', '2024-10-30', NULL, '1'),
 (371, 371, 'JAEGGI, YOHANA CECILIA', '32082617', '3516751364', 'RELACION DE DEPENDENCIA', 'RANZUGLIA PEDRO', 'SEGUNDO TUTOR', '3513496824', '2024-10-30', NULL, '1'),
 (372, 372, 'VADALA, YULIANA MICAELA', '32399822', '3512609180', 'RELACION DE DEPENDENCIA', 'GHERRA SPIRITU', 'SEGUNDO TUTOR', '3516431409', '2024-10-30', NULL, '1');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `repitencias`
+--
+
+DROP TABLE IF EXISTS `repitencias`;
+CREATE TABLE IF NOT EXISTS `repitencias` (
+  `id_repitencia` int NOT NULL AUTO_INCREMENT,
+  `docente_id` int NOT NULL,
+  `estudiante_id` int NOT NULL,
+  `indicador_id` int NOT NULL,
+  `nota1` int DEFAULT NULL,
+  `fyh_creacion` date DEFAULT NULL,
+  `fyh_actualizacion` date DEFAULT NULL,
+  `estado` varchar(11) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci DEFAULT NULL,
+  PRIMARY KEY (`id_repitencia`),
+  KEY `docente_id` (`docente_id`),
+  KEY `estudiante_id` (`estudiante_id`),
+  KEY `indicador_id` (`indicador_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=137 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `repitencias`
+--
+
+INSERT INTO `repitencias` (`id_repitencia`, `docente_id`, `estudiante_id`, `indicador_id`, `nota1`, `fyh_creacion`, `fyh_actualizacion`, `estado`) VALUES
+(39, 1, 7, 1, 1, '2024-12-01', '2024-12-01', '1'),
+(40, 1, 11, 1, 1, '2024-12-01', '2024-12-01', '1'),
+(41, 1, 31, 1, 0, '2024-12-01', '2024-12-01', '1'),
+(42, 1, 21, 1, 0, '2024-12-01', '2024-12-01', '1'),
+(43, 1, 10, 1, 0, '2024-12-01', '2024-12-01', '1'),
+(44, 1, 27, 1, 0, '2024-12-01', '2024-12-01', '1'),
+(45, 1, 32, 1, 0, '2024-12-01', '2024-12-01', '1'),
+(46, 1, 8, 1, 0, '2024-12-01', '2024-12-01', '1'),
+(47, 1, 13, 1, 0, '2024-12-01', '2024-12-01', '1'),
+(48, 1, 23, 1, 1, '2024-12-01', '2024-12-01', '1'),
+(49, 1, 12, 1, 1, '2024-12-01', '2024-12-01', '1'),
+(50, 1, 29, 1, 1, '2024-12-01', '2024-12-01', '1'),
+(51, 1, 18, 1, 0, '2024-12-01', '2024-12-01', '1'),
+(52, 1, 17, 1, 0, '2024-12-01', '2024-12-01', '1'),
+(53, 1, 1, 1, 0, '2024-12-01', '2024-12-01', '1'),
+(54, 1, 33, 1, 0, '2024-12-01', '2024-12-01', '1'),
+(55, 1, 28, 1, 0, '2024-12-01', '2024-12-01', '1'),
+(56, 1, 36, 1, 0, '2024-12-01', '2024-12-01', '1'),
+(57, 1, 16, 1, 0, '2024-12-01', '2024-12-01', '1'),
+(58, 1, 25, 1, 0, '2024-12-01', '2024-12-01', '1'),
+(59, 1, 38, 1, 0, '2024-12-01', '2024-12-01', '1'),
+(60, 1, 2, 1, 0, '2024-12-01', '2024-12-01', '1'),
+(61, 1, 34, 1, 0, '2024-12-01', '2024-12-01', '1'),
+(62, 1, 6, 1, 0, '2024-12-01', '2024-12-01', '1'),
+(63, 1, 19, 1, 0, '2024-12-01', '2024-12-01', '1'),
+(64, 1, 20, 1, 0, '2024-12-01', '2024-12-01', '1'),
+(65, 1, 22, 1, 0, '2024-12-01', '2024-12-01', '1'),
+(66, 1, 5, 1, 0, '2024-12-01', '2024-12-01', '1'),
+(67, 1, 14, 1, 0, '2024-12-01', '2024-12-01', '1'),
+(68, 1, 30, 1, 0, '2024-12-01', '2024-12-01', '1'),
+(69, 1, 37, 1, 1, '2024-12-01', '2024-12-01', '1'),
+(70, 1, 15, 1, 0, '2024-12-01', '2024-12-01', '1'),
+(71, 1, 3, 1, 0, '2024-12-01', '2024-12-01', '1'),
+(72, 1, 26, 1, 1, '2024-12-01', '2024-12-01', '1'),
+(73, 1, 35, 1, 0, '2024-12-01', '2024-12-01', '1'),
+(74, 1, 24, 1, 0, '2024-12-01', '2024-12-01', '1'),
+(75, 1, 4, 1, 0, '2024-12-01', '2024-12-01', '1'),
+(76, 1, 9, 1, 0, '2024-12-01', '2024-12-01', '1'),
+(77, 1, 58, 1, 1, '2024-12-01', NULL, '1'),
+(78, 1, 56, 1, 0, '2024-12-01', NULL, '1'),
+(79, 1, 48, 1, 0, '2024-12-01', NULL, '1'),
+(80, 1, 57, 1, 0, '2024-12-01', NULL, '1'),
+(81, 1, 46, 1, 0, '2024-12-01', NULL, '1'),
+(82, 1, 39, 1, 0, '2024-12-01', NULL, '1'),
+(83, 1, 51, 1, 0, '2024-12-01', NULL, '1'),
+(84, 1, 59, 1, 0, '2024-12-01', NULL, '1'),
+(85, 1, 61, 1, 0, '2024-12-01', NULL, '1'),
+(86, 1, 43, 1, 0, '2024-12-01', NULL, '1'),
+(87, 1, 49, 1, 0, '2024-12-01', NULL, '1'),
+(88, 1, 64, 1, 0, '2024-12-01', NULL, '1'),
+(89, 1, 41, 1, 0, '2024-12-01', NULL, '1'),
+(90, 1, 42, 1, 0, '2024-12-01', NULL, '1'),
+(91, 1, 66, 1, 0, '2024-12-01', NULL, '1'),
+(92, 1, 65, 1, 0, '2024-12-01', NULL, '1'),
+(93, 1, 44, 1, 0, '2024-12-01', NULL, '1'),
+(94, 1, 63, 1, 0, '2024-12-01', NULL, '1'),
+(95, 1, 40, 1, 0, '2024-12-01', NULL, '1'),
+(96, 1, 54, 1, 0, '2024-12-01', NULL, '1'),
+(97, 1, 45, 1, 0, '2024-12-01', NULL, '1'),
+(98, 1, 67, 1, 0, '2024-12-01', NULL, '1'),
+(99, 1, 55, 1, 0, '2024-12-01', NULL, '1'),
+(100, 1, 50, 1, 0, '2024-12-01', NULL, '1'),
+(101, 1, 52, 1, 0, '2024-12-01', NULL, '1'),
+(102, 1, 62, 1, 0, '2024-12-01', NULL, '1'),
+(103, 1, 47, 1, 0, '2024-12-01', NULL, '1'),
+(104, 1, 53, 1, 0, '2024-12-01', NULL, '1'),
+(105, 1, 60, 1, 0, '2024-12-01', NULL, '1'),
+(106, 1, 82, 1, 0, '2024-12-01', NULL, '1'),
+(107, 1, 81, 1, 0, '2024-12-01', NULL, '1'),
+(108, 1, 68, 1, 0, '2024-12-01', NULL, '1'),
+(109, 1, 76, 1, 1, '2024-12-01', NULL, '1'),
+(110, 1, 95, 1, 0, '2024-12-01', NULL, '1'),
+(111, 1, 93, 1, 1, '2024-12-01', NULL, '1'),
+(112, 1, 75, 1, 0, '2024-12-01', NULL, '1'),
+(113, 1, 70, 1, 0, '2024-12-01', NULL, '1'),
+(114, 1, 71, 1, 0, '2024-12-01', NULL, '1'),
+(115, 1, 69, 1, 0, '2024-12-01', NULL, '1'),
+(116, 1, 90, 1, 0, '2024-12-01', NULL, '1'),
+(117, 1, 89, 1, 0, '2024-12-01', NULL, '1'),
+(118, 1, 85, 1, 0, '2024-12-01', NULL, '1'),
+(119, 1, 92, 1, 0, '2024-12-01', NULL, '1'),
+(120, 1, 80, 1, 0, '2024-12-01', NULL, '1'),
+(121, 1, 97, 1, 1, '2024-12-01', NULL, '1'),
+(122, 1, 91, 1, 0, '2024-12-01', NULL, '1'),
+(123, 1, 77, 1, 0, '2024-12-01', NULL, '1'),
+(124, 1, 84, 1, 0, '2024-12-01', NULL, '1'),
+(125, 1, 73, 1, 0, '2024-12-01', NULL, '1'),
+(126, 1, 88, 1, 0, '2024-12-01', NULL, '1'),
+(127, 1, 87, 1, 0, '2024-12-01', NULL, '1'),
+(128, 1, 96, 1, 0, '2024-12-01', NULL, '1'),
+(129, 1, 74, 1, 0, '2024-12-01', NULL, '1'),
+(130, 1, 94, 1, 0, '2024-12-01', NULL, '1'),
+(131, 1, 86, 1, 1, '2024-12-01', NULL, '1'),
+(132, 1, 83, 1, 0, '2024-12-01', NULL, '1'),
+(133, 1, 78, 1, 0, '2024-12-01', NULL, '1'),
+(134, 1, 72, 1, 0, '2024-12-01', NULL, '1'),
+(135, 1, 79, 1, 0, '2024-12-01', NULL, '1'),
+(136, 1, 99, 1, 0, '2024-12-01', NULL, '1');
 
 -- --------------------------------------------------------
 
@@ -3243,7 +3346,7 @@ INSERT INTO `usuarios` (`id_usuario`, `rol_id`, `email`, `password`, `fyh_creaci
 (20, 4, 'abiibar2002@gmail.com', '$2y$10$gXnsgI5LSvmeslRnCyga..53qPJCwlnBqPwGV8GstVXtb/a7LTdDa', '2024-10-30', NULL, '1', NULL, NULL),
 (21, 4, 'abrilvaldez@live.com', '$2y$10$gMUwkzbos9jCHkCCDFggtu2K7LOfcWbODywqsbFoVV3LozD94ps1.', '2024-10-30', NULL, '1', NULL, NULL),
 (22, 4, 'adrianaedithdiaz@hotmail.com', '$2y$10$jaMiCz7y5Dlb8byRqEv9k.38P4f0xqNPhYuMUMVQsp5pDHrapxNFS', '2024-10-30', NULL, '1', NULL, NULL),
-(23, 4, 'accossattop18@gmail.com', '$2y$10$A.DnLojYIS6MJ.iZaAOf3O4nNWLTHtlWaaVGM32j.rZe3Dv0gsaB2', '2024-10-30', NULL, '1', NULL, NULL),
+(23, 4, 'ACCOSSATTOP18@GMAIL.COM', '$2y$10$rrjp.kYXonvXJEWUBJDrzOln3KBG1uu/8umkgVvLIkGELObVQ3XfK', '2024-10-30', '2024-12-01', '1', NULL, NULL),
 (24, 4, 'agos_deldotto@hotmail.com', '$2y$10$shgD5xfU.eYOqzYaMPI.K.clFLd/xq1Q3GRru0eHXb2nMMdS8U4wO', '2024-10-30', NULL, '1', NULL, NULL),
 (25, 4, 'aguscavaglia8@gmail.com', '$2y$10$1ieFebXNQpUhBFUeyTCCC.DXe1KWy8q885Afmp48.66FSsWDIInA6', '2024-10-30', NULL, '1', NULL, NULL),
 (26, 4, 'agustinaongaro12@gmail.com', '$2y$10$hSg42g9QIr.9BuCZOekfGu4/fardOf7SaXloHLacona4PRnHot9Cy', '2024-10-30', NULL, '1', NULL, NULL),
@@ -3277,7 +3380,7 @@ INSERT INTO `usuarios` (`id_usuario`, `rol_id`, `email`, `password`, `fyh_creaci
 (54, 4, 'anthonyelinparable@gmail.com', '$2y$10$x6BUVIfWMRlOVFNs3KpIWeci9NSRM2DKzOy52Aj4bOT5HXwEfTFk2', '2024-10-30', NULL, '1', NULL, NULL),
 (55, 4, 'antonio27cocco@hotmail.com', '$2y$10$ggoEuiYp5xbfhpEMSFnuHOd6xilLBd4ZHR5koQThMQbokJl5PTTuC', '2024-10-30', NULL, '1', NULL, NULL),
 (56, 4, 'aramgalvan@gmail.com', '$2y$10$ormSzC1cL2Vjd1nJnZT1TOp8Hgyjm7kxo5LRl7PGrwYL6l9SGgZ0C', '2024-10-30', NULL, '1', NULL, NULL),
-(57, 4, 'arielcarlospicco@gmail.com', '$2y$10$MNvqFhqEg84Qbty2hDBk/.K9F568rRJmd/7vzngoF6RwlrvsV2A8e', '2024-10-30', NULL, '1', NULL, NULL),
+(57, 4, 'ARIELCARLOSPICCO@GMAIL.COM', '$2y$10$OZNV10vBgWFHunVNm0iQ7OnH2wWhX65gE8OPouhpbJbgRB5L6b9SK', '2024-10-30', '2024-12-01', '1', NULL, NULL),
 (58, 4, 'aronbazan2019@gmail.com', '$2y$10$fRX2K0MpsSEkt6/t6NZ8DesIfghwVdRQio.Aqez79OVFRD0p5BpeK', '2024-10-30', NULL, '1', NULL, NULL),
 (59, 4, 'astiefkens@gmail.com', '$2y$10$ychsBfMdZNWVJnnYAySaIOTr4HDYPkvoTgQzH/yYO.JEjUMVvIT4u', '2024-10-30', NULL, '1', NULL, NULL),
 (60, 4, 'astridgerace@gmail.com', '$2y$10$FGLy8YctFVlogbdFROPYRe3RSkbJpkx83lWvClayvDHRvrMVCdUYW', '2024-10-30', NULL, '1', NULL, NULL),
@@ -3433,7 +3536,7 @@ INSERT INTO `usuarios` (`id_usuario`, `rol_id`, `email`, `password`, `fyh_creaci
 (210, 4, 'julipaiaro@yahoo.com', '$2y$10$FOihER0G2.2MNYt7NjPNeurjFHWcXxWrCnms3zY3L6j1mQpysWRdG', '2024-10-30', NULL, '1', NULL, NULL),
 (211, 4, 'juliescobar2011@gmail.com', '$2y$10$IzMwKSX1hK6m7yld5z92ausQYLZgnv/ywyX6eYAc8PpVOtU6HckDe', '2024-10-30', NULL, '1', NULL, NULL),
 (212, 4, 'kapriel17br@gmail.com', '$2y$10$m5d/uT86ultZCBS.ltWqZO9IdRE21nqX9Xmal4pirPg30BEPk3RlC', '2024-10-30', NULL, '1', NULL, NULL),
-(213, 4, 'kevinalonso516@gmail.com', '$2y$10$ShVwg6QcBMuH6Ph2fa2YyuzxJMzDL.j96rZIwy6RuLTqCTGdiE/te', '2024-10-30', NULL, '1', NULL, NULL),
+(213, 4, 'KEVINALONSO516@GMAIL.COM', '$2y$10$xgswr6oyFZGSsbkz58ujb.VgAPsaRk2DdVujQic209K.TTT58B/bW', '2024-10-30', '2024-12-01', '1', NULL, NULL),
 (214, 4, 'lauramo@hotmail.es', '$2y$10$xfk4Sk9D19Srih.uY1kzj.8Qtrt/VEeHp.OBa.pzkiofxNmwRaL5G', '2024-10-30', NULL, '1', NULL, NULL),
 (215, 4, 'laureanobianchi18@gmail.com', '$2y$10$wN4velqYjD3Rr25dxXJwI.3jjsRZ2.botqOpaBhecpNyBX4NykjTm', '2024-10-30', NULL, '1', NULL, NULL),
 (216, 4, 'katiaesmeraldabeas@yahoo.com', '$2y$10$five6hX3428BkVK6vXXK1.knGbAg0J.Cfwe20cRxXR8gJTJSqd13y', '2024-10-30', NULL, '1', NULL, NULL),
@@ -3555,7 +3658,7 @@ INSERT INTO `usuarios` (`id_usuario`, `rol_id`, `email`, `password`, `fyh_creaci
 (333, 4, 'santiagosarmiento@hotmail.com', '$2y$10$fYT6zQcYDLafYxtJojSVnOZBm.LDcAMFirolwChzmYOMkOUoE/eo2', '2024-10-30', NULL, '1', NULL, NULL),
 (334, 4, 'santi.tello456@gmail.com', '$2y$10$7udOMFmmApsJiua8Z.skkuwo118sbc5Y3Yk56KEU3H9YbDUlmb3wO', '2024-10-30', NULL, '1', NULL, NULL),
 (335, 4, 'santiagoezequiel27@gmail.com', '$2y$10$.wBZ3.t/jzWu3npFN96gwuI.c2qDleliebegRprHHmpGJYYTJtkky', '2024-10-30', NULL, '1', NULL, NULL),
-(336, 4, 'santibarrionuevo35@gmail.com', '$2y$10$OG7WQcI7TtC3STvPcrGd1elUefMSczdeC4c0fcp66hjzpCiEUsAoq', '2024-10-30', NULL, '1', NULL, NULL),
+(336, 4, 'SANTIBARRIONUEVO35@GMAIL.COM', '$2y$10$OLJFeJlE/6HC.7/3E./8aO77CMzQf/JDrH5lG7/c8V60AbyVkYyRS', '2024-10-30', '2024-12-01', '1', NULL, NULL),
 (337, 4, 'santigalmes@gmail.com', '$2y$10$STEZZjTwRqlKiMglXS8Fne59dplGnIyqfIyB/D/CTzg3bpS8XGqou', '2024-10-30', NULL, '1', NULL, NULL),
 (338, 4, 'sebaghisi@gmail.com', '$2y$10$olTQyj8cHxdINP6V6GOgNutPFTzQt2/hrUHogA4BErPdKt73RLhfi', '2024-10-30', NULL, '1', NULL, NULL),
 (339, 4, 'sergiogabrielagustin@gmail.com', '$2y$10$hJGNWzARD6vZGHeT1ifuhOSdRrU8l9XCX3gfGbdq3zJzjP9R2ER1y', '2024-10-30', NULL, '1', NULL, NULL),
@@ -3584,7 +3687,8 @@ INSERT INTO `usuarios` (`id_usuario`, `rol_id`, `email`, `password`, `fyh_creaci
 (362, 4, 'vale6942@gmail.com', '$2y$10$7pFZk0zBI/5Ym8YWA7gOHejIIwxK9QM4tlNO6.qsthf/TGSJNxQX6', '2024-10-30', NULL, '1', NULL, NULL),
 (363, 4, 'valentinaquinteros814@gmail.com', '$2y$10$MHgK4U5vDC8hNeiijBEgZ.viJSq1nGrh/.KSuFaxUH4Oon0Dp805S', '2024-10-30', NULL, '1', NULL, NULL),
 (364, 4, 'valeemartinez756@gmail.com', '$2y$10$G3xKWoZvfU5cKJFEYL8OzOhdWxsfmviuOnw31MOz7Xfw0F23zPSNu', '2024-10-30', NULL, '1', NULL, NULL),
-(365, 4, 'valeatletico@hotmail.com.ar', '$2y$10$SR0eTWP9uOvwgAILvuxeJeJsbm6tf8tb1SJkIvfHlajDnPNgvgVFC', '2024-10-30', NULL, '1', NULL, NULL),
+(365, 4, 'valeatletico@hotmail.com.ar', '$2y$10$SR0eTWP9uOvwgAILvuxeJeJsbm6tf8tb1SJkIvfHlajDnPNgvgVFC', '2024-10-30', NULL, '1', NULL, NULL);
+INSERT INTO `usuarios` (`id_usuario`, `rol_id`, `email`, `password`, `fyh_creacion`, `fyh_actualizacion`, `estado`, `reset_token`, `reset_expiration`) VALUES
 (366, 4, 'valee_2017fernandez@outlook.com', '$2y$10$Fpy2koI/SDBWZnLNvdqcQ.tu0Ui6SY1qhf3gwociW81Ty4QFe8ODC', '2024-10-30', NULL, '1', NULL, NULL),
 (367, 4, 'valevottero@hotmail.com', '$2y$10$Zwacuj7b18vC/8/1GvtGyO/Q.UQNHLMQMEKH2F9pmW0B8kGuP8fmu', '2024-10-30', NULL, '1', NULL, NULL),
 (368, 4, 'vanesasanchez@hotmail.com', '$2y$10$8OS2tIW0GIKBsWRFtkiEC.//DvpXaRilwL0I./aSFkuadV9058uVq', '2024-10-30', NULL, '1', NULL, NULL),
@@ -3629,7 +3733,6 @@ INSERT INTO `usuarios` (`id_usuario`, `rol_id`, `email`, `password`, `fyh_creaci
 (407, 3, 'danisilva@gmail.com', '$2y$10$JU16A61jANNO8hcqxzBtG.WOLw1rC5TQJ76g0VDVhyBDrw49.HgHK', '2024-09-07', '2024-09-19', '1', NULL, NULL),
 (408, 3, 'olganavarro@gmail.com', '$2y$10$JU16A61jANNO8hcqxzBtG.WOLw1rC5TQJ76g0VDVhyBDrw49.HgHK', '2024-09-07', '2024-09-19', '1', NULL, NULL);
 
-
 --
 -- Restricciones para tablas volcadas
 --
@@ -3649,7 +3752,7 @@ ALTER TABLE `asignaciones`
   ADD CONSTRAINT `asignaciones_ibfk_3` FOREIGN KEY (`nivel_id`) REFERENCES `niveles` (`id_nivel`) ON UPDATE CASCADE,
   ADD CONSTRAINT `asignaciones_ibfk_4` FOREIGN KEY (`grado_id`) REFERENCES `grados` (`id_grado`) ON UPDATE CASCADE;
 
-  --
+--
 -- Filtros para la tabla `asignaciones_indicadores`
 --
 ALTER TABLE `asignaciones_indicadores`
