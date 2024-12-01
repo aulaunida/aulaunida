@@ -223,7 +223,7 @@ $niveles = $stmtNiveles->fetchAll(PDO::FETCH_ASSOC);
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="tgd">TGD o TEA:<b style="color:red">*</b></label>
-                                            <input type="number" id="tgd" class="form-control" value="0" placeholder="Cantidad" required>
+                                            <input type="number" id="tgd" class="form-control" placeholder="Cantidad" required readonly>
                                         </div>
                                     </div>
                                     <div class="col-md-3">
@@ -297,6 +297,7 @@ include('../../admin/layout/parte2.php');
         const sorderaInput = document.getElementById('sordera');
         const cegueraInput = document.getElementById('ceguera');
         const motoraInput = document.getElementById('motora');
+        const tgdInput = document.getElementById('tgd');
 
         // Inicializa el gráfico vacío
         const inicializarGrafico = () => {
@@ -453,6 +454,26 @@ include('../../admin/layout/parte2.php');
             }
         };
 
+        // Obtener motora
+        const obtenerTgd = () => {
+            const grado = gradoSelect.value;
+            if (grado) {
+                const url = `<?= APP_URL; ?>/app/controllers/estadisticas/obtener_tgd.php?grado=${grado}`;
+                fetch(url)
+                    .then(response => response.json())
+                    .then(data => {
+                        tgdInput.value = data.total || 0;
+                    })
+                    .catch(error => {
+                        console.error("Error al obtener tgd:", error);
+                        tgdInput.value = 0;
+                    });
+            } else {
+                tgdInput.value = "";
+            }
+        };
+
+
 
 
         // Escuchar cambios en el select de grado
@@ -463,6 +484,7 @@ include('../../admin/layout/parte2.php');
             obtenerSordera();
             obtenerCeguera();
             obtenerMotora();
+            obtenerTgd();
         });
 
         document.getElementById('agregarDatos').addEventListener('click', function() {
@@ -475,7 +497,7 @@ include('../../admin/layout/parte2.php');
             const sordera = parseInt(sorderaInput.value);
             const ceguera = parseInt(cegueraInput.value);
             const motora = parseInt(motoraInput.value);
-            const tgd = parseInt(document.getElementById('tgd').value);
+            const tgd = parseInt(tgdInput.value);
             const multiples = parseInt(document.getElementById('multiples').value);
             const otras = parseInt(document.getElementById('otras').value);
 
