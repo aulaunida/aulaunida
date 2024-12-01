@@ -1,7 +1,28 @@
 <?php
 include('../../app/config.php');
 include('../../admin/layout/parte1.php');
+include('../../app/controllers/estudiantes/reporte_estudiantes_grados.php');
+
+// Consultar grados y divisiones directamente desde la base de datos
+$queryGrados = "SELECT id_grado, curso, paralelo FROM grados WHERE estado = '1'";
+$stmtGrados = $pdo->prepare($queryGrados);
+$stmtGrados->execute();
+$grados = $stmtGrados->fetchAll(PDO::FETCH_ASSOC);
+
+// Consultar gestiones (ciclo lectivo)
+$queryGestiones = "SELECT id_gestion, gestion FROM gestiones WHERE estado = '1'";
+$stmtGestiones = $pdo->prepare($queryGestiones);
+$stmtGestiones->execute();
+$gestiones = $stmtGestiones->fetchAll(PDO::FETCH_ASSOC);
+
+// Consultar niveles (turno)
+$queryNiveles = "SELECT id_nivel, nivel, turno FROM niveles WHERE estado = '1'";
+$stmtNiveles = $pdo->prepare($queryNiveles);
+$stmtNiveles->execute();
+$niveles = $stmtNiveles->fetchAll(PDO::FETCH_ASSOC);
 ?>
+
+
 <!-- Content Wrapper -->
 <div class="content-wrapper">
     <br>
@@ -18,51 +39,155 @@ include('../../admin/layout/parte1.php');
                             <h3 class="card-title">Ingresar datos:</h3>
                         </div>
                         <div class="card-body">
+
                             <form id="formDatosAlumnos">
                                 <div class="row">
                                     <div class="col-md-3">
                                         <div class="form-group">
-                                            <label for="grado">Grado y división:<b style="color:red">*</b></label>
-                                            <select id="grado" class="form-control" required>
-                                                <option value="" disabled selected>Seleccionar grado</option>
-                                                <?php
-                                                $secciones = ['A', 'B', 'C', 'D'];
-                                                $grados = ['Primero', 'Segundo', 'Tercero', 'Cuarto', 'Quinto', 'Sexto'];
-                                                foreach ($grados as $grado) {
-                                                    foreach ($secciones as $seccion) {
-                                                        echo "<option value='{$grado} {$seccion}'>{$grado} {$seccion}</option>";
-                                                    }
-                                                }
-                                                ?>
+                                            <label for="ciclo">Ciclo Lectivo:<b style="color:red">*</b></label>
+                                            <select name="id_gestion" id="ciclo" class="form-control" required>
+                                                <option value="" disabled selected>Seleccionar ciclo lectivo</option>
+                                                <?php foreach ($gestiones as $gestione): ?>
+                                                    <option value="<?= $gestione['id_gestion']; ?>">
+                                                        <?= $gestione['gestion']; ?>
+                                                    </option>
+                                                <?php endforeach; ?>
                                             </select>
                                         </div>
                                     </div>
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="turno">Turno:<b style="color:red">*</b></label>
-                                            <select id="turno" class="form-control" required>
+                                            <select name="id_nivel" id="turno" class="form-control" required>
                                                 <option value="" disabled selected>Seleccionar turno</option>
-                                                <option value="Mañana">Mañana</option>
-                                                <option value="Tarde">Tarde</option>
+                                                <?php foreach ($niveles as $nivele): ?>
+                                                    <option value="<?= $nivele['id_nivel']; ?>">
+                                                        <?= $nivele['turno']; ?> <!-- Solo imprime el turno -->
+                                                    </option>
+                                                <?php endforeach; ?>
                                             </select>
                                         </div>
                                     </div>
                                     <div class="col-md-3">
                                         <div class="form-group">
-                                            <label for="ciclo">Ciclo Lectivo:<b style="color:red">*</b></label>
-                                            <select id="ciclo" class="form-control" required>
-                                                <option value="" disabled selected>Seleccionar ciclo lectivo</option>
-                                                <option value="2024">2024</option>
-                                                <option value="2023">2023</option>
-                                                <option value="2022">2022</option>
-                                                <option value="2021">2021</option>
+                                            <label for="grado">Grado y división:<b style="color:red">*</b></label>
+                                            <!-- Grado y División -->
+                                            <select id="grado" name="id_grado" class="form-control" required>
+                                                <option value="" disabled selected>Seleccionar grado</option>
+                                                <?php foreach ($grados as $grado): ?>
+                                                    <option value="<?= $grado['id_grado']; ?>">
+                                                        <?= $grado['curso'] . " " . $grado['paralelo']; ?>
+                                                    </option>
+                                                <?php endforeach; ?>
                                             </select>
                                         </div>
                                     </div>
+                                </div>
+
+
+                                <?php
+                                $contador = 0;
+                                $contador_primergrado_a = 0;
+                                $contador_segundogrado_a = 0;
+                                $contador_tercergrado_a = 0;
+                                $contador_cuartogrado_a = 0;
+                                $contador_quintogrado_a = 0;
+                                $contador_sextogrado_a = 0;
+                                $contador_primergrado_b = 0;
+                                $contador_segundogrado_b = 0;
+                                $contador_tercergrado_b = 0;
+                                $contador_cuartogrado_b = 0;
+                                $contador_quintogrado_b = 0;
+                                $contador_sextogrado_b = 0;
+
+
+                                foreach ($reporte_estudiantes as $reporte_estudiante) {
+                                    if ($reporte_estudiante['grado_id'] == "1") $contador_primergrado_a = $contador_primergrado_a + 1;
+                                    if ($reporte_estudiante['grado_id'] == "2") $contador_primergrado_b = $contador_primergrado_b + 1;
+                                    if ($reporte_estudiante['grado_id'] == "8") $contador_segundogrado_a = $contador_segundogrado_a + 1;
+                                    if ($reporte_estudiante['grado_id'] == "9") $contador_segundogrado_b = $contador_segundogrado_b + 1;
+                                    if ($reporte_estudiante['grado_id'] == "10") $contador_tercergrado_a = $contador_tercergrado_a + 1;
+                                    if ($reporte_estudiante['grado_id'] == "11") $contador_tercergrado_b = $contador_tercergrado_b + 1;
+                                    if ($reporte_estudiante['grado_id'] == "12") $contador_cuartogrado_a = $contador_cuartogrado_a + 1;
+                                    if ($reporte_estudiante['grado_id'] == "13") $contador_cuartogrado_b = $contador_cuartogrado_b + 1;
+                                    if ($reporte_estudiante['grado_id'] == "14") $contador_quintogrado_a = $contador_quintogrado_a + 1;
+                                    if ($reporte_estudiante['grado_id'] == "15") $contador_quintogrado_b = $contador_quintogrado_b + 1;
+                                    if ($reporte_estudiante['grado_id'] == "16") $contador_sextogrado_a = $contador_sextogrado_a + 1;
+                                    if ($reporte_estudiante['grado_id'] == "17") $contador_sextogrado_b = $contador_sextogrado_b + 1;
+                                }
+                                $datos_reportes_estudiantes =
+                                    $contador_primergrado_a . "," .
+                                    $contador_primergrado_b . "," .
+                                    $contador_segundogrado_a . "," .
+                                    $contador_segundogrado_b . "," .
+                                    $contador_tercergrado_a . "," .
+                                    $contador_tercergrado_b . "," .
+                                    $contador_cuartogrado_a . "," .
+                                    $contador_cuartogrado_b . "," .
+                                    $contador_quintogrado_a . "," .
+                                    $contador_quintogrado_b . "," .
+                                    $contador_sextogrado_a . "," .
+                                    $contador_sextogrado_b;
+
+
+                                    $contador = 0;
+                                $contador_primergrado_a_r = 0;
+                                $contador_segundogrado_a_r = 0;
+                                $contador_tercergrado_a_r = 0;
+                                $contador_cuartogrado_a_r = 0;
+                                $contador_quintogrado_a_r = 0;
+                                $contador_sextogrado_a_r = 0;
+                                $contador_primergrado_b_r = 0;
+                                $contador_segundogrado_b_r = 0;
+                                $contador_tercergrado_b_r = 0;
+                                $contador_cuartogrado_b_r = 0;
+                                $contador_quintogrado_b_r = 0;
+                                $contador_sextogrado_b_r = 0;
+
+
+                                foreach ($reporte_estudiantes3 as $reporte_estudiante3) {
+                                    if ($reporte_estudiante3['grado_id'] == "1") $contador_primergrado_a_r = $contador_primergrado_a_r + 1;
+                                    if ($reporte_estudiante3['grado_id'] == "2") $contador_primergrado_b_r = $contador_primergrado_b_r + 1;
+                                    if ($reporte_estudiante3['grado_id'] == "8") $contador_segundogrado_a_r = $contador_segundogrado_a_r + 1;
+                                    if ($reporte_estudiante3['grado_id'] == "9") $contador_segundogrado_b_r = $contador_segundogrado_b_r + 1;
+                                    if ($reporte_estudiante3['grado_id'] == "10") $contador_tercergrado_a_r = $contador_tercergrado_a_r + 1;
+                                    if ($reporte_estudiante3['grado_id'] == "11") $contador_tercergrado_b_r = $contador_tercergrado_b_r + 1;
+                                    if ($reporte_estudiante3['grado_id'] == "12") $contador_cuartogrado_a_r = $contador_cuartogrado_a_r + 1;
+                                    if ($reporte_estudiante3['grado_id'] == "13") $contador_cuartogrado_b_r = $contador_cuartogrado_b_r + 1;
+                                    if ($reporte_estudiante3['grado_id'] == "14") $contador_quintogrado_a_r = $contador_quintogrado_a_r + 1;
+                                    if ($reporte_estudiante3['grado_id'] == "15") $contador_quintogrado_b_r = $contador_quintogrado_b_r + 1;
+                                    if ($reporte_estudiante3['grado_id'] == "16") $contador_sextogrado_a_r = $contador_sextogrado_a_r + 1;
+                                    if ($reporte_estudiante3['grado_id'] == "17") $contador_sextogrado_b_r = $contador_sextogrado_b_r + 1;
+                                }
+                                $datos_reportes_estudiantes_r =
+                                    $contador_primergrado_a_r . "," .
+                                    $contador_primergrado_b_r . "," .
+                                    $contador_segundogrado_a_r . "," .
+                                    $contador_segundogrado_b_r . "," .
+                                    $contador_tercergrado_a_r . "," .
+                                    $contador_tercergrado_b_r . "," .
+                                    $contador_cuartogrado_a_r . "," .
+                                    $contador_cuartogrado_b_r . "," .
+                                    $contador_quintogrado_a_r . "," .
+                                    $contador_quintogrado_b_r . "," .
+                                    $contador_sextogrado_a_r . "," .
+                                    $contador_sextogrado_b_r;
+                                ?>
+                                <!-- Alumnos Matriculados -->
+                                <div class="row">
+                                    <!-- Matriculados -->
                                     <div class="col-md-3">
                                         <div class="form-group">
-                                            <label for="matriculados">Total alumnos:<b style="color:red">*</b></label>
-                                            <input type="number" id="matriculados" class="form-control" placeholder="Cantidad de alumnos" required>
+                                            <label for="matriculados">Alumnos matriculados:<b style="color:red">*</b></label>
+                                            <input type="number" id="matriculados" class="form-control" placeholder="Cantidad de matriculados" required readonly>
+                                        </div>
+                                    </div>
+
+                                    <!-- Repetidores -->
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label for="repetidores">Alumnos integrados:<b style="color:red">*</b></label>
+                                            <input type="number" id="repetidores" class="form-control" placeholder="Cantidad de alumnos integrados" required readonly>
                                         </div>
                                     </div>
                                 </div>
@@ -114,10 +239,10 @@ include('../../admin/layout/parte1.php');
                                         </div>
                                     </div>
                                 </div>
-                                <div class="form-group">
+                            </form>
+                            <div class="form-group">
                                     <button type="button" class="btn btn-primary" id="agregarDatos">Agregar</button>
                                 </div>
-                            </form>
                             <hr>
                             <div id="tablaDatos">
                                 <table class="table table-bordered">
@@ -165,6 +290,9 @@ document.addEventListener("DOMContentLoaded", function () {
     let grafico;
     const tabla = document.getElementById('datosCargados');
     const canvas = document.getElementById('graficoAlumnos').getContext('2d');
+    const gradoSelect = document.getElementById('grado');
+    const matriculadosInput = document.getElementById('matriculados');
+    const repetidoresInput = document.getElementById('repetidores');
 
     // Inicializa el gráfico vacío
     const inicializarGrafico = () => {
@@ -195,11 +323,56 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     };
 
+    // Obtener matriculados
+    const obtenerMatriculados = () => {
+        const grado = gradoSelect.value;
+        if (grado) {
+            const url = `<?= APP_URL; ?>/app/controllers/estadisticas/obtener_matriculados.php?grado=${grado}`;
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    matriculadosInput.value = data.total || 0;
+                })
+                .catch(error => {
+                    console.error("Error al obtener matriculados:", error);
+                    matriculadosInput.value = 0;
+                });
+        } else {
+            matriculadosInput.value = "";
+        }
+    };
+
+    // Obtener repetidores
+    const obtenerRepetidores = () => {
+        const grado = gradoSelect.value;
+        if (grado) {
+            const url = `<?= APP_URL; ?>/app/controllers/estadisticas/obtener_integrados.php?grado=${grado}`;
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    repetidoresInput.value = data.total || 0;
+                })
+                .catch(error => {
+                    console.error("Error al obtener repetidores:", error);
+                    repetidoresInput.value = 0;
+                });
+        } else {
+            repetidoresInput.value = "";
+        }
+    };
+
+    // Escuchar cambios en el select de grado
+    gradoSelect.addEventListener('change', function () {
+        obtenerMatriculados();
+        obtenerRepetidores();
+    });
+
     document.getElementById('agregarDatos').addEventListener('click', function () {
-        const grado = document.getElementById('grado').value;
+        const grado = gradoSelect.value;
         const turno = document.getElementById('turno').value;
         const ciclo = document.getElementById('ciclo').value;
-        const matriculados = parseInt(document.getElementById('matriculados').value);
+        const matriculados = parseInt(matriculadosInput.value);
+        const repetidores = parseInt(repetidoresInput.value);
         const intelectual = parseInt(document.getElementById('intelectual').value);
         const sordera = parseInt(document.getElementById('sordera').value);
         const ceguera = parseInt(document.getElementById('ceguera').value);
@@ -208,9 +381,9 @@ document.addEventListener("DOMContentLoaded", function () {
         const multiples = parseInt(document.getElementById('multiples').value);
         const otras = parseInt(document.getElementById('otras').value);
 
-        if (!grado || !turno || !ciclo || isNaN(matriculados) || isNaN(intelectual) || isNaN(sordera) || isNaN(ceguera) ||
-            isNaN(motora) || isNaN(tgd) || isNaN(multiples) || isNaN(otras)) {
-            alert('Por favor, debes completar todos los campos.');
+        if (!grado || !turno || !ciclo || isNaN(matriculados) || isNaN(repetidores) || isNaN(intelectual) ||
+            isNaN(sordera) || isNaN(ceguera) || isNaN(motora) || isNaN(tgd) || isNaN(multiples) || isNaN(otras)) {
+            alert('Por favor, completa todos los campos correctamente.');
             return;
         }
 
@@ -220,7 +393,7 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
-        datos.push({ grado, turno, ciclo, matriculados, intelectual, sordera, ceguera, motora, tgd, multiples, otras });
+        datos.push({ grado, turno, ciclo, matriculados, repetidores, intelectual, sordera, ceguera, motora, tgd, multiples, otras });
 
         actualizarTabla();
         actualizarGrafico();
@@ -237,6 +410,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     <td>${dato.turno}</td>
                     <td>${dato.ciclo}</td>
                     <td>${dato.matriculados}</td>
+                    <td>${dato.repetidores}</td>
                     <td>${totalIntegrados}</td>
                     <td><button class="btn btn-danger btn-sm" onclick="eliminarDato(${index})">Eliminar</button></td>
                 </tr>
@@ -246,7 +420,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const actualizarGrafico = () => {
         const grados = [...new Set(datos.map(dato => dato.grado))];
-        const categorias = ['Intelectual', 'Sordera', 'Ceguera', 'Motora', 'TGD', 'Más de una', 'Otras', 'Sin Plan Integrado'];
+        const categorias = ['Intelectual', 'Sordera', 'Ceguera', 'Motora', 'TGD', 'Más de una', 'Otras'];
 
         const data = {
             'Intelectual': Array(grados.length).fill(0),
@@ -256,7 +430,6 @@ document.addEventListener("DOMContentLoaded", function () {
             'TGD': Array(grados.length).fill(0),
             'Más de una': Array(grados.length).fill(0),
             'Otras': Array(grados.length).fill(0),
-            'Sin Plan Integrado': Array(grados.length).fill(0),
         };
 
         datos.forEach(dato => {
@@ -268,22 +441,23 @@ document.addEventListener("DOMContentLoaded", function () {
             data['TGD'][gradoIndex] += dato.tgd;
             data['Más de una'][gradoIndex] += dato.multiples;
             data['Otras'][gradoIndex] += dato.otras;
-
-            const totalIntegrados = dato.intelectual + dato.sordera + dato.ceguera + dato.motora + dato.tgd + dato.multiples + dato.otras;
-            data['Sin Plan Integrado'][gradoIndex] += dato.matriculados - totalIntegrados;
         });
 
-        if (grafico) grafico.destroy();
+        const datasets = Object.keys(data).map(categoria => ({
+            label: categoria,
+            data: data[categoria],
+            backgroundColor: getRandomColor(),
+        }));
+
+        if (grafico) {
+            grafico.destroy();
+        }
 
         grafico = new Chart(canvas, {
             type: 'bar',
             data: {
                 labels: grados,
-                datasets: categorias.map(categoria => ({
-                    label: categoria,
-                    data: data[categoria],
-                    backgroundColor: getBackgroundColor(categoria)
-                }))
+                datasets: datasets
             },
             options: {
                 responsive: true,
@@ -292,25 +466,16 @@ document.addEventListener("DOMContentLoaded", function () {
                     title: { display: true, text: 'Distribución de Alumnos Integrados' }
                 },
                 scales: {
-                    x: { stacked: true },
-                    y: { stacked: true, beginAtZero: true }
+                    x: { stacked: true, title: { display: true, text: 'Grado' } },
+                    y: { stacked: true, beginAtZero: true, title: { display: true, text: 'Cantidad de Alumnos' } }
                 }
             }
         });
     };
 
-    const getBackgroundColor = (categoria) => {
-        const colores = {
-            'Intelectual': 'rgba(75, 192, 192, 0.6)',
-            'Sordera': 'rgba(153, 102, 255, 0.6)',
-            'Ceguera': 'rgba(255, 159, 64, 0.6)',
-            'Motora': 'rgba(255, 99, 132, 0.6)',
-            'TGD': 'rgba(54, 162, 235, 0.6)',
-            'Más de una': 'rgba(201, 203, 207, 0.6)',
-            'Otras': 'rgba(255, 205, 86, 0.6)',
-            'Sin Plan Integrado': 'rgba(0, 128, 0, 0.6)'
-        };
-        return colores[categoria] || 'rgba(0, 0, 0, 0.6)';
+    const getRandomColor = () => {
+        const colores = ['#FF5733', '#33FF57', '#3357FF', '#FF33A1', '#F4FF33'];
+        return colores[Math.floor(Math.random() * colores.length)];
     };
 
     window.eliminarDato = (index) => {
@@ -319,7 +484,7 @@ document.addEventListener("DOMContentLoaded", function () {
         actualizarGrafico();
     };
 
-    // Llama a la función para inicializar el gráfico vacío
     inicializarGrafico();
 });
 </script>
+
