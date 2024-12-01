@@ -24,7 +24,7 @@ include('../../app/controllers/docentes/listado_de_asignaciones_indicadores.php'
     <div class="content">
         <div class="container">
             <div class="row">
-            <h1 style="margin-left: 20px;"><i class="bi bi-clipboard-data"></i> Repitencia</h1>
+            <h1 style="margin-left: 20px;"><i class="bi bi-person-x"></i> Repitencia</h1>
             </div>
             <br>
             <div class="row">

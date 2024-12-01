@@ -163,6 +163,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 </a>
                             </li>
                         </ul>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="<?= APP_URL; ?>/admin/repitencias" class="nav-link active">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Registrar repitencia</p>
+                                </a>
+                            </li>
+                        </ul>
                     </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link active">
@@ -215,25 +223,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 <a href="<?= APP_URL; ?>/admin/asistencias" class="nav-link active">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Consultar asistencias</p>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-
-                    <li class="nav-item">
-                        <a href="#" class="nav-link active">
-                            <i class="nav-icon fas"><i class="bi bi-person-x"></i></i>
-                            <p>
-                                Repitencia
-                                <i class="right fas fa-angle-left"></i>
-                            </p>
-                        </a>
-
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="<?= APP_URL; ?>/admin/repitencias" class="nav-link active">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Consultar indicador</p>
                                 </a>
                             </li>
                         </ul>
