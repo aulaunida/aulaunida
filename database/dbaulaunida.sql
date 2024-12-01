@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 01-12-2024 a las 19:09:02
+-- Tiempo de generación: 01-12-2024 a las 22:24:22
 -- Versión del servidor: 8.3.0
 -- Versión de PHP: 8.2.18
 
@@ -1789,7 +1789,7 @@ INSERT INTO `estudiantes` (`id_estudiante`, `persona_id`, `nivel_id`, `grado_id`
 (32, 42, 1, 1, '508109', 'NO', '', '2024-10-30', '2024-11-24', '1'),
 (33, 43, 1, 1, '506937', 'NO', '', '2024-10-30', '2024-11-24', '1'),
 (34, 44, 1, 1, '506077', 'NO', '', '2024-10-30', NULL, '1'),
-(35, 45, 1, 1, '508391', 'NO', '', '2024-10-30', '2024-11-24', '1'),
+(35, 45, 1, 1, '508391', 'SI', 'MOTORA O NEUMOMOTORA', '2024-10-30', '2024-11-24', '1'),
 (36, 46, 1, 1, '506960', 'SI', 'CEGUERA O DISMINUCION VISUAL', '2024-10-30', '2024-11-24', '1'),
 (37, 47, 1, 1, '507010', 'NO', '', '2024-10-30', '2024-11-24', '1'),
 (38, 48, 1, 1, '509715', 'NO', '', '2024-10-30', '2024-11-24', '1'),
@@ -1964,7 +1964,7 @@ INSERT INTO `estudiantes` (`id_estudiante`, `persona_id`, `nivel_id`, `grado_id`
 (207, 217, 1, 12, '479034', 'NO', '', '2024-10-30', NULL, '1'),
 (208, 218, 1, 12, '479002', 'NO', '', '2024-10-30', NULL, '1'),
 (209, 219, 1, 12, '472887', 'SI', 'TGD O TEA', '2024-10-30', NULL, '1'),
-(210, 220, 1, 12, '476029', 'NO', '', '2024-10-30', NULL, '1'),
+(210, 220, 1, 12, '476029', 'SI', 'OTRO MOTIVO', '2024-10-30', '2024-12-01', '1'),
 (211, 221, 1, 12, '471285', 'NO', '', '2024-10-30', NULL, '1'),
 (212, 222, 1, 12, '475227', 'NO', '', '2024-10-30', NULL, '1'),
 (213, 223, 1, 12, '477097', 'NO', '', '2024-10-30', NULL, '1'),
@@ -1979,7 +1979,7 @@ INSERT INTO `estudiantes` (`id_estudiante`, `persona_id`, `nivel_id`, `grado_id`
 (222, 232, 1, 12, '476057', 'NO', '', '2024-10-30', NULL, '1'),
 (223, 233, 2, 13, '471953', 'NO', '', '2024-10-30', NULL, '1'),
 (224, 234, 2, 13, '475350', 'NO', '', '2024-10-30', NULL, '1'),
-(225, 235, 2, 13, '476083', 'SI', 'MASCULINO', '2024-10-30', NULL, '1'),
+(225, 235, 2, 13, '476083', 'SI', 'OTRO MOTIVO', '2024-10-30', NULL, '1'),
 (226, 236, 2, 13, '478118', 'NO', '', '2024-10-30', NULL, '1'),
 (227, 237, 2, 13, '473721', 'SI', 'CEGUERA O DISMINUCION VISUAL', '2024-10-30', NULL, '1'),
 (228, 238, 2, 13, '479283', 'NO', '', '2024-10-30', NULL, '1'),
@@ -2557,7 +2557,7 @@ INSERT INTO `personas` (`id_persona`, `usuario_id`, `nombres`, `apellidos`, `dni
 (217, 219, 'MILAGROS ', 'BERTERO', '47903487', '42184', 'd21', 'ANGELICA PRADO 719', 'd20', '2024-10-30', NULL, '1'),
 (218, 220, 'LEANDRO MANUEL', 'VILLARREAL', '47900265', '42186', 'd21', '1º DE MAYO 553', 'd20', '2024-10-30', NULL, '1'),
 (219, 222, 'LUISINA ', 'LUCARELLI', '472887116', '42188', 'd21', 'ZORRILLA DE SAN MARTIN JUAN 234', 'd20', '2024-10-30', NULL, '1'),
-(220, 223, 'SALVADOR', 'ACEVEDO', '47602955', '42187', 'd21', '27 DE ABRIL 694', 'd20', '2024-10-30', NULL, '1'),
+(220, 223, 'SALVADOR', 'ACEVEDO', '47602955', '2015-10-29', 'ESTUDIANTE', '27 DE ABRIL 694', '0', '2024-10-30', '2024-12-01', '1'),
 (221, 224, 'HECTOR FELIPE', 'GUZMAN', '47128560', '42189', 'd21', 'ENTRE RIOS 206', 'd20', '2024-10-30', NULL, '1'),
 (222, 225, 'THIAGO BENJAMIN', 'JUAREZ', '47522768', '42190', 'd21', 'RUTA 17 KM 63.3 0', 'd20', '2024-10-30', NULL, '1'),
 (223, 226, 'LUCIANO EZEQUIEL', 'ONTIVERO', '47709785', '42149', 'd21', 'RIO NEGRO 0', 'd20', '2024-10-30', NULL, '1'),
@@ -2982,7 +2982,7 @@ INSERT INTO `ppffs` (`id_ppff`, `estudiante_id`, `nombres_apellidos_ppff`, `dni_
 (207, 207, 'BERTERO, KEVIN JOEL', '39516080', '3515544941', 'INDEPENDIENTE', 'FANTINI DOMINGO Y OTROS', 'SEGUNDO TUTOR', '3515613058', '2024-10-30', NULL, '1'),
 (208, 208, 'VILLARREAL, LARA AGOSTINA', '39520173', '3516414913', 'INDEPENDIENTE', 'PEREIRA DUARTE J OTROS', 'SEGUNDO TUTOR', '3516461952', '2024-10-30', NULL, '1'),
 (209, 209, 'LUCARELLI, LAUTARO DAMIAN', '39564562', '3516151666', 'RELACION DE DEPENDENCIA', 'ASOC DEPORT C CORR PALOS', 'SEGUNDO TUTOR', '3515250341', '2024-10-30', NULL, '1'),
-(210, 210, 'ACEVEDO, LAUTARO ABEL', '39529819', '3511616230', 'RELACION DE DEPENDENCIA', 'DEL POZO DE MUÑOZ AURORA', 'SEGUNDO TUTOR', '3511418154', '2024-10-30', NULL, '1'),
+(210, 210, 'ACEVEDO, LAUTARO ABEL', '39529819', '3511616230', 'RELACION DE DEPENDENCIA', 'DEL POZO DE MUÑOZ AURORA', 'SEGUNDO TUTOR', '3511418154', '2024-10-30', '2024-12-01', '1'),
 (211, 211, 'GUZMAN, LEANDRO FELIPE', '39585649', '3512382543', 'INDEPENDIENTE', 'SA EL HOGAR PROPIO', 'SEGUNDO TUTOR', '3514809183', '2024-10-30', NULL, '1'),
 (212, 212, 'JUAREZ, LEANDRO JOEL', '39587061', '3512600990', 'RELACION DE DEPENDENCIA', 'ROZEK BASILIO F', 'SEGUNDO TUTOR', '3512431113', '2024-10-30', NULL, '1'),
 (213, 213, 'ONTIVERO, LEANDRO MIGUEL', '39619150', '3516453703', 'INDEPENDIENTE', 'ROSSA BERTORELLO JOSE', 'SEGUNDO TUTOR', '3516472135', '2024-10-30', NULL, '1'),
@@ -3545,7 +3545,7 @@ INSERT INTO `usuarios` (`id_usuario`, `rol_id`, `email`, `password`, `fyh_creaci
 (219, 4, 'lbertero@coop5.com.ar', '$2y$10$l0wyFQ6QA85gjJ90p1Ph4uqkHrZMXfOPM3F.VXE6j2MiWgne2gNMy', '2024-10-30', NULL, '1', NULL, NULL),
 (220, 4, 'leovilla2016@hotmail.com', '$2y$10$gKc8dG2teek3/Cq6nKPrnu.ar0C.d.qPjodBJ3/LXPDp6A74jGPha', '2024-10-30', NULL, '1', NULL, NULL),
 (222, 4, 'licvivianaangelicamurillo@gmail.com', '$2y$10$tEIa7pbILgO5KtXTQBL.wev8x5IljMLMdlVaJaRsiolX54ZGoyQYi', '2024-10-30', NULL, '1', NULL, NULL),
-(223, 4, 'leticiaea2020@hotmail.com', '$2y$10$2q4pVsZ2r.UYRy4yR7qzEObw/HehYNd2Szq/zjlRHzRkN9vMXIHLK', '2024-10-30', NULL, '1', NULL, NULL),
+(223, 4, 'LETICIAEA2020@HOTMAIL.COM', '$2y$10$K4msCdAL6A1G3/vBOdZmCOT5GI3btqJTMQnQYN1ju9BokZ3jFPjna', '2024-10-30', '2024-12-01', '1', NULL, NULL),
 (224, 4, 'lipe_cba_lv@hotmail.com', '$2y$10$j1n5FmJ3VO4be2nUHBiIou7dLoUbdfnX/CJBEl8dHCN2FV8QUMh7i', '2024-10-30', NULL, '1', NULL, NULL),
 (225, 4, 'loaa2001.asd@gmail.com', '$2y$10$L58Zi1S1QLD6KuWfwDcPn.h8MvIsPYg9nMzPTD/KD.dG0JfPAQXwy', '2024-10-30', NULL, '1', NULL, NULL),
 (226, 4, 'lorenamalalu@gmail.com ', '$2y$10$VLPUmGselXOmJnXR/BUc5.TDh4Mpw1Jijhv8cy1lFDdc2m6A9jXWW', '2024-10-30', NULL, '1', NULL, NULL),
