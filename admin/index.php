@@ -9,6 +9,7 @@ include('../app/controllers/materias/listado_de_materias.php');
 include('../app/controllers/docentes/listado_de_docentes.php');
 include('../app/controllers/estudiantes/listado_de_estudiantes.php');
 include('../app/controllers/docentes/listado_de_asignaciones.php');
+include('../app/controllers/docentes/listado_de_asignaciones_indicadores.php');
 ?>
 
 <!-- Content Wrapper. Contains page content -->

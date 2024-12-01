@@ -108,6 +108,42 @@ INSERT INTO `asignaciones` (`id_asignacion`, `docente_id`, `nivel_id`, `grado_id
 (10, 6, 1, 8, 5, '2024-10-16', NULL, '1'),
 (11, 1, 1, 1, 4, '2024-10-23', NULL, '1');
 
+
+--
+-- Estructura de tabla para la tabla `asignaciones_indicadores`
+--
+
+DROP TABLE IF EXISTS `asignaciones_indicadores`;
+CREATE TABLE IF NOT EXISTS `asignaciones_indicadores` (
+  `id_asignacion_indicadores` int NOT NULL AUTO_INCREMENT,
+  `docente_id` int NOT NULL,
+  `nivel_id` int NOT NULL,
+  `grado_id` int NOT NULL,
+  `indicador_id` int NOT NULL,
+  `fyh_creacion` date DEFAULT NULL,
+  `fyh_actualizacion` date DEFAULT NULL,
+  `estado` varchar(11) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci DEFAULT NULL,
+  PRIMARY KEY (`id_asignacion_indicadores`),
+  KEY `indicador_id` (`indicador_id`),
+  KEY `docente_id` (`docente_id`),
+  KEY `nivel_id` (`nivel_id`),
+  KEY `grado_id` (`grado_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `asignaciones_indicadores`
+--
+
+INSERT INTO `asignaciones_indicadores` (`id_asignacion_indicadores`, `docente_id`, `nivel_id`, `grado_id`, `indicador_id`, `fyh_creacion`, `fyh_actualizacion`, `estado`) VALUES
+(1, 1, 1, 1, 1, '2024-10-08', '2024-10-12', '1'),
+(2, 1, 1, 1, 2, '2024-10-08', '2024-10-23', '1'),
+(3, 5, 2, 2, 1, '2024-10-08', NULL, '1'),
+(4, 5, 2, 2, 2, '2024-10-08', NULL, '1'),
+(5, 1, 1, 1, 3, '2024-10-16', NULL, '1'),
+(6, 6, 1, 8, 5, '2024-10-16', NULL, '1'),
+(7, 1, 1, 1, 4, '2024-10-23', NULL, '1');
+
+
 -- --------------------------------------------------------
 
 --
@@ -1606,6 +1642,30 @@ INSERT INTO `calificaciones` (`id_calificacion`, `docente_id`, `estudiante_id`, 
 
 -- --------------------------------------------------------
 
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `repitencias`
+--
+
+DROP TABLE IF EXISTS `repitencias`;
+CREATE TABLE IF NOT EXISTS `repitencias` (
+  `id_repitencia` int NOT NULL AUTO_INCREMENT,
+  `docente_id` int NOT NULL,
+  `estudiante_id` int NOT NULL,
+  `indicador_id` int NOT NULL,
+  `nota1` int DEFAULT NULL,
+  `fyh_creacion` date DEFAULT NULL,
+  `fyh_actualizacion` date DEFAULT NULL,
+  `estado` varchar(11) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci DEFAULT NULL,
+  PRIMARY KEY (`id_repitencia`),
+  KEY `docente_id` (`docente_id`),
+  KEY `estudiante_id` (`estudiante_id`),
+  KEY `indicador_id` (`indicador_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+
+
 --
 -- Estructura de tabla para la tabla `configuracion_instituciones`
 --
@@ -2215,6 +2275,35 @@ INSERT INTO `materias` (`id_materia`, `nombre_materia`, `fyh_creacion`, `fyh_act
 (6, 'EDUCACIÓN TECNOLÓGICA', '2024-08-26', '2024-08-30', '1'),
 (7, 'EDUCACIÓN ARTÍSTICA', '2024-08-26', '2024-08-30', '1'),
 (8, 'CIUDADANÍA Y PARTICIPACIÓN', '2024-08-26', '2024-08-30', '1');
+
+
+
+
+--
+-- Estructura de tabla para la tabla `indicadores`
+--
+
+DROP TABLE IF EXISTS `indicadores`;
+CREATE TABLE IF NOT EXISTS `indicadores` (
+  `id_indicador` int NOT NULL AUTO_INCREMENT,
+  `nombre_indicador` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci NOT NULL,
+  `fyh_creacion` date DEFAULT NULL,
+  `fyh_actualizacion` date DEFAULT NULL,
+  `estado` varchar(11) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci DEFAULT NULL,
+  PRIMARY KEY (`id_indicador`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `indicadores`
+--
+
+INSERT INTO `indicadores` (`id_indicador`, `nombre_indicador`, `fyh_creacion`, `fyh_actualizacion`, `estado`) VALUES
+(1, 'REPITENCIA', '2024-08-26', '2024-08-30', '1'),
+(2, 'ALUMNOS INTEGRADOS', '2024-08-26', '2024-08-27', '1'),
+(3, 'PROGRESO ESCOLAR', '2024-08-26', NULL, '1'),
+(4, 'PARTICIPACIÓN FAMILIAR', '2024-08-26', '2024-08-30', '1'),
+(5, 'ABANDONO ESCOLAR', '2024-08-26', '2024-08-30', '1');
+
 
 -- --------------------------------------------------------
 
@@ -3559,6 +3648,15 @@ ALTER TABLE `asignaciones`
   ADD CONSTRAINT `asignaciones_ibfk_2` FOREIGN KEY (`docente_id`) REFERENCES `docentes` (`id_docente`) ON UPDATE CASCADE,
   ADD CONSTRAINT `asignaciones_ibfk_3` FOREIGN KEY (`nivel_id`) REFERENCES `niveles` (`id_nivel`) ON UPDATE CASCADE,
   ADD CONSTRAINT `asignaciones_ibfk_4` FOREIGN KEY (`grado_id`) REFERENCES `grados` (`id_grado`) ON UPDATE CASCADE;
+
+  --
+-- Filtros para la tabla `asignaciones_indicadores`
+--
+ALTER TABLE `asignaciones_indicadores`
+  ADD CONSTRAINT `asignaciones_indicadores_ibfk_1` FOREIGN KEY (`indicador_id`) REFERENCES `indicadores` (`id_indicador`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `asignaciones_indicadores_ibfk_2` FOREIGN KEY (`docente_id`) REFERENCES `docentes` (`id_docente`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `asignaciones_indicadores_ibfk_3` FOREIGN KEY (`nivel_id`) REFERENCES `niveles` (`id_nivel`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `asignaciones_indicadores_ibfk_4` FOREIGN KEY (`grado_id`) REFERENCES `grados` (`id_grado`) ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `docentes`
