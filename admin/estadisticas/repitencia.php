@@ -81,6 +81,15 @@ $niveles = $stmtNiveles->fetchAll(PDO::FETCH_ASSOC);
                                             </select>
                                         </div>
                                     </div>
+                                     <!-- Matriculados -->
+                                     <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label for="matriculados">Alumnos matriculados:<b style="color:red">*</b></label>
+                                            <input type="number" id="matriculados" class="form-control" placeholder="Cantidad de matriculados" required readonly>
+                                        </div>
+                                    </div>
+
+                                   
                                 </div>
 
 
@@ -174,14 +183,6 @@ $niveles = $stmtNiveles->fetchAll(PDO::FETCH_ASSOC);
                                 ?>
                                 <!-- Alumnos Matriculados -->
                                 <div class="row">
-                                    <!-- Matriculados -->
-                                    <div class="col-md-3">
-                                        <div class="form-group">
-                                            <label for="matriculados">Alumnos matriculados:<b style="color:red">*</b></label>
-                                            <input type="number" id="matriculados" class="form-control" placeholder="Cantidad de matriculados" required readonly>
-                                        </div>
-                                    </div>
-
                                     <!-- Repetidores -->
                                     <div class="col-md-3">
                                         <div class="form-group">
