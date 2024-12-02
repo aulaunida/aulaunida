@@ -1,17 +1,28 @@
 <?php
 include('../../app/config.php');
 include('../../admin/layout/parte1.php');
-include('../../app/controllers/roles/listado_de_roles.php');
-include('../../app/controllers/usuarios/listado_de_usuarios.php');
-include('../../app/controllers/niveles/listado_de_niveles.php');
-include('../../app/controllers/grados/listado_de_grados.php');
-include('../../app/controllers/materias/listado_de_materias.php');
-include('../../app/controllers/docentes/listado_de_docentes.php');
-include('../../app/controllers/estudiantes/listado_de_estudiantes.php');
-include('../../app/controllers/docentes/listado_de_asignaciones.php');
 include('../../app/controllers/estudiantes/reporte_estudiantes_grados.php');
-include('../../app/controllers/configuraciones/gestion/listado_de_gestiones.php');
+
+// Consultar grados y divisiones directamente desde la base de datos
+$queryGrados = "SELECT id_grado, curso, paralelo FROM grados WHERE estado = '1'";
+$stmtGrados = $pdo->prepare($queryGrados);
+$stmtGrados->execute();
+$grados = $stmtGrados->fetchAll(PDO::FETCH_ASSOC);
+
+// Consultar gestiones (ciclo lectivo)
+$queryGestiones = "SELECT id_gestion, gestion FROM gestiones WHERE estado = '1'";
+$stmtGestiones = $pdo->prepare($queryGestiones);
+$stmtGestiones->execute();
+$gestiones = $stmtGestiones->fetchAll(PDO::FETCH_ASSOC);
+
+// Consultar niveles (turno)
+$queryNiveles = "SELECT id_nivel, nivel, turno FROM niveles WHERE estado = '1'";
+$stmtNiveles = $pdo->prepare($queryNiveles);
+$stmtNiveles->execute();
+$niveles = $stmtNiveles->fetchAll(PDO::FETCH_ASSOC);
 ?>
+
+
 <!-- Content Wrapper -->
 <div class="content-wrapper">
     <br>
@@ -22,27 +33,25 @@ include('../../app/controllers/configuraciones/gestion/listado_de_gestiones.php'
             </div>
             <br>
             <div class="row">
-                <div class="col-md-2"></div>
                 <div class="col-md-12">
                     <div class="card card-outline card-primary">
                         <div class="card-header">
                             <h3 class="card-title">Ingresar datos:</h3>
                         </div>
                         <div class="card-body">
-                            <form id="formDatosAbandono">
+
+                            <form id="formDatosAlumnos">
                                 <div class="row">
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="ciclo">Ciclo Lectivo:<b style="color:red">*</b></label>
                                             <select name="id_gestion" id="ciclo" class="form-control" required>
                                                 <option value="" disabled selected>Seleccionar ciclo lectivo</option>
-                                                <?php
-                                                foreach ($gestiones as $gestione) {
-                                                    $id_gestion = $gestione['id_gestion']; ?>
-                                                    <option value="<?= $gestione['gestion']; ?>"><?= $gestione['gestion']; ?></option>
-                                                <?php
-                                                }
-                                                ?>
+                                                <?php foreach ($gestiones as $gestione): ?>
+                                                    <option value="<?= $gestione['gestion']; ?>">
+                                                        <?= $gestione['gestion']; ?>
+                                                    </option>
+                                                <?php endforeach; ?>
                                             </select>
                                         </div>
                                     </div>
@@ -51,134 +60,183 @@ include('../../app/controllers/configuraciones/gestion/listado_de_gestiones.php'
                                             <label for="turno">Turno:<b style="color:red">*</b></label>
                                             <select name="id_nivel" id="turno" class="form-control" required>
                                                 <option value="" disabled selected>Seleccionar turno</option>
-                                                <?php
-                                                foreach ($niveles as $nivele) {
-                                                    $id_nivel = $nivele['id_nivel']; ?>
-                                                    <option value="<?= $nivele['nivel'];?> - TURNO <?= $nivele['turno']; ?>"><?= $nivele['nivel']; ?> - TURNO <?= $nivele['turno']; ?></option>
-                                                <?php
-                                                }
-                                                ?>
+                                                <?php foreach ($niveles as $nivele): ?>
+                                                    <option value="<?= $nivele['turno']; ?>">
+                                                        <?= $nivele['turno']; ?> <!-- Solo imprime el turno -->
+                                                    </option>
+                                                <?php endforeach; ?>
                                             </select>
                                         </div>
                                     </div>
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="grado">Grado y división:<b style="color:red">*</b></label>
-                                            <select name="grado" id="selectGrado" class="form-control" required>
+                                            <!-- Grado y División -->
+                                            <select id="grado" name="id_grado" class="form-control" required>
                                                 <option value="" disabled selected>Seleccionar grado</option>
-                                                <?php
-                                                foreach ($grados as $grado) {
-                                                    $id_grado = $grado['id_grado']; ?>
-                                                    <option value="<?= $id_grado; ?>" data-display="<?= $grado['curso']; ?> - DIVISIÓN <?= $grado['paralelo']; ?>"><?= $grado['curso']; ?> - DIVISIÓN <?= $grado['paralelo']; ?></option>
-                                                <?php
-                                                }
-                                                ?>
+                                                <?php foreach ($grados as $grado): ?>
+                                                    <option value="<?= $grado['id_grado']; ?>">
+                                                        <?= $grado['curso'] . " " . $grado['paralelo']; ?>
+                                                    </option>
+                                                <?php endforeach; ?>
                                             </select>
-
                                         </div>
                                     </div>
-
-
-
-                                    <?php
-                                    $contador = 0;
-                                    $contador_primergrado_a = 0;
-                                    $contador_segundogrado_a = 0;
-                                    $contador_tercergrado_a = 0;
-                                    $contador_cuartogrado_a = 0;
-                                    $contador_quintogrado_a = 0;
-                                    $contador_sextogrado_a = 0;
-                                    $contador_primergrado_b = 0;
-                                    $contador_segundogrado_b = 0;
-                                    $contador_tercergrado_b = 0;
-                                    $contador_cuartogrado_b = 0;
-                                    $contador_quintogrado_b = 0;
-                                    $contador_sextogrado_b = 0;
-
-
-                                    foreach ($reporte_estudiantes as $reporte_estudiante) {
-                                        if ($reporte_estudiante['grado_id'] == "1") $contador_primergrado_a = $contador_primergrado_a + 1;
-                                        if ($reporte_estudiante['grado_id'] == "2") $contador_primergrado_b = $contador_primergrado_b + 1;
-                                        if ($reporte_estudiante['grado_id'] == "8") $contador_segundogrado_a = $contador_segundogrado_a + 1;
-                                        if ($reporte_estudiante['grado_id'] == "9") $contador_segundogrado_b = $contador_segundogrado_b + 1;
-                                        if ($reporte_estudiante['grado_id'] == "10") $contador_tercergrado_a = $contador_tercergrado_a + 1;
-                                        if ($reporte_estudiante['grado_id'] == "11") $contador_tercergrado_b = $contador_tercergrado_b + 1;
-                                        if ($reporte_estudiante['grado_id'] == "12") $contador_cuartogrado_a = $contador_cuartogrado_a + 1;
-                                        if ($reporte_estudiante['grado_id'] == "13") $contador_cuartogrado_b = $contador_cuartogrado_b + 1;
-                                        if ($reporte_estudiante['grado_id'] == "14") $contador_quintogrado_a = $contador_quintogrado_a + 1;
-                                        if ($reporte_estudiante['grado_id'] == "15") $contador_quintogrado_b = $contador_quintogrado_b + 1;
-                                        if ($reporte_estudiante['grado_id'] == "16") $contador_sextogrado_a = $contador_sextogrado_a + 1;
-                                        if ($reporte_estudiante['grado_id'] == "17") $contador_sextogrado_b = $contador_sextogrado_b + 1;
-                                    }
-                                    $datos_reportes_estudiantes =
-                                        $contador_primergrado_a . "," .
-                                        $contador_primergrado_b . "," .
-                                        $contador_segundogrado_a . "," .
-                                        $contador_segundogrado_b . "," .
-                                        $contador_tercergrado_a . "," .
-                                        $contador_tercergrado_b . "," .
-                                        $contador_cuartogrado_a . "," .
-                                        $contador_cuartogrado_b . "," .
-                                        $contador_quintogrado_a . "," .
-                                        $contador_quintogrado_b . "," .
-                                        $contador_sextogrado_a . "," .
-                                        $contador_sextogrado_b;
-                                    ?>
-
+                                    <!-- Matriculados -->
                                     <div class="col-md-3">
                                         <div class="form-group">
-                                            <label for="matriculados">Alumnos Matriculados:<b style="color:red">*</b></label>
-                                            <input type="number" id="matriculados" value="" name="matriculados" class="form-control" placeholder="" disabled required>
+                                            <label for="matriculados">Alumnos matriculados:<b style="color:red">*</b></label>
+                                            <input type="number" id="matriculados" class="form-control" placeholder="Cantidad de matriculados" required readonly>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <?php
+                                $contador = 0;
+                                $contador_primergrado_a = 0;
+                                $contador_segundogrado_a = 0;
+                                $contador_tercergrado_a = 0;
+                                $contador_cuartogrado_a = 0;
+                                $contador_quintogrado_a = 0;
+                                $contador_sextogrado_a = 0;
+                                $contador_primergrado_b = 0;
+                                $contador_segundogrado_b = 0;
+                                $contador_tercergrado_b = 0;
+                                $contador_cuartogrado_b = 0;
+                                $contador_quintogrado_b = 0;
+                                $contador_sextogrado_b = 0;
+
+
+                                foreach ($reporte_estudiantes as $reporte_estudiante) {
+                                    if ($reporte_estudiante['grado_id'] == "1") $contador_primergrado_a = $contador_primergrado_a + 1;
+                                    if ($reporte_estudiante['grado_id'] == "2") $contador_primergrado_b = $contador_primergrado_b + 1;
+                                    if ($reporte_estudiante['grado_id'] == "8") $contador_segundogrado_a = $contador_segundogrado_a + 1;
+                                    if ($reporte_estudiante['grado_id'] == "9") $contador_segundogrado_b = $contador_segundogrado_b + 1;
+                                    if ($reporte_estudiante['grado_id'] == "10") $contador_tercergrado_a = $contador_tercergrado_a + 1;
+                                    if ($reporte_estudiante['grado_id'] == "11") $contador_tercergrado_b = $contador_tercergrado_b + 1;
+                                    if ($reporte_estudiante['grado_id'] == "12") $contador_cuartogrado_a = $contador_cuartogrado_a + 1;
+                                    if ($reporte_estudiante['grado_id'] == "13") $contador_cuartogrado_b = $contador_cuartogrado_b + 1;
+                                    if ($reporte_estudiante['grado_id'] == "14") $contador_quintogrado_a = $contador_quintogrado_a + 1;
+                                    if ($reporte_estudiante['grado_id'] == "15") $contador_quintogrado_b = $contador_quintogrado_b + 1;
+                                    if ($reporte_estudiante['grado_id'] == "16") $contador_sextogrado_a = $contador_sextogrado_a + 1;
+                                    if ($reporte_estudiante['grado_id'] == "17") $contador_sextogrado_b = $contador_sextogrado_b + 1;
+                                }
+                                $datos_reportes_estudiantes =
+                                    $contador_primergrado_a . "," .
+                                    $contador_primergrado_b . "," .
+                                    $contador_segundogrado_a . "," .
+                                    $contador_segundogrado_b . "," .
+                                    $contador_tercergrado_a . "," .
+                                    $contador_tercergrado_b . "," .
+                                    $contador_cuartogrado_a . "," .
+                                    $contador_cuartogrado_b . "," .
+                                    $contador_quintogrado_a . "," .
+                                    $contador_quintogrado_b . "," .
+                                    $contador_sextogrado_a . "," .
+                                    $contador_sextogrado_b;
+
+
+                                $contador = 0;
+                                $contador_primergrado_a_r = 0;
+                                $contador_segundogrado_a_r = 0;
+                                $contador_tercergrado_a_r = 0;
+                                $contador_cuartogrado_a_r = 0;
+                                $contador_quintogrado_a_r = 0;
+                                $contador_sextogrado_a_r = 0;
+                                $contador_primergrado_b_r = 0;
+                                $contador_segundogrado_b_r = 0;
+                                $contador_tercergrado_b_r = 0;
+                                $contador_cuartogrado_b_r = 0;
+                                $contador_quintogrado_b_r = 0;
+                                $contador_sextogrado_b_r = 0;
+
+
+                                foreach ($reporte_estudiantes3 as $reporte_estudiante3) {
+                                    if ($reporte_estudiante3['grado_id'] == "1") $contador_primergrado_a_r = $contador_primergrado_a_r + 1;
+                                    if ($reporte_estudiante3['grado_id'] == "2") $contador_primergrado_b_r = $contador_primergrado_b_r + 1;
+                                    if ($reporte_estudiante3['grado_id'] == "8") $contador_segundogrado_a_r = $contador_segundogrado_a_r + 1;
+                                    if ($reporte_estudiante3['grado_id'] == "9") $contador_segundogrado_b_r = $contador_segundogrado_b_r + 1;
+                                    if ($reporte_estudiante3['grado_id'] == "10") $contador_tercergrado_a_r = $contador_tercergrado_a_r + 1;
+                                    if ($reporte_estudiante3['grado_id'] == "11") $contador_tercergrado_b_r = $contador_tercergrado_b_r + 1;
+                                    if ($reporte_estudiante3['grado_id'] == "12") $contador_cuartogrado_a_r = $contador_cuartogrado_a_r + 1;
+                                    if ($reporte_estudiante3['grado_id'] == "13") $contador_cuartogrado_b_r = $contador_cuartogrado_b_r + 1;
+                                    if ($reporte_estudiante3['grado_id'] == "14") $contador_quintogrado_a_r = $contador_quintogrado_a_r + 1;
+                                    if ($reporte_estudiante3['grado_id'] == "15") $contador_quintogrado_b_r = $contador_quintogrado_b_r + 1;
+                                    if ($reporte_estudiante3['grado_id'] == "16") $contador_sextogrado_a_r = $contador_sextogrado_a_r + 1;
+                                    if ($reporte_estudiante3['grado_id'] == "17") $contador_sextogrado_b_r = $contador_sextogrado_b_r + 1;
+                                }
+                                $datos_reportes_estudiantes_r =
+                                    $contador_primergrado_a_r . "," .
+                                    $contador_primergrado_b_r . "," .
+                                    $contador_segundogrado_a_r . "," .
+                                    $contador_segundogrado_b_r . "," .
+                                    $contador_tercergrado_a_r . "," .
+                                    $contador_tercergrado_b_r . "," .
+                                    $contador_cuartogrado_a_r . "," .
+                                    $contador_cuartogrado_b_r . "," .
+                                    $contador_quintogrado_a_r . "," .
+                                    $contador_quintogrado_b_r . "," .
+                                    $contador_sextogrado_a_r . "," .
+                                    $contador_sextogrado_b_r;
+                                ?>
+                                <!-- Alumnos Matriculados -->
+                                <div class="row">
+
+                                    <!-- Integrados -->
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label for="abandonos">Abandono escolar:<b style="color:red">*</b></label>
+                                            <input type="number" id="abandonos" class="form-control" placeholder="Cantidad de abandonos" required readonly>
                                         </div>
                                     </div>
                                 </div>
                                 <hr>
-                                <h6>Motivos de Abandono:</h6>
-                                <hr>
+                                <h6>Motivo de abandono:</h6>
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="economico">Factores socioeconómicos:<b style="color:red">*</b></label>
-                                            <input type="number" id="economico" class="form-control" value="0" placeholder="Cantidad de abandonos" required>
+                                            <input type="number" id="economico" class="form-control" placeholder="Cantidad de abandonos" required readonly>
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="personal">Factores personales:<b style="color:red">*</b></label>
-                                            <input type="number" id="personal" class="form-control" value="0" placeholder="Cantidad de abandonos" required>
+                                            <input type="number" id="personal" class="form-control" placeholder="Cantidad de abandonos" required readonly>
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="educativo">Factores educativos:<b style="color:red">*</b></label>
-                                            <input type="number" id="educativo" class="form-control" value="0" placeholder="Cantidad de abandonos" required>
+                                            <input type="number" id="educativo" class="form-control" placeholder="Cantidad de abandonos" required readonly>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label for="familia">Problemas familiares:<b style="color:red">*</b></label>
+                                            <input type="number" id="familia" class="form-control" placeholder="Cantidad de abandonos" required readonly>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label for="familia">Problemas familiares:<b style="color:red">*</b></label>
-                                            <input type="number" id="familia" class="form-control" value="0" placeholder="Cantidad de abandonos" required>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="infraestructura">Falta de infraestructura:<b style="color:red">*</b></label>
-                                            <input type="number" id="infraestructura" class="form-control" value="0" placeholder="Cantidad de abandonos" required>
+                                            <input type="number" id="infraestructura" class="form-control" placeholder="Cantidad de abandonos" required readonly>
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="otros">Otros factores:<b style="color:red">*</b></label>
-                                            <input type="number" id="otros" class="form-control" value="0" placeholder="Cantidad de abandonos" required>
+                                            <input type="number" id="otros" class="form-control" placeholder="Cantidad de abandonos" required readonly>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <button type="button" class="btn btn-primary" id="agregarDatos">Agregar</button>
-                                </div>
                             </form>
+                            <div class="form-group">
+                                <button type="button" class="btn btn-primary" id="agregarDatos">Agregar</button>
+                            </div>
                             <hr>
                             <div id="tablaDatos">
                                 <table class="table table-bordered">
@@ -187,9 +245,8 @@ include('../../app/controllers/configuraciones/gestion/listado_de_gestiones.php'
                                             <th>Ciclo</th>
                                             <th>Turno</th>
                                             <th>Grado</th>
-                                            <th>Matriculados</th>
-                                            <th>Total abandonos</th>
-                                            <th>% Abandono</th>
+                                            <th>Total alumnos</th>
+                                            <th>Abandono de alumnos</th>
                                             <th>Acción</th>
                                         </tr>
                                     </thead>
@@ -199,9 +256,8 @@ include('../../app/controllers/configuraciones/gestion/listado_de_gestiones.php'
                                 </table>
                             </div>
                         </div>
-
                         <div class="card-body">
-                            <canvas id="graficoPareto" width="400" height="200"></canvas>
+                            <canvas id="graficoAlumnos" width="400" height="200"></canvas>
                         </div>
                         <hr>
                         <div class="row">
@@ -211,7 +267,6 @@ include('../../app/controllers/configuraciones/gestion/listado_de_gestiones.php'
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -221,83 +276,384 @@ include('../../app/controllers/configuraciones/gestion/listado_de_gestiones.php'
 <?php
 include('../../admin/layout/parte2.php');
 ?>
-
-
 <!-- Incluye Chart.js -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
 <script>
     document.addEventListener("DOMContentLoaded", function() {
-        let datos = []; // Array para almacenar los datos ingresados
-        let grafico; // Variable para el gráfico
+        let datos = [];
+        let grafico;
         const tabla = document.getElementById('datosCargados');
-        const canvas = document.getElementById('graficoPareto').getContext('2d');
+        const canvas = document.getElementById('graficoAlumnos').getContext('2d');
+        const gradoSelect = document.getElementById('grado');
+        const matriculadosInput = document.getElementById('matriculados');
+        const abandonosInput = document.getElementById('abandonos');
+        const economicoInput = document.getElementById('economico');
+        const familiaInput = document.getElementById('familia');
+        const educativoInput = document.getElementById('educativo');
+        const personalInput = document.getElementById('personal');
+        const infraestructuraInput = document.getElementById('infraestructura');
+        const otrosInput = document.getElementById('otros');
 
-        // Manejar clic del botón "Agregar"
+        // Inicializa el gráfico vacío
+        const inicializarGrafico = () => {
+            grafico = new Chart(canvas, {
+                type: 'bar',
+                data: {
+                    labels: [], // Etiquetas vacías
+                    datasets: [] // Sin datasets
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            display: true
+                        },
+                        title: {
+                            display: true,
+                            text: 'Distribución de Abandono de Alumnos'
+                        }
+                    },
+                    scales: {
+                        x: {
+                            stacked: true,
+                            barThickness: 0.5, // Define un grosor específico para las barras
+                            title: {
+                                display: true,
+                                text: 'Grado'
+                            }
+                        },
+                        y: {
+                            stacked: true,
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'Cantidad de Alumnos'
+                            }
+                        }
+                    }
+                }
+            });
+        };
+
+        // Obtener matriculados
+        const obtenerMatriculados = () => {
+            const grado = gradoSelect.value;
+            if (grado) {
+                const url = `<?= APP_URL; ?>/app/controllers/estadisticas/obtener_matriculados.php?grado=${grado}`;
+                fetch(url)
+                    .then(response => response.json())
+                    .then(data => {
+                        matriculadosInput.value = data.total || 0;
+                    })
+                    .catch(error => {
+                        console.error("Error al obtener matriculados:", error);
+                        matriculadosInput.value = 0;
+                    });
+            } else {
+                matriculadosInput.value = "";
+            }
+        };
+
+        // Obtener abandonos
+        const obtenerAbandonos = () => {
+            const grado = gradoSelect.value;
+            if (grado) {
+                const url = `<?= APP_URL; ?>/app/controllers/estadisticas/obtener_abandonos.php?grado=${grado}`;
+                fetch(url)
+                    .then(response => response.json())
+                    .then(data => {
+                        abandonosInput.value = data.total || 0;
+                    })
+                    .catch(error => {
+                        console.error("Error al obtener abandonos:", error);
+                        abandonosInput.value = 0;
+                    });
+            } else {
+                abandonosInput.value = "";
+            }
+        };
+
+        // Obtener economico
+        const obtenerEconomico = () => {
+            const grado = gradoSelect.value;
+            if (grado) {
+                const url = `<?= APP_URL; ?>/app/controllers/estadisticas/obtener_economico.php?grado=${grado}`;
+                fetch(url)
+                    .then(response => response.json())
+                    .then(data => {
+                        economicoInput.value = data.total || 0;
+                    })
+                    .catch(error => {
+                        console.error("Error al obtener economico:", error);
+                        economicoInput.value = 0;
+                    });
+            } else {
+                economicoInput.value = "";
+            }
+        };
+
+        // Obtener sordera
+        const obtenerSordera = () => {
+            const grado = gradoSelect.value;
+            if (grado) {
+                const url = `<?= APP_URL; ?>/app/controllers/estadisticas/obtener_sordera.php?grado=${grado}`;
+                fetch(url)
+                    .then(response => response.json())
+                    .then(data => {
+                        sorderaInput.value = data.total || 0;
+                    })
+                    .catch(error => {
+                        console.error("Error al obtener sordera:", error);
+                        sorderaInput.value = 0;
+                    });
+            } else {
+                sorderaInput.value = "";
+            }
+        };
+
+        // Obtener ceguera
+        const obtenerCeguera = () => {
+            const grado = gradoSelect.value;
+            if (grado) {
+                const url = `<?= APP_URL; ?>/app/controllers/estadisticas/obtener_ceguera.php?grado=${grado}`;
+                fetch(url)
+                    .then(response => response.json())
+                    .then(data => {
+                        cegueraInput.value = data.total || 0;
+                    })
+                    .catch(error => {
+                        console.error("Error al obtener ceguera:", error);
+                        cegueraInput.value = 0;
+                    });
+            } else {
+                cegueraInput.value = "";
+            }
+        };
+
+
+        // Obtener motora
+        const obtenerMotora = () => {
+            const grado = gradoSelect.value;
+            if (grado) {
+                const url = `<?= APP_URL; ?>/app/controllers/estadisticas/obtener_motora.php?grado=${grado}`;
+                fetch(url)
+                    .then(response => response.json())
+                    .then(data => {
+                        motoraInput.value = data.total || 0;
+                    })
+                    .catch(error => {
+                        console.error("Error al obtener motora:", error);
+                        motoraInput.value = 0;
+                    });
+            } else {
+                motoraInput.value = "";
+            }
+        };
+
+        // Obtener tgd
+        const obtenerTgd = () => {
+            const grado = gradoSelect.value;
+            if (grado) {
+                const url = `<?= APP_URL; ?>/app/controllers/estadisticas/obtener_tgd.php?grado=${grado}`;
+                fetch(url)
+                    .then(response => response.json())
+                    .then(data => {
+                        tgdInput.value = data.total || 0;
+                    })
+                    .catch(error => {
+                        console.error("Error al obtener tgd:", error);
+                        tgdInput.value = 0;
+                    });
+            } else {
+                tgdInput.value = "";
+            }
+        };
+
+        // Obtener multiples
+        const obtenerMultiples = () => {
+            const grado = gradoSelect.value;
+            if (grado) {
+                const url = `<?= APP_URL; ?>/app/controllers/estadisticas/obtener_multiples.php?grado=${grado}`;
+                fetch(url)
+                    .then(response => response.json())
+                    .then(data => {
+                        multiplesInput.value = data.total || 0;
+                    })
+                    .catch(error => {
+                        console.error("Error al obtener multiples:", error);
+                        multiplesInput.value = 0;
+                    });
+            } else {
+                multiplesInput.value = "";
+            }
+        };
+
+
+        // Escuchar cambios en el select de grado
+        gradoSelect.addEventListener('change', function() {
+            const gradoValue = gradoSelect.value; // Usado para fetch
+            const gradoText = gradoSelect.options[gradoSelect.selectedIndex].text; // Usado para mostrar
+
+
+            obtenerMatriculados();
+            obtenerAbandonos();
+            obtenerEconomico();
+            obtenerSordera();
+            obtenerCeguera();
+            obtenerMotora();
+            obtenerTgd();
+            obtenerMultiples();
+            obtenerOtras();
+        });
+
         document.getElementById('agregarDatos').addEventListener('click', function() {
-            const gradoElement = document.getElementById('selectGrado');
-            const grado = gradoElement.value; // Esto sigue siendo el `value` para validaciones
-            const gradoDisplay = gradoElement.options[gradoElement.selectedIndex].getAttribute('data-display'); // Obtiene el texto para mostrar en la tabla
+            const grado = gradoSelect.value;
+            const gradoValue = gradoSelect.value;
+            const gradoText = gradoSelect.options[gradoSelect.selectedIndex].text;
             const turno = document.getElementById('turno').value;
             const ciclo = document.getElementById('ciclo').value;
-            const matriculados = parseInt(document.getElementById('matriculados').value);
-            const economico = parseInt(document.getElementById('economico').value);
-            const familia = parseInt(document.getElementById('familia').value);
-            const educativo = parseInt(document.getElementById('educativo').value);
-            const personal = parseInt(document.getElementById('personal').value);
-            const infraestructura = parseInt(document.getElementById('infraestructura').value);
-            const otros = parseInt(document.getElementById('otros').value);
+            const matriculados = parseInt(matriculadosInput.value);
+            const abandonos = parseInt(abandonosInput.value);
+            const economico = parseInt(economicoInput.value);
 
-            if (!grado || !turno || !ciclo || isNaN(matriculados) || isNaN(economico) || isNaN(familia) ||
-                isNaN(educativo) || isNaN(personal) || isNaN(infraestructura) || isNaN(otros)) {
+            const sordera = parseInt(sorderaInput.value);
+            const ceguera = parseInt(cegueraInput.value);
+            const motora = parseInt(motoraInput.value);
+            const tgd = parseInt(tgdInput.value);
+            const multiples = parseInt(multiplesInput.value);
+            const otras = parseInt(otrasInput.value);
+
+            if (!grado || !turno || !ciclo || isNaN(matriculados) || isNaN(abandonos) || isNaN(economico) ||
+                isNaN(sordera) || isNaN(ceguera) || isNaN(motora) || isNaN(tgd) || isNaN(multiples) || isNaN(otras)) {
                 alert('Por favor, completa todos los campos correctamente.');
                 return;
             }
 
-            const totalAbandono = economico + familia + educativo + personal + infraestructura + otros;
-
-            if (totalAbandono > matriculados) {
-                alert('El total de abandonos no puede ser mayor que los matriculados.');
+            const totalIntegrados = economico + sordera + ceguera + motora + tgd + multiples + otras;
+            if (totalIntegrados > matriculados) {
+                alert('La suma de los alumnos integrados no puede superar el total de alumnos.');
                 return;
             }
 
-            const porcentajeAbandono = ((totalAbandono / matriculados) * 100).toFixed(2);
-
             datos.push({
-                grado, // Para validaciones
-                gradoDisplay, // Para mostrar en la tabla
-                turno,
                 ciclo,
+                turno,
+                grado: gradoText, // Mostrar texto en la tabla
                 matriculados,
-                totalAbandono,
-                porcentajeAbandono,
+                abandonos,
                 economico,
-                familia,
-                educativo,
-                personal,
-                infraestructura,
-                otros
+                sordera,
+                ceguera,
+                motora,
+                tgd,
+                multiples,
+                otras
             });
 
             actualizarTabla();
-            actualizarGraficoPareto();
-            document.getElementById('formDatosAbandono').reset();
+            actualizarGrafico();
+            document.getElementById('formDatosAlumnos').reset();
         });
 
         const actualizarTabla = () => {
-            tabla.innerHTML = ''; // Limpiar la tabla
+            tabla.innerHTML = '';
             datos.forEach((dato, index) => {
+                const totalIntegrados = dato.economico + dato.sordera + dato.ceguera + dato.motora + dato.tgd + dato.multiples + dato.otras;
                 tabla.innerHTML += `
-        <tr>
-            <td>${dato.ciclo}</td>
-            <td>${dato.turno}</td>
-            <td>${dato.gradoDisplay}</td>
-            <td>${dato.matriculados}</td>
-            <td>${dato.totalAbandono}</td>
-            <td>${dato.porcentajeAbandono}%</td>
-            <td><button class="btn btn-danger btn-sm" onclick="eliminarDato(${index})">Eliminar</button></td>
-        </tr>
-    `;
+                <tr>
+                    <td>${dato.ciclo}</td>
+                    <td>${dato.turno}</td>
+                    <td>${dato.grado}</td>
+                    <td>${dato.matriculados}</td>
+                    <td>${totalIntegrados}</td>
+                    <td><button class="btn btn-danger btn-sm" onclick="eliminarDato(${index})">Eliminar</button></td>
+                </tr>
+            `;
+            });
+        };
+        // Definir colores fijos
+        const coloresFijos = [
+            "#FFB6C1", // Rosa pastel
+            "#ADD8E6", // Azul pastel
+            "#FFDAB9", // Durazno pastel
+            "#DDA0DD", // Púrpura pastel
+            "#98FB98", // Verde pastel
+            "#FFFACD", // Amarillo pastel
+            "#FFE4E1" // Rosa claro pastel
+        ];
+
+        const actualizarGrafico = () => {
+            const grados = [...new Set(datos.map(dato => dato.grado))];
+            const categorias = ['Economico', 'Sordera', 'Ceguera', 'Motora', 'TGD', 'Más de una', 'Otras'];
+
+            const data = {
+                'Economico': Array(grados.length).fill(0),
+                'Sordera': Array(grados.length).fill(0),
+                'Ceguera': Array(grados.length).fill(0),
+                'Motora': Array(grados.length).fill(0),
+                'TGD': Array(grados.length).fill(0),
+                'Más de una': Array(grados.length).fill(0),
+                'Otras': Array(grados.length).fill(0),
+            };
+
+            datos.forEach(dato => {
+                const gradoIndex = grados.indexOf(dato.grado);
+                data['Economico'][gradoIndex] += dato.economico;
+                data['Sordera'][gradoIndex] += dato.sordera;
+                data['Ceguera'][gradoIndex] += dato.ceguera;
+                data['Motora'][gradoIndex] += dato.motora;
+                data['TGD'][gradoIndex] += dato.tgd;
+                data['Más de una'][gradoIndex] += dato.multiples;
+                data['Otras'][gradoIndex] += dato.otras;
+            });
+
+            const datasets = Object.keys(data).map((categoria, index) => ({
+                label: categoria,
+                data: data[categoria],
+                backgroundColor: coloresFijos[index] // Usar colores fijos correctamente
+            }));
+
+
+            if (grafico) {
+                grafico.destroy();
+            }
+
+            grafico = new Chart(canvas, {
+                type: 'bar',
+                data: {
+                    labels: grados,
+                    datasets: datasets
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            display: true
+                        },
+                        title: {
+                            display: true,
+                            text: 'Distribución de Alumnos Integrados'
+                        }
+                    },
+                    scales: {
+                        x: {
+                            stacked: true,
+                            barThickness: 0.5, // Define un grosor específico para las barras
+                            title: {
+                                display: true,
+                                text: 'Grado'
+                            }
+                        },
+                        y: {
+                            stacked: true,
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'Cantidad de Alumnos'
+                            }
+                        }
+                    }
+                }
             });
         };
 
@@ -305,137 +661,9 @@ include('../../admin/layout/parte2.php');
         window.eliminarDato = (index) => {
             datos.splice(index, 1);
             actualizarTabla();
-            actualizarGraficoPareto();
+            actualizarGrafico();
         };
 
-        const actualizarGraficoPareto = () => {
-            const razones = ['Socioeconómico', 'Familiar', 'Educativo', 'Personal', 'Infraestructura', 'Otros'];
-            const colores = ['rgba(255, 99, 132, 0.7)', 'rgba(54, 162, 235, 0.7)', 'rgba(255, 206, 86, 0.7)', 'rgba(75, 192, 192, 0.7)', 'rgba(153, 102, 255, 0.7)', 'rgba(255, 159, 64, 0.7)']; // Colores con opacidad
-            const totalesPorGrupo = {};
-
-            datos.forEach((dato, index) => {
-                const grupo = `${dato.grado} (${dato.turno})`;
-                if (!totalesPorGrupo[grupo]) {
-                    totalesPorGrupo[grupo] = Array(6).fill(0);
-                }
-                totalesPorGrupo[grupo][0] += dato.economico;
-                totalesPorGrupo[grupo][1] += dato.familia;
-                totalesPorGrupo[grupo][2] += dato.educativo;
-                totalesPorGrupo[grupo][3] += dato.personal;
-                totalesPorGrupo[grupo][4] += dato.infraestructura;
-                totalesPorGrupo[grupo][5] += dato.otros;
-            });
-
-            const etiquetas = razones;
-            const datasets = Object.keys(totalesPorGrupo).map((grupo, idx) => ({
-                label: grupo,
-                data: totalesPorGrupo[grupo],
-                backgroundColor: colores[idx % colores.length],
-                borderWidth: 1,
-                barThickness: 50, // Ancho de las barras reducido
-                yAxisID: 'y',
-            }));
-
-            const totalesGlobales = razones.map((_, idx) =>
-                Object.values(totalesPorGrupo).reduce((acc, grupo) => acc + grupo[idx], 0)
-            );
-
-            const totalGeneral = totalesGlobales.reduce((a, b) => a + b, 0);
-            let acumulado = 0;
-            const porcentajesAcumulados = totalesGlobales.map(total => {
-                acumulado += total;
-                return ((acumulado / totalGeneral) * 100).toFixed(2);
-            });
-
-            if (grafico) grafico.destroy();
-
-            grafico = new Chart(canvas, {
-                type: 'bar',
-                data: {
-                    labels: etiquetas,
-                    datasets: [
-                        ...datasets,
-                        {
-                            label: 'Porcentaje Acumulado',
-                            data: porcentajesAcumulados,
-                            type: 'line',
-                            borderColor: '#0000FF',
-                            borderWidth: 2,
-                            pointRadius: 3,
-                            fill: false,
-                            yAxisID: 'y1',
-                            order: 2, // Línea renderizada después de las barras
-                        },
-                    ],
-                },
-                options: {
-                    responsive: true,
-                    scales: {
-                        y: {
-                            type: 'linear',
-                            position: 'left',
-                            title: {
-                                display: true,
-                                text: 'Cantidad de Abandonos'
-                            },
-                            beginAtZero: true,
-                        },
-                        y1: {
-                            type: 'linear',
-                            position: 'right',
-                            title: {
-                                display: true,
-                                text: 'Porcentaje Acumulado (%)'
-                            },
-                            grid: {
-                                drawOnChartArea: false
-                            },
-                            ticks: {
-                                callback: value => `${value}%`,
-                            },
-                            beginAtZero: true,
-                        },
-                    },
-                    plugins: {
-                        legend: {
-                            display: true
-                        },
-                        title: {
-                            display: true,
-                            text: 'Gráfico Pareto de Abandonos'
-                        },
-                    },
-                },
-            });
-        };
-    });
-</script>
-
-<script>
-    // Datos de los contadores por grado
-    const contadoresPorGrado = {
-        1: <?= $contador_primergrado_a; ?>,
-        2: <?= $contador_primergrado_b; ?>,
-        8: <?= $contador_segundogrado_a; ?>,
-        9: <?= $contador_segundogrado_b; ?>,
-        10: <?= $contador_tercergrado_a; ?>,
-        11: <?= $contador_tercergrado_b; ?>,
-        12: <?= $contador_cuartogrado_a; ?>,
-        13: <?= $contador_cuartogrado_b; ?>,
-        14: <?= $contador_quintogrado_a; ?>,
-        15: <?= $contador_quintogrado_b; ?>,
-        16: <?= $contador_sextogrado_a; ?>,
-        17: <?= $contador_sextogrado_b; ?>
-    };
-
-    // Referencia al select y al input
-    const selectGrado = document.getElementById('selectGrado');
-    const inputMatriculados = document.getElementById('matriculados');
-
-    // Escuchar cambios en el select
-    selectGrado.addEventListener('change', (event) => {
-        const gradoSeleccionado = event.target.value;
-        // Actualizar el input con el valor correspondiente
-        inputMatriculados.value = contadoresPorGrado[gradoSeleccionado] || '';
+        inicializarGrafico();
     });
 </script>
