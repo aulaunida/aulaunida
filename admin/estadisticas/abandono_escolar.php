@@ -431,60 +431,60 @@ include('../../admin/layout/parte2.php');
         };
 
 
-        // Obtener motora
-        const obtenerMotora = () => {
+        // Obtener familia
+        const obtenerFamilia = () => {
             const grado = gradoSelect.value;
             if (grado) {
-                const url = `<?= APP_URL; ?>/app/controllers/estadisticas/obtener_motora.php?grado=${grado}`;
+                const url = `<?= APP_URL; ?>/app/controllers/estadisticas/obtener_familia.php?grado=${grado}`;
                 fetch(url)
                     .then(response => response.json())
                     .then(data => {
-                        motoraInput.value = data.total || 0;
+                        familiaInput.value = data.total || 0;
                     })
                     .catch(error => {
-                        console.error("Error al obtener motora:", error);
-                        motoraInput.value = 0;
+                        console.error("Error al obtener familia:", error);
+                        familiaInput.value = 0;
                     });
             } else {
-                motoraInput.value = "";
+                familiaInput.value = "";
             }
         };
 
-        // Obtener tgd
-        const obtenerTgd = () => {
+        // Obtener infraestructura
+        const obtenerInfraestructura = () => {
             const grado = gradoSelect.value;
             if (grado) {
-                const url = `<?= APP_URL; ?>/app/controllers/estadisticas/obtener_tgd.php?grado=${grado}`;
+                const url = `<?= APP_URL; ?>/app/controllers/estadisticas/obtener_infraestructura.php?grado=${grado}`;
                 fetch(url)
                     .then(response => response.json())
                     .then(data => {
-                        tgdInput.value = data.total || 0;
+                        infraestructuraInput.value = data.total || 0;
                     })
                     .catch(error => {
-                        console.error("Error al obtener tgd:", error);
-                        tgdInput.value = 0;
+                        console.error("Error al obtener infraestructura:", error);
+                        infraestructuraInput.value = 0;
                     });
             } else {
-                tgdInput.value = "";
+                infraestructuraInput.value = "";
             }
         };
 
-        // Obtener multiples
-        const obtenerMultiples = () => {
+        // Obtener otros
+        const obtenerOtros = () => {
             const grado = gradoSelect.value;
             if (grado) {
-                const url = `<?= APP_URL; ?>/app/controllers/estadisticas/obtener_multiples.php?grado=${grado}`;
+                const url = `<?= APP_URL; ?>/app/controllers/estadisticas/obtener_otros.php?grado=${grado}`;
                 fetch(url)
                     .then(response => response.json())
                     .then(data => {
-                        multiplesInput.value = data.total || 0;
+                        otrosInput.value = data.total || 0;
                     })
                     .catch(error => {
-                        console.error("Error al obtener multiples:", error);
-                        multiplesInput.value = 0;
+                        console.error("Error al obtener otros:", error);
+                        otrosInput.value = 0;
                     });
             } else {
-                multiplesInput.value = "";
+                otrosInput.value = "";
             }
         };
 
@@ -500,10 +500,9 @@ include('../../admin/layout/parte2.php');
             obtenerEconomico();
             obtenerPersonal();
             obtenerEducativo();
-            obtenerMotora();
-            obtenerTgd();
-            obtenerMultiples();
-            obtenerOtras();
+            obtenerFamilia();
+            obtenerInfraestructura();
+            obtenerOtros();
         });
 
         document.getElementById('agregarDatos').addEventListener('click', function() {
@@ -517,18 +516,17 @@ include('../../admin/layout/parte2.php');
             const economico = parseInt(economicoInput.value);
             const personal = parseInt(personalInput.value);
             const educativo = parseInt(educativoInput.value);
-            const motora = parseInt(motoraInput.value);
-            const tgd = parseInt(tgdInput.value);
-            const multiples = parseInt(multiplesInput.value);
-            const otras = parseInt(otrasInput.value);
+            const familia = parseInt(familiaInput.value);
+            const infraestructura = parseInt(infraestructuraInput.value);
+            const otros = parseInt(otrosInput.value);
 
             if (!grado || !turno || !ciclo || isNaN(matriculados) || isNaN(abandonos) || isNaN(economico) ||
-                isNaN(personal) || isNaN(educativo) || isNaN(motora) || isNaN(tgd) || isNaN(multiples)) {
+                isNaN(personal) || isNaN(educativo) || isNaN(familia) || isNaN(infraestructura) || isNaN(otros)) {
                 alert('Por favor, completa todos los campos correctamente.');
                 return;
             }
 
-            const totalIntegrados = economico + personal + educativo + motora + tgd + multiples;
+            const totalIntegrados = economico + personal + educativo + familia + infraestructura + otros;
             if (totalIntegrados > matriculados) {
                 alert('La suma de los alumnos integrados no puede superar el total de alumnos.');
                 return;
@@ -543,9 +541,9 @@ include('../../admin/layout/parte2.php');
                 economico,
                 personal,
                 educativo,
-                motora,
-                tgd,
-                multiples
+                familia,
+                infraestructura,
+                otros
             });
 
             actualizarTabla();
@@ -556,7 +554,7 @@ include('../../admin/layout/parte2.php');
         const actualizarTabla = () => {
             tabla.innerHTML = '';
             datos.forEach((dato, index) => {
-                const totalIntegrados = dato.economico + dato.personal + dato.educativo + dato.motora + dato.tgd + dato.multiples;
+                const totalIntegrados = dato.economico + dato.personal + dato.educativo + dato.familia + dato.infraestructura + dato.otros;
                 tabla.innerHTML += `
                 <tr>
                     <td>${dato.ciclo}</td>
@@ -582,16 +580,15 @@ include('../../admin/layout/parte2.php');
 
         const actualizarGrafico = () => {
             const grados = [...new Set(datos.map(dato => dato.grado))];
-            const categorias = ['Economico', 'Personal', 'Educativo', 'Motora', 'TGD', 'Más de una'];
+            const categorias = ['Economico', 'Personal', 'Educativo', 'Familia', 'Infraestructura', 'Otros factores'];
 
             const data = {
                 'Economico': Array(grados.length).fill(0),
                 'Personal': Array(grados.length).fill(0),
                 'Educativo': Array(grados.length).fill(0),
-                'Motora': Array(grados.length).fill(0),
-                'TGD': Array(grados.length).fill(0),
-                'Más de una': Array(grados.length).fill(0),
-                'Otras': Array(grados.length).fill(0),
+                'Familia': Array(grados.length).fill(0),
+                'Infraestructura': Array(grados.length).fill(0),
+                'Otros factores': Array(grados.length).fill(0),
             };
 
             datos.forEach(dato => {
@@ -599,10 +596,9 @@ include('../../admin/layout/parte2.php');
                 data['Economico'][gradoIndex] += dato.economico;
                 data['Personal'][gradoIndex] += dato.personal;
                 data['Educativo'][gradoIndex] += dato.educativo;
-                data['Motora'][gradoIndex] += dato.motora;
-                data['TGD'][gradoIndex] += dato.tgd;
-                data['Más de una'][gradoIndex] += dato.multiples;
-                data['Otras'][gradoIndex] += dato.otras;
+                data['Familia'][gradoIndex] += dato.familia;
+                data['Infraestructura'][gradoIndex] += dato.infraestructura;
+                data['Otros factores'][gradoIndex] += dato.otros;
             });
 
             const datasets = Object.keys(data).map((categoria, index) => ({
