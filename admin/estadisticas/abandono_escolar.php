@@ -411,22 +411,22 @@ include('../../admin/layout/parte2.php');
             }
         };
 
-        // Obtener ceguera
-        const obtenerCeguera = () => {
+        // Obtener educativo
+        const obtenerEducativo = () => {
             const grado = gradoSelect.value;
             if (grado) {
-                const url = `<?= APP_URL; ?>/app/controllers/estadisticas/obtener_ceguera.php?grado=${grado}`;
+                const url = `<?= APP_URL; ?>/app/controllers/estadisticas/obtener_educativo.php?grado=${grado}`;
                 fetch(url)
                     .then(response => response.json())
                     .then(data => {
-                        cegueraInput.value = data.total || 0;
+                        educativoInput.value = data.total || 0;
                     })
                     .catch(error => {
-                        console.error("Error al obtener ceguera:", error);
-                        cegueraInput.value = 0;
+                        console.error("Error al obtener educativo:", error);
+                        educativoInput.value = 0;
                     });
             } else {
-                cegueraInput.value = "";
+                educativoInput.value = "";
             }
         };
 
@@ -499,7 +499,7 @@ include('../../admin/layout/parte2.php');
             obtenerAbandonos();
             obtenerEconomico();
             obtenerPersonal();
-            obtenerCeguera();
+            obtenerEducativo();
             obtenerMotora();
             obtenerTgd();
             obtenerMultiples();
@@ -516,20 +516,19 @@ include('../../admin/layout/parte2.php');
             const abandonos = parseInt(abandonosInput.value);
             const economico = parseInt(economicoInput.value);
             const personal = parseInt(personalInput.value);
-
-            const ceguera = parseInt(cegueraInput.value);
+            const educativo = parseInt(educativoInput.value);
             const motora = parseInt(motoraInput.value);
             const tgd = parseInt(tgdInput.value);
             const multiples = parseInt(multiplesInput.value);
             const otras = parseInt(otrasInput.value);
 
             if (!grado || !turno || !ciclo || isNaN(matriculados) || isNaN(abandonos) || isNaN(economico) ||
-                isNaN(personal) || isNaN(ceguera) || isNaN(motora) || isNaN(tgd) || isNaN(multiples)) {
+                isNaN(personal) || isNaN(educativo) || isNaN(motora) || isNaN(tgd) || isNaN(multiples)) {
                 alert('Por favor, completa todos los campos correctamente.');
                 return;
             }
 
-            const totalIntegrados = economico + personal + ceguera + motora + tgd + multiples;
+            const totalIntegrados = economico + personal + educativo + motora + tgd + multiples;
             if (totalIntegrados > matriculados) {
                 alert('La suma de los alumnos integrados no puede superar el total de alumnos.');
                 return;
@@ -543,7 +542,7 @@ include('../../admin/layout/parte2.php');
                 abandonos,
                 economico,
                 personal,
-                ceguera,
+                educativo,
                 motora,
                 tgd,
                 multiples
@@ -557,7 +556,7 @@ include('../../admin/layout/parte2.php');
         const actualizarTabla = () => {
             tabla.innerHTML = '';
             datos.forEach((dato, index) => {
-                const totalIntegrados = dato.economico + dato.personal + dato.ceguera + dato.motora + dato.tgd + dato.multiples;
+                const totalIntegrados = dato.economico + dato.personal + dato.educativo + dato.motora + dato.tgd + dato.multiples;
                 tabla.innerHTML += `
                 <tr>
                     <td>${dato.ciclo}</td>
@@ -583,12 +582,12 @@ include('../../admin/layout/parte2.php');
 
         const actualizarGrafico = () => {
             const grados = [...new Set(datos.map(dato => dato.grado))];
-            const categorias = ['Economico', 'Personal', 'Ceguera', 'Motora', 'TGD', 'Más de una'];
+            const categorias = ['Economico', 'Personal', 'Educativo', 'Motora', 'TGD', 'Más de una'];
 
             const data = {
                 'Economico': Array(grados.length).fill(0),
                 'Personal': Array(grados.length).fill(0),
-                'Ceguera': Array(grados.length).fill(0),
+                'Educativo': Array(grados.length).fill(0),
                 'Motora': Array(grados.length).fill(0),
                 'TGD': Array(grados.length).fill(0),
                 'Más de una': Array(grados.length).fill(0),
@@ -599,7 +598,7 @@ include('../../admin/layout/parte2.php');
                 const gradoIndex = grados.indexOf(dato.grado);
                 data['Economico'][gradoIndex] += dato.economico;
                 data['Personal'][gradoIndex] += dato.personal;
-                data['Ceguera'][gradoIndex] += dato.ceguera;
+                data['Educativo'][gradoIndex] += dato.educativo;
                 data['Motora'][gradoIndex] += dato.motora;
                 data['TGD'][gradoIndex] += dato.tgd;
                 data['Más de una'][gradoIndex] += dato.multiples;
