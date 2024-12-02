@@ -11,7 +11,7 @@ include('../../app/controllers/roles/listado_de_roles.php');
     <div class="content">
         <div class="container">
             <div class="row">
-                <h2>ADMINISTRATIVOS <i class="bi bi-chevron-right"></i> REGISTRAR ADMINISTRATIVO</h2>
+                <h1 style="margin-left: 20px;"><i class="bi bi-people-fill"></i></i> Registrar usuario administrador</h1>
             </div>
             <br>
             <div class="row">
@@ -26,37 +26,39 @@ include('../../app/controllers/roles/listado_de_roles.php');
                                 <div class="row">
                                     <div class="col-md-3">
                                         <div class="form-group">
-                                            <label for="">Nombre del rol</label>
-                                            <div class="form-inline">
+                                            <label for="">Nombre del rol<b style="color:red">*</b></label>
+                                            <div>
                                                 <select name="rol_id" id="" class="form-control">
                                                     <?php
-                                                    foreach ($roles as $role) { ?>
-                                                        <option value="<?= $role['id_rol']; ?>"><?= $role['nombre_rol']; ?></option>
+                                                    foreach ($roles as $role) {
+                                                        if ($role['id_rol'] == 1) { // Verifica si id_rol es igual a 1
+                                                    ?>
+                                                            <option value="<?= $role['id_rol']; ?>" selected><?= $role['nombre_rol']; ?></option>
                                                     <?php
+                                                        }
                                                     }
                                                     ?>
                                                 </select>
-                                                <a href="<?= APP_URL; ?>/admin/roles/create.php" style="margin-left: 5px" class="btn btn-primary btn-sm"><i class="bi bi-file-plus"></i></a>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-md-3">
                                         <div class="form-group">
-                                            <label for="">Nombre</label>
+                                            <label for="">Nombre<b style="color:red">*</b></label>
                                             <input type="text" name="nombres" class="form-control" required>
                                         </div>
                                     </div>
 
                                     <div class="col-md-3">
                                         <div class="form-group">
-                                            <label for="">Apellido</label>
+                                            <label for="">Apellido<b style="color:red">*</b></label>
                                             <input type="text" name="apellidos" class="form-control" required>
                                         </div>
                                     </div>
 
                                     <div class="col-md-3">
                                         <div class="form-group">
-                                            <label for="">Correo Electrónico</label>
+                                            <label for="">Correo Electrónico<b style="color:red">*</b></label>
                                             <input type="email" name="email" class="form-control" required>
                                         </div>
                                     </div>
@@ -64,43 +66,44 @@ include('../../app/controllers/roles/listado_de_roles.php');
                                 <div class="row">
                                     <div class="col-md-3">
                                         <div class="form-group">
-                                            <label for="">DNI</label>
+                                            <label for="">DNI<b style="color:red">*</b></label>
                                             <input type="number" name="dni" class="form-control" required>
                                         </div>
                                     </div>
                                     <div class="col-md-3">
                                         <div class="form-group">
-                                            <label for="">Fecha de Nacimiento</label>
+                                            <label for="">Fecha de Nacimiento<b style="color:red">*</b></label>
                                             <input type="date" name="fecha_nacimiento" class="form-control" required>
                                         </div>
                                     </div>
                                     <div class="col-md-3">
                                         <div class="form-group">
-                                            <label for="">Celular</label>
+                                            <label for="">Celular<b style="color:red">*</b></label>
                                             <input type="number" name="celular" class="form-control" required>
                                         </div>
                                     </div>
                                     <div class="col-md-3">
                                         <div class="form-group">
-                                            <label for="">Profesión</label>
-                                            <input type="text" name="profesion" class="form-control" required>
+                                            <label for="">Dirección<b style="color:red">*</b></label>
+                                            <input type="address" name="direccion" class="form-control" required>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-12">
+                                <div class="col-md-3" hidden>
                                         <div class="form-group">
-                                            <label for="">Dirección</label>
-                                            <input type="address" name="direccion" class="form-control" required>
+                                            <label for="">Profesión<b style="color:red">*</b></label>
+                                            <input type="text" name="profesion" value="ADMIN" class="form-control" readonly required>
                                         </div>
                                     </div>
+                                    
                                 </div>
                                 <hr>
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <button type="submit" class="btn btn-primary">Registrar</button>
-                                            <a href="<?= APP_URL; ?>/admin/administrativos" class="btn btn-danger">Cancelar</a>
+                                            <a href="<?= APP_URL; ?>/admin/usuarios" class="btn btn-danger">Cancelar</a>
                                         </div>
                                     </div>
                                 </div>

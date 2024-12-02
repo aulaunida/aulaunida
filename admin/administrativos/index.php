@@ -18,7 +18,7 @@ include ('../../app/controllers/administrativos/listado_de_administrativos.php')
     <div class="content">
         <div class="container">
             <div class="row">
-                <h2>ADMINISTRATIVOS <i class="bi bi-chevron-right"></i> CONSULTAR PERSONAL ADMINISTRATIVO</h2>
+            <h1 style="margin-left: 20px;"><i class="bi bi-people-fill"></i></i> Usuarios administradores</h1>
             </div>
             <br>
             <div class="row">
@@ -26,9 +26,9 @@ include ('../../app/controllers/administrativos/listado_de_administrativos.php')
                 <div class="col-md-12">
                     <div class="card card-outline card-primary">
                         <div class="card-header">
-                            <h3 class="card-title">Administrativos registrados</h3>
+                            <h3 class="card-title">Administradores registrados</h3>
                             <div class="card-tools">
-                                <a href="create.php" class="btn btn-primary"><i class="bi bi-plus-square"></i> Crear nuevo administrativo</a>
+                                <a href="create.php" class="btn btn-primary"><i class="bi bi-plus-square"></i> Crear nuevo administrador</a>
                             </div>
                         </div>
                         <div class="card-body">
@@ -137,15 +137,15 @@ include ('../../layout/mensajes.php');
             "pageLength": 25,
             "language": {
                 "emptyTable": "No hay información",
-                "info": "Mostrando _START_ - _END_ | _TOTAL_ Administrativos",
-                "infoEmpty": "Mostrando 0 - 0 | 0 Administrativos",
-                "infoFiltered": "(Filtrado de _MAX_ total Administrativos)",
+                "info": "Mostrando _START_ - _END_ | _TOTAL_ Administradores",
+                "infoEmpty": "Mostrando 0 - 0 | 0 Administradores",
+                "infoFiltered": "(Filtrado de _MAX_ total Administradores)",
                 "infoPostFix": "",
                 "thousands": ",",
-                "lengthMenu": "Mostrar _MENU_ Administrativos",
+                "lengthMenu": "Mostrar _MENU_ Administradores",
                 "loadingRecords": "Cargando...",
                 "processing": "Procesando...",
-                "search": "Buscar administrativo:",
+                "search": "Buscar administrador:",
                 "zeroRecords": "Sin resultados encontrados",
                 "paginate": {
                     "first": "Primero",
