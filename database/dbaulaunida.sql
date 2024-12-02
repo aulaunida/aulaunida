@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 01-12-2024 a las 22:24:22
+-- Tiempo de generación: 02-12-2024 a las 03:59:21
 -- Versión del servidor: 8.3.0
 -- Versión de PHP: 8.2.18
 
@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS `administrativos` (
   `estado` varchar(11) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci DEFAULT NULL,
   PRIMARY KEY (`id_administrativo`),
   KEY `persona_id` (`persona_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `administrativos`
@@ -44,7 +44,9 @@ CREATE TABLE IF NOT EXISTS `administrativos` (
 
 INSERT INTO `administrativos` (`id_administrativo`, `persona_id`, `fyh_creacion`, `fyh_actualizacion`, `estado`) VALUES
 (1, 2, '2024-09-01', '2024-09-01', '1'),
-(2, 3, '2024-09-01', NULL, '1');
+(2, 3, '2024-09-01', NULL, '1'),
+(3, 406, '2024-12-01', '2024-12-01', '1'),
+(4, 407, '2024-12-01', '2024-12-01', '1');
 
 -- --------------------------------------------------------
 
@@ -144,8 +146,7 @@ INSERT INTO `asignaciones_indicadores` (`id_asignacion_indicadores`, `docente_id
 (6, 6, 1, 8, 5, '2024-10-16', NULL, '1'),
 (7, 1, 1, 1, 4, '2024-10-23', NULL, '1'),
 (13, 1, 1, 1, 5, '2024-12-01', NULL, '1'),
-(14, 1, 1, 2, 1, '2024-12-01', NULL, '1'),
-(15, 1, 1, 8, 1, '2024-12-01', NULL, '1');
+(14, 1, 1, 1, 9, '2024-12-01', '2024-12-01', '1');
 
 -- --------------------------------------------------------
 
@@ -1996,7 +1997,7 @@ INSERT INTO `estudiantes` (`id_estudiante`, `persona_id`, `nivel_id`, `grado_id`
 (239, 249, 2, 13, '473759', 'NO', '', '2024-10-30', NULL, '1'),
 (240, 250, 2, 13, '475514', 'NO', '', '2024-10-30', NULL, '1'),
 (241, 251, 2, 13, '476575', 'NO', '', '2024-10-30', NULL, '1'),
-(242, 252, 2, 13, '476755', 'NO', '', '2024-10-30', NULL, '1'),
+(242, 252, 2, 13, '476755', 'NO', '', '2024-10-30', '2024-12-01', '1'),
 (243, 253, 2, 13, '478086', 'NO', '', '2024-10-30', NULL, '1'),
 (244, 254, 2, 13, '479976', 'NO', '', '2024-10-30', NULL, '1'),
 (245, 255, 2, 13, '479253', 'NO', '', '2024-10-30', NULL, '1'),
@@ -2206,7 +2207,7 @@ CREATE TABLE IF NOT EXISTS `indicadores` (
   `fyh_actualizacion` date DEFAULT NULL,
   `estado` varchar(11) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci DEFAULT NULL,
   PRIMARY KEY (`id_indicador`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `indicadores`
@@ -2214,10 +2215,11 @@ CREATE TABLE IF NOT EXISTS `indicadores` (
 
 INSERT INTO `indicadores` (`id_indicador`, `nombre_indicador`, `fyh_creacion`, `fyh_actualizacion`, `estado`) VALUES
 (1, 'REPITENCIA', '2024-08-26', '2024-08-30', '1'),
-(2, 'ALUMNOS INTEGRADOS', '2024-08-26', '2024-08-27', '1'),
+(2, 'PARTICIPACIÓN FAMILIAR - ACTOS', '2024-08-26', '2024-12-01', '1'),
 (3, 'PROGRESO ESCOLAR', '2024-08-26', NULL, '1'),
-(4, 'PARTICIPACIÓN FAMILIAR', '2024-08-26', '2024-08-30', '1'),
-(5, 'ABANDONO ESCOLAR', '2024-08-26', '2024-08-30', '1');
+(4, 'PARTICIPACIÓN FAMILIAR - REUNIONES', '2024-08-26', '2024-12-01', '1'),
+(5, 'ABANDONO ESCOLAR', '2024-08-26', '2024-08-30', '1'),
+(9, 'PARTICIPACIÓN FAMILIAR - ACTIVIDADES EXTRA', '2024-12-01', NULL, '1');
 
 -- --------------------------------------------------------
 
@@ -2331,14 +2333,14 @@ CREATE TABLE IF NOT EXISTS `personas` (
   `estado` varchar(11) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci DEFAULT NULL,
   PRIMARY KEY (`id_persona`),
   KEY `usuario_id` (`usuario_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=406 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=408 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `personas`
 --
 
 INSERT INTO `personas` (`id_persona`, `usuario_id`, `nombres`, `apellidos`, `dni`, `fecha_nacimiento`, `profesion`, `direccion`, `celular`, `fyh_creacion`, `fyh_actualizacion`, `estado`) VALUES
-(1, 1, 'LEONARDO', 'RODRIGUEZ', '36143425', '1991-10-29', 'Analista de Sistemas', 'Ana Maria Janer 1227', '3512558885', '2024-08-30', NULL, '1'),
+(1, 1, 'SUPER', 'ADMIN', '36143425', '1991-10-29', 'Analista de Sistemas', 'Ana Maria Janer 1227', '3512558885', '2024-08-30', NULL, '1'),
 (2, 4, 'PABLO', 'CASTILLO', '36875234', '1992-08-04', 'DESARROLLADOR', 'Sucre 1826', '3513454237', '2024-09-01', '2024-09-01', '1'),
 (3, 5, 'LEONARDO', 'RODRIGUEZ', '36143425', '1991-10-29', 'ANALISTA DE SISTEMAS', 'Ana Maria Janer 1227 Piso 3 Depto 10', '3512558885', '2024-09-01', NULL, '1'),
 (4, 6, 'NOELIA', 'ALFONSO', '37453855', '1994-09-09', 'Profesorado en Educación Primaria', 'Miguel de Ardiles 517', '3515237651', '2024-09-07', '2024-09-19', '1'),
@@ -2589,7 +2591,7 @@ INSERT INTO `personas` (`id_persona`, `usuario_id`, `nombres`, `apellidos`, `dni
 (249, 252, 'MARIA UMI', 'CARNICER', '47375990', '42187', 'd21', 'ELPIDIO GONZALEZ 1844', 'd20', '2024-10-30', NULL, '1'),
 (250, 253, 'BIANCA MICAELA', 'GILE', '47551417', '42183', 'd21', 'CANONIGO MIGUEL DEL CORRO 88', 'd20', '2024-10-30', NULL, '1'),
 (251, 254, 'VICTOR', 'AVILA', '47657554', '42188', 'd21', 'RONDEAU 361', 'd20', '2024-10-30', NULL, '1'),
-(252, 255, 'GIRAUDO VIRGINIA', 'ABAT', '47675563', '42191', 'd21', 'GRAL PAZ 234', 'd20', '2024-10-30', NULL, '1'),
+(252, 255, 'GIRAUDO VIRGINIA', 'ABAT', '47675563', '2015-11-11', 'ESTUDIANTE', 'GRAL PAZ 234', '0', '2024-10-30', '2024-12-01', '1'),
 (253, 256, 'TOMAS', 'MARTINEZ', '47808630', '42278', 'd21', 'CALLE 6 168', 'd20', '2024-10-30', NULL, '1'),
 (254, 257, 'GABRIEL', 'ASTUDILLO', '47997636', '42190', 'd21', 'GUEMES 3355', 'd20', '2024-10-30', NULL, '1'),
 (255, 258, 'ANA LAURA', 'LACARRERE', '47925369', '42189', 'd21', '9 DE JULIO 124', 'd20', '2024-10-30', NULL, '1'),
@@ -2742,7 +2744,9 @@ INSERT INTO `personas` (`id_persona`, `usuario_id`, `nombres`, `apellidos`, `dni
 (402, 405, 'MARICEL', 'DE LOURDES', '23603517', '1954-07-24', 'Profesorado en Educación Primaria', 'BELGRANO DR MANUEL 1285', '3515237651', '2024-10-30', '2024-09-19', '1'),
 (403, 406, 'CECILIA', 'LINOSSI', '24353827', '1954-09-09', 'Profesorado en Educación Primaria', '24 DE SEPTIEMBRE 1042', '3515237651', '2024-10-30', '2024-09-19', '1'),
 (404, 407, 'DANIEL ', 'SILVA', '25997123', '1952-10-09', 'Profesorado en Educación Primaria', 'OLAGUER Y FELIU VIRREY 2461', '3515237651', '2024-10-30', '2024-09-19', '1'),
-(405, 408, 'OLGA', 'NAVARRO', '38453855', '1994-03-13', 'Profesorado en Educación Primaria', 'Miguel de Ardiles 517', '3515237651', '2024-09-07', '2024-09-19', '1');
+(405, 408, 'OLGA', 'NAVARRO', '38453855', '1994-03-13', 'Profesorado en Educación Primaria', 'Miguel de Ardiles 517', '3515237651', '2024-09-07', '2024-09-19', '1'),
+(406, 1122, 'JAVIER', 'PAEZ', '36123789', '1991-10-18', 'SOPORTE IT', 'Lavalleja 1723', '3516898741', '2024-12-01', '2024-12-01', '1'),
+(407, 1123, 'SOFIA', 'CORTEZ', '36789789', '1994-11-26', 'ADMIN', 'LAVALLEJA 1352', '3516963251', '2024-12-01', '2024-12-01', '1');
 
 -- --------------------------------------------------------
 
@@ -3014,7 +3018,7 @@ INSERT INTO `ppffs` (`id_ppff`, `estudiante_id`, `nombres_apellidos_ppff`, `dni_
 (239, 239, 'CARNICER, LUISINA ', '39962361', '3516081162', 'RELACION DE DEPENDENCIA', 'BERARDO JOSE FELIX', 'SEGUNDO TUTOR', '3513431999', '2024-10-30', NULL, '1'),
 (240, 240, 'GILE, LUCIANO EZEQUIEL', '39852008', '3514435682', 'INDEPENDIENTE', 'GREPPERT DE DI M CLARA', 'SEGUNDO TUTOR', '3514489047', '2024-10-30', NULL, '1'),
 (241, 241, 'AVILA, LUISINA MAR', '39992686', '3516870191', 'INDEPENDIENTE', 'RIVERO ANTONIO', 'SEGUNDO TUTOR', '3514758559', '2024-10-30', NULL, '1'),
-(242, 242, 'ABAT, MALENA AYLEN', '336122', '3512312120', 'INDEPENDIENTE', 'VASCHETTA DE BERNARDI M', 'SEGUNDO TUTOR', '3514259378', '2024-10-30', NULL, '1'),
+(242, 242, 'ABAT, MALENA AYLEN', '33612237', '3512312120', '37652531', 'VASCHETTA, DE BERNARDI MARTIN', 'MARTODEBERARDI_27@GMAIL.COM', '3514259378', '2024-10-30', '2024-12-01', '1'),
 (243, 243, 'MARTINEZ, MARCELO PIACENZA', '337243', '3514410085', 'INDEPENDIENTE', 'ZURITA JOSE', 'SEGUNDO TUTOR', '3514488142', '2024-10-30', NULL, '1'),
 (244, 244, 'ASTUDILLO, MALENA ANAHI', '316310', '3518593596', 'RELACION DE DEPENDENCIA', 'GARCIA DE RODRIGUEZ LUCIA', 'SEGUNDO TUTOR', '3518431649', '2024-10-30', NULL, '1'),
 (245, 245, 'LACARRERE, MAGALI PRISCILA', '310367', '3517889852', 'RELACION DE DEPENDENCIA', 'AIMADA TOMAS MIGUEL', 'SEGUNDO TUTOR', '3514809735', '2024-10-30', NULL, '1'),
@@ -3319,7 +3323,7 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   PRIMARY KEY (`id_usuario`),
   UNIQUE KEY `email` (`email`),
   KEY `rol_id` (`rol_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1122 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1124 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `usuarios`
@@ -3577,7 +3581,7 @@ INSERT INTO `usuarios` (`id_usuario`, `rol_id`, `email`, `password`, `fyh_creaci
 (252, 4, 'mariaumicarnicer@gmail.com', '$2y$10$6zgFwo8bLkl/4V7VKqH7vOXR3HkTmoh1t6pwg/a84TQjl0kKPkaX.', '2024-10-30', NULL, '1', NULL, NULL),
 (253, 4, 'mariaangelmoya@hotmail.com', '$2y$10$yvq2W4fIbgzPFFBDTXljLu6Irst35A2MXSzzzRrICAu.Ih4zeFzhC', '2024-10-30', NULL, '1', NULL, NULL),
 (254, 4, 'maricelleantro@gmail.com', '$2y$10$fvR7FsgQWTwuGMYShRR1CunvIk8TEIdmTveHFu/8GHS80DTj7uFHa', '2024-10-30', NULL, '1', NULL, NULL),
-(255, 4, 'marisolgiraudo7@gmail.com', '$2y$10$HXsjC5wfO4xGMvl.wxafJug6fcAQtyOhQYnJjEGzvE8qBzkaVERcC', '2024-10-30', NULL, '1', NULL, NULL),
+(255, 4, 'MARISOLGIRAUDO7@GMAIL.COM', '$2y$10$HmkFcBLNlGGLrlOVJUhNvOurFet567yaGbH6W9juEaQwfhBsOZK92', '2024-10-30', '2024-12-01', '1', NULL, NULL),
 (256, 4, 'martinezvegatomas@gmail.com', '$2y$10$eQp7LgdR85rWAbdDfHjC5erskkS4469pCEU1criUWozaVP6bxAfum', '2024-10-30', NULL, '1', NULL, NULL),
 (257, 4, 'marielherrera56@gmail.com', '$2y$10$qfWOkYwLDQ2auvFybr5z/eUtdH/j1.ww12rru.3YxZpHTImIJT3DC', '2024-10-30', NULL, '1', NULL, NULL),
 (258, 4, 'marielaluque74@hotmail.com', '$2y$10$3eCtk/Zyui7Z8bpYqGe.nO3yQTDAiW4auahbjqGzFXIQwybjeh8j.', '2024-10-30', NULL, '1', NULL, NULL),
@@ -3731,7 +3735,9 @@ INSERT INTO `usuarios` (`id_usuario`, `rol_id`, `email`, `password`, `fyh_creaci
 (405, 3, 'mariceldelourdes@gmail.com', '$2y$10$JU16A61jANNO8hcqxzBtG.WOLw1rC5TQJ76g0VDVhyBDrw49.HgHK', '2024-09-07', '2024-09-19', '1', NULL, NULL),
 (406, 3, 'cecilinossi@gmail.com', '$2y$10$JU16A61jANNO8hcqxzBtG.WOLw1rC5TQJ76g0VDVhyBDrw49.HgHK', '2024-09-07', '2024-09-19', '1', NULL, NULL),
 (407, 3, 'danisilva@gmail.com', '$2y$10$JU16A61jANNO8hcqxzBtG.WOLw1rC5TQJ76g0VDVhyBDrw49.HgHK', '2024-09-07', '2024-09-19', '1', NULL, NULL),
-(408, 3, 'olganavarro@gmail.com', '$2y$10$JU16A61jANNO8hcqxzBtG.WOLw1rC5TQJ76g0VDVhyBDrw49.HgHK', '2024-09-07', '2024-09-19', '1', NULL, NULL);
+(408, 3, 'olganavarro@gmail.com', '$2y$10$JU16A61jANNO8hcqxzBtG.WOLw1rC5TQJ76g0VDVhyBDrw49.HgHK', '2024-09-07', '2024-09-19', '1', NULL, NULL),
+(1122, 1, 'jpaez@institutocapdevila.edu.ar', '$2y$10$V3dGNzX632dXjDrKVVCIgu6b9/7RnGiMmXOhno2teGG8Q5SfZbqn6', '2024-12-01', '2024-12-01', '1', NULL, NULL),
+(1123, 1, 'scortez@gmail.com', '$2y$10$fV5rvftunztvmirRv6uZaO1mZ0ty/EI1KCJF3PAX4tPhZ6psZOaIa', '2024-12-01', '2024-12-01', '1', NULL, NULL);
 
 --
 -- Restricciones para tablas volcadas
