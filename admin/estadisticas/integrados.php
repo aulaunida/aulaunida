@@ -323,6 +323,7 @@ include('../../admin/layout/parte2.php');
                     scales: {
                         x: {
                             stacked: true,
+                            barThickness: 0.5, // Define un grosor específico para las barras
                             title: {
                                 display: true,
                                 text: 'Grado'
@@ -518,6 +519,10 @@ include('../../admin/layout/parte2.php');
 
         // Escuchar cambios en el select de grado
         gradoSelect.addEventListener('change', function() {
+            const gradoValue = gradoSelect.value; // Usado para fetch
+            const gradoText = gradoSelect.options[gradoSelect.selectedIndex].text; // Usado para mostrar
+
+            
             obtenerMatriculados();
             obtenerRepetidores();
             obtenerIntelectual();
@@ -531,6 +536,8 @@ include('../../admin/layout/parte2.php');
 
         document.getElementById('agregarDatos').addEventListener('click', function() {
             const grado = gradoSelect.value;
+            const gradoValue = gradoSelect.value;
+            const gradoText = gradoSelect.options[gradoSelect.selectedIndex].text;
             const turno = document.getElementById('turno').value;
             const ciclo = document.getElementById('ciclo').value;
             const matriculados = parseInt(matriculadosInput.value);
@@ -558,7 +565,7 @@ include('../../admin/layout/parte2.php');
             datos.push({
                 ciclo,
                 turno,
-                grado,
+                grado: gradoText, // Mostrar texto en la tabla
                 matriculados,
                 repetidores,
                 intelectual,
@@ -591,6 +598,16 @@ include('../../admin/layout/parte2.php');
             `;
             });
         };
+        // Definir colores fijos
+const coloresFijos = [
+    "#FFB6C1", // Rosa pastel
+    "#ADD8E6", // Azul pastel
+    "#FFDAB9", // Durazno pastel
+    "#DDA0DD", // Púrpura pastel
+    "#98FB98", // Verde pastel
+    "#FFFACD", // Amarillo pastel
+    "#FFE4E1"  // Rosa claro pastel
+];
 
         const actualizarGrafico = () => {
             const grados = [...new Set(datos.map(dato => dato.grado))];
@@ -617,11 +634,12 @@ include('../../admin/layout/parte2.php');
                 data['Otras'][gradoIndex] += dato.otras;
             });
 
-            const datasets = Object.keys(data).map(categoria => ({
+            const datasets = Object.keys(data).map((categoria, index) => ({
                 label: categoria,
                 data: data[categoria],
-                backgroundColor: getRandomColor(),
+                backgroundColor: coloresFijos[index] // Usar colores fijos correctamente
             }));
+
 
             if (grafico) {
                 grafico.destroy();
@@ -647,6 +665,7 @@ include('../../admin/layout/parte2.php');
                     scales: {
                         x: {
                             stacked: true,
+                            barThickness: 0.5, // Define un grosor específico para las barras
                             title: {
                                 display: true,
                                 text: 'Grado'
@@ -665,11 +684,7 @@ include('../../admin/layout/parte2.php');
             });
         };
 
-        const getRandomColor = () => {
-            const colores = ['#FF5733', '#33FF57', '#3357FF', '#FF33A1', '#F4FF33'];
-            return colores[Math.floor(Math.random() * colores.length)];
-        };
-
+        
         window.eliminarDato = (index) => {
             datos.splice(index, 1);
             actualizarTabla();
