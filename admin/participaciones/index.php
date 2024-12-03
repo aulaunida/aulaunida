@@ -23,7 +23,7 @@ include('../../app/controllers/docentes/listado_de_asignaciones_indicadores.php'
     <div class="content">
         <div class="container">
             <div class="row">
-                <h1 style="margin-left: 20px;"><i class="bi bi-person-x"></i> Abandono escolar</h1>
+                <h1 style="margin-left: 20px;"><i class="bi bi-clipboard-data"></i> Participación familiar</h1>
             </div>
             <br>
             <div class="row">
@@ -31,7 +31,7 @@ include('../../app/controllers/docentes/listado_de_asignaciones_indicadores.php'
                 <div class="col-md-12">
                     <div class="card card-outline card-primary">
                         <div class="card-header">
-                            <h3 class="card-title">Registro de alumnos con abandono escolar confirmado</h3>
+                            <h3 class="card-title">Parámetros posibles: <b>Activa</b> (Aceptable); <b>Baja</b> (Escasa)</h3>
                         </div>
                         <div class="card-body">
                             <!-- <?= $email_sesion; ?> -->
@@ -39,12 +39,10 @@ include('../../app/controllers/docentes/listado_de_asignaciones_indicadores.php'
                                 <thead>
                                     <tr>
                                         <!-- <th>Indicador</th> -->
+                                        <th>Turno</th>
                                         <th>Grado</th>
                                         <th>División</th>
-                                        <th>Turno</th>
-                                        <th>
-                                            <center>Acciones</center>
-                                        </th>
+                                        <th><center>Acciones</center></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -52,7 +50,7 @@ include('../../app/controllers/docentes/listado_de_asignaciones_indicadores.php'
                                     $contador = 0;
                                     foreach ($asignaciones as $asignacione) {
                                         $id_grado = $asignacione['id_grado'];
-                                        if ($email_sesion == $asignacione['email'] && $asignacione['nombre_indicador'] == 'ABANDONO ESCOLAR') {
+                                        if ($email_sesion == $asignacione['email'] && $asignacione['nombre_indicador'] == 'PARTICIPACION FAMILIAR') {
                                             $id_asignacion_indicadores = $asignacione['id_asignacion_indicadores'];
                                             $contador = $contador + 1; ?>
                                             <tr>

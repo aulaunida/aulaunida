@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 02-12-2024 a las 15:23:58
+-- Tiempo de generación: 03-12-2024 a las 03:09:59
 -- Versión del servidor: 8.3.0
 -- Versión de PHP: 8.2.18
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `dbaulaunida`
+-- Base de datos: `dbaulaunida2`
 --
 
 -- --------------------------------------------------------
@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS `abandonos` (
   `estudiante_id` int NOT NULL,
   `indicador_id` int NOT NULL,
   `abandono` int DEFAULT NULL,
-  `motivo` varchar(255) COLLATE utf8mb4_spanish_ci DEFAULT NULL,
+  `motivo` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci DEFAULT NULL,
   `fyh_creacion` date DEFAULT NULL,
   `fyh_actualizacion` date DEFAULT NULL,
   `estado` varchar(11) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci DEFAULT NULL,
@@ -198,7 +198,7 @@ CREATE TABLE IF NOT EXISTS `asignaciones_indicadores` (
   KEY `docente_id` (`docente_id`),
   KEY `nivel_id` (`nivel_id`),
   KEY `grado_id` (`grado_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `asignaciones_indicadores`
@@ -206,14 +206,12 @@ CREATE TABLE IF NOT EXISTS `asignaciones_indicadores` (
 
 INSERT INTO `asignaciones_indicadores` (`id_asignacion_indicadores`, `docente_id`, `nivel_id`, `grado_id`, `indicador_id`, `fyh_creacion`, `fyh_actualizacion`, `estado`) VALUES
 (1, 1, 1, 1, 1, '2024-10-08', '2024-10-12', '1'),
-(2, 1, 1, 1, 2, '2024-10-08', '2024-10-23', '1'),
 (3, 5, 2, 2, 1, '2024-10-08', NULL, '1'),
 (4, 5, 2, 2, 2, '2024-10-08', NULL, '1'),
 (5, 1, 1, 1, 3, '2024-10-16', NULL, '1'),
 (6, 6, 1, 8, 5, '2024-10-16', NULL, '1'),
-(7, 1, 1, 1, 4, '2024-10-23', NULL, '1'),
 (13, 1, 1, 1, 5, '2024-12-01', NULL, '1'),
-(14, 1, 1, 1, 9, '2024-12-01', '2024-12-01', '1');
+(16, 1, 1, 1, 2, '2024-12-02', NULL, '1');
 
 -- --------------------------------------------------------
 
@@ -2282,11 +2280,9 @@ CREATE TABLE IF NOT EXISTS `indicadores` (
 
 INSERT INTO `indicadores` (`id_indicador`, `nombre_indicador`, `fyh_creacion`, `fyh_actualizacion`, `estado`) VALUES
 (1, 'REPITENCIA', '2024-08-26', '2024-08-30', '1'),
-(2, 'PARTICIPACIÓN FAMILIAR - ACTOS', '2024-08-26', '2024-12-01', '1'),
+(2, 'PARTICIPACION FAMILIAR', '2024-08-26', '2024-12-02', '1'),
 (3, 'PROGRESO ESCOLAR', '2024-08-26', NULL, '1'),
-(4, 'PARTICIPACIÓN FAMILIAR - REUNIONES', '2024-08-26', '2024-12-01', '1'),
-(5, 'ABANDONO ESCOLAR', '2024-08-26', '2024-08-30', '1'),
-(9, 'PARTICIPACIÓN FAMILIAR - ACTIVIDADES EXTRA', '2024-12-01', NULL, '1');
+(5, 'ABANDONO ESCOLAR', '2024-08-26', '2024-08-30', '1');
 
 -- --------------------------------------------------------
 
@@ -2377,6 +2373,74 @@ CREATE TABLE IF NOT EXISTS `niveles` (
 INSERT INTO `niveles` (`id_nivel`, `gestion_id`, `nivel`, `turno`, `fyh_creacion`, `fyh_actualizacion`, `estado`) VALUES
 (1, 2, 'PRIMARIA', 'MAÑANA', '2024-04-22', '2024-08-25', '1'),
 (2, 2, 'PRIMARIA', 'TARDE', '2024-06-03', '2024-08-20', '1');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `participaciones`
+--
+
+DROP TABLE IF EXISTS `participaciones`;
+CREATE TABLE IF NOT EXISTS `participaciones` (
+  `id_participacion` int NOT NULL AUTO_INCREMENT,
+  `docente_id` int NOT NULL,
+  `estudiante_id` int NOT NULL,
+  `indicador_id` int NOT NULL,
+  `nota1` int DEFAULT NULL,
+  `nota2` int DEFAULT NULL,
+  `nota3` int DEFAULT NULL,
+  `fyh_creacion` date DEFAULT NULL,
+  `fyh_actualizacion` date DEFAULT NULL,
+  `estado` varchar(11) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci DEFAULT NULL,
+  PRIMARY KEY (`id_participacion`),
+  KEY `docente_id` (`docente_id`),
+  KEY `estudiante_id` (`estudiante_id`),
+  KEY `indicador_id` (`indicador_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `participaciones`
+--
+
+INSERT INTO `participaciones` (`id_participacion`, `docente_id`, `estudiante_id`, `indicador_id`, `nota1`, `nota2`, `nota3`, `fyh_creacion`, `fyh_actualizacion`, `estado`) VALUES
+(1, 1, 7, 2, 1, 1, 1, '2024-12-03', '2024-12-03', '1'),
+(2, 1, 11, 2, 0, 0, 0, '2024-12-03', '2024-12-03', '1'),
+(3, 1, 10, 2, 0, 0, 0, '2024-12-03', '2024-12-03', '1'),
+(4, 1, 21, 2, 0, 0, 0, '2024-12-03', '2024-12-03', '1'),
+(5, 1, 8, 2, 0, 0, 0, '2024-12-03', '2024-12-03', '1'),
+(6, 1, 23, 2, 0, 0, 0, '2024-12-03', '2024-12-03', '1'),
+(7, 1, 13, 2, 0, 0, 0, '2024-12-03', '2024-12-03', '1'),
+(8, 1, 32, 2, 2, 2, 2, '2024-12-03', '2024-12-03', '1'),
+(9, 1, 27, 2, 0, 0, 0, '2024-12-03', '2024-12-03', '1'),
+(10, 1, 31, 2, 0, 0, 0, '2024-12-03', '2024-12-03', '1'),
+(11, 1, 29, 2, 0, 0, 0, '2024-12-03', '2024-12-03', '1'),
+(12, 1, 18, 2, 0, 0, 0, '2024-12-03', '2024-12-03', '1'),
+(13, 1, 28, 2, 0, 0, 0, '2024-12-03', '2024-12-03', '1'),
+(14, 1, 1, 2, 0, 0, 0, '2024-12-03', '2024-12-03', '1'),
+(15, 1, 33, 2, 0, 0, 0, '2024-12-03', '2024-12-03', '1'),
+(16, 1, 12, 2, 0, 0, 0, '2024-12-03', '2024-12-03', '1'),
+(17, 1, 17, 2, 0, 0, 0, '2024-12-03', '2024-12-03', '1'),
+(18, 1, 36, 2, 0, 0, 0, '2024-12-03', '2024-12-03', '1'),
+(19, 1, 16, 2, 0, 0, 0, '2024-12-03', '2024-12-03', '1'),
+(20, 1, 2, 2, 0, 0, 0, '2024-12-03', '2024-12-03', '1'),
+(21, 1, 25, 2, 0, 0, 0, '2024-12-03', '2024-12-03', '1'),
+(22, 1, 34, 2, 0, 0, 0, '2024-12-03', '2024-12-03', '1'),
+(23, 1, 20, 2, 0, 0, 0, '2024-12-03', '2024-12-03', '1'),
+(24, 1, 19, 2, 0, 0, 0, '2024-12-03', '2024-12-03', '1'),
+(25, 1, 15, 2, 0, 0, 0, '2024-12-03', '2024-12-03', '1'),
+(26, 1, 6, 2, 0, 0, 0, '2024-12-03', '2024-12-03', '1'),
+(27, 1, 35, 2, 0, 0, 0, '2024-12-03', '2024-12-03', '1'),
+(28, 1, 30, 2, 0, 0, 0, '2024-12-03', '2024-12-03', '1'),
+(29, 1, 14, 2, 0, 0, 0, '2024-12-03', '2024-12-03', '1'),
+(30, 1, 38, 2, 0, 0, 0, '2024-12-03', '2024-12-03', '1'),
+(31, 1, 3, 2, 0, 0, 0, '2024-12-03', '2024-12-03', '1'),
+(32, 1, 37, 2, 0, 0, 0, '2024-12-03', '2024-12-03', '1'),
+(33, 1, 26, 2, 0, 0, 0, '2024-12-03', '2024-12-03', '1'),
+(34, 1, 5, 2, 0, 0, 0, '2024-12-03', '2024-12-03', '1'),
+(35, 1, 24, 2, 0, 0, 0, '2024-12-03', '2024-12-03', '1'),
+(36, 1, 4, 2, 0, 0, 0, '2024-12-03', '2024-12-03', '1'),
+(37, 1, 22, 2, 0, 0, 0, '2024-12-03', '2024-12-03', '1'),
+(38, 1, 9, 2, 0, 0, 0, '2024-12-03', '2024-12-03', '1');
 
 -- --------------------------------------------------------
 
