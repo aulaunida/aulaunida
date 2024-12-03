@@ -10,43 +10,47 @@ include('../../app/controllers/docentes/listado_de_docentes.php');
 include('../../app/controllers/estudiantes/listado_de_estudiantes.php');
 include('../../app/controllers/docentes/listado_de_asignaciones.php');
 ?>
- <style>
-        .small-box {
-    border-radius: 500%; /* Redondea los bordes para que sea circular u ovalado */
-    width: 300px; /* Ajusta el ancho */
-    height: 150px; /* Ajusta la altura para mantener la forma circular */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-}
-.bg-pastel-blue {
-    background-color: #a8d0e6;
-}
+<style>
+    .small-box {
+        border-radius: 500%;
+        /* Redondea los bordes para que sea circular u ovalado */
+        width: 300px;
+        /* Ajusta el ancho */
+        height: 150px;
+        /* Ajusta la altura para mantener la forma circular */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
 
-.bg-pastel-green {
-    background-color: #b8e994;
-}
+    .bg-pastel-blue {
+        background-color: #a8d0e6;
+    }
 
-.bg-pastel-yellow {
-    background-color: #ffdd94;
-}
+    .bg-pastel-green {
+        background-color: #b8e994;
+    }
 
-.bg-pastel-pink {
-    background-color: #ffcbc1;
-}
+    .bg-pastel-yellow {
+        background-color: #ffdd94;
+    }
 
-.bg-pastel-purple {
-    background-color: #d4a5a5;
-}
+    .bg-pastel-pink {
+        background-color: #ffcbc1;
+    }
 
-.bg-pastel-mint {
-    background-color: #a4deaa;
-}
-    </style>
+    .bg-pastel-purple {
+        background-color: #d4a5a5;
+    }
+
+    .bg-pastel-mint {
+        background-color: #a4deaa;
+    }
+</style>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
-   
+
     <br>
     <div class="container">
         <div class="container">
@@ -55,24 +59,24 @@ include('../../app/controllers/docentes/listado_de_asignaciones.php');
             </div>
             <br>
             <div class="row">
-                <div class="col-lg-4 col-4">
-                        <div class="small-box bg-pastel-blue">
-                            <div class="inner">
-                                <?php
-                                $contador_repitencia = 1;
-                                ?>
-                                <h3><?= $contador_repitencia; ?></h3>
-                                <p>Repitencia</p>
-                            </div>
-                            <div style="color: white;" class="icon">
-                                <i class="fas"></i>
-                            </div>
-                            <a href="<?= APP_URL; ?>/admin/estadisticas/repitencia.php" class="small-box-footer">
-                            Ver gráfico <i class="fas fa-arrow-circle-right"></i>
-                            </a>
+                <div class="col-lg-4 col-3">
+                    <div class="small-box bg-pastel-blue">
+                        <div class="inner">
+                            <?php
+                            $contador_repitencia = 1;
+                            ?>
+                            <h3><?= $contador_repitencia; ?></h3>
+                            <p>Repitencia</p>
                         </div>
+                        <div style="color: white;" class="icon">
+                            <i class="fas"></i>
+                        </div>
+                        <a href="<?= APP_URL; ?>/admin/estadisticas/repitencia.php" class="small-box-footer">
+                            Ver gráfico <i class="fas fa-arrow-circle-right"></i>
+                        </a>
                     </div>
-                <div class="col-lg-4 col-4">
+                </div>
+                <div class="col-lg-4 col-3">
                     <div class="small-box bg-pastel-green">
                         <div class="inner">
                             <?php
@@ -85,11 +89,11 @@ include('../../app/controllers/docentes/listado_de_asignaciones.php');
                             <i class="fas"></i>
                         </div>
                         <a href="<?= APP_URL; ?>/admin/estadisticas/integrados.php" class="small-box-footer">
-                        Ver gráfico <i class="fas fa-arrow-circle-right"></i>
+                            Ver gráfico <i class="fas fa-arrow-circle-right"></i>
                         </a>
                     </div>
                 </div>
-                <div class="col-lg-4 col-4">
+                <!-- <div class="col-lg-4 col-4">
                     <div class="small-box bg-pastel-yellow">
                         <div class="inner">
                             <?php
@@ -105,41 +109,42 @@ include('../../app/controllers/docentes/listado_de_asignaciones.php');
                         Ver gráfico <i class="fas fa-arrow-circle-right"></i>
                         </a>
                     </div>
+                </div> -->
+                <div class="col-lg-4 col-3">
+                    <div class="small-box bg-pastel-pink">
+                        <div class="inner">
+                            <?php
+                            $contador_tiempo = 3;
+                            ?>
+                            <h3><?= $contador_tiempo; ?></h3>
+                            <p>Participación de la familia</p>
+                        </div>
+                        <div class="icon">
+                            <i class="fas"></i>
+                        </div>
+                        <a href="<?= APP_URL; ?>/admin/estadisticas/familia.php" class="small-box-footer">
+                            Ver gráfico <i class="fas fa-arrow-circle-right"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-3">
+                    <div class="small-box bg-pastel-yellow">
+                        <div class="inner">
+                            <?php
+                            $contador_abandono = 4;
+                            ?>
+                            <h3><?= $contador_abandono; ?></h3>
+                            <p>Abandono escolar</p>
+                        </div>
+                        <a href="<?= APP_URL; ?>/admin/estadisticas/abandono_escolar.php" class="small-box-footer">
+                            Ver gráfico <i class="fas fa-arrow-circle-right"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
-            <div class="row">
-                    <div class="col-lg-4 col-4">
-                        <div class="small-box bg-pastel-pink">
-                            <div class="inner">
-                                <?php
-                                $contador_tiempo = 4;
-                                ?>
-                                <h3><?= $contador_tiempo; ?></h3>
-                                <p>Participación de la familia</p>
-                            </div>
-                            <div class="icon">
-                                <i class="fas"></i>
-                            </div>
-                            <a href="<?= APP_URL; ?>/admin/estadisticas/familia.php" class="small-box-footer">
-                                Ver gráfico <i class="fas fa-arrow-circle-right"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-4">
-                        <div class="small-box bg-pastel-purple">
-                            <div class="inner">
-                                <?php
-                                $contador_abandono = 5;
-                                ?>
-                                <h3><?= $contador_abandono; ?></h3>
-                                <p>Abandono escolar</p>
-                            </div>
-                            <a href="<?= APP_URL; ?>/admin/estadisticas/abandono_escolar.php" class="small-box-footer">
-                            Ver gráfico <i class="fas fa-arrow-circle-right"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <!-- <div class="col-lg-4 col-4">
+            <!-- <div class="row">
+
+                <div class="col-lg-4 col-4">
                         <div class="small-box bg-pastel-mint">
                             <div class="inner">
                                 <?php
@@ -152,15 +157,15 @@ include('../../app/controllers/docentes/listado_de_asignaciones.php');
                             Ver gráfico <i class="fas fa-arrow-circle-right"></i>
                             </a>
                         </div>
-                    </div> -->
+                    </div>
+            </div> -->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group ">
+                        <a href="<?= APP_URL; ?>/admin/index.php" class="btn btn-danger">Volver</a>
+                    </div>
                 </div>
-                <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group ">
-                                        <a href="<?= APP_URL; ?>/admin/index.php" class="btn btn-danger">Volver</a>
-                                    </div>
-                                </div>
-                            </div>
+            </div>
 
             <!-- FIN VISTA PARA EL ADMINISTRADOR -->
             <!-- /.row -->
