@@ -12,7 +12,7 @@ function traducirNota($nota) {
         20  => 'NS', // No Suficiente
         ''   => '-'  // Vacío
     ];
-    return $mapa_notas[$nota] ?? 'ND'; // ND: Nota desconocida
+    return $mapa_notas[$nota] ?? '-'; // Cuando no haya nota cargada
 }
 
 // Consulta SQL ordenada alfabéticamente
@@ -110,5 +110,5 @@ $pdf->Cell(0, 10, 'Notas posibles: E = Excelente, MB = Muy Bueno, B = Bueno, S =
 
 
 // Generar el PDF
-$pdf->Output('I', 'reporte_calificaciones_horizontal.pdf');
+$pdf->Output('I', 'reporte_calificaciones.pdf');
 ?>
