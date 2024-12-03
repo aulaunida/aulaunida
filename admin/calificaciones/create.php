@@ -57,7 +57,10 @@ foreach ($materias as $materia) {
                             <h3 class="card-title">Alumnos registrados</h3>
                         </div>
                         <div class="card-body">
-                            <table id="example1" class="table table-striped table-bordered table-hover table-sm">
+                        <div class="text-right mb-2">
+                            <a href="<?= APP_URL; ?>/libs/fpdf/reportecalificaciones.php" class="btn btn-success"><i class="bi bi-filetype-pdf"></i> Generar reporte</a>
+                        </div>
+                            <table  class="table table-striped table-bordered table-hover table-sm">
                                 <thead>
                                     <tr>
                                         <th text align="left">Alumno</th>
@@ -70,6 +73,7 @@ foreach ($materias as $materia) {
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    
                                     <?php
                                     $contador_estudiantes = 0;
                                     
@@ -203,13 +207,16 @@ foreach ($materias as $materia) {
                                                     </select>
                                                 </td>
                                             </tr>
+                                            
                                     <?php
                                         }
                                     }
                                     $contador_estudiantes;
                                     ?>
                                 </tbody>
-                            </table>
+                        </table>
+                        
+                            
 
                             <hr>
 
