@@ -67,11 +67,15 @@ $niveles = $stmtNiveles->fetchAll(PDO::FETCH_ASSOC);
                                             <label for="ciclo">Ciclo Lectivo:<b style="color:red">*</b></label>
                                             <select name="id_gestion" id="ciclo" class="form-control" required>
                                                 <option value="" disabled selected>Seleccionar ciclo lectivo</option>
-                                                <?php foreach ($gestiones as $gestione): ?>
-                                                    <option value="<?= $gestione['gestion']; ?>">
-                                                        <?= $gestione['gestion']; ?>
-                                                    </option>
-                                                <?php endforeach; ?>
+                                                <?php
+                                                    foreach ($gestiones as $gestione) {
+                                                        if ($gestione['gestion'] == 'CICLO LECTIVO 2024') { // Verifica si id_rol es igual a 1
+                                                    ?>
+                                                    <option value="<?= $gestione['id_gestion']; ?>"><?= $gestione['gestion']; ?></option>
+                                                    <?php
+                                                        }
+                                                    }
+                                                    ?>
                                             </select>
                                         </div>
                                     </div>
