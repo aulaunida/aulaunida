@@ -114,34 +114,34 @@ $niveles = $stmtNiveles->fetchAll(PDO::FETCH_ASSOC);
                                 </div>
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <label for="actos_asistieron">Actos: Asistieron<b
+                                        <label for="actos_asistieron">Actos: Participación Activa - Aceptable<b
                                                 style="color:red">*</b></label>
-                                        <input type="number" id="actos_asistieron" class="form-control" required>
+                                        <input type="number" id="actos_asistieron" class="form-control" required readonly>
                                     </div>
                                     <div class="col-md-6">
-                                        <label for="actos_noasistieron">Actos: No Asistieron<b
+                                        <label for="actos_noasistieron">Actos: Participación Baja - Escasa<b
                                                 style="color:red">*</b></label>
-                                        <input type="number" id="actos_noasistieron" class="form-control" required>
+                                        <input type="number" id="actos_noasistieron" class="form-control" required readonly>
                                     </div>
                                     <div class="col-md-6">
-                                        <label for="reuniones_asistieron">Reuniones: Asistieron<b
+                                        <label for="reuniones_asistieron">Reuniones: Participación Activa - Aceptable<b
                                                 style="color:red">*</b></label>
-                                        <input type="number" id="reuniones_asistieron" class="form-control" required>
+                                        <input type="number" id="reuniones_asistieron" class="form-control" required readonly>
                                     </div>
                                     <div class="col-md-6">
-                                        <label for="reuniones_noasistieron">Reuniones: No Asistieron<b
+                                        <label for="reuniones_noasistieron">Reuniones: Participación Baja - Escasa<b
                                                 style="color:red">*</b></label>
-                                        <input type="number" id="reuniones_noasistieron" class="form-control" required>
+                                        <input type="number" id="reuniones_noasistieron" class="form-control" required readonly>
                                     </div>
                                     <div class="col-md-6">
-                                        <label for="extras_asistieron">Actividades Extras: Asistieron<b
+                                        <label for="extras_asistieron">Actividades Extras: Participación Activa - Aceptable<b
                                                 style="color:red">*</b></label>
-                                        <input type="number" id="extras_asistieron" class="form-control" required>
+                                        <input type="number" id="extras_asistieron" class="form-control" required readonly>
                                     </div>
                                     <div class="col-md-6">
-                                        <label for="extras_noasistieron">Actividades Extras: No Asistieron<b
+                                        <label for="extras_noasistieron">Actividades Extras: Participación Baja - Escasa<b
                                                 style="color:red">*</b></label>
-                                        <input type="number" id="extras_noasistieron" class="form-control" required>
+                                        <input type="number" id="extras_noasistieron" class="form-control" required readonly>
                                     </div>
                                 </div>
                                 <br>
@@ -201,8 +201,8 @@ $niveles = $stmtNiveles->fetchAll(PDO::FETCH_ASSOC);
         const actos_noasistieronInput = document.getElementById('actos_noasistieron');
         const reuniones_asistieronInput = document.getElementById('reuniones_asistieron');
         const reuniones_noasistieronInput = document.getElementById('reuniones_noasistieron');
-        const motoraInput = document.getElementById('extras_asistieron');
-        const tgdInput = document.getElementById('extras_noasistieron');
+        const extras_asistieronInput = document.getElementById('extras_asistieron');
+        const extras_noasistieronInput = document.getElementById('extras_noasistieron');
 
         function limpiarCampos() {
             document.getElementById('grado').value = '';
@@ -255,14 +255,114 @@ $niveles = $stmtNiveles->fetchAll(PDO::FETCH_ASSOC);
             }
         };
 
-         // Escuchar cambios en el select de grado
-         gradoSelect.addEventListener('change', function() {
+        // Obtener actos_noasistieron
+        const obtenerActos_noasistieron = () => {
+            const grado = gradoSelect.value;
+            if (grado) {
+                const url = `<?= APP_URL; ?>/app/controllers/estadisticas/obtener_actos_noasistieron.php?grado=${grado}`;
+                fetch(url)
+                    .then(response => response.json())
+                    .then(data => {
+                        actos_noasistieronInput.value = data.total || 0;
+                    })
+                    .catch(error => {
+                        console.error("Error al obtener actos que no asistieron:", error);
+                        actos_noasistieronInput.value = 0;
+                    });
+            } else {
+                actos_noasistieronInput.value = "";
+            }
+        };
+
+        // Obtener reuniones_asistieron
+        const obtenerReuniones_asistieron = () => {
+            const grado = gradoSelect.value;
+            if (grado) {
+                const url = `<?= APP_URL; ?>/app/controllers/estadisticas/obtener_reuniones_asistieron.php?grado=${grado}`;
+                fetch(url)
+                    .then(response => response.json())
+                    .then(data => {
+                        reuniones_asistieronInput.value = data.total || 0;
+                    })
+                    .catch(error => {
+                        console.error("Error al obtener reuniones que asistieron:", error);
+                        reuniones_asistieronInput.value = 0;
+                    });
+            } else {
+                reuniones_asistieronInput.value = "";
+            }
+        };
+
+        // Obtener reuniones_noasistieron
+        const obtenerReuniones_noasistieron = () => {
+            const grado = gradoSelect.value;
+            if (grado) {
+                const url = `<?= APP_URL; ?>/app/controllers/estadisticas/obtener_reuniones_noasistieron.php?grado=${grado}`;
+                fetch(url)
+                    .then(response => response.json())
+                    .then(data => {
+                        reuniones_noasistieronInput.value = data.total || 0;
+                    })
+                    .catch(error => {
+                        console.error("Error al obtener reuniones que no asistieron:", error);
+                        reuniones_noasistieronInput.value = 0;
+                    });
+            } else {
+                reuniones_noasistieronInput.value = "";
+            }
+        };
+
+        // Obtener extras_asistieron
+        const obtenerExtras_asistieron = () => {
+            const grado = gradoSelect.value;
+            if (grado) {
+                const url = `<?= APP_URL; ?>/app/controllers/estadisticas/obtener_extras_asistieron.php?grado=${grado}`;
+                fetch(url)
+                    .then(response => response.json())
+                    .then(data => {
+                        extras_asistieronInput.value = data.total || 0;
+                    })
+                    .catch(error => {
+                        console.error("Error al obtener extras que asistieron:", error);
+                        extras_asistieronInput.value = 0;
+                    });
+            } else {
+                extras_asistieronInput.value = "";
+            }
+        };
+
+        // Obtener extras_noasistieron
+        const obtenerExtras_noasistieron = () => {
+            const grado = gradoSelect.value;
+            if (grado) {
+                const url = `<?= APP_URL; ?>/app/controllers/estadisticas/obtener_extras_noasistieron.php?grado=${grado}`;
+                fetch(url)
+                    .then(response => response.json())
+                    .then(data => {
+                        extras_noasistieronInput.value = data.total || 0;
+                    })
+                    .catch(error => {
+                        console.error("Error al obtener extras que no asistieron:", error);
+                        extras_noasistieronInput.value = 0;
+                    });
+            } else {
+                extras_noasistieronInput.value = "";
+            }
+        };
+
+        // Escuchar cambios en el select de grado
+        gradoSelect.addEventListener('change', function () {
             const gradoValue = gradoSelect.value; // Usado para fetch
             const gradoText = gradoSelect.options[gradoSelect.selectedIndex].text; // Usado para mostrar
 
-            
+
             obtenerMatriculados();
             obtenerActos_asistieron();
+            obtenerActos_noasistieron();
+            obtenerReuniones_asistieron();
+            obtenerReuniones_noasistieron();
+            obtenerExtras_asistieron();
+            obtenerExtras_noasistieron();
         });
 
         function calcularPorcentajes(asistieron, noAsistieron) {
