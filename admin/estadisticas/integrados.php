@@ -543,7 +543,9 @@ include('../../admin/layout/parte2.php');
             const gradoValue = gradoSelect.value;
             const gradoText = gradoSelect.options[gradoSelect.selectedIndex].text;
             const turno = document.getElementById('turno').value;
-            const ciclo = document.getElementById('ciclo').value;
+            const cicloSelect = document.getElementById('ciclo'); // Selecciona el elemento ciclo
+            const ciclo = cicloSelect.value; // ID del ciclo
+            const cicloText = cicloSelect.options[cicloSelect.selectedIndex].text; // Texto del ciclo
             const matriculados = parseInt(matriculadosInput.value);
             const repetidores = parseInt(repetidoresInput.value);
             const intelectual = parseInt(intelectualInput.value);
@@ -567,7 +569,7 @@ include('../../admin/layout/parte2.php');
             }
 
             datos.push({
-                ciclo,
+                ciclo: gradoText,
                 turno,
                 grado: gradoText, // Mostrar texto en la tabla
                 matriculados,

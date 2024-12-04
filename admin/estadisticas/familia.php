@@ -465,8 +465,15 @@ $niveles = $stmtNiveles->fetchAll(PDO::FETCH_ASSOC);
         }
 
         function agregarRegistro() {
-            const grado = document.getElementById('grado').value;
-            const ciclo = document.getElementById('ciclo').value;
+            const gradoSelect = document.getElementById('grado');
+            const cicloSelect = document.getElementById('ciclo');
+            
+            // Obtener el valor numérico y el texto del grado y ciclo
+            const grado = gradoSelect.value;
+            const gradoText = gradoSelect.options[gradoSelect.selectedIndex]?.text || "N/A";
+            const ciclo = cicloSelect.value;
+            const cicloText = cicloSelect.options[cicloSelect.selectedIndex]?.text || "N/A";
+
             const turno = document.getElementById('turno').value;
 
             const actos = [
@@ -487,7 +494,8 @@ $niveles = $stmtNiveles->fetchAll(PDO::FETCH_ASSOC);
             contenedor.style.marginBottom = "10px";
             contenedor.style.alignItems = "center";
 
-            const tabla = crearTabla(grado, ciclo, turno, actos, reuniones, extras);
+             // Pasar los textos (gradoText y cicloText) a la tabla
+            const tabla = crearTabla(gradoText, cicloText, turno, actos, reuniones, extras);
             contenedor.appendChild(tabla);
 
             const contenedorGraficos = document.createElement('div');
