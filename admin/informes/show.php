@@ -79,9 +79,15 @@ include('../../app/controllers/estudiantes/listado_de_estudiantes.php');
                             </div>
                             <hr>
                             <div class="row">
-                            <div class="form-group">
-                            <a href="<?= APP_URL; ?>/admin/informes" class="btn btn-danger">Volver</a>
-                        </div>
+                                <div class="form-group">
+                                    <!-- Botón para generar el PDF -->
+                                    <a href="<?= APP_URL; ?>/libs/fpdf/reporteinformes.php?id=<?= $id_informe; ?>"  
+                                       class="btn btn-success" 
+                                       target="_blank">
+                                       <i class="bi bi-file-earmark-pdf"></i> Generar PDF</a>
+                                    <!-- Botón para volver -->
+                                    <a href="<?= APP_URL; ?>/admin/informes" class="btn btn-danger">Volver</a>
+                                </div>
                             </div>
                         </div>
                     </div>

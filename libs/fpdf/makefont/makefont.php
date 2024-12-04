@@ -6,8 +6,10 @@
 * Date:    2019-12-07                                                          *
 * Author:  Olivier PLATHEY                                                     *
 *******************************************************************************/
-
+require('fpdf.php');
 require('ttfparser.php');
+define('FPDF_FONTPATH', '../font/'); // Ruta relativa al directorio de las fuentes
+
 
 function Message($txt, $severity='')
 {
