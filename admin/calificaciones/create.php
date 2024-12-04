@@ -58,7 +58,7 @@ foreach ($materias as $materia) {
                         </div>
                         <div class="card-body">
                         <div class="text-right mb-2">
-                            <a href="<?= APP_URL; ?>/libs/fpdf/reportecalificaciones.php" class="btn btn-success"><i class="bi bi-filetype-pdf"></i> Generar reporte</a>
+                            <a href="<?= APP_URL; ?>/libs/fpdf/reportecalificaciones.php"  target="_blank" class="btn btn-success"><i class="bi bi-filetype-pdf"></i> Generar reporte</a>
                         </div>
                             <table  class="table table-striped table-bordered table-hover table-sm">
                                 <thead>

@@ -117,6 +117,7 @@ $dias_en_espanol = [
                                     </div>
                                     <div class="col-md-4">
                                         <button type="submit" class="btn btn-primary">Consultar</button>
+                                        <a href="<?= APP_URL; ?>/libs/fpdf/reporteasistencias.php?id_grado=<?php echo $_GET['id_grado']; ?>&id_docente=<?php echo $_GET['id_docente']; ?>&id_materia=<?php echo $_GET['id_materia']; ?>&mes=<?php echo isset($_GET['mes']) && $_GET['mes'] >= 1 && $_GET['mes'] <= 12 ? $_GET['mes'] : date('n'); ?>" target="_blank" class="btn btn-success"><i class="bi bi-filetype-pdf"></i> Generar reporte</a>
                                     </div>
 
                                     <div class="col-md-4">
