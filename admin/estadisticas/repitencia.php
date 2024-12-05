@@ -46,16 +46,16 @@ $niveles = $stmtNiveles->fetchAll(PDO::FETCH_ASSOC);
                                             <label for="ciclo">Ciclo Lectivo:<b style="color:red">*</b></label>
                                             <select name="id_gestion" id="ciclo" class="form-control" required>
                                                 <option value="" disabled selected>Seleccionar ciclo lectivo</option>
-                                        
+
                                                 <?php
-                                                    foreach ($gestiones as $gestione) {
-                                                        if ($gestione['gestion'] == 'CICLO LECTIVO 2024') { // Verifica si id_rol es igual a 1
-                                                    ?>
-                                                    <option value="<?= $gestione['id_gestion']; ?>"><?= $gestione['gestion']; ?></option>
-                                                    <?php
-                                                        }
+                                                foreach ($gestiones as $gestione) {
+                                                    if ($gestione['gestion'] == 'CICLO LECTIVO 2024') { // Verifica si id_rol es igual a 1
+                                                ?>
+                                                        <option value="<?= $gestione['id_gestion']; ?>"><?= $gestione['gestion']; ?></option>
+                                                <?php
                                                     }
-                                                    ?>
+                                                }
+                                                ?>
                                             </select>
                                         </div>
                                     </div>
@@ -86,15 +86,15 @@ $niveles = $stmtNiveles->fetchAll(PDO::FETCH_ASSOC);
                                             </select>
                                         </div>
                                     </div>
-                                     <!-- Matriculados -->
-                                     <div class="col-md-3">
+                                    <!-- Matriculados -->
+                                    <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="matriculados">Alumnos matriculados:<b style="color:red">*</b></label>
                                             <input type="number" id="matriculados" class="form-control" placeholder="Cantidad de matriculados" required readonly>
                                         </div>
                                     </div>
 
-                                   
+
                                 </div>
 
 
@@ -143,7 +143,7 @@ $niveles = $stmtNiveles->fetchAll(PDO::FETCH_ASSOC);
                                     $contador_sextogrado_b;
 
 
-                                    $contador = 0;
+                                $contador = 0;
                                 $contador_primergrado_a_r = 0;
                                 $contador_segundogrado_a_r = 0;
                                 $contador_tercergrado_a_r = 0;
@@ -223,6 +223,9 @@ $niveles = $stmtNiveles->fetchAll(PDO::FETCH_ASSOC);
 
                         <div class="card-body">
                             <canvas id="graficoRepetencia" width="400" height="200"></canvas>
+                            <!-- Botón para exportar el PDF -->
+                            <button id="exportarPDF" class="btn btn-primary">Exportar PDF</button>
+
                         </div>
                         <hr>
                         <div class="row">
@@ -245,6 +248,16 @@ include('../../admin/layout/parte2.php');
 ?>
 <!-- Incluye Chart.js -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<!-- Incluir jsPDF -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<!-- Incluir html2canvas -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.19/jspdf.plugin.autotable.min.js"></script>
+
+
 
 <script>
     document.addEventListener("DOMContentLoaded", function() {
@@ -484,4 +497,59 @@ include('../../admin/layout/parte2.php');
 
         inicializarGrafico();
     });
+
+    document.getElementById("exportarPDF").addEventListener("click", function() {
+    const { jsPDF } = window.jspdf;  // Obtener la clase jsPDF
+    const doc = new jsPDF();  // Crear una nueva instancia del documento PDF
+
+    // Seleccionar el gráfico a exportar
+    const graficoCanvas = document.getElementById("graficoRepetencia");
+
+    // Convertir el gráfico a imagen usando html2canvas
+    html2canvas(graficoCanvas, {
+        onrendered: function(canvas) {
+            // Añadir la imagen del gráfico al PDF
+            const imgData = canvas.toDataURL("image/png");
+            doc.addImage(imgData, "PNG", 10, 10, 180, 90); // Ajusta las dimensiones según lo necesites
+
+            // Añadir la tabla al PDF usando jsPDF autoTable
+            const tabla = document.getElementById("datosCargados");
+            
+            // Convertir la tabla a formato compatible con jsPDF
+            const rows = [];
+            const headers = [];
+            
+            // Extraer los encabezados de la tabla
+            const ths = tabla.querySelectorAll("th");
+            ths.forEach(th => {
+                headers.push(th.innerText);
+            });
+
+            // Extraer las filas de la tabla
+            const trs = tabla.querySelectorAll("tr");
+            trs.forEach((tr, index) => {
+                const tds = tr.querySelectorAll("td");
+                const row = [];
+                tds.forEach(td => {
+                    row.push(td.innerText);
+                });
+                if (row.length > 0) {
+                    rows.push(row);
+                }
+            });
+
+            // Añadir la tabla al PDF
+            doc.autoTable({
+                head: [headers],
+                body: rows,
+                startY: 110, // Ajusta la posición vertical de la tabla
+                theme: 'grid', // Puedes cambiar el tema a 'striped' si prefieres tablas con líneas alternas
+            });
+
+            // Guardar el PDF
+            doc.save("reporte_estadisticas.pdf");
+        }
+    });
+});
+
 </script>
