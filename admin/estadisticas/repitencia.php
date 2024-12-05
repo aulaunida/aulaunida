@@ -221,10 +221,11 @@ $niveles = $stmtNiveles->fetchAll(PDO::FETCH_ASSOC);
                             </div>
                         </div>
 
-                        <div class="card-body">
+                        <div class="card-body text-center">
                             <canvas id="graficoRepetencia" width="400" height="200"></canvas>
                             <!-- Botón para exportar el PDF -->
-                            <button id="exportarPDF" class="btn btn-primary">Exportar PDF</button>
+                             <br>
+                            <button id="exportarPDF" class="btn btn-primary ">Exportar PDF</button>
 
                         </div>
                         <hr>

@@ -279,7 +279,7 @@ $niveles = $stmtNiveles->fetchAll(PDO::FETCH_ASSOC);
                             <canvas id="graficoAlumnos" style="max-width: 600px; max-height: 400px;"></canvas>
                         </div>
 
-                        <div class="form-group text-center"> <button id="exportarPDF" class="btn btn-success">Exportar PDF</button>
+                        <div class="card-body text-center"> <button id="exportarPDF" class="btn btn-primary">Exportar PDF</button>
                         </div>
 
                         <hr>
