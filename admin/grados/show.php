@@ -73,7 +73,7 @@ include('../../app/controllers/grados/datos_grados.php');
                             <hr>
                             <div class="row">
                                 <div class="col-md-12">
-                                    <div class="form-group">
+                                    <div class="form-group text-center">
                                         <a href="<?= APP_URL; ?>/admin/grados" class="btn btn-danger">Volver</a>
                                     </div>
                                 </div>

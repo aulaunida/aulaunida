@@ -50,7 +50,7 @@ include ('../../app/controllers/docentes/listado_de_docentes.php');
                                 <thead>
                                 <tr>
                                     <th>Docente</th>
-                                    <th><center>Correo electrónico</center></th>
+                                    <th>Correo electrónico</th>
                                     <th><center>Integrador</center></th>
                                     <th><center>Tipo de cargo</center></th>
                                     <th><center>Estado</center></th>
@@ -65,7 +65,7 @@ include ('../../app/controllers/docentes/listado_de_docentes.php');
                                     $contador_docentes++; ?>
                                     <tr>
                                         <td class="uppercase"><?=$docente['apellidos'] . ', ' . $docente['nombres'];?></td>
-                                        <td class="uppercase text-center"><?=$docente['email'];?></td>
+                                        <td class="uppercase"><?=$docente['email'];?></td>
                                         <td class="text-center"><?=$docente['integrador'] == 'NO' ? "NO" : "SI";?></td>
                                         <td class="text-center"><?=$docente['tipo_cargo'] == 'TITULAR' ? "TITULAR" : "SUPLENTE";?></td>
                                         <td class="text-center">
@@ -92,7 +92,7 @@ include ('../../app/controllers/docentes/listado_de_docentes.php');
                             </table>
                             <hr>
                             <div class="row">
-                                <div class="col-md-12">
+                                <div class="col-md-12 text-center">
                                     <a href="<?=APP_URL;?>/admin/index.php" class="btn btn-danger">Volver</a>
                                 </div>
                             </div>

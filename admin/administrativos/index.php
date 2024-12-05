@@ -35,11 +35,11 @@ include ('../../app/controllers/administrativos/listado_de_administrativos.php')
                             <table id="example1" class="table table-striped table-bordered table-hover table-sm">
                                 <thead>
                                 <tr> 
-                                    <th><center>Nombre del administrativo</center></th>
-                                    <th><center>Rol</center></th>
+                                    <th>Nombre del administrativo</th>
+                                    <th>Rol</th>
+                                    <!-- <th><center>Fecha de nacimiento</center></th> -->
+                                    <th>Correo electrónico</th>
                                     <th><center>DNI</center></th>
-                                    <th><center>Fecha de nacimiento</center></th>
-                                    <th><center>Correo electrónico</center></th>
                                     <th><center>Estado</center></th>
                                     <th><center>Acciones</center></th>
                                 </tr>
@@ -52,11 +52,11 @@ include ('../../app/controllers/administrativos/listado_de_administrativos.php')
                                     $contador_administrativos = $contador_administrativos +1; ?>
                                     <tr>
                                         <!-- <td style="text-align: center"><?=$contador_administrativos;?></td> -->
-                                        <td style="text-align: center"><?=$administrativo['nombres'] .' '. $administrativo['apellidos'];?></td>
-                                        <td style="text-align: center"><?=$administrativo['nombre_rol'];?></td>
+                                        <td style="text-align: lefth"><?=$administrativo['nombres'] .' '. $administrativo['apellidos'];?></td>
+                                        <td style="text-align: lefth"><?=$administrativo['nombre_rol'];?></td>
+                                        <!-- <td style="text-align: center"><?=$administrativo['fecha_nacimiento'];?></td> -->
+                                        <td style="text-align: lefth"><?=$administrativo['email'];?></td>
                                         <td style="text-align: center"><?=$administrativo['dni'];?></td>
-                                        <td style="text-align: center"><?=$administrativo['fecha_nacimiento'];?></td>
-                                        <td style="text-align: center"><?=$administrativo['email'];?></td>
                                         <td class="text-center">
                                             <?php
                                             if($administrativo['estado'] == "1"){ ?>

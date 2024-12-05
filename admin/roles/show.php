@@ -42,7 +42,7 @@ include ('../../app/controllers/roles/datos_del_rol.php');
                                 <hr>
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <div class="form-group">
+                                        <div class="form-group text-center">
                                         <a href="<?=APP_URL;?>/admin/roles" class="btn btn-danger"> Volver</a>
                                         </div>
                                     </div>

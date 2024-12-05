@@ -74,11 +74,7 @@ include('../app/controllers/docentes/listado_de_asignaciones_indicadores.php');
                                         <td><?= $fecha_nacimiento; ?></td>
                                     </tr>
                                     <tr>
-                                        <td><b>Teléfono</b></td>
-                                        <td> - </td>
-                                    </tr>
-                                    <tr>
-                                        <td><b>Celular</b></td>
+                                        <td><b>Nro. de celular</b></td>
                                         <td><?= $celular; ?></td>
                                     </tr>
                                     <tr>
@@ -120,8 +116,8 @@ include('../app/controllers/docentes/listado_de_asignaciones_indicadores.php');
                                 .carousel-control-prev-icon,
                                 .carousel-control-next-icon {
                                     background-color: transparent; /* Fondo transparente */
-                                    width: 30px; /* Ajusta el tamaño según necesites */
-                                    height: 30px; /* Ajusta el tamaño según necesites */
+                                    width: 20px; /* Ajusta el tamaño según necesites */
+                                    height: 20px; /* Ajusta el tamaño según necesites */
                                 }
                                 .carousel-control-prev-icon {
                                     filter: brightness(0) saturate(100%) invert(50%); /* Ajusta el color de la flecha */

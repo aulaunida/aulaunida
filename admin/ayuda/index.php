@@ -62,7 +62,7 @@ include('../../app/controllers/ayuda/listado_ayuda.php');
  <!-- Enlaces de referencia -->
  <div class="card card-outline card-primary">
                 <div class="card-header">
-                    <h3 class="card-title">Enlaces importantes del Instituto Arturo Capdevila </h3>
+                    <h3 class="card-title">Enlaces importantes del Instituto Primario <b>Arturo Capdevila</b> </h3>
                 </div>
                 <div class="card-body">
                     <div class="row">
@@ -150,7 +150,7 @@ include('../../app/controllers/ayuda/listado_ayuda.php');
 </div>
             <div class="row">
                 <div class="col-md-12" >
-                    <div class="form-group">
+                    <div class="form-group text-center">
                         <a href="<?= APP_URL; ?>/admin" class="btn btn-danger">Volver</a>
                     </div>
                 </div>

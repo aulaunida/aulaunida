@@ -30,7 +30,7 @@ include ('../../app/controllers/materias/listado_de_materias.php');
                                 <thead>
                                 <tr>
                                     <!-- <th><center>Nro</center></th> -->
-                                    <th><center>Materia</center></th>
+                                    <th>Materia</th>
                                     <th><center>Estado</center></th>
                                     <th><center>Acciones</center></th>
                                 </tr>
@@ -43,7 +43,7 @@ include ('../../app/controllers/materias/listado_de_materias.php');
                                     $contador_materias = $contador_materias +1; ?>
                                     <tr>
                                         <!-- <td style="text-align: center"><?=$contador_materias;?></td> -->
-                                        <td style="text-align: center"><?=$materia['nombre_materia'];?></td>
+                                        <td style="text-align: lefth"><?=$materia['nombre_materia'];?></td>
                                         <td style="text-align: center">
                                             <?php
                                             if($materia['estado'] == "1"){ ?>
@@ -94,7 +94,7 @@ include ('../../app/controllers/materias/listado_de_materias.php');
                             <hr>
                             <div class="row">
                                 <div class="col-md-12">
-                                    <div class="form-group">
+                                    <div class="form-group text-center">
                                         <a href="<?= APP_URL; ?>/admin" class="btn btn-danger">Volver</a>
                                     </div>
                                 </div>

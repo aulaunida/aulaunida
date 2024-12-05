@@ -70,7 +70,7 @@ include('../../app/controllers/docentes/listado_de_asignaciones_indicadores.php'
                             <hr>
                             <div class="row">
                                 <div class="col-md-12">
-                                    <div class="form-group">
+                                    <div class="form-group text-center">
                                         <a href="<?= APP_URL; ?>/admin/index.php" class="btn btn-danger">Volver</a>
                                     </div>
                                 </div>

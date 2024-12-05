@@ -22,6 +22,8 @@ $sql_calificaciones = "SELECT
     c.materia_id, 
     CONCAT(p.apellidos, ', ', p.nombres) AS estudiante, 
     m.nombre_materia AS materia, 
+    g.curso AS grado, 
+    g.paralelo AS division, 
     c.nota1, c.nota2, c.nota3, c.nota4, c.nota5, 
     c.nota6, c.nota7, c.nota8, c.nota9, c.nota10
 FROM 
@@ -30,6 +32,8 @@ JOIN
     estudiantes e ON c.estudiante_id = e.id_estudiante
 JOIN 
     personas p ON e.persona_id = p.id_persona
+JOIN 
+    grados g ON e.grado_id = g.id_grado
 JOIN 
     materias m ON c.materia_id = m.id_materia
 WHERE 
@@ -43,28 +47,48 @@ $calificaciones = $query_calificaciones->fetchAll(PDO::FETCH_ASSOC);
 
 // Clase personalizada para el PDF
 class PDF extends FPDF {
+    public $grado;
+    public $division;
+    public $nombreMateria;
+
+    // Constructor actualizado
+    public function __construct($orientation = 'L', $unit = 'mm', $size = 'A4') {
+        parent::__construct($orientation, $unit, $size);
+    }
+
     function Header() {
-        // Logo
         $this->Image('logo_colegio.png', 10, 6, 30);
-        // Título del Colegio
         $this->SetFont('Arial', 'B', 14);
         $this->Cell(0, 10, 'Instituto Primario Arturo Capdevila', 0, 1, 'C');
         $this->SetFont('Arial', '', 10);
-        $this->Cell(0, 5, 'Reporte de Calificaciones' , 0, 1, 'C');
+        $this->Cell(0, 5, 'Reporte de Calificaciones', 0, 1, 'C');
         $this->Ln(10); // Espacio
+
+        // Título dinámico
+        $titulo = mb_convert_encoding("{$this->grado} GRADO {$this->division} - {$this->nombreMateria}", 'ISO-8859-1', 'UTF-8');
+        $this->Cell(0, 5, $titulo, 0, 1, 'C');
     }
 
     function Footer() {
         // Posición al final
         $this->SetY(-15);
         $this->SetFont('Arial', 'I', 8);
-        $this->Cell(0, 10, 'Instituto Primario Arturo Capdevila | Pagina ' . $this->PageNo(), 0, 0, 'C');
+        $this->Cell(0, 10, 'Instituto Primario Arturo Capdevila | Página ' . $this->PageNo(), 0, 0, 'C');
     }
 }
 
-// Crear el PDF en orientación horizontal
-$pdf = new PDF('L', 'mm', 'A4');
+// Obtener el grado, división y nombre de la primera materia
+$grado = count($calificaciones) > 0 ? $calificaciones[0]['grado'] : 'Sin grado';
+$division = count($calificaciones) > 0 ? $calificaciones[0]['division'] : 'Sin división';
+$nombreMateria = count($calificaciones) > 0 ? $calificaciones[0]['materia'] : 'Sin materia';
+
+// Crear el PDF
+$pdf = new PDF();
+$pdf->grado = $grado;
+$pdf->division = $division;
+$pdf->nombreMateria = $nombreMateria;
 $pdf->AddPage();
+
 $pdf->SetFont('Arial', '', 8);
 
 // Fecha
@@ -103,12 +127,7 @@ foreach ($calificaciones as $calificacion) {
 // Leyenda de notas
 $pdf->Ln(5);
 $pdf->SetFont('Arial', 'I', 8);
-$pdf->Cell(0, 10, 'Notas posibles: E = Excelente, MB = Muy Bueno, B = Bueno, S = Satisfactorio, NS = No Satisfactorio.', 0, 1, 'L');
-
-
-
-
+$pdf->Cell(0, 10, 'Notas posibles: E = Excelente, MB = Muy Bueno, B = Bueno, S = Suficiente, NS = No Suficiente.', 0, 1, 'L');
 
 // Generar el PDF
 $pdf->Output('I', 'reporte_calificaciones.pdf');
-?>

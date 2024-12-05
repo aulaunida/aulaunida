@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 05-12-2024 a las 04:07:21
+-- Tiempo de generación: 05-12-2024 a las 16:52:41
 -- Versión del servidor: 8.3.0
 -- Versión de PHP: 8.2.18
 
@@ -379,7 +379,7 @@ CREATE TABLE IF NOT EXISTS `administrativos` (
 --
 
 INSERT INTO `administrativos` (`id_administrativo`, `persona_id`, `fyh_creacion`, `fyh_actualizacion`, `estado`) VALUES
-(1, 2, '2024-09-01', '2024-09-01', '1'),
+(1, 2, '2024-09-01', '2024-12-05', '1'),
 (2, 3, '2024-09-01', NULL, '1'),
 (3, 406, '2024-12-01', '2024-12-01', '1'),
 (4, 407, '2024-12-01', '2024-12-01', '1');
@@ -3465,7 +3465,7 @@ CREATE TABLE IF NOT EXISTS `niveles` (
   `estado` varchar(11) CHARACTER SET utf8mb4 COLLATE utf8mb4_spanish_ci DEFAULT NULL,
   PRIMARY KEY (`id_nivel`),
   KEY `gestion_id` (`gestion_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `niveles`
@@ -3907,7 +3907,7 @@ CREATE TABLE IF NOT EXISTS `personas` (
 
 INSERT INTO `personas` (`id_persona`, `usuario_id`, `nombres`, `apellidos`, `dni`, `fecha_nacimiento`, `profesion`, `direccion`, `celular`, `fyh_creacion`, `fyh_actualizacion`, `estado`) VALUES
 (1, 1, 'SUPER', 'ADMIN', '36143425', '1991-10-29', 'Analista de Sistemas', 'Ana Maria Janer 1227', '3512558885', '2024-08-30', NULL, '1'),
-(2, 4, 'PABLO', 'CASTILLO', '36875234', '1992-08-04', 'DESARROLLADOR', 'Sucre 1826', '3513454237', '2024-09-01', '2024-09-01', '1'),
+(2, 4, 'PABLO', 'CASTILLO', '38409368', '1994-08-04', 'DESARROLLADOR', 'Sucre 1826', '3515745651', '2024-09-01', '2024-12-05', '1'),
 (3, 5, 'LEONARDO', 'RODRIGUEZ', '36143425', '1991-10-29', 'ANALISTA DE SISTEMAS', 'Ana Maria Janer 1227 Piso 3 Depto 10', '3512558885', '2024-09-01', NULL, '1'),
 (4, 6, 'NOELIA', 'ALFONSO', '37453855', '1994-09-09', 'Profesorado en Educación Primaria', 'Miguel de Ardiles 517', '3515237651', '2024-09-07', '2024-09-19', '1'),
 (5, 7, 'ROMINA MICAELA', 'PIZARRO', '34024504', '1987-11-14', 'Licenciatura en Educación', 'PADRE LUIS MONTI 1969', '3584493006', '2024-09-07', '2024-10-08', '1'),
@@ -5171,7 +5171,7 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
 
 INSERT INTO `usuarios` (`id_usuario`, `rol_id`, `email`, `password`, `fyh_creacion`, `fyh_actualizacion`, `estado`, `reset_token`, `reset_expiration`) VALUES
 (1, 1, 'admin@admin.com', '$2y$10$0tYmdHU9uGCIxY1f90W1EuIm54NQ8axowkxL1WzLbqO2LdNa8m3l2', '2024-05-13', NULL, '1', NULL, NULL),
-(4, 1, 'pablojcastillo.94@gmail.com', '$2y$10$48DoFrINL8MGtyrRAbf6/eZSRHldPm20.22yul7cRuOpIj4W4BaGC', '2024-09-01', '2024-09-09', '1', NULL, NULL),
+(4, 1, 'pablojcastillo.94@gmail.com', '$2y$10$lgnh.5NBUIkoNhNM0a7bvOeRpuyVpOxebts9swXEtxb9RM9Q.SrqS', '2024-09-01', '2024-12-05', '1', NULL, NULL),
 (5, 1, 'rodriguez.cl@outlook.com', '$2y$10$8cNIAmfI6OhlCKxTcuym3.obMgNhZDnaoK0WGaK2FMrvlCYf6YEvW', '2024-09-01', NULL, '1', NULL, NULL),
 (6, 3, 'noealfonso@gmail.com', '$2y$10$JU16A61jANNO8hcqxzBtG.WOLw1rC5TQJ76g0VDVhyBDrw49.HgHK', '2024-09-07', '2024-09-19', '1', NULL, NULL),
 (7, 3, 'romipizarro_15@hotmail.com', '$2y$10$3Y3xG9Q75ogwL6KTGD8bQuEWifqFec3/rjArlyJwciLhSdJsQsZ0u', '2024-09-07', '2024-10-08', '1', NULL, NULL),

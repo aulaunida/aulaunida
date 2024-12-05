@@ -30,7 +30,7 @@ include ('../../app/controllers/indicadores/listado_de_indicadores.php');
                                 <thead>
                                 <tr>
                                     <!-- <th><center>Nro</center></th> -->
-                                    <th><center>Indicador</center></th>
+                                    <th>Indicador</th>
                                     <th><center>Estado</center></th>
                                     <th><center>Acciones</center></th>
                                 </tr>
@@ -43,7 +43,7 @@ include ('../../app/controllers/indicadores/listado_de_indicadores.php');
                                     $contador_indicadores = $contador_indicadores +1; ?>
                                     <tr>
                                         <!-- <td style="text-align: center"><?=$contador_indicadores;?></td> -->
-                                        <td style="text-align: center"><?=$indicadore['nombre_indicador'];?></td>
+                                        <td style="text-align: lefth"><?=$indicadore['nombre_indicador'];?></td>
                                         <td style="text-align: center">
                                             <?php
                                             if($indicadore['estado'] == "1"){ ?>

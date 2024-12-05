@@ -12,9 +12,9 @@ include('../../app/controllers/docentes/listado_de_asignaciones.php');
 ?>
 <style>
     .small-box {
-        border-radius: 500%;
+        border-radius: 100%;
         /* Redondea los bordes para que sea circular u ovalado */
-        width: 300px;
+        width: 530px;
         /* Ajusta el ancho */
         height: 150px;
         /* Ajusta la altura para mantener la forma circular */
@@ -59,7 +59,7 @@ include('../../app/controllers/docentes/listado_de_asignaciones.php');
             </div>
             <br>
             <div class="row">
-                <div class="col-lg-4 col-3">
+                <div class="col-lg-6 col-6">
                     <div class="small-box bg-pastel-blue">
                         <div class="inner">
                             <?php
@@ -76,7 +76,7 @@ include('../../app/controllers/docentes/listado_de_asignaciones.php');
                         </a>
                     </div>
                 </div>
-                <div class="col-lg-4 col-3">
+                <div class="col-lg-6 col-6">
                     <div class="small-box bg-pastel-green">
                         <div class="inner">
                             <?php
@@ -92,6 +92,7 @@ include('../../app/controllers/docentes/listado_de_asignaciones.php');
                             Ver gráfico <i class="fas fa-arrow-circle-right"></i>
                         </a>
                     </div>
+                </div>
                 </div>
                 <!-- <div class="col-lg-4 col-4">
                     <div class="small-box bg-pastel-yellow">
@@ -110,7 +111,8 @@ include('../../app/controllers/docentes/listado_de_asignaciones.php');
                         </a>
                     </div>
                 </div> -->
-                <div class="col-lg-4 col-3">
+            <div class="row">
+                <div class="col-lg-6 col-6">
                     <div class="small-box bg-pastel-pink">
                         <div class="inner">
                             <?php
@@ -127,7 +129,7 @@ include('../../app/controllers/docentes/listado_de_asignaciones.php');
                         </a>
                     </div>
                 </div>
-                <div class="col-lg-4 col-3">
+                <div class="col-lg-6 col-6">
                     <div class="small-box bg-pastel-yellow">
                         <div class="inner">
                             <?php
@@ -161,7 +163,7 @@ include('../../app/controllers/docentes/listado_de_asignaciones.php');
             </div> -->
             <div class="row">
                 <div class="col-md-12">
-                    <div class="form-group ">
+                    <div class="form-group text-center">
                         <a href="<?= APP_URL; ?>/admin/index.php" class="btn btn-danger">Volver</a>
                     </div>
                 </div>

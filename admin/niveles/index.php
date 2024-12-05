@@ -98,7 +98,7 @@ include ('../../app/controllers/niveles/listado_de_niveles.php');
                             <hr>
                             <div class="row">
                                 <div class="col-md-12">
-                                    <div class="form-group">
+                                    <div class="form-group text-center">
                                         <a href="<?= APP_URL; ?>/admin" class="btn btn-danger">Volver</a>
                                     </div>
                                 </div>
