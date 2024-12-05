@@ -22,11 +22,17 @@ $stmtNiveles->execute();
 $niveles = $stmtNiveles->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <style>
-.centrar-grafico {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+    .centrar-grafico {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    @media print {
+        .no-imprimir {
+            display: none;
+        }
+    }
 </style>
 
 <!-- Content Wrapper -->
@@ -41,213 +47,214 @@ $niveles = $stmtNiveles->fetchAll(PDO::FETCH_ASSOC);
             <div class="row">
                 <div class="col-md-12">
                     <div class="card card-outline card-primary">
-                        <div class="card-header">
+                        <div class="card-header no-imprimir">
                             <h3 class="card-title">Ingresar datos:</h3>
                         </div>
                         <div class="card-body">
-
-                            <form id="formDatosAlumnos">
-                                <div class="row">
-                                    <div class="col-md-3">
-                                        <div class="form-group">
-                                            <label for="ciclo">Ciclo Lectivo:<b style="color:red">*</b></label>
-                                            <select name="id_gestion" id="ciclo" class="form-control" required>
-                                                <option value="" disabled selected>Seleccionar ciclo lectivo</option>
-                                                <?php
+                            <div class="card-body no-imprimir">
+                                <form id="formDatosAlumnos">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="ciclo">Ciclo Lectivo:<b style="color:red">*</b></label>
+                                                <select name="id_gestion" id="ciclo" class="form-control" required>
+                                                    <option value="" disabled selected>Seleccionar ciclo lectivo</option>
+                                                    <?php
                                                     foreach ($gestiones as $gestione) {
                                                         if ($gestione['gestion'] == 'CICLO LECTIVO 2024') { // Verifica si id_rol es igual a 1
                                                     ?>
-                                                    <option value="<?= $gestione['id_gestion']; ?>"><?= $gestione['gestion']; ?></option>
+                                                            <option value="<?= $gestione['id_gestion']; ?>"><?= $gestione['gestion']; ?></option>
                                                     <?php
                                                         }
                                                     }
                                                     ?>
-                                            </select>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="turno">Turno:<b style="color:red">*</b></label>
+                                                <select name="id_nivel" id="turno" class="form-control" required>
+                                                    <option value="" disabled selected>Seleccionar turno</option>
+                                                    <?php foreach ($niveles as $nivele): ?>
+                                                        <option value="<?= $nivele['turno']; ?>">
+                                                            <?= $nivele['turno']; ?> <!-- Solo imprime el turno -->
+                                                        </option>
+                                                    <?php endforeach; ?>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="grado">Grado y división:<b style="color:red">*</b></label>
+                                                <!-- Grado y División -->
+                                                <select id="grado" name="id_grado" class="form-control" required>
+                                                    <option value="" disabled selected>Seleccionar grado</option>
+                                                    <?php foreach ($grados as $grado): ?>
+                                                        <option value="<?= $grado['id_grado']; ?>">
+                                                            <?= $grado['curso'] . " " . $grado['paralelo']; ?>
+                                                        </option>
+                                                    <?php endforeach; ?>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <!-- Matriculados -->
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="matriculados">Alumnos matriculados:<b style="color:red">*</b></label>
+                                                <input type="number" id="matriculados" class="form-control" placeholder="Cantidad de matriculados" required readonly>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-3">
-                                        <div class="form-group">
-                                            <label for="turno">Turno:<b style="color:red">*</b></label>
-                                            <select name="id_nivel" id="turno" class="form-control" required>
-                                                <option value="" disabled selected>Seleccionar turno</option>
-                                                <?php foreach ($niveles as $nivele): ?>
-                                                    <option value="<?= $nivele['turno']; ?>">
-                                                        <?= $nivele['turno']; ?> <!-- Solo imprime el turno -->
-                                                    </option>
-                                                <?php endforeach; ?>
-                                            </select>
+
+                                    <?php
+                                    $contador = 0;
+                                    $contador_primergrado_a = 0;
+                                    $contador_segundogrado_a = 0;
+                                    $contador_tercergrado_a = 0;
+                                    $contador_cuartogrado_a = 0;
+                                    $contador_quintogrado_a = 0;
+                                    $contador_sextogrado_a = 0;
+                                    $contador_primergrado_b = 0;
+                                    $contador_segundogrado_b = 0;
+                                    $contador_tercergrado_b = 0;
+                                    $contador_cuartogrado_b = 0;
+                                    $contador_quintogrado_b = 0;
+                                    $contador_sextogrado_b = 0;
+
+
+                                    foreach ($reporte_estudiantes as $reporte_estudiante) {
+                                        if ($reporte_estudiante['grado_id'] == "1") $contador_primergrado_a = $contador_primergrado_a + 1;
+                                        if ($reporte_estudiante['grado_id'] == "2") $contador_primergrado_b = $contador_primergrado_b + 1;
+                                        if ($reporte_estudiante['grado_id'] == "8") $contador_segundogrado_a = $contador_segundogrado_a + 1;
+                                        if ($reporte_estudiante['grado_id'] == "9") $contador_segundogrado_b = $contador_segundogrado_b + 1;
+                                        if ($reporte_estudiante['grado_id'] == "10") $contador_tercergrado_a = $contador_tercergrado_a + 1;
+                                        if ($reporte_estudiante['grado_id'] == "11") $contador_tercergrado_b = $contador_tercergrado_b + 1;
+                                        if ($reporte_estudiante['grado_id'] == "12") $contador_cuartogrado_a = $contador_cuartogrado_a + 1;
+                                        if ($reporte_estudiante['grado_id'] == "13") $contador_cuartogrado_b = $contador_cuartogrado_b + 1;
+                                        if ($reporte_estudiante['grado_id'] == "14") $contador_quintogrado_a = $contador_quintogrado_a + 1;
+                                        if ($reporte_estudiante['grado_id'] == "15") $contador_quintogrado_b = $contador_quintogrado_b + 1;
+                                        if ($reporte_estudiante['grado_id'] == "16") $contador_sextogrado_a = $contador_sextogrado_a + 1;
+                                        if ($reporte_estudiante['grado_id'] == "17") $contador_sextogrado_b = $contador_sextogrado_b + 1;
+                                    }
+                                    $datos_reportes_estudiantes =
+                                        $contador_primergrado_a . "," .
+                                        $contador_primergrado_b . "," .
+                                        $contador_segundogrado_a . "," .
+                                        $contador_segundogrado_b . "," .
+                                        $contador_tercergrado_a . "," .
+                                        $contador_tercergrado_b . "," .
+                                        $contador_cuartogrado_a . "," .
+                                        $contador_cuartogrado_b . "," .
+                                        $contador_quintogrado_a . "," .
+                                        $contador_quintogrado_b . "," .
+                                        $contador_sextogrado_a . "," .
+                                        $contador_sextogrado_b;
+
+
+                                    $contador = 0;
+                                    $contador_primergrado_a_r = 0;
+                                    $contador_segundogrado_a_r = 0;
+                                    $contador_tercergrado_a_r = 0;
+                                    $contador_cuartogrado_a_r = 0;
+                                    $contador_quintogrado_a_r = 0;
+                                    $contador_sextogrado_a_r = 0;
+                                    $contador_primergrado_b_r = 0;
+                                    $contador_segundogrado_b_r = 0;
+                                    $contador_tercergrado_b_r = 0;
+                                    $contador_cuartogrado_b_r = 0;
+                                    $contador_quintogrado_b_r = 0;
+                                    $contador_sextogrado_b_r = 0;
+
+
+                                    foreach ($reporte_estudiantes3 as $reporte_estudiante3) {
+                                        if ($reporte_estudiante3['grado_id'] == "1") $contador_primergrado_a_r = $contador_primergrado_a_r + 1;
+                                        if ($reporte_estudiante3['grado_id'] == "2") $contador_primergrado_b_r = $contador_primergrado_b_r + 1;
+                                        if ($reporte_estudiante3['grado_id'] == "8") $contador_segundogrado_a_r = $contador_segundogrado_a_r + 1;
+                                        if ($reporte_estudiante3['grado_id'] == "9") $contador_segundogrado_b_r = $contador_segundogrado_b_r + 1;
+                                        if ($reporte_estudiante3['grado_id'] == "10") $contador_tercergrado_a_r = $contador_tercergrado_a_r + 1;
+                                        if ($reporte_estudiante3['grado_id'] == "11") $contador_tercergrado_b_r = $contador_tercergrado_b_r + 1;
+                                        if ($reporte_estudiante3['grado_id'] == "12") $contador_cuartogrado_a_r = $contador_cuartogrado_a_r + 1;
+                                        if ($reporte_estudiante3['grado_id'] == "13") $contador_cuartogrado_b_r = $contador_cuartogrado_b_r + 1;
+                                        if ($reporte_estudiante3['grado_id'] == "14") $contador_quintogrado_a_r = $contador_quintogrado_a_r + 1;
+                                        if ($reporte_estudiante3['grado_id'] == "15") $contador_quintogrado_b_r = $contador_quintogrado_b_r + 1;
+                                        if ($reporte_estudiante3['grado_id'] == "16") $contador_sextogrado_a_r = $contador_sextogrado_a_r + 1;
+                                        if ($reporte_estudiante3['grado_id'] == "17") $contador_sextogrado_b_r = $contador_sextogrado_b_r + 1;
+                                    }
+                                    $datos_reportes_estudiantes_r =
+                                        $contador_primergrado_a_r . "," .
+                                        $contador_primergrado_b_r . "," .
+                                        $contador_segundogrado_a_r . "," .
+                                        $contador_segundogrado_b_r . "," .
+                                        $contador_tercergrado_a_r . "," .
+                                        $contador_tercergrado_b_r . "," .
+                                        $contador_cuartogrado_a_r . "," .
+                                        $contador_cuartogrado_b_r . "," .
+                                        $contador_quintogrado_a_r . "," .
+                                        $contador_quintogrado_b_r . "," .
+                                        $contador_sextogrado_a_r . "," .
+                                        $contador_sextogrado_b_r;
+                                    ?>
+
+                                    <!-- Alumnos Matriculados -->
+                                    <div class="row">
+
+                                        <!-- Integrados -->
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="abandonos">Abandono escolar:<b style="color:red">*</b></label>
+                                                <input type="number" id="abandonos" class="form-control" placeholder="Cantidad de abandonos" required readonly>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-3">
-                                        <div class="form-group">
-                                            <label for="grado">Grado y división:<b style="color:red">*</b></label>
-                                            <!-- Grado y División -->
-                                            <select id="grado" name="id_grado" class="form-control" required>
-                                                <option value="" disabled selected>Seleccionar grado</option>
-                                                <?php foreach ($grados as $grado): ?>
-                                                    <option value="<?= $grado['id_grado']; ?>">
-                                                        <?= $grado['curso'] . " " . $grado['paralelo']; ?>
-                                                    </option>
-                                                <?php endforeach; ?>
-                                            </select>
+                                    <hr>
+                                    <h6>Motivo de abandono:</h6>
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="economico">Factores socioeconómicos:<b style="color:red">*</b></label>
+                                                <input type="number" id="economico" class="form-control" placeholder="Cantidad de abandonos" required readonly>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="personal">Factores personales:<b style="color:red">*</b></label>
+                                                <input type="number" id="personal" class="form-control" placeholder="Cantidad de abandonos" required readonly>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="educativo">Factores educativos:<b style="color:red">*</b></label>
+                                                <input type="number" id="educativo" class="form-control" placeholder="Cantidad de abandonos" required readonly>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="familia">Problemas familiares:<b style="color:red">*</b></label>
+                                                <input type="number" id="familia" class="form-control" placeholder="Cantidad de abandonos" required readonly>
+                                            </div>
                                         </div>
                                     </div>
-                                    <!-- Matriculados -->
-                                    <div class="col-md-3">
-                                        <div class="form-group">
-                                            <label for="matriculados">Alumnos matriculados:<b style="color:red">*</b></label>
-                                            <input type="number" id="matriculados" class="form-control" placeholder="Cantidad de matriculados" required readonly>
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="infraestructura">Falta de infraestructura:<b style="color:red">*</b></label>
+                                                <input type="number" id="infraestructura" class="form-control" placeholder="Cantidad de abandonos" required readonly>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="otros">Otros factores:<b style="color:red">*</b></label>
+                                                <input type="number" id="otros" class="form-control" placeholder="Cantidad de abandonos" required readonly>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-
-                                <?php
-                                $contador = 0;
-                                $contador_primergrado_a = 0;
-                                $contador_segundogrado_a = 0;
-                                $contador_tercergrado_a = 0;
-                                $contador_cuartogrado_a = 0;
-                                $contador_quintogrado_a = 0;
-                                $contador_sextogrado_a = 0;
-                                $contador_primergrado_b = 0;
-                                $contador_segundogrado_b = 0;
-                                $contador_tercergrado_b = 0;
-                                $contador_cuartogrado_b = 0;
-                                $contador_quintogrado_b = 0;
-                                $contador_sextogrado_b = 0;
-
-
-                                foreach ($reporte_estudiantes as $reporte_estudiante) {
-                                    if ($reporte_estudiante['grado_id'] == "1") $contador_primergrado_a = $contador_primergrado_a + 1;
-                                    if ($reporte_estudiante['grado_id'] == "2") $contador_primergrado_b = $contador_primergrado_b + 1;
-                                    if ($reporte_estudiante['grado_id'] == "8") $contador_segundogrado_a = $contador_segundogrado_a + 1;
-                                    if ($reporte_estudiante['grado_id'] == "9") $contador_segundogrado_b = $contador_segundogrado_b + 1;
-                                    if ($reporte_estudiante['grado_id'] == "10") $contador_tercergrado_a = $contador_tercergrado_a + 1;
-                                    if ($reporte_estudiante['grado_id'] == "11") $contador_tercergrado_b = $contador_tercergrado_b + 1;
-                                    if ($reporte_estudiante['grado_id'] == "12") $contador_cuartogrado_a = $contador_cuartogrado_a + 1;
-                                    if ($reporte_estudiante['grado_id'] == "13") $contador_cuartogrado_b = $contador_cuartogrado_b + 1;
-                                    if ($reporte_estudiante['grado_id'] == "14") $contador_quintogrado_a = $contador_quintogrado_a + 1;
-                                    if ($reporte_estudiante['grado_id'] == "15") $contador_quintogrado_b = $contador_quintogrado_b + 1;
-                                    if ($reporte_estudiante['grado_id'] == "16") $contador_sextogrado_a = $contador_sextogrado_a + 1;
-                                    if ($reporte_estudiante['grado_id'] == "17") $contador_sextogrado_b = $contador_sextogrado_b + 1;
-                                }
-                                $datos_reportes_estudiantes =
-                                    $contador_primergrado_a . "," .
-                                    $contador_primergrado_b . "," .
-                                    $contador_segundogrado_a . "," .
-                                    $contador_segundogrado_b . "," .
-                                    $contador_tercergrado_a . "," .
-                                    $contador_tercergrado_b . "," .
-                                    $contador_cuartogrado_a . "," .
-                                    $contador_cuartogrado_b . "," .
-                                    $contador_quintogrado_a . "," .
-                                    $contador_quintogrado_b . "," .
-                                    $contador_sextogrado_a . "," .
-                                    $contador_sextogrado_b;
-
-
-                                $contador = 0;
-                                $contador_primergrado_a_r = 0;
-                                $contador_segundogrado_a_r = 0;
-                                $contador_tercergrado_a_r = 0;
-                                $contador_cuartogrado_a_r = 0;
-                                $contador_quintogrado_a_r = 0;
-                                $contador_sextogrado_a_r = 0;
-                                $contador_primergrado_b_r = 0;
-                                $contador_segundogrado_b_r = 0;
-                                $contador_tercergrado_b_r = 0;
-                                $contador_cuartogrado_b_r = 0;
-                                $contador_quintogrado_b_r = 0;
-                                $contador_sextogrado_b_r = 0;
-
-
-                                foreach ($reporte_estudiantes3 as $reporte_estudiante3) {
-                                    if ($reporte_estudiante3['grado_id'] == "1") $contador_primergrado_a_r = $contador_primergrado_a_r + 1;
-                                    if ($reporte_estudiante3['grado_id'] == "2") $contador_primergrado_b_r = $contador_primergrado_b_r + 1;
-                                    if ($reporte_estudiante3['grado_id'] == "8") $contador_segundogrado_a_r = $contador_segundogrado_a_r + 1;
-                                    if ($reporte_estudiante3['grado_id'] == "9") $contador_segundogrado_b_r = $contador_segundogrado_b_r + 1;
-                                    if ($reporte_estudiante3['grado_id'] == "10") $contador_tercergrado_a_r = $contador_tercergrado_a_r + 1;
-                                    if ($reporte_estudiante3['grado_id'] == "11") $contador_tercergrado_b_r = $contador_tercergrado_b_r + 1;
-                                    if ($reporte_estudiante3['grado_id'] == "12") $contador_cuartogrado_a_r = $contador_cuartogrado_a_r + 1;
-                                    if ($reporte_estudiante3['grado_id'] == "13") $contador_cuartogrado_b_r = $contador_cuartogrado_b_r + 1;
-                                    if ($reporte_estudiante3['grado_id'] == "14") $contador_quintogrado_a_r = $contador_quintogrado_a_r + 1;
-                                    if ($reporte_estudiante3['grado_id'] == "15") $contador_quintogrado_b_r = $contador_quintogrado_b_r + 1;
-                                    if ($reporte_estudiante3['grado_id'] == "16") $contador_sextogrado_a_r = $contador_sextogrado_a_r + 1;
-                                    if ($reporte_estudiante3['grado_id'] == "17") $contador_sextogrado_b_r = $contador_sextogrado_b_r + 1;
-                                }
-                                $datos_reportes_estudiantes_r =
-                                    $contador_primergrado_a_r . "," .
-                                    $contador_primergrado_b_r . "," .
-                                    $contador_segundogrado_a_r . "," .
-                                    $contador_segundogrado_b_r . "," .
-                                    $contador_tercergrado_a_r . "," .
-                                    $contador_tercergrado_b_r . "," .
-                                    $contador_cuartogrado_a_r . "," .
-                                    $contador_cuartogrado_b_r . "," .
-                                    $contador_quintogrado_a_r . "," .
-                                    $contador_quintogrado_b_r . "," .
-                                    $contador_sextogrado_a_r . "," .
-                                    $contador_sextogrado_b_r;
-                                ?>
-                                
-                                <!-- Alumnos Matriculados -->
-                                <div class="row">
-
-                                    <!-- Integrados -->
-                                    <div class="col-md-3">
-                                        <div class="form-group">
-                                            <label for="abandonos">Abandono escolar:<b style="color:red">*</b></label>
-                                            <input type="number" id="abandonos" class="form-control" placeholder="Cantidad de abandonos" required readonly>
-                                        </div>
-                                    </div>
+                                </form>
+                                <div class="form-group">
+                                    <button type="button" class="btn btn-primary" id="agregarDatos">Agregar</button>
                                 </div>
                                 <hr>
-                                <h6>Motivo de abandono:</h6>
-                                <div class="row">
-                                    <div class="col-md-3">
-                                        <div class="form-group">
-                                            <label for="economico">Factores socioeconómicos:<b style="color:red">*</b></label>
-                                            <input type="number" id="economico" class="form-control" placeholder="Cantidad de abandonos" required readonly>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <div class="form-group">
-                                            <label for="personal">Factores personales:<b style="color:red">*</b></label>
-                                            <input type="number" id="personal" class="form-control" placeholder="Cantidad de abandonos" required readonly>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <div class="form-group">
-                                            <label for="educativo">Factores educativos:<b style="color:red">*</b></label>
-                                            <input type="number" id="educativo" class="form-control" placeholder="Cantidad de abandonos" required readonly>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <div class="form-group">
-                                            <label for="familia">Problemas familiares:<b style="color:red">*</b></label>
-                                            <input type="number" id="familia" class="form-control" placeholder="Cantidad de abandonos" required readonly>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-3">
-                                        <div class="form-group">
-                                            <label for="infraestructura">Falta de infraestructura:<b style="color:red">*</b></label>
-                                            <input type="number" id="infraestructura" class="form-control" placeholder="Cantidad de abandonos" required readonly>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <div class="form-group">
-                                            <label for="otros">Otros factores:<b style="color:red">*</b></label>
-                                            <input type="number" id="otros" class="form-control" placeholder="Cantidad de abandonos" required readonly>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-                            <div class="form-group">
-                                <button type="button" class="btn btn-primary" id="agregarDatos">Agregar</button>
                             </div>
-                            <hr>
                             <div id="tablaDatos">
                                 <table class="table table-bordered">
                                     <thead>
@@ -274,10 +281,17 @@ $niveles = $stmtNiveles->fetchAll(PDO::FETCH_ASSOC);
                         </div>
 
                         <hr>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group text-center">
-                                    <a href="<?= APP_URL; ?>/admin/estadisticas/index.php" class="btn btn-danger">Volver</a>
+
+                        <div class="card-body no-imprimir">
+                            <div class="form-group text-center">
+                                <button type="button" class="btn btn-info" onclick="imprimirPagina()">Exportar Reporte</button>
+
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group text-center">
+                                        <a href="<?= APP_URL; ?>/admin/estadisticas/index.php" class="btn btn-danger">Volver</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -290,12 +304,18 @@ $niveles = $stmtNiveles->fetchAll(PDO::FETCH_ASSOC);
 <?php
 include('../../admin/layout/parte2.php');
 ?>
+</div>
+
 <!-- Incluye Chart.js -->
 <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 <script>
-
-
+    function imprimirPagina() {
+        window.print();
+    }
+</script>
+<script>
     document.addEventListener("DOMContentLoaded", function() {
         let datos = [];
         let grafico;
@@ -680,88 +700,88 @@ include('../../admin/layout/parte2.php');
         let graficoCircular;
 
         const inicializarGraficoCircular = () => {
-    const canvasCircular = document.getElementById('graficoAbandono').getContext('2d');
-    graficoCircular = new Chart(canvasCircular, {
-        type: 'pie',
-        data: {
-            labels: ['Economico', 'Personal', 'Educativo', 'Familia', 'Infraestructura', 'Otros factores'],
-            datasets: [{
-                data: [], // Se llenará dinámicamente
-                backgroundColor: coloresFijos
-            }]
-        },
-        options: {
-            responsive: true,
-            plugins: {
-                legend: {
-                    display: true // Mantiene la leyenda habitual
+            const canvasCircular = document.getElementById('graficoAbandono').getContext('2d');
+            graficoCircular = new Chart(canvasCircular, {
+                type: 'pie',
+                data: {
+                    labels: ['Economico', 'Personal', 'Educativo', 'Familia', 'Infraestructura', 'Otros factores'],
+                    datasets: [{
+                        data: [], // Se llenará dinámicamente
+                        backgroundColor: coloresFijos
+                    }]
                 },
-                title: {
-                    display: true,
-                    text: 'Porcentaje  acumulado de los motivos'
-                },
-                datalabels: { // Configuración del plugin para etiquetas
-                    color: '#fff', // Color del texto
-                    font: {
-                        size: 18, // Tamaño del texto
-                        weight: 'bold'
-                    },
-                    formatter: (value, context) => {
-                        // Mostrar nombre + porcentaje
-                        const label = context.chart.data.labels[context.dataIndex];
-                        return `${label}: ${value}%`;
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            display: true // Mantiene la leyenda habitual
+                        },
+                        title: {
+                            display: true,
+                            text: 'Porcentaje  acumulado de los motivos'
+                        },
+                        datalabels: { // Configuración del plugin para etiquetas
+                            color: '#fff', // Color del texto
+                            font: {
+                                size: 18, // Tamaño del texto
+                                weight: 'bold'
+                            },
+                            formatter: (value, context) => {
+                                // Mostrar nombre + porcentaje
+                                const label = context.chart.data.labels[context.dataIndex];
+                                return `${label}: ${value}%`;
+                            }
+                        }
                     }
                 }
-            }
-        }
-    });
-};
+            });
+        };
 
 
-const actualizarGraficoCircular = () => {
-    // Calcular totales por categoría
-    const totalPorCategoria = {
-        'Economico': 0,
-        'Personal': 0,
-        'Educativo': 0,
-        'Familia': 0,
-        'Infraestructura': 0,
-        'Otros factores': 0
-    };
+        const actualizarGraficoCircular = () => {
+            // Calcular totales por categoría
+            const totalPorCategoria = {
+                'Economico': 0,
+                'Personal': 0,
+                'Educativo': 0,
+                'Familia': 0,
+                'Infraestructura': 0,
+                'Otros factores': 0
+            };
 
-    let totalAbandonosGlobal = 0;
+            let totalAbandonosGlobal = 0;
 
-    datos.forEach(dato => {
-        totalPorCategoria['Economico'] += dato.economico;
-        totalPorCategoria['Personal'] += dato.personal;
-        totalPorCategoria['Educativo'] += dato.educativo;
-        totalPorCategoria['Familia'] += dato.familia;
-        totalPorCategoria['Infraestructura'] += dato.infraestructura;
-        totalPorCategoria['Otros factores'] += dato.otros;
-        totalAbandonosGlobal += dato.economico + dato.personal + dato.educativo + dato.familia + dato.infraestructura + dato.otros ;
-    });
+            datos.forEach(dato => {
+                totalPorCategoria['Economico'] += dato.economico;
+                totalPorCategoria['Personal'] += dato.personal;
+                totalPorCategoria['Educativo'] += dato.educativo;
+                totalPorCategoria['Familia'] += dato.familia;
+                totalPorCategoria['Infraestructura'] += dato.infraestructura;
+                totalPorCategoria['Otros factores'] += dato.otros;
+                totalAbandonosGlobal += dato.economico + dato.personal + dato.educativo + dato.familia + dato.infraestructura + dato.otros;
+            });
 
-    const porcentajes = Object.values(totalPorCategoria).map(total => totalAbandonosGlobal > 0 ? (total / totalAbandonosGlobal * 100).toFixed(2) : 0);
+            const porcentajes = Object.values(totalPorCategoria).map(total => totalAbandonosGlobal > 0 ? (total / totalAbandonosGlobal * 100).toFixed(2) : 0);
 
-    // Actualizar datos del gráfico circular
-    graficoCircular.data.datasets[0].data = porcentajes;
-    graficoCircular.update();
-};
+            // Actualizar datos del gráfico circular
+            graficoCircular.data.datasets[0].data = porcentajes;
+            graficoCircular.update();
+        };
 
-// Llamar esta función tras agregar datos o eliminarlos
-document.getElementById('agregarDatos').addEventListener('click', () => {
-    actualizarGraficoCircular();
-});
+        // Llamar esta función tras agregar datos o eliminarlos
+        document.getElementById('agregarDatos').addEventListener('click', () => {
+            actualizarGraficoCircular();
+        });
 
-window.eliminarDato = (index) => {
-    datos.splice(index, 1);
-    actualizarTabla();
-    actualizarGrafico();
-    actualizarGraficoCircular();
-};
+        window.eliminarDato = (index) => {
+            datos.splice(index, 1);
+            actualizarTabla();
+            actualizarGrafico();
+            actualizarGraficoCircular();
+        };
 
-// Inicializar el gráfico circular al cargar la página
-inicializarGraficoCircular();
+        // Inicializar el gráfico circular al cargar la página
+        inicializarGraficoCircular();
 
 
 

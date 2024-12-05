@@ -22,7 +22,6 @@ $stmtNiveles->execute();
 $niveles = $stmtNiveles->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
-
 <div class="content-wrapper">
     <br>
     <div class="content">
@@ -51,106 +50,114 @@ $niveles = $stmtNiveles->fetchAll(PDO::FETCH_ASSOC);
                 #contenedorGraficos div {
                     text-align: center;
                 }
+
+                @media print {
+                    .no-imprimir {
+                        display: none;
+                    }
+                }
             </style>
             <br>
             <div class="row">
                 <div class="col-md-12">
                     <div class="card card-outline card-primary">
-                        <div class="card-header">
-                            <h3 class="card-title">Ingresar datos:</h3>
-                        </div>
-                        <div class="card-body">
-                            <form id="formParticipacion">
-                                <div class="row">
-                                    <div class="col-md-3">
-                                        <div class="form-group">
-                                            <label for="ciclo">Ciclo Lectivo:<b style="color:red">*</b></label>
-                                            <select name="id_gestion" id="ciclo" class="form-control" required>
-                                                <option value="" disabled selected>Seleccionar ciclo lectivo</option>
-                                                <?php
+                        <div class="card-body no-imprimir">
+                            <div class="card-header">
+                                <h3 class="card-title">Ingresar datos:</h3>
+                            </div>
+                            <div class="card-body">
+                                <form id="formParticipacion">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="ciclo">Ciclo Lectivo:<b style="color:red">*</b></label>
+                                                <select name="id_gestion" id="ciclo" class="form-control" required>
+                                                    <option value="" disabled selected>Seleccionar ciclo lectivo</option>
+                                                    <?php
                                                     foreach ($gestiones as $gestione) {
                                                         if ($gestione['gestion'] == 'CICLO LECTIVO 2024') { // Verifica si id_rol es igual a 1
                                                     ?>
-                                                    <option value="<?= $gestione['id_gestion']; ?>"><?= $gestione['gestion']; ?></option>
+                                                            <option value="<?= $gestione['id_gestion']; ?>"><?= $gestione['gestion']; ?></option>
                                                     <?php
                                                         }
                                                     }
                                                     ?>
-                                            </select>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="turno">Turno:<b style="color:red">*</b></label>
+                                                <select name="id_nivel" id="turno" class="form-control" required>
+                                                    <option value="" disabled selected>Seleccionar turno</option>
+                                                    <?php foreach ($niveles as $nivele): ?>
+                                                        <option value="<?= $nivele['turno']; ?>">
+                                                            <?= $nivele['turno']; ?> <!-- Solo imprime el turno -->
+                                                        </option>
+                                                    <?php endforeach; ?>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="grado">Grado y división:<b style="color:red">*</b></label>
+                                                <!-- Grado y División -->
+                                                <select id="grado" name="id_grado" class="form-control" required>
+                                                    <option value="" disabled selected>Seleccionar grado</option>
+                                                    <?php foreach ($grados as $grado): ?>
+                                                        <option value="<?= $grado['id_grado']; ?>">
+                                                            <?= $grado['curso'] . " " . $grado['paralelo']; ?>
+                                                        </option>
+                                                    <?php endforeach; ?>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <!-- Matriculados -->
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="matriculados">Alumnos matriculados:<b
+                                                        style="color:red">*</b></label>
+                                                <input type="number" id="matriculados" class="form-control"
+                                                    placeholder="Cantidad de matriculados" required readonly>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-3">
-                                        <div class="form-group">
-                                            <label for="turno">Turno:<b style="color:red">*</b></label>
-                                            <select name="id_nivel" id="turno" class="form-control" required>
-                                                <option value="" disabled selected>Seleccionar turno</option>
-                                                <?php foreach ($niveles as $nivele): ?>
-                                                    <option value="<?= $nivele['turno']; ?>">
-                                                        <?= $nivele['turno']; ?> <!-- Solo imprime el turno -->
-                                                    </option>
-                                                <?php endforeach; ?>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <div class="form-group">
-                                            <label for="grado">Grado y división:<b style="color:red">*</b></label>
-                                            <!-- Grado y División -->
-                                            <select id="grado" name="id_grado" class="form-control" required>
-                                                <option value="" disabled selected>Seleccionar grado</option>
-                                                <?php foreach ($grados as $grado): ?>
-                                                    <option value="<?= $grado['id_grado']; ?>">
-                                                        <?= $grado['curso'] . " " . $grado['paralelo']; ?>
-                                                    </option>
-                                                <?php endforeach; ?>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <!-- Matriculados -->
-                                    <div class="col-md-3">
-                                        <div class="form-group">
-                                            <label for="matriculados">Alumnos matriculados:<b
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label for="actos_asistieron">Actos: Participación Activa - Aceptable<b
                                                     style="color:red">*</b></label>
-                                            <input type="number" id="matriculados" class="form-control"
-                                                placeholder="Cantidad de matriculados" required readonly>
+                                            <input type="number" id="actos_asistieron" class="form-control" required readonly>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="actos_noasistieron">Actos: Participación Baja - Escasa<b
+                                                    style="color:red">*</b></label>
+                                            <input type="number" id="actos_noasistieron" class="form-control" required readonly>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="reuniones_asistieron">Reuniones: Participación Activa - Aceptable<b
+                                                    style="color:red">*</b></label>
+                                            <input type="number" id="reuniones_asistieron" class="form-control" required readonly>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="reuniones_noasistieron">Reuniones: Participación Baja - Escasa<b
+                                                    style="color:red">*</b></label>
+                                            <input type="number" id="reuniones_noasistieron" class="form-control" required readonly>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="extras_asistieron">Actividades Extras: Participación Activa - Aceptable<b
+                                                    style="color:red">*</b></label>
+                                            <input type="number" id="extras_asistieron" class="form-control" required readonly>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="extras_noasistieron">Actividades Extras: Participación Baja - Escasa<b
+                                                    style="color:red">*</b></label>
+                                            <input type="number" id="extras_noasistieron" class="form-control" required readonly>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <label for="actos_asistieron">Actos: Participación Activa - Aceptable<b
-                                                style="color:red">*</b></label>
-                                        <input type="number" id="actos_asistieron" class="form-control" required readonly>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label for="actos_noasistieron">Actos: Participación Baja - Escasa<b
-                                                style="color:red">*</b></label>
-                                        <input type="number" id="actos_noasistieron" class="form-control" required readonly>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label for="reuniones_asistieron">Reuniones: Participación Activa - Aceptable<b
-                                                style="color:red">*</b></label>
-                                        <input type="number" id="reuniones_asistieron" class="form-control" required readonly>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label for="reuniones_noasistieron">Reuniones: Participación Baja - Escasa<b
-                                                style="color:red">*</b></label>
-                                        <input type="number" id="reuniones_noasistieron" class="form-control" required readonly>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label for="extras_asistieron">Actividades Extras: Participación Activa - Aceptable<b
-                                                style="color:red">*</b></label>
-                                        <input type="number" id="extras_asistieron" class="form-control" required readonly>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label for="extras_noasistieron">Actividades Extras: Participación Baja - Escasa<b
-                                                style="color:red">*</b></label>
-                                        <input type="number" id="extras_noasistieron" class="form-control" required readonly>
-                                    </div>
-                                </div>
-                                <br>
-                                <button type="button" class="btn btn-primary" id="guardarRegistro">Agregar</button>
-                            </form>
+                                    <br>
+                                    <button type="button" class="btn btn-primary" id="guardarRegistro">Agregar</button>
+                                </form>
+                            </div>
                         </div>
                         <div class="card-body">
                             <h3>Porcentaje de participación</h3>
@@ -176,11 +183,19 @@ $niveles = $stmtNiveles->fetchAll(PDO::FETCH_ASSOC);
                             <!-- </table> -->
                         </div>
                         <hr>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group text-center">
-                                    <a href="<?= APP_URL; ?>/admin/estadisticas/index.php"
-                                        class="btn btn-danger">Volver</a>
+                        <div class="card-body no-imprimir">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group text-center">
+                                        <button type="button" class="btn btn-info" onclick="imprimirPagina()">Exportar Reporte</button>
+
+                                    </div>
+                                    <div class="form-group text-center">
+                                        <a href="<?= APP_URL; ?>/admin/estadisticas/index.php"
+                                            class="btn btn-danger">Volver</a>
+                                    </div>
+
+
                                 </div>
                             </div>
                         </div>
@@ -191,13 +206,24 @@ $niveles = $stmtNiveles->fetchAll(PDO::FETCH_ASSOC);
         </div>
     </div>
 </div>
-<?php include('../../admin/layout/parte2.php'); ?>
+<?php
+include('../../admin/layout/parte2.php');
+?>
+
+<!-- Botón de imprimir -->
+
+<script>
+    function imprimirPagina() {
+        window.print();
+    }
+</script>
+
 
 
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
-    document.addEventListener('DOMContentLoaded', function () {
+    document.addEventListener('DOMContentLoaded', function() {
         const contenedorGraficos = document.getElementById('contenedorGraficos');
         const gradoSelect = document.getElementById('grado');
         const matriculadosInput = document.getElementById('matriculados');
@@ -355,7 +381,7 @@ $niveles = $stmtNiveles->fetchAll(PDO::FETCH_ASSOC);
         };
 
         // Escuchar cambios en el select de grado
-        gradoSelect.addEventListener('change', function () {
+        gradoSelect.addEventListener('change', function() {
             const gradoValue = gradoSelect.value; // Usado para fetch
             const gradoText = gradoSelect.options[gradoSelect.selectedIndex].text; // Usado para mostrar
 
@@ -398,17 +424,25 @@ $niveles = $stmtNiveles->fetchAll(PDO::FETCH_ASSOC);
             tabla.appendChild(thead);
 
             const tbody = document.createElement('tbody');
-            const actividades = [
-                { nombre: 'Actos', valores: actos },
-                { nombre: 'Reuniones', valores: reuniones },
-                { nombre: 'Extras', valores: extras }
+            const actividades = [{
+                    nombre: 'Actos',
+                    valores: actos
+                },
+                {
+                    nombre: 'Reuniones',
+                    valores: reuniones
+                },
+                {
+                    nombre: 'Extras',
+                    valores: extras
+                }
             ];
 
             actividades.forEach(actividad => {
                 const total = actividad.valores[0] + actividad.valores[1];
-                const participacion = total > 0
-                    ? ((actividad.valores[0] / total) * 100).toFixed(2) + '%'
-                    : '0%';
+                const participacion = total > 0 ?
+                    ((actividad.valores[0] / total) * 100).toFixed(2) + '%' :
+                    '0%';
 
                 const fila = document.createElement('tr');
                 fila.innerHTML = `
@@ -456,7 +490,9 @@ $niveles = $stmtNiveles->fetchAll(PDO::FETCH_ASSOC);
                 options: {
                     responsive: false,
                     plugins: {
-                        legend: { display: false },
+                        legend: {
+                            display: false
+                        },
                     }
                 }
             });
@@ -467,7 +503,7 @@ $niveles = $stmtNiveles->fetchAll(PDO::FETCH_ASSOC);
         function agregarRegistro() {
             const gradoSelect = document.getElementById('grado');
             const cicloSelect = document.getElementById('ciclo');
-            
+
             // Obtener el valor numérico y el texto del grado y ciclo
             const grado = gradoSelect.value;
             const gradoText = gradoSelect.options[gradoSelect.selectedIndex]?.text || "N/A";
@@ -494,7 +530,7 @@ $niveles = $stmtNiveles->fetchAll(PDO::FETCH_ASSOC);
             contenedor.style.marginBottom = "10px";
             contenedor.style.alignItems = "center";
 
-             // Pasar los textos (gradoText y cicloText) a la tabla
+            // Pasar los textos (gradoText y cicloText) a la tabla
             const tabla = crearTabla(gradoText, cicloText, turno, actos, reuniones, extras);
             contenedor.appendChild(tabla);
 
