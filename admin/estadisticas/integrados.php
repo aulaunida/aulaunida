@@ -273,11 +273,12 @@ $niveles = $stmtNiveles->fetchAll(PDO::FETCH_ASSOC);
                             </div>
                         </div>
                         <div class="card-body centrar-grafico">
-                            <canvas id="graficoAlumnos" style="max-width: 600px; max-height: 400px;"></canvas>
-                        </div>
-                        <div class="card-body centrar-grafico">
                             <canvas id="graficoDiscapacidades" style="max-width: 600px; max-height: 400px;"></canvas>
                         </div>
+                        <div class="card-body centrar-grafico">
+                            <canvas id="graficoAlumnos" style="max-width: 600px; max-height: 400px;"></canvas>
+                        </div>
+                        
 
 
                         <hr>

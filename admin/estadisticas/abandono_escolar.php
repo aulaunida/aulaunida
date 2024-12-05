@@ -21,7 +21,13 @@ $stmtNiveles = $pdo->prepare($queryNiveles);
 $stmtNiveles->execute();
 $niveles = $stmtNiveles->fetchAll(PDO::FETCH_ASSOC);
 ?>
-
+<style>
+.centrar-grafico {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+</style>
 
 <!-- Content Wrapper -->
 <div class="content-wrapper">
@@ -260,9 +266,13 @@ $niveles = $stmtNiveles->fetchAll(PDO::FETCH_ASSOC);
                                 </table>
                             </div>
                         </div>
-                        <div class="card-body">
-                            <canvas id="graficoAlumnos" width="400" height="200"></canvas>
+                        <div class="card-body centrar-grafico">
+                            <canvas id="graficoAbandono" style="max-width: 600px; max-height: 400px;"></canvas>
                         </div>
+                        <div class="card-body centrar-grafico">
+                            <canvas id="graficoAlumnos" style="max-width: 600px; max-height: 400px;"></canvas>
+                        </div>
+
                         <hr>
                         <div class="row">
                             <div class="col-md-12">
@@ -281,8 +291,11 @@ $niveles = $stmtNiveles->fetchAll(PDO::FETCH_ASSOC);
 include('../../admin/layout/parte2.php');
 ?>
 <!-- Incluye Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
+
+
     document.addEventListener("DOMContentLoaded", function() {
         let datos = [];
         let grafico;
@@ -314,7 +327,7 @@ include('../../admin/layout/parte2.php');
                         },
                         title: {
                             display: true,
-                            text: 'Distribución de Abandono de Alumnos'
+                            text: 'Distribución de abandono por grado'
                         }
                     },
                     scales: {
@@ -632,7 +645,7 @@ include('../../admin/layout/parte2.php');
                         },
                         title: {
                             display: true,
-                            text: 'Distribución de Alumnos Integrados'
+                            text: 'Distribución de abandonos por grado'
                         }
                     },
                     scales: {
@@ -663,6 +676,94 @@ include('../../admin/layout/parte2.php');
             actualizarTabla();
             actualizarGrafico();
         };
+
+        let graficoCircular;
+
+        const inicializarGraficoCircular = () => {
+    const canvasCircular = document.getElementById('graficoAbandono').getContext('2d');
+    graficoCircular = new Chart(canvasCircular, {
+        type: 'pie',
+        data: {
+            labels: ['Economico', 'Personal', 'Educativo', 'Familia', 'Infraestructura', 'Otros factores'],
+            datasets: [{
+                data: [], // Se llenará dinámicamente
+                backgroundColor: coloresFijos
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    display: true // Mantiene la leyenda habitual
+                },
+                title: {
+                    display: true,
+                    text: 'Porcentaje  acumulado de los motivos'
+                },
+                datalabels: { // Configuración del plugin para etiquetas
+                    color: '#fff', // Color del texto
+                    font: {
+                        size: 18, // Tamaño del texto
+                        weight: 'bold'
+                    },
+                    formatter: (value, context) => {
+                        // Mostrar nombre + porcentaje
+                        const label = context.chart.data.labels[context.dataIndex];
+                        return `${label}: ${value}%`;
+                    }
+                }
+            }
+        }
+    });
+};
+
+
+const actualizarGraficoCircular = () => {
+    // Calcular totales por categoría
+    const totalPorCategoria = {
+        'Economico': 0,
+        'Personal': 0,
+        'Educativo': 0,
+        'Familia': 0,
+        'Infraestructura': 0,
+        'Otros factores': 0
+    };
+
+    let totalAbandonosGlobal = 0;
+
+    datos.forEach(dato => {
+        totalPorCategoria['Economico'] += dato.economico;
+        totalPorCategoria['Personal'] += dato.personal;
+        totalPorCategoria['Educativo'] += dato.educativo;
+        totalPorCategoria['Familia'] += dato.familia;
+        totalPorCategoria['Infraestructura'] += dato.infraestructura;
+        totalPorCategoria['Otros factores'] += dato.otros;
+        totalAbandonosGlobal += dato.economico + dato.personal + dato.educativo + dato.familia + dato.infraestructura + dato.otros ;
+    });
+
+    const porcentajes = Object.values(totalPorCategoria).map(total => totalAbandonosGlobal > 0 ? (total / totalAbandonosGlobal * 100).toFixed(2) : 0);
+
+    // Actualizar datos del gráfico circular
+    graficoCircular.data.datasets[0].data = porcentajes;
+    graficoCircular.update();
+};
+
+// Llamar esta función tras agregar datos o eliminarlos
+document.getElementById('agregarDatos').addEventListener('click', () => {
+    actualizarGraficoCircular();
+});
+
+window.eliminarDato = (index) => {
+    datos.splice(index, 1);
+    actualizarTabla();
+    actualizarGrafico();
+    actualizarGraficoCircular();
+};
+
+// Inicializar el gráfico circular al cargar la página
+inicializarGraficoCircular();
+
+
 
         inicializarGrafico();
     });
