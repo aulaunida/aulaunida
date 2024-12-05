@@ -58,8 +58,11 @@ foreach ($materias as $materia) {
                         </div>
                         <div class="card-body">
                         <div class="text-right mb-2">
-                            <a href="<?= APP_URL; ?>/libs/fpdf/reportecalificaciones.php"  target="_blank" class="btn btn-success"><i class="bi bi-filetype-pdf"></i> Generar reporte</a>
-                        </div>
+    <a href="<?= APP_URL; ?>/libs/fpdf/reportecalificaciones.php?id_grado=<?= $_GET['id_grado']; ?>&id_docente=<?= $_GET['id_docente']; ?>&id_materia=<?= $_GET['id_materia']; ?>" target="_blank" class="btn btn-success">
+        <i class="bi bi-filetype-pdf"></i> Generar reporte
+    </a>
+</div>
+
                             <table  class="table table-striped table-bordered table-hover table-sm">
                                 <thead>
                                     <tr>
