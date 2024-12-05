@@ -51,8 +51,8 @@ if ($notas) {
     echo "no existe registro";
 
     $sentencia = $pdo->prepare('INSERT INTO calificaciones
-        (docente_id,estudiante_id,materia_id,nota1,nota2,nota3,nota4,nota5,nota6,nota7,nota8,fyh_creacion, estado)
-VALUES ( :docente_id,:estudiante_id,:materia_id,:nota1,:nota2,:nota3,:nota4,:nota5,:nota6,:nota7,:nota8,nota9=:nota9,nota10=:nota10,:fyh_creacion,:estado)');
+        (docente_id,estudiante_id,materia_id,nota1,nota2,nota3,nota4,nota5,nota6,nota7,nota8,nota9,nota10, fyh_creacion, estado)
+VALUES ( :docente_id,:estudiante_id,:materia_id,:nota1,:nota2,:nota3,:nota4,:nota5,:nota6,:nota7,:nota8,:nota9,:nota10,:fyh_creacion,:estado)');
 
     $sentencia->bindParam(':docente_id', $id_docente);
     $sentencia->bindParam(':estudiante_id', $id_estudiante);
