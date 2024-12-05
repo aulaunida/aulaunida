@@ -22,11 +22,11 @@ $stmtNiveles->execute();
 $niveles = $stmtNiveles->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <style>
-.centrar-grafico {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+    .centrar-grafico {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 </style>
 
 <!-- Content Wrapper -->
@@ -54,14 +54,14 @@ $niveles = $stmtNiveles->fetchAll(PDO::FETCH_ASSOC);
                                             <select name="id_gestion" id="ciclo" class="form-control" required>
                                                 <option value="" disabled selected>Seleccionar ciclo lectivo</option>
                                                 <?php
-                                                    foreach ($gestiones as $gestione) {
-                                                        if ($gestione['gestion'] == 'CICLO LECTIVO 2024') { // Verifica si id_rol es igual a 1
-                                                    ?>
-                                                    <option value="<?= $gestione['id_gestion']; ?>"><?= $gestione['gestion']; ?></option>
-                                                    <?php
-                                                        }
+                                                foreach ($gestiones as $gestione) {
+                                                    if ($gestione['gestion'] == 'CICLO LECTIVO 2024') { // Verifica si id_rol es igual a 1
+                                                ?>
+                                                        <option value="<?= $gestione['id_gestion']; ?>"><?= $gestione['gestion']; ?></option>
+                                                <?php
                                                     }
-                                                    ?>
+                                                }
+                                                ?>
                                             </select>
                                         </div>
                                     </div>
@@ -278,8 +278,9 @@ $niveles = $stmtNiveles->fetchAll(PDO::FETCH_ASSOC);
                         <div class="card-body centrar-grafico">
                             <canvas id="graficoAlumnos" style="max-width: 600px; max-height: 400px;"></canvas>
                         </div>
-                        
 
+                        <div class="form-group text-center"> <button id="exportarPDF" class="btn btn-success">Exportar PDF</button>
+                        </div>
 
                         <hr>
                         <div class="row">
@@ -301,10 +302,14 @@ include('../../admin/layout/parte2.php');
 <!-- Incluye Chart.js -->
 <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<!-- jsPDF y html2canvas -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+
+
+
 <script>
-
-
-
     document.addEventListener("DOMContentLoaded", function() {
         let datos = [];
         let grafico;
@@ -542,7 +547,7 @@ include('../../admin/layout/parte2.php');
             const gradoValue = gradoSelect.value; // Usado para fetch
             const gradoText = gradoSelect.options[gradoSelect.selectedIndex].text; // Usado para mostrar
 
-            
+
             obtenerMatriculados();
             obtenerRepetidores();
             obtenerIntelectual();
@@ -621,15 +626,15 @@ include('../../admin/layout/parte2.php');
             });
         };
         // Definir colores fijos
-const coloresFijos = [
-    "#FFB6C1", // Rosa pastel
-    "#ADD8E6", // Azul pastel
-    "#FFDAB9", // Durazno pastel
-    "#DDA0DD", // Púrpura pastel
-    "#98FB98", // Verde pastel
-    "#FFFACD", // Amarillo pastel
-    "#FFE4E1"  // Rosa claro pastel
-];
+        const coloresFijos = [
+            "#FFB6C1", // Rosa pastel
+            "#ADD8E6", // Azul pastel
+            "#FFDAB9", // Durazno pastel
+            "#DDA0DD", // Púrpura pastel
+            "#98FB98", // Verde pastel
+            "#FFFACD", // Amarillo pastel
+            "#FFE4E1" // Rosa claro pastel
+        ];
 
         const actualizarGrafico = () => {
             const grados = [...new Set(datos.map(dato => dato.grado))];
@@ -706,105 +711,135 @@ const coloresFijos = [
             });
         };
 
-        
+
         window.eliminarDato = (index) => {
             datos.splice(index, 1);
             actualizarTabla();
             actualizarGrafico();
         };
-        
-      
+
+
 
         let graficoCircular;
 
-const inicializarGraficoCircular = () => {
-    const canvasCircular = document.getElementById('graficoDiscapacidades').getContext('2d');
-    graficoCircular = new Chart(canvasCircular, {
-        type: 'pie',
-        data: {
-            labels: ['Intelectual', 'Sordera', 'Ceguera', 'Motora', 'TGD', 'Más de una', 'Otras'],
-            datasets: [{
-                data: [], // Se llenará dinámicamente
-                backgroundColor: coloresFijos
-            }]
-        },
-        options: {
-            responsive: true,
-            plugins: {
-                legend: {
-                    display: true // Mantiene la leyenda habitual
+        const inicializarGraficoCircular = () => {
+            const canvasCircular = document.getElementById('graficoDiscapacidades').getContext('2d');
+            graficoCircular = new Chart(canvasCircular, {
+                type: 'pie',
+                data: {
+                    labels: ['Intelectual', 'Sordera', 'Ceguera', 'Motora', 'TGD', 'Más de una', 'Otras'],
+                    datasets: [{
+                        data: [], // Se llenará dinámicamente
+                        backgroundColor: coloresFijos
+                    }]
                 },
-                title: {
-                    display: true,
-                    text: 'Porcentaje de Tipos de Discapacidades'
-                },
-                datalabels: { // Configuración del plugin para etiquetas
-                    color: '#fff', // Color del texto
-                    font: {
-                        size: 18, // Tamaño del texto
-                        weight: 'bold'
-                    },
-                    formatter: (value, context) => {
-                        // Mostrar nombre + porcentaje
-                        const label = context.chart.data.labels[context.dataIndex];
-                        return `${label}: ${value}%`;
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            display: true // Mantiene la leyenda habitual
+                        },
+                        title: {
+                            display: true,
+                            text: 'Porcentaje de Tipos de Discapacidades'
+                        },
+                        datalabels: { // Configuración del plugin para etiquetas
+                            color: '#fff', // Color del texto
+                            font: {
+                                size: 18, // Tamaño del texto
+                                weight: 'bold'
+                            },
+                            formatter: (value, context) => {
+                                // Mostrar nombre + porcentaje
+                                const label = context.chart.data.labels[context.dataIndex];
+                                return `${label}: ${value}%`;
+                            }
+                        }
                     }
                 }
-            }
-        }
-    });
-};
+            });
+        };
 
 
-const actualizarGraficoCircular = () => {
-    // Calcular totales por categoría
-    const totalPorCategoria = {
-        'Intelectual': 0,
-        'Sordera': 0,
-        'Ceguera': 0,
-        'Motora': 0,
-        'TGD': 0,
-        'Más de una': 0,
-        'Otras': 0
-    };
+        const actualizarGraficoCircular = () => {
+            // Calcular totales por categoría
+            const totalPorCategoria = {
+                'Intelectual': 0,
+                'Sordera': 0,
+                'Ceguera': 0,
+                'Motora': 0,
+                'TGD': 0,
+                'Más de una': 0,
+                'Otras': 0
+            };
 
-    let totalIntegradosGlobal = 0;
+            let totalIntegradosGlobal = 0;
 
-    datos.forEach(dato => {
-        totalPorCategoria['Intelectual'] += dato.intelectual;
-        totalPorCategoria['Sordera'] += dato.sordera;
-        totalPorCategoria['Ceguera'] += dato.ceguera;
-        totalPorCategoria['Motora'] += dato.motora;
-        totalPorCategoria['TGD'] += dato.tgd;
-        totalPorCategoria['Más de una'] += dato.multiples;
-        totalPorCategoria['Otras'] += dato.otras;
-        totalIntegradosGlobal += dato.intelectual + dato.sordera + dato.ceguera + dato.motora + dato.tgd + dato.multiples + dato.otras;
-    });
+            datos.forEach(dato => {
+                totalPorCategoria['Intelectual'] += dato.intelectual;
+                totalPorCategoria['Sordera'] += dato.sordera;
+                totalPorCategoria['Ceguera'] += dato.ceguera;
+                totalPorCategoria['Motora'] += dato.motora;
+                totalPorCategoria['TGD'] += dato.tgd;
+                totalPorCategoria['Más de una'] += dato.multiples;
+                totalPorCategoria['Otras'] += dato.otras;
+                totalIntegradosGlobal += dato.intelectual + dato.sordera + dato.ceguera + dato.motora + dato.tgd + dato.multiples + dato.otras;
+            });
 
-    const porcentajes = Object.values(totalPorCategoria).map(total => totalIntegradosGlobal > 0 ? (total / totalIntegradosGlobal * 100).toFixed(2) : 0);
+            const porcentajes = Object.values(totalPorCategoria).map(total => totalIntegradosGlobal > 0 ? (total / totalIntegradosGlobal * 100).toFixed(2) : 0);
 
-    // Actualizar datos del gráfico circular
-    graficoCircular.data.datasets[0].data = porcentajes;
-    graficoCircular.update();
-};
+            // Actualizar datos del gráfico circular
+            graficoCircular.data.datasets[0].data = porcentajes;
+            graficoCircular.update();
+        };
 
-// Llamar esta función tras agregar datos o eliminarlos
-document.getElementById('agregarDatos').addEventListener('click', () => {
-    actualizarGraficoCircular();
-});
+        // Llamar esta función tras agregar datos o eliminarlos
+        document.getElementById('agregarDatos').addEventListener('click', () => {
+            actualizarGraficoCircular();
+        });
 
-window.eliminarDato = (index) => {
-    datos.splice(index, 1);
-    actualizarTabla();
-    actualizarGrafico();
-    actualizarGraficoCircular();
-};
+        window.eliminarDato = (index) => {
+            datos.splice(index, 1);
+            actualizarTabla();
+            actualizarGrafico();
+            actualizarGraficoCircular();
+        };
 
-// Inicializar el gráfico circular al cargar la página
-inicializarGraficoCircular();
+        // Inicializar el gráfico circular al cargar la página
+        inicializarGraficoCircular();
 
 
         inicializarGrafico();
     });
-    
+
+    document.getElementById('exportarPDF').addEventListener('click', function() {
+        // Capturar el segundo gráfico (graficoDiscapacidades)
+        html2canvas(document.getElementById('graficoDiscapacidades'), {
+            onrendered: function(canvas2) {
+                const imgData2 = canvas2.toDataURL('image/png');
+
+                // Capturar el primer gráfico (graficoAlumnos)
+                html2canvas(document.getElementById('graficoAlumnos'), {
+                    onrendered: function(canvas1) {
+                        const imgData1 = canvas1.toDataURL('image/png');
+
+                        // Crear el documento PDF
+                        const {
+                            jsPDF
+                        } = window.jspdf;
+                        const doc = new jsPDF();
+
+                        // Añadir la imagen del gráfico de discapacidades (ubicado en la parte superior)
+                        doc.addImage(imgData2, 'PNG', 10, 10, 180, 90); // Ajusta el tamaño y las coordenadas si es necesario
+
+                        // Añadir la imagen del gráfico de alumnos (ubicado debajo del primero)
+                        doc.addImage(imgData1, 'PNG', 10, 100, 180, 90); // Ajusta las coordenadas para que no se sobrepongan
+
+                        // Guardar el PDF
+                        doc.save('graficos_completos.pdf');
+                    }
+                });
+            }
+        });
+    });
 </script>
