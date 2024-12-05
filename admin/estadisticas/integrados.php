@@ -21,7 +21,13 @@ $stmtNiveles = $pdo->prepare($queryNiveles);
 $stmtNiveles->execute();
 $niveles = $stmtNiveles->fetchAll(PDO::FETCH_ASSOC);
 ?>
-
+<style>
+.centrar-grafico {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+</style>
 
 <!-- Content Wrapper -->
 <div class="content-wrapper">
@@ -266,9 +272,14 @@ $niveles = $stmtNiveles->fetchAll(PDO::FETCH_ASSOC);
                                 </table>
                             </div>
                         </div>
-                        <div class="card-body">
-                            <canvas id="graficoAlumnos" width="400" height="200"></canvas>
+                        <div class="card-body centrar-grafico">
+                            <canvas id="graficoAlumnos" style="max-width: 600px; max-height: 400px;"></canvas>
                         </div>
+                        <div class="card-body centrar-grafico">
+                            <canvas id="graficoDiscapacidades" style="max-width: 600px; max-height: 400px;"></canvas>
+                        </div>
+
+
                         <hr>
                         <div class="row">
                             <div class="col-md-12">
@@ -287,8 +298,12 @@ $niveles = $stmtNiveles->fetchAll(PDO::FETCH_ASSOC);
 include('../../admin/layout/parte2.php');
 ?>
 <!-- Incluye Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
+
+
+
     document.addEventListener("DOMContentLoaded", function() {
         let datos = [];
         let grafico;
@@ -696,7 +711,99 @@ const coloresFijos = [
             actualizarTabla();
             actualizarGrafico();
         };
+        
+      
+
+        let graficoCircular;
+
+const inicializarGraficoCircular = () => {
+    const canvasCircular = document.getElementById('graficoDiscapacidades').getContext('2d');
+    graficoCircular = new Chart(canvasCircular, {
+        type: 'pie',
+        data: {
+            labels: ['Intelectual', 'Sordera', 'Ceguera', 'Motora', 'TGD', 'Más de una', 'Otras'],
+            datasets: [{
+                data: [], // Se llenará dinámicamente
+                backgroundColor: coloresFijos
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    display: true // Mantiene la leyenda habitual
+                },
+                title: {
+                    display: true,
+                    text: 'Porcentaje de Tipos de Discapacidades'
+                },
+                datalabels: { // Configuración del plugin para etiquetas
+                    color: '#fff', // Color del texto
+                    font: {
+                        size: 18, // Tamaño del texto
+                        weight: 'bold'
+                    },
+                    formatter: (value, context) => {
+                        // Mostrar nombre + porcentaje
+                        const label = context.chart.data.labels[context.dataIndex];
+                        return `${label}: ${value}%`;
+                    }
+                }
+            }
+        }
+    });
+};
+
+
+const actualizarGraficoCircular = () => {
+    // Calcular totales por categoría
+    const totalPorCategoria = {
+        'Intelectual': 0,
+        'Sordera': 0,
+        'Ceguera': 0,
+        'Motora': 0,
+        'TGD': 0,
+        'Más de una': 0,
+        'Otras': 0
+    };
+
+    let totalIntegradosGlobal = 0;
+
+    datos.forEach(dato => {
+        totalPorCategoria['Intelectual'] += dato.intelectual;
+        totalPorCategoria['Sordera'] += dato.sordera;
+        totalPorCategoria['Ceguera'] += dato.ceguera;
+        totalPorCategoria['Motora'] += dato.motora;
+        totalPorCategoria['TGD'] += dato.tgd;
+        totalPorCategoria['Más de una'] += dato.multiples;
+        totalPorCategoria['Otras'] += dato.otras;
+        totalIntegradosGlobal += dato.intelectual + dato.sordera + dato.ceguera + dato.motora + dato.tgd + dato.multiples + dato.otras;
+    });
+
+    const porcentajes = Object.values(totalPorCategoria).map(total => totalIntegradosGlobal > 0 ? (total / totalIntegradosGlobal * 100).toFixed(2) : 0);
+
+    // Actualizar datos del gráfico circular
+    graficoCircular.data.datasets[0].data = porcentajes;
+    graficoCircular.update();
+};
+
+// Llamar esta función tras agregar datos o eliminarlos
+document.getElementById('agregarDatos').addEventListener('click', () => {
+    actualizarGraficoCircular();
+});
+
+window.eliminarDato = (index) => {
+    datos.splice(index, 1);
+    actualizarTabla();
+    actualizarGrafico();
+    actualizarGraficoCircular();
+};
+
+// Inicializar el gráfico circular al cargar la página
+inicializarGraficoCircular();
+
 
         inicializarGrafico();
     });
+    
 </script>
