@@ -15,11 +15,7 @@ $stmtGestiones = $pdo->prepare($queryGestiones);
 $stmtGestiones->execute();
 $gestiones = $stmtGestiones->fetchAll(PDO::FETCH_ASSOC);
 
-// Consultar niveles (turno)
-$queryNiveles = "SELECT id_nivel, nivel, turno FROM niveles WHERE estado = '1'";
-$stmtNiveles = $pdo->prepare($queryNiveles);
-$stmtNiveles->execute();
-$niveles = $stmtNiveles->fetchAll(PDO::FETCH_ASSOC);
+
 ?>
 
 <div class="content-wrapper">
@@ -68,7 +64,7 @@ $niveles = $stmtNiveles->fetchAll(PDO::FETCH_ASSOC);
                             <div class="card-body">
                                 <form id="formParticipacion">
                                     <div class="row">
-                                        <div class="col-md-3">
+                                        <div class="col-md-4">
                                             <div class="form-group">
                                                 <label for="ciclo">Ciclo Lectivo:<b style="color:red">*</b></label>
                                                 <select name="id_gestion" id="ciclo" class="form-control" required>
@@ -85,20 +81,8 @@ $niveles = $stmtNiveles->fetchAll(PDO::FETCH_ASSOC);
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class="col-md-3">
-                                            <div class="form-group">
-                                                <label for="turno">Turno:<b style="color:red">*</b></label>
-                                                <select name="id_nivel" id="turno" class="form-control" required>
-                                                    <option value="" disabled selected>Seleccionar turno</option>
-                                                    <?php foreach ($niveles as $nivele): ?>
-                                                        <option value="<?= $nivele['turno']; ?>">
-                                                            <?= $nivele['turno']; ?> <!-- Solo imprime el turno -->
-                                                        </option>
-                                                    <?php endforeach; ?>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3">
+                                        
+                                        <div class="col-md-4">
                                             <div class="form-group">
                                                 <label for="grado">Grado y división:<b style="color:red">*</b></label>
                                                 <!-- Grado y División -->
@@ -113,7 +97,7 @@ $niveles = $stmtNiveles->fetchAll(PDO::FETCH_ASSOC);
                                             </div>
                                         </div>
                                         <!-- Matriculados -->
-                                        <div class="col-md-3">
+                                        <div class="col-md-4">
                                             <div class="form-group">
                                                 <label for="matriculados">Alumnos matriculados:<b
                                                         style="color:red">*</b></label>
@@ -237,7 +221,6 @@ include('../../admin/layout/parte2.php');
         function limpiarCampos() {
             document.getElementById('grado').value = '';
             document.getElementById('ciclo').value = '';
-            document.getElementById('turno').value = '';
             document.getElementById('matriculados').value = '';
             document.getElementById('actos_asistieron').value = '';
             document.getElementById('actos_noasistieron').value = '';
@@ -403,7 +386,7 @@ include('../../admin/layout/parte2.php');
             return [asistieronPorcentaje, noAsistieronPorcentaje];
         }
 
-        function crearTabla(grado, ciclo, turno, actos, reuniones, extras) {
+        function crearTabla(grado, ciclo, actos, reuniones, extras) {
             const tabla = document.createElement('table');
             tabla.style.width = "40%";
             tabla.style.borderCollapse = "collapse";
@@ -425,15 +408,15 @@ include('../../admin/layout/parte2.php');
 
             const tbody = document.createElement('tbody');
             const actividades = [{
-                    nombre: 'Actos',
+                    nombre: 'Actos escolares',
                     valores: actos
                 },
                 {
-                    nombre: 'Reuniones',
+                    nombre: 'Reuniones informativas',
                     valores: reuniones
                 },
                 {
-                    nombre: 'Extras',
+                    nombre: 'Actividades extracurriculares',
                     valores: extras
                 }
             ];
@@ -510,7 +493,7 @@ include('../../admin/layout/parte2.php');
             const ciclo = cicloSelect.value;
             const cicloText = cicloSelect.options[cicloSelect.selectedIndex]?.text || "N/A";
 
-            const turno = document.getElementById('turno').value;
+            
 
             const actos = [
                 parseInt(document.getElementById('actos_asistieron').value) || 0,
@@ -531,7 +514,7 @@ include('../../admin/layout/parte2.php');
             contenedor.style.alignItems = "center";
 
             // Pasar los textos (gradoText y cicloText) a la tabla
-            const tabla = crearTabla(gradoText, cicloText, turno, actos, reuniones, extras);
+            const tabla = crearTabla(gradoText, cicloText, actos, reuniones, extras);
             contenedor.appendChild(tabla);
 
             const contenedorGraficos = document.createElement('div');
@@ -541,9 +524,9 @@ include('../../admin/layout/parte2.php');
             const labels = ['Asistieron', 'No Asistieron'];
             const colores = ['#A8D5BA', '#FFB1B1'];
 
-            crearGrafico(calcularPorcentajes(...actos), labels, colores, contenedorGraficos, `Actos`);
-            crearGrafico(calcularPorcentajes(...reuniones), labels, colores, contenedorGraficos, `Reuniones`);
-            crearGrafico(calcularPorcentajes(...extras), labels, colores, contenedorGraficos, `Extras`);
+            crearGrafico(calcularPorcentajes(...actos), labels, colores, contenedorGraficos, `Actos escolares`);
+            crearGrafico(calcularPorcentajes(...reuniones), labels, colores, contenedorGraficos, `Reuniones informativas`);
+            crearGrafico(calcularPorcentajes(...extras), labels, colores, contenedorGraficos, `Actividades extras curriculares`);
 
             contenedor.appendChild(contenedorGraficos);
             document.getElementById('contenedorGraficos').appendChild(contenedor);

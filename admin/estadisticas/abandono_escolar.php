@@ -15,11 +15,7 @@ $stmtGestiones = $pdo->prepare($queryGestiones);
 $stmtGestiones->execute();
 $gestiones = $stmtGestiones->fetchAll(PDO::FETCH_ASSOC);
 
-// Consultar niveles (turno)
-$queryNiveles = "SELECT id_nivel, nivel, turno FROM niveles WHERE estado = '1'";
-$stmtNiveles = $pdo->prepare($queryNiveles);
-$stmtNiveles->execute();
-$niveles = $stmtNiveles->fetchAll(PDO::FETCH_ASSOC);
+
 ?>
 <style>
     .centrar-grafico {
@@ -73,19 +69,6 @@ $niveles = $stmtNiveles->fetchAll(PDO::FETCH_ASSOC);
                                         </div>
                                         <div class="col-md-3">
                                             <div class="form-group">
-                                                <label for="turno">Turno:<b style="color:red">*</b></label>
-                                                <select name="id_nivel" id="turno" class="form-control" required>
-                                                    <option value="" disabled selected>Seleccionar turno</option>
-                                                    <?php foreach ($niveles as $nivele): ?>
-                                                        <option value="<?= $nivele['turno']; ?>">
-                                                            <?= $nivele['turno']; ?> <!-- Solo imprime el turno -->
-                                                        </option>
-                                                    <?php endforeach; ?>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <div class="form-group">
                                                 <label for="grado">Grado y división:<b style="color:red">*</b></label>
                                                 <!-- Grado y División -->
                                                 <select id="grado" name="id_grado" class="form-control" required>
@@ -105,7 +88,6 @@ $niveles = $stmtNiveles->fetchAll(PDO::FETCH_ASSOC);
                                                 <input type="number" id="matriculados" class="form-control" placeholder="Cantidad de matriculados" required readonly>
                                             </div>
                                         </div>
-                                    </div>
 
                                     <?php
                                     $contador = 0;
@@ -197,7 +179,6 @@ $niveles = $stmtNiveles->fetchAll(PDO::FETCH_ASSOC);
                                     ?>
 
                                     <!-- Alumnos Matriculados -->
-                                    <div class="row">
 
                                         <!-- Integrados -->
                                         <div class="col-md-3">
@@ -260,7 +241,6 @@ $niveles = $stmtNiveles->fetchAll(PDO::FETCH_ASSOC);
                                     <thead>
                                         <tr>
                                             <th>Ciclo</th>
-                                            <th>Turno</th>
                                             <th>Grado</th>
                                             <th>Total alumnos</th>
                                             <th>Abandono de alumnos</th>
@@ -347,7 +327,7 @@ include('../../admin/layout/parte2.php');
                         },
                         title: {
                             display: true,
-                            text: 'Distribución de abandono por grado'
+                            text: 'Distribución de abandono por grados'
                         }
                     },
                     scales: {
@@ -356,7 +336,7 @@ include('../../admin/layout/parte2.php');
                             barThickness: 0.5, // Define un grosor específico para las barras
                             title: {
                                 display: true,
-                                text: 'Grado'
+                                text: 'Grados'
                             }
                         },
                         y: {
@@ -546,7 +526,6 @@ include('../../admin/layout/parte2.php');
             const grado = gradoSelect.value;
             const gradoValue = gradoSelect.value;
             const gradoText = gradoSelect.options[gradoSelect.selectedIndex].text;
-            const turno = document.getElementById('turno').value;
             const cicloSelect = document.getElementById('ciclo'); // Selecciona el elemento ciclo
             const ciclo = cicloSelect.value; // ID del ciclo
             const cicloText = cicloSelect.options[cicloSelect.selectedIndex].text; // Texto del ciclo
@@ -559,7 +538,7 @@ include('../../admin/layout/parte2.php');
             const infraestructura = parseInt(infraestructuraInput.value);
             const otros = parseInt(otrosInput.value);
 
-            if (!grado || !turno || !ciclo || isNaN(matriculados) || isNaN(abandonos) || isNaN(economico) ||
+            if (!grado || !ciclo || isNaN(matriculados) || isNaN(abandonos) || isNaN(economico) ||
                 isNaN(personal) || isNaN(educativo) || isNaN(familia) || isNaN(infraestructura) || isNaN(otros)) {
                 alert('Por favor, completa todos los campos correctamente.');
                 return;
@@ -573,7 +552,6 @@ include('../../admin/layout/parte2.php');
 
             datos.push({
                 ciclo: gradoText,
-                turno,
                 grado: gradoText, // Mostrar texto en la tabla
                 matriculados,
                 abandonos,
@@ -597,7 +575,6 @@ include('../../admin/layout/parte2.php');
                 tabla.innerHTML += `
                 <tr>
                     <td>${dato.ciclo}</td>
-                    <td>${dato.turno}</td>
                     <td>${dato.grado}</td>
                     <td>${dato.matriculados}</td>
                     <td>${totalIntegrados}</td>
@@ -665,7 +642,7 @@ include('../../admin/layout/parte2.php');
                         },
                         title: {
                             display: true,
-                            text: 'Distribución de abandonos por grado'
+                            text: 'Distribución de abandonos por grados'
                         }
                     },
                     scales: {
@@ -674,7 +651,7 @@ include('../../admin/layout/parte2.php');
                             barThickness: 0.5, // Define un grosor específico para las barras
                             title: {
                                 display: true,
-                                text: 'Grado'
+                                text: 'Grados'
                             }
                         },
                         y: {
@@ -704,7 +681,7 @@ include('../../admin/layout/parte2.php');
             graficoCircular = new Chart(canvasCircular, {
                 type: 'pie',
                 data: {
-                    labels: ['Economico', 'Personal', 'Educativo', 'Familia', 'Infraestructura', 'Otros factores'],
+                    labels: ['Económicos', 'Personales', 'Educativos', 'Familiares', 'Infraestructura', 'Otros factores'],
                     datasets: [{
                         data: [], // Se llenará dinámicamente
                         backgroundColor: coloresFijos

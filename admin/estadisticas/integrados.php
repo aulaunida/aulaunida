@@ -71,19 +71,18 @@ $niveles = $stmtNiveles->fetchAll(PDO::FETCH_ASSOC);
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class="col-md-3">
-                                            <div class="form-group">
+                                        <div class="col-md-3" hidden>
+                                            <!-- <div class="form-group">
                                                 <label for="turno">Turno:<b style="color:red">*</b></label>
-                                                <select name="id_nivel" id="turno" class="form-control" required>
+                                                <select name="id_nivel" id="turno" class="form-control">
                                                     <option value="" disabled selected>Seleccionar turno</option>
                                                     <?php foreach ($niveles as $nivele): ?>
                                                         <option value="<?= $nivele['turno']; ?>">
-                                                            <?= $nivele['turno']; ?> <!-- Solo imprime el turno -->
+                                                            <?= $nivele['turno']; ?>  Solo imprime el turno -->
                                                         </option>
                                                     <?php endforeach; ?>
                                                 </select>
-                                            </div>
-                                        </div>
+                                        </div> 
                                         <div class="col-md-3">
                                             <div class="form-group">
                                                 <label for="grado">Grado y división:<b style="color:red">*</b></label>
@@ -105,8 +104,6 @@ $niveles = $stmtNiveles->fetchAll(PDO::FETCH_ASSOC);
                                                 <input type="number" id="matriculados" class="form-control" placeholder="Cantidad de matriculados" required readonly>
                                             </div>
                                         </div>
-                                    </div>
-
 
                                     <?php
                                     $contador = 0;
@@ -197,8 +194,6 @@ $niveles = $stmtNiveles->fetchAll(PDO::FETCH_ASSOC);
                                         $contador_sextogrado_b_r;
                                     ?>
                                     <!-- Alumnos Matriculados -->
-                                    <div class="row">
-
                                         <!-- Integrados -->
                                         <div class="col-md-3">
                                             <div class="form-group">
@@ -266,7 +261,7 @@ $niveles = $stmtNiveles->fetchAll(PDO::FETCH_ASSOC);
                                     <thead>
                                         <tr>
                                             <th>Ciclo</th>
-                                            <th>Turno</th>
+                                            <!-- <th>Turno</th> -->
                                             <th>Grado</th>
                                             <th>Total alumnos</th>
                                             <th>Alumnos integrados</th>
@@ -312,18 +307,14 @@ include('../../admin/layout/parte2.php');
 <!-- Incluye Chart.js -->
 <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
 <!-- jsPDF y html2canvas -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
-
 <script>
     function imprimirPagina() {
         window.print();
     }
 </script>
-
-
 <script>
     document.addEventListener("DOMContentLoaded", function() {
         let datos = [];
@@ -340,7 +331,6 @@ include('../../admin/layout/parte2.php');
         const tgdInput = document.getElementById('tgd');
         const multiplesInput = document.getElementById('multiples');
         const otrasInput = document.getElementById('otras');
-
         // Inicializa el gráfico vacío
         const inicializarGrafico = () => {
             grafico = new Chart(canvas, {
@@ -366,7 +356,7 @@ include('../../admin/layout/parte2.php');
                             barThickness: 0.5, // Define un grosor específico para las barras
                             title: {
                                 display: true,
-                                text: 'Grado'
+                                text: 'Grados'
                             }
                         },
                         y: {
@@ -381,7 +371,6 @@ include('../../admin/layout/parte2.php');
                 }
             });
         };
-
         // Obtener matriculados
         const obtenerMatriculados = () => {
             const grado = gradoSelect.value;
@@ -400,7 +389,6 @@ include('../../admin/layout/parte2.php');
                 matriculadosInput.value = "";
             }
         };
-
         // Obtener repetidores
         const obtenerRepetidores = () => {
             const grado = gradoSelect.value;
@@ -419,7 +407,6 @@ include('../../admin/layout/parte2.php');
                 repetidoresInput.value = "";
             }
         };
-
         // Obtener intelectual
         const obtenerIntelectual = () => {
             const grado = gradoSelect.value;
@@ -438,7 +425,6 @@ include('../../admin/layout/parte2.php');
                 intelectualInput.value = "";
             }
         };
-
         // Obtener sordera
         const obtenerSordera = () => {
             const grado = gradoSelect.value;
@@ -457,7 +443,6 @@ include('../../admin/layout/parte2.php');
                 sorderaInput.value = "";
             }
         };
-
         // Obtener ceguera
         const obtenerCeguera = () => {
             const grado = gradoSelect.value;
@@ -476,8 +461,6 @@ include('../../admin/layout/parte2.php');
                 cegueraInput.value = "";
             }
         };
-
-
         // Obtener motora
         const obtenerMotora = () => {
             const grado = gradoSelect.value;
@@ -496,7 +479,6 @@ include('../../admin/layout/parte2.php');
                 motoraInput.value = "";
             }
         };
-
         // Obtener tgd
         const obtenerTgd = () => {
             const grado = gradoSelect.value;
@@ -515,7 +497,6 @@ include('../../admin/layout/parte2.php');
                 tgdInput.value = "";
             }
         };
-
         // Obtener multiples
         const obtenerMultiples = () => {
             const grado = gradoSelect.value;
@@ -534,7 +515,6 @@ include('../../admin/layout/parte2.php');
                 multiplesInput.value = "";
             }
         };
-
         // Obtener otras
         const obtenerOtras = () => {
             const grado = gradoSelect.value;
@@ -553,16 +533,10 @@ include('../../admin/layout/parte2.php');
                 otrasInput.value = "";
             }
         };
-
-
-
-
         // Escuchar cambios en el select de grado
         gradoSelect.addEventListener('change', function() {
             const gradoValue = gradoSelect.value; // Usado para fetch
             const gradoText = gradoSelect.options[gradoSelect.selectedIndex].text; // Usado para mostrar
-
-
             obtenerMatriculados();
             obtenerRepetidores();
             obtenerIntelectual();
@@ -573,12 +547,11 @@ include('../../admin/layout/parte2.php');
             obtenerMultiples();
             obtenerOtras();
         });
-
         document.getElementById('agregarDatos').addEventListener('click', function() {
             const grado = gradoSelect.value;
             const gradoValue = gradoSelect.value;
             const gradoText = gradoSelect.options[gradoSelect.selectedIndex].text;
-            const turno = document.getElementById('turno').value;
+            // const turno = document.getElementById('turno').value;
             const cicloSelect = document.getElementById('ciclo'); // Selecciona el elemento ciclo
             const ciclo = cicloSelect.value; // ID del ciclo
             const cicloText = cicloSelect.options[cicloSelect.selectedIndex].text; // Texto del ciclo
@@ -592,21 +565,19 @@ include('../../admin/layout/parte2.php');
             const multiples = parseInt(multiplesInput.value);
             const otras = parseInt(otrasInput.value);
 
-            if (!grado || !turno || !ciclo || isNaN(matriculados) || isNaN(repetidores) || isNaN(intelectual) ||
+            if (!grado || !ciclo || isNaN(matriculados) || isNaN(repetidores) || isNaN(intelectual) ||
                 isNaN(sordera) || isNaN(ceguera) || isNaN(motora) || isNaN(tgd) || isNaN(multiples) || isNaN(otras)) {
                 alert('Por favor, completa todos los campos correctamente.');
                 return;
             }
-
             const totalIntegrados = intelectual + sordera + ceguera + motora + tgd + multiples + otras;
             if (totalIntegrados > matriculados) {
                 alert('La suma de los alumnos integrados no puede superar el total de alumnos.');
                 return;
             }
-
             datos.push({
                 ciclo: gradoText,
-                turno,
+                // turno,
                 grado: gradoText, // Mostrar texto en la tabla
                 matriculados,
                 repetidores,
@@ -631,7 +602,6 @@ include('../../admin/layout/parte2.php');
                 tabla.innerHTML += `
                 <tr>
                     <td>${dato.ciclo}</td>
-                    <td>${dato.turno}</td>
                     <td>${dato.grado}</td>
                     <td>${dato.matriculados}</td>
                     <td>${totalIntegrados}</td>
@@ -642,19 +612,18 @@ include('../../admin/layout/parte2.php');
         };
         // Definir colores fijos
         const coloresFijos = [
-            "#FFB6C1", // Rosa pastel
-            "#ADD8E6", // Azul pastel
-            "#FFDAB9", // Durazno pastel
-            "#DDA0DD", // Púrpura pastel
-            "#98FB98", // Verde pastel
-            "#FFFACD", // Amarillo pastel
-            "#FFE4E1" // Rosa claro pastel
+            "#FF6384", // Rosa pastel
+            "#36A2EB", // Azul pastel
+            "#FFCE56", // Durazno pastel
+            "#4BC0C0", // Púrpura pastel
+            "#9966FF", // Verde pastel
+            "#FF9F40", // Amarillo pastel
+            "#FF6384" // Rosa claro pastel
         ];
 
         const actualizarGrafico = () => {
             const grados = [...new Set(datos.map(dato => dato.grado))];
             const categorias = ['Intelectual', 'Sordera', 'Ceguera', 'Motora', 'TGD', 'Más de una', 'Otras'];
-
             const data = {
                 'Intelectual': Array(grados.length).fill(0),
                 'Sordera': Array(grados.length).fill(0),
@@ -664,7 +633,6 @@ include('../../admin/layout/parte2.php');
                 'Más de una': Array(grados.length).fill(0),
                 'Otras': Array(grados.length).fill(0),
             };
-
             datos.forEach(dato => {
                 const gradoIndex = grados.indexOf(dato.grado);
                 data['Intelectual'][gradoIndex] += dato.intelectual;
@@ -675,18 +643,15 @@ include('../../admin/layout/parte2.php');
                 data['Más de una'][gradoIndex] += dato.multiples;
                 data['Otras'][gradoIndex] += dato.otras;
             });
-
             const datasets = Object.keys(data).map((categoria, index) => ({
                 label: categoria,
                 data: data[categoria],
                 backgroundColor: coloresFijos[index] // Usar colores fijos correctamente
             }));
 
-
             if (grafico) {
                 grafico.destroy();
             }
-
             grafico = new Chart(canvas, {
                 type: 'bar',
                 data: {
@@ -701,7 +666,7 @@ include('../../admin/layout/parte2.php');
                         },
                         title: {
                             display: true,
-                            text: 'Distribución de Alumnos Integrados'
+                            text: 'Distribución de alumnos integrados por grados'
                         }
                     },
                     scales: {
@@ -710,7 +675,7 @@ include('../../admin/layout/parte2.php');
                             barThickness: 0.5, // Define un grosor específico para las barras
                             title: {
                                 display: true,
-                                text: 'Grado'
+                                text: 'Grados'
                             }
                         },
                         y: {
@@ -726,14 +691,11 @@ include('../../admin/layout/parte2.php');
             });
         };
 
-
         window.eliminarDato = (index) => {
             datos.splice(index, 1);
             actualizarTabla();
             actualizarGrafico();
         };
-
-
 
         let graficoCircular;
 
@@ -742,7 +704,7 @@ include('../../admin/layout/parte2.php');
             graficoCircular = new Chart(canvasCircular, {
                 type: 'pie',
                 data: {
-                    labels: ['Intelectual', 'Sordera', 'Ceguera', 'Motora', 'TGD', 'Más de una', 'Otras'],
+                    labels: ['Discapacidad intelectual', 'Sordera o Hipoacusia', 'Ceguera o Disminución visual', 'Motora o Neuromota', 'TGD o TEA', 'Más de una', 'Otro motivo'],
                     datasets: [{
                         data: [], // Se llenará dinámicamente
                         backgroundColor: coloresFijos
@@ -756,7 +718,7 @@ include('../../admin/layout/parte2.php');
                         },
                         title: {
                             display: true,
-                            text: 'Porcentaje de Tipos de Discapacidades'
+                            text: 'Porcentaje de motivos de integración'
                         },
                         datalabels: { // Configuración del plugin para etiquetas
                             color: '#fff', // Color del texto
@@ -774,7 +736,6 @@ include('../../admin/layout/parte2.php');
                 }
             });
         };
-
 
         const actualizarGraficoCircular = () => {
             // Calcular totales por categoría
@@ -802,12 +763,10 @@ include('../../admin/layout/parte2.php');
             });
 
             const porcentajes = Object.values(totalPorCategoria).map(total => totalIntegradosGlobal > 0 ? (total / totalIntegradosGlobal * 100).toFixed(2) : 0);
-
             // Actualizar datos del gráfico circular
             graficoCircular.data.datasets[0].data = porcentajes;
             graficoCircular.update();
         };
-
         // Llamar esta función tras agregar datos o eliminarlos
         document.getElementById('agregarDatos').addEventListener('click', () => {
             actualizarGraficoCircular();
@@ -822,7 +781,6 @@ include('../../admin/layout/parte2.php');
 
         // Inicializar el gráfico circular al cargar la página
         inicializarGraficoCircular();
-
 
         inicializarGrafico();
     });
