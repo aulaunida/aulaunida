@@ -87,21 +87,22 @@ $profesiones = [
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="">Domicilio</label>
-                                            <input type="address" name="direccion" value="<?=$direccion;?>"   class="form-control" required>
+                                            <input type="address" name="direccion" value="<?=$direccion;?>"   class="form-control" style="text-transform: uppercase;" required>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label for="">Correo electrónico</label>
-                                            <input type="email" name="email"  value="<?=$email;?>"  class="form-control" required>
+                                        <label for="">Correo electrónico</label>
+                                        <input type="email" name="email" value="<?=$email;?>" class="form-control" style="text-transform: uppercase;" required>
                                         </div>
                                     </div>
+
                                 </div>
                                 <div class="row">
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="">Nro. de celular</label>
-                                            <input type="number" name="celular" value="<?=$celular;?>"   class="form-control" required>
+                                            <input type="number" name="celular" value="<?=$celular;?>" class="form-control" required>
                                         </div>
                                     </div>
                                     <div class="col-md-4">

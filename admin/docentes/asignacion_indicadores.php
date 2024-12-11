@@ -43,14 +43,12 @@ include('../../app/controllers/docentes/listado_de_asignaciones_indicadores.php'
                             <table id="example1" class="table table-striped table-bordered table-hover table-sm">
                                 <thead>
                                     <tr>
-                                        <th>
-                                            <center>Docente</center>
-                                        </th>
+                                        <th>Docente</th>
                                         <!-- <th><center>Rol</center></th> -->
                                         <!-- <th><center>DNI</center></th> -->
                                         <!-- <th><center>Fecha de nacimiento</center></th> -->
                                         <!-- <th><center>Correo electrónico</center></th> -->
-                                        <!-- <th><center>Integrador</center></th> -->
+                                        <th><center>Integrador</center></th>
                                         <th>
                                             <center>Estado</center>
                                         </th>
@@ -67,12 +65,12 @@ include('../../app/controllers/docentes/listado_de_asignaciones_indicadores.php'
                                         $contador_docentes = $contador_docentes + 1; ?>
                                         <tr>
                                             <!-- <td style="text-align: center"><?= $contador_docentes; ?></td> -->
-                                            <td class="uppercase" style="text-align: center"><?= $docente['apellidos'] . ', ' . $docente['nombres']; ?></td>
+                                            <td class="uppercase"><?= $docente['apellidos'] . ', ' . $docente['nombres']; ?></td>
                                             <!-- <td style="text-align: center"><?= $docente['nombre_rol']; ?></td> -->
                                             <!-- <td style="text-align: center"><?= $docente['dni']; ?></td> -->
                                             <!-- <td style="text-align: center"><?= $docente['fecha_nacimiento']; ?></td> -->
                                             <!-- <td style="text-align: center"><?= $docente['email']; ?></td> -->
-                                            <!-- <td class="text-center"><?= $docente['integrador'] == 'NO' ? "NO" : "SI"; ?></td> -->
+                                            <td class="text-center"><?= $docente['integrador'] == 'NO' ? "NO" : "SI"; ?></td>
                                             <td class="text-center">
                                                 <?php
                                                 if ($docente['estado'] == "1") { ?>

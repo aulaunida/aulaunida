@@ -13,11 +13,10 @@ include('../../app/controllers/administrativos/datos_administrativos.php');
     <div class="content">
         <div class="container">
             <div class="row">
-                <h2>CONSULTAR DETALLES <i class="bi bi-chevron-right"></i> <?=$nombres.' '.$apellidos;?></h2>
+                <h2 style="margin-left: 20px;"><i class="bi bi-eye"></i> Consultar detalles: </i><b><?=$nombres.' '.$apellidos;?></b>  </h2>
             </div>
             <br>
             <div class="row">
-
                 <div class="col-md-12">
                     <div class="card card-outline card-info">
                         <div class="card-header">
@@ -25,66 +24,64 @@ include('../../app/controllers/administrativos/datos_administrativos.php');
                         </div>
                         <div class="card-body">
                                 <div class="row">
-                                    <div class="col-md-3">
+                                    <div class="col-md-4">
                                         <div class="form-group">
-                                            <label for="">Nombre del rol</label>
+                                            <label for="">Rol</label>
                                             <div class="form-inline">
                                                 <p><?=$nombre_rol;?></p>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-4">
                                         <div class="form-group">
-                                            <label for="">Nombre</label>
+                                            <label for="">Nombres</label>
                                             <p><?=$nombres;?></p>
                                         </div>
                                     </div>
-
-                                    <div class="col-md-3">
+                                    <div class="col-md-4">
                                         <div class="form-group">
-                                            <label for="">Apellido</label>
+                                            <label for="">Apellidos</label>
                                             <p><?=$apellidos;?></p>
                                         </div>
                                     </div>
-
-                                    <div class="col-md-3">
-                                        <div class="form-group">
-                                            <label for="">Correo Electrónico</label>
-                                            <p><?=$email;?></p>
-                                        </div>
-                                    </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-3">
+                                    <div class="col-md-4">
                                         <div class="form-group">
-                                            <label for="">DNI</label>
+                                            <label for="">Correo electrónico</label>
+                                            <p style="text-transform: uppercase;"><?=$email;?></p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="">Nro. de documento</label>
                                             <p><?=$dni;?></p>
                                         </div>
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-4">
                                         <div class="form-group">
-                                            <label for="">Fecha de Nacimiento</label>
+                                            <label for="">Fecha de nacimiento</label>
                                             <p><?=$fecha_nacimiento;?></p>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <div class="form-group">
-                                            <label for="">Celular</label>
-                                            <p><?=$celular;?></p>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <div class="form-group">
-                                            <label for="">Profesión</label>
-                                            <p><?=$profesion;?></p>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-3">
+                                    <div class="col-md-4">
                                         <div class="form-group">
-                                            <label for="">Dirección</label>
-                                            <p><?=$direccion;?></p>
+                                            <label for="">Nro. de celular</label>
+                                            <p><?=$celular;?></p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4" hidden>
+                                        <div class="form-group">
+                                            <label for="">Profesión</label>
+                                            <p class="uppercase"><?=$profesion;?></p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="">Domicilio</label>
+                                            <p style="text-transform: uppercase;"><?=$direccion;?></p>
                                         </div>
                                     </div>
                                     <div class="col-md-3">
@@ -93,10 +90,11 @@ include('../../app/controllers/administrativos/datos_administrativos.php');
                                             <p><?=$fyh_creacion;?></p>
                                         </div>
                                     </div>
+                                </div>
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="">Estado</label>
-                                            <p>
+                                            <p style="text-transform: uppercase;">
                                                 <?php if($estado=='1') echo "Activo"; else echo "Inactivo"; ?>
                                             </p>
                                         </div>
@@ -105,8 +103,8 @@ include('../../app/controllers/administrativos/datos_administrativos.php');
                                 <hr>
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <div class="form-group">
-                                            <a href="<?= APP_URL; ?>/admin/administrativos" class="btn btn-secondary">Volver</a>
+                                        <div class="form-group text-center">
+                                            <a href="<?= APP_URL; ?>/admin/administrativos" class="btn btn-danger">Volver</a>
                                         </div>
                                     </div>
                                 </div>

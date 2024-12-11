@@ -67,18 +67,18 @@ $niveles = $stmtNiveles->fetchAll(PDO::FETCH_ASSOC);
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class="col-md-3">
-                                            <div class="form-group">
+                                        <div class="col-md-3" hidden>
+                                            <!-- <div class="form-group">
                                                 <label for="turno">Turno:<b style="color:red">*</b></label>
                                                 <select name="id_nivel" id="turno" class="form-control" required>
                                                     <option value="" disabled selected>Seleccionar turno</option>
                                                     <?php foreach ($niveles as $nivele): ?>
                                                         <option value="<?= $nivele['id_nivel']; ?>">
-                                                            <?= $nivele['turno']; ?> <!-- Solo imprime el turno -->
+                                                            <?= $nivele['turno']; ?> Solo imprime el turno
                                                         </option>
                                                     <?php endforeach; ?>
                                                 </select>
-                                            </div>
+                                            </div> -->
                                         </div>
                                         <div class="col-md-3">
                                             <div class="form-group">
@@ -101,11 +101,6 @@ $niveles = $stmtNiveles->fetchAll(PDO::FETCH_ASSOC);
                                                 <input type="number" id="matriculados" class="form-control" placeholder="Cantidad de matriculados" required readonly>
                                             </div>
                                         </div>
-
-
-                                    </div>
-
-
                                     <?php
                                     $contador = 0;
                                     $contador_primergrado_a = 0;
@@ -195,7 +190,6 @@ $niveles = $stmtNiveles->fetchAll(PDO::FETCH_ASSOC);
                                         $contador_sextogrado_b_r;
                                     ?>
                                     <!-- Alumnos Matriculados -->
-                                    <div class="row">
                                         <!-- Repetidores -->
                                         <div class="col-md-3">
                                             <div class="form-group">
@@ -216,7 +210,7 @@ $niveles = $stmtNiveles->fetchAll(PDO::FETCH_ASSOC);
                                 <thead>
                                     <tr>
                                         <th>Ciclo lectivo</th>
-                                        <th>Turno</th>
+                                        <!-- <th>Turno</th> -->
                                         <th>Grado y división</th>
                                         <th>Matriculados</th>
                                         <th>Repitentes</th>
@@ -239,7 +233,7 @@ $niveles = $stmtNiveles->fetchAll(PDO::FETCH_ASSOC);
                         </div>
                         <div class="card-body no-imprimir">
                             <div class="form-group text-center">
-                                <button type="button" class="btn btn-info" onclick="imprimirPagina()">Exportar Reporte</button>
+                                <button type="button" class="btn btn-info" onclick="imprimirPagina()">Exportar reporte</button>
 
                             </div>
                             <hr>
@@ -285,7 +279,7 @@ $niveles = $stmtNiveles->fetchAll(PDO::FETCH_ASSOC);
     document.addEventListener("DOMContentLoaded", function() {
         // Variables y elementos del DOM
         const cicloSelect = document.getElementById("ciclo");
-        const turnoSelect = document.getElementById("turno");
+        // const turnoSelect = document.getElementById("turno");
         const gradoSelect = document.getElementById("grado");
         const matriculadosInput = document.getElementById("matriculados");
         const repetidoresInput = document.getElementById("repetidores"); // Nuevo input para repetidores
@@ -390,7 +384,7 @@ $niveles = $stmtNiveles->fetchAll(PDO::FETCH_ASSOC);
                         x: {
                             title: {
                                 display: true,
-                                text: "Grado"
+                                text: "Grados"
                             }
                         },
                     },
@@ -400,12 +394,12 @@ $niveles = $stmtNiveles->fetchAll(PDO::FETCH_ASSOC);
 
         document.getElementById("agregarDatos").addEventListener("click", function() {
             const ciclo = cicloSelect.options[cicloSelect.selectedIndex]?.text || "";
-            const turno = turnoSelect.options[turnoSelect.selectedIndex]?.text || "";
+            // const turno = turnoSelect.options[turnoSelect.selectedIndex]?.text || "";
             const grado = gradoSelect.options[gradoSelect.selectedIndex]?.text || "";
             const matriculados = parseInt(matriculadosInput.value);
             const repetidores = parseInt(repetidoresInput.value);
 
-            if (!ciclo || !turno || !grado || isNaN(matriculados) || isNaN(repetidores)) {
+            if (!ciclo || !grado || isNaN(matriculados) || isNaN(repetidores)) {
                 alert("Por favor, completa todos los campos correctamente.");
                 return;
             }
@@ -418,7 +412,7 @@ $niveles = $stmtNiveles->fetchAll(PDO::FETCH_ASSOC);
             const porcentajeRepetencia = ((repetidores / matriculados) * 100).toFixed(2);
             datos.push({
                 ciclo,
-                turno,
+                // turno,
                 grado,
                 matriculados,
                 repetidores,
@@ -436,7 +430,7 @@ $niveles = $stmtNiveles->fetchAll(PDO::FETCH_ASSOC);
                 tabla.innerHTML += `
                 <tr>
                     <td>${dato.ciclo}</td>
-                    <td>${dato.turno}</td>
+                   
                     <td>${dato.grado}</td>
                     <td>${dato.matriculados}</td>
                     <td>${dato.repetidores}</td>

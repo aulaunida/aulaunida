@@ -132,7 +132,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <img src="https://cdn-icons-png.flaticon.com/512/6073/6073873.png" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-                <a href="#" class="d-block"><?= $nombre_sesion_usuario; ?></a>
+                <a href="<?= APP_URL; ?>/admin" class="d-block"><?= $nombre_sesion_usuario; ?></a>
             </div>
         </div>
         <!-- Sidebar Menu -->

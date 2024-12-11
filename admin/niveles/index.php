@@ -30,7 +30,7 @@ include ('../../app/controllers/niveles/listado_de_niveles.php');
                                 <thead>
                                 <tr>
                                     <!-- <th><center>Nro</center></th> -->
-                                    <th><center>Ciclo lectivo</center></th>
+                                    <th>Ciclo lectivo</th>
                                     <th><center>Nivel</center></th>
                                     <th><center>Turno</center></th>
                                     <th><center>Estado</center></th>
@@ -45,7 +45,7 @@ include ('../../app/controllers/niveles/listado_de_niveles.php');
                                     $contador_niveles = $contador_niveles +1; ?>
                                     <tr>
                                         <!-- <td style="text-align: center"><?=$contador_niveles;?></td> -->
-                                        <td style="text-align: center"><?=$nivele['gestion'];?></td>
+                                        <td style=""><?=$nivele['gestion'];?></td>
                                         <td style="text-align: center"><?=$nivele['nivel'];?></td>
                                         <td style="text-align: center"><?=$nivele['turno'];?></td>
                                         <td style="text-align: center">
