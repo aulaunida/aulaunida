@@ -287,8 +287,8 @@ include('../../admin/layout/parte2.php');
 </div>
 
 <!-- Incluye Chart.js -->
-<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
 
 <script>
     function imprimirPagina() {
@@ -695,22 +695,26 @@ include('../../admin/layout/parte2.php');
                         },
                         title: {
                             display: true,
-                            text: 'Porcentaje  acumulado de los motivos'
+                            text: 'Porcentaje de los motivos de abandono'
                         },
                         datalabels: { // Configuración del plugin para etiquetas
-                            color: '#fff', // Color del texto
+                            color: '#000', // Color del texto
                             font: {
-                                size: 18, // Tamaño del texto
-                                weight: 'bold'
+                            size: 14, // Tamaño del texto
+                            weight: 'normal'
                             },
                             formatter: (value, context) => {
-                                // Mostrar nombre + porcentaje
-                                const label = context.chart.data.labels[context.dataIndex];
-                                return `${label}: ${value}%`;
+                                // Mostrar solo si el valor es mayor que 0
+                                if (value > 0) {
+                                    const label = context.chart.data.labels[context.dataIndex];
+                                    return ` ${value}%`; // porcentaje
+                                }
+                                return null; // Ocultar etiquetas con valor 0
                             }
                         }
                     }
-                }
+                },
+                plugins: [ChartDataLabels] // Asegúrate de que está registrado
             });
         };
 

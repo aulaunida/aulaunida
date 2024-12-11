@@ -305,8 +305,9 @@ $niveles = $stmtNiveles->fetchAll(PDO::FETCH_ASSOC);
 include('../../admin/layout/parte2.php');
 ?>
 <!-- Incluye Chart.js -->
-<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
+
 <!-- jsPDF y html2canvas -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
@@ -618,7 +619,7 @@ include('../../admin/layout/parte2.php');
             "#4BC0C0", // Púrpura pastel
             "#9966FF", // Verde pastel
             "#FF9F40", // Amarillo pastel
-            "#FF6384" // Rosa claro pastel
+            "#FF5733"  // Naranja oscuro pastel
         ];
 
         const actualizarGrafico = () => {
@@ -704,7 +705,7 @@ include('../../admin/layout/parte2.php');
             graficoCircular = new Chart(canvasCircular, {
                 type: 'pie',
                 data: {
-                    labels: ['Discapacidad intelectual', 'Sordera o Hipoacusia', 'Ceguera o Disminución visual', 'Motora o Neuromota', 'TGD o TEA', 'Más de una', 'Otro motivo'],
+                    labels: ['Discapacidad intelectual', 'Sordera o Hipoacusia', 'Ceguera o Disminución visual', 'Motora o Neuromotora', 'TGD o TEA', 'Más de una', 'Otro motivo'],
                     datasets: [{
                         data: [], // Se llenará dinámicamente
                         backgroundColor: coloresFijos
@@ -718,22 +719,26 @@ include('../../admin/layout/parte2.php');
                         },
                         title: {
                             display: true,
-                            text: 'Porcentaje de motivos de integración'
+                            text: 'Porcentaje de los motivos de integración'
                         },
                         datalabels: { // Configuración del plugin para etiquetas
-                            color: '#fff', // Color del texto
+                            color: '#000', // Color de las etiquetas
                             font: {
-                                size: 18, // Tamaño del texto
-                                weight: 'bold'
+                            size: 14,
+                            weight: 'normal'
                             },
                             formatter: (value, context) => {
-                                // Mostrar nombre + porcentaje
-                                const label = context.chart.data.labels[context.dataIndex];
-                                return `${label}: ${value}%`;
+                                // Mostrar solo si el valor es mayor que 0
+                                if (value > 0) {
+                                    const label = context.chart.data.labels[context.dataIndex];
+                                    return ` ${value}%`; // porcentaje
+                                }
+                                return null; // Ocultar etiquetas con valor 0
                             }
                         }
                     }
-                }
+                },
+                plugins: [ChartDataLabels] // Asegúrate de que está registrado
             });
         };
 
