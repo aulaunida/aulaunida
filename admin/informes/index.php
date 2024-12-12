@@ -77,7 +77,9 @@ include('../../app/controllers/informes/listado_de_informes.php');
                                                             <div class="modal-content">
                                                                 <div class="modal-header"
                                                                     style="background-color:#17a2b8; color:#FFFFFF">
-                                                                    <h5 class="modal-title" id="exampleModalLabel"><i class="bi bi-plus-square"></i> Redactar informe: </i><b><?= $asignacione['curso']; ?>
+                                                                    <h5 class="modal-title" id="exampleModalLabel"><i
+                                                                            class="bi bi-plus-square"></i> Redactar informe:
+                                                                        </i><b><?= $asignacione['curso']; ?>
                                                                             "<?= $asignacione['paralelo']; ?>" -
                                                                             <?= $asignacione['nombre_materia']; ?></b>
                                                                     </h5>
@@ -86,23 +88,35 @@ include('../../app/controllers/informes/listado_de_informes.php');
                                                                         <span aria-hidden="true">&times;</span>
                                                                     </button>
                                                                 </div>
-                                                                <form action="<?= APP_URL; ?>/app/controllers/informes/create.php" method="post">
+                                                                <form
+                                                                    action="<?= APP_URL; ?>/app/controllers/informes/create.php"
+                                                                    method="post">
                                                                     <div class="modal-body">
                                                                         <div class="row">
                                                                             <div class="col-md-12">
-                                                                                <div class="form-group" style="text-align: left">
-                                                                                    <label for="" class="text-align-left">Fecha de informe</label>
-                                                                                    <input type="text" name="docente_id" value="<?= $docente_id; ?>" hidden>
-                                                                                    <input type="date" name="fecha_informe" class="form-control" name="" id="">
+                                                                                <div class="form-group"
+                                                                                    style="text-align: left">
+                                                                                    <label for="" class="text-align-left">Fecha
+                                                                                        de informe</label>
+                                                                                    <input type="text" name="docente_id"
+                                                                                        value="<?= $docente_id; ?>" hidden>
+                                                                                    <input type="date" name="fecha_informe"
+                                                                                        class="form-control" name="" id="">
                                                                                 </div>
                                                                             </div>
                                                                         </div>
                                                                         <div class="row">
                                                                             <div class="col-md-12">
-                                                                                <div class="form-group" style="text-align: left">
-                                                                                    <label for="estudiantes-select" class="text-align-left">Alumno</label>
-                                                                                    <select name="estudiante_id" class="form-control uppercase" id="estudiantes-select" onchange="actualizarIntegracion()">
-                                                                                        <option value="" disabled selected>Seleccione un alumno</option>
+                                                                                <div class="form-group"
+                                                                                    style="text-align: left">
+                                                                                    <label for="estudiantes-select"
+                                                                                        class="text-align-left">Alumno</label>
+                                                                                    <select name="estudiante_id"
+                                                                                        class="form-control uppercase"
+                                                                                        id="estudiantes-select"
+                                                                                        onchange="actualizarIntegracion()">
+                                                                                        <option value="" disabled selected>
+                                                                                            Seleccione un alumno</option>
                                                                                         <?php
                                                                                         foreach ($estudiantes as $estudiante) {
                                                                                             if ($estudiante['id_grado'] == $asignacione['grado_id']) {
@@ -111,7 +125,7 @@ include('../../app/controllers/informes/listado_de_informes.php');
                                                                                                     data-integracion="<?= $estudiante['integracion']; ?>">
                                                                                                     <?= strtoupper($estudiante['apellidos'] . ", " . $estudiante['nombres']); ?>
                                                                                                 </option>
-                                                                                        <?php
+                                                                                                <?php
                                                                                             }
                                                                                         }
                                                                                         ?>
@@ -142,35 +156,63 @@ include('../../app/controllers/informes/listado_de_informes.php');
                                                                         <!-- Aquí agregamos el input para mostrar la integración automáticamente -->
                                                                         <div class="row" hidden>
                                                                             <div class="col-md-12">
-                                                                                <div class="form-group" style="text-align: left">
-                                                                                    <label for="integracion-input" class="text-align-left">Integración</label>
-                                                                                    <input type="text" class="form-control" id="integracion-input" readonly required>
+                                                                                <div class="form-group"
+                                                                                    style="text-align: left">
+                                                                                    <label for="integracion-input"
+                                                                                        class="text-align-left">Integración</label>
+                                                                                    <input type="text" class="form-control"
+                                                                                        id="integracion-input" readonly
+                                                                                        required>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
 
                                                                         <div class="row" hidden>
                                                                             <div class="col-md-12">
-                                                                                <div class="form-group" style="text-align: left">
-                                                                                    <label for="" class="text-align-left">Materia</label>
-                                                                                    <input type="text" name="materia_id" value="<?= $asignacione['id_materia']; ?>">
+                                                                                <div class="form-group"
+                                                                                    style="text-align: left">
+                                                                                    <label for=""
+                                                                                        class="text-align-left">Materia</label>
+                                                                                    <input type="text" name="materia_id"
+                                                                                        value="<?= $asignacione['id_materia']; ?>">
                                                                                 </div>
                                                                             </div>
                                                                         </div>
 
                                                                         <div class="row">
                                                                             <div class="col-md-12">
-                                                                                <div class="form-group" style="text-align: left">
-                                                                                    <label for="" class="text-align-left">Categoria</label>
-                                                                                    <select name="observacion" class="form-control uppercase" id="">
-                                                                                        <option value="" disabled selected>Seleccione una categoria</option>
-                                                                                        <option value="COMPORTAMIENTO Y DISCIPLINA">COMPORTAMIENTO Y DISCIPLINA</option>
-                                                                                        <option value="COMUNICACIÓN Y PARTICIPACIÓN">COMUNICACIÓN Y PARTICIPACIÓN</option>
-                                                                                        <option value="DIAGNÓSTICO INICIAL">DIAGNÓSTICO INICIAL</option>
-                                                                                        <option value="EVOLUCIÓN Y PROGRESO GENERAL">EVOLUCIÓN Y PROGRESO GENERAL</option>
-                                                                                        <option value="OBSERVACIONES ESPECÍFICAS">OBSERVACIONES ESPECÍFICAS</option>
-                                                                                        <option value="RETOS Y ESTRATEGIAS DE APOYO">RETOS Y ESTRATEGIAS DE APOYO</option>
-                                                                                        <option value="TRABAJO EN GRUPO Y COLABORACIÓN">TRABAJO EN GRUPO Y COLABORACIÓN</option>
+                                                                                <div class="form-group"
+                                                                                    style="text-align: left">
+                                                                                    <label for=""
+                                                                                        class="text-align-left">Categoria</label>
+                                                                                    <select name="observacion"
+                                                                                        class="form-control uppercase" id="">
+                                                                                        <option value="" disabled selected>
+                                                                                            Seleccione una categoria</option>
+                                                                                        <option
+                                                                                            value="COMPORTAMIENTO Y DISCIPLINA">
+                                                                                            COMPORTAMIENTO Y DISCIPLINA</option>
+                                                                                        <option
+                                                                                            value="COMUNICACIÓN Y PARTICIPACIÓN">
+                                                                                            COMUNICACIÓN Y PARTICIPACIÓN
+                                                                                        </option>
+                                                                                        <option value="DIAGNÓSTICO INICIAL">
+                                                                                            DIAGNÓSTICO INICIAL</option>
+                                                                                        <option
+                                                                                            value="EVOLUCIÓN Y PROGRESO GENERAL">
+                                                                                            EVOLUCIÓN Y PROGRESO GENERAL
+                                                                                        </option>
+                                                                                        <option
+                                                                                            value="OBSERVACIONES ESPECÍFICAS">
+                                                                                            OBSERVACIONES ESPECÍFICAS</option>
+                                                                                        <option
+                                                                                            value="RETOS Y ESTRATEGIAS DE APOYO">
+                                                                                            RETOS Y ESTRATEGIAS DE APOYO
+                                                                                        </option>
+                                                                                        <option
+                                                                                            value="TRABAJO EN GRUPO Y COLABORACIÓN">
+                                                                                            TRABAJO EN GRUPO Y COLABORACIÓN
+                                                                                        </option>
                                                                                     </select>
                                                                                 </div>
                                                                             </div>
@@ -178,16 +220,21 @@ include('../../app/controllers/informes/listado_de_informes.php');
 
                                                                         <div class="row">
                                                                             <div class="col-md-12">
-                                                                                <div class="form-group" style="text-align: left">
-                                                                                    <label for="" class="text-align-left">Observaciones</label>
-                                                                                    <textarea name="nota" rows="10" class="form-control" id=""></textarea>
+                                                                                <div class="form-group"
+                                                                                    style="text-align: left">
+                                                                                    <label for=""
+                                                                                        class="text-align-left">Observaciones</label>
+                                                                                    <textarea name="nota" rows="10"
+                                                                                        class="form-control" id=""></textarea>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                     <div class="modal-footer">
-                                                                        <button type="submit" class="btn btn-info">Registrar</button>
-                                                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                                                                        <button type="submit"
+                                                                            class="btn btn-info">Registrar</button>
+                                                                        <button type="button" class="btn btn-danger"
+                                                                            data-dismiss="modal">Cancelar</button>
                                                                     </div>
                                                                 </form>
                                                             </div>
@@ -195,7 +242,7 @@ include('../../app/controllers/informes/listado_de_informes.php');
                                                     </div>
                                                 </td>
                                             </tr>
-                                    <?php
+                                            <?php
                                         }
                                     }
                                     ?>
@@ -257,7 +304,8 @@ include('../../app/controllers/informes/listado_de_informes.php');
                                                 <?php
                                                 foreach ($estudiantes as $estudiante) {
                                                     if ($estudiante['id_estudiante'] == $estudiante_id) { ?>
-                                                        <td><?= strtoupper($estudiante['apellidos'] . ", " . $estudiante['nombres']); ?></td>
+                                                        <td><?= strtoupper($estudiante['apellidos'] . ", " . $estudiante['nombres']); ?>
+                                                        </td>
                                                         <td><?= $informe['nombre_materia']; ?></td>
                                                         <td><?= $informe['observacion']; ?></td>
                                                         <td>
@@ -266,25 +314,30 @@ include('../../app/controllers/informes/listado_de_informes.php');
                                                         <!-- <td>
                                                             <center><?= $informe['nota']; ?></center>
                                                         </td> -->
-                                                <?php
+                                                        <?php
                                                     }
                                                 }
                                                 ?>
                                                 <td style="text-align: center">
                                                     <div class="btn-group" role="group" aria-label="Basic example">
-                                                        <a href="show.php?id=<?= $id_informe; ?>" type="button" title="Consultar informe" class="btn btn-primary btn-sm"><i class="bi bi-eye"></i></a>
+                                                        <a href="show.php?id=<?= $id_informe; ?>" type="button"
+                                                            title="Consultar informe" class="btn btn-primary btn-sm"><i
+                                                                class="bi bi-eye"></i></a>
                                                         <a type="button" title="Editar" data-toggle="modal"
-                                                            data-target="#modal_editar<?= $id_informe; ?>" class="btn btn-success btn-sm icono-blanco"><i class="bi bi-pencil-square"></i></a>
+                                                            data-target="#modal_editar<?= $id_informe; ?>"
+                                                            class="btn btn-success btn-sm icono-blanco"><i
+                                                                class="bi bi-pencil-square"></i></a>
 
                                                         <!-- INICIO DEL MODAL EDITAR INFORME  -->
                                                         <div class="modal fade" id="modal_editar<?= $id_informe; ?>"
-                                                            tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                            tabindex="-1" aria-labelledby="exampleModalLabel"
+                                                            aria-hidden="true">
                                                             <div class="modal-dialog modal-lg">
                                                                 <div class="modal-content">
                                                                     <div class="modal-header"
                                                                         style="background-color:#28a745; color:#FFFFFF">
-                                                                        <h5 class="modal-title" id="exampleModalLabel">EDITAR INFORME <i
-                                                                                class="bi bi-chevron-right"></i>
+                                                                        <h5 class="modal-title" id="exampleModalLabel">EDITAR
+                                                                            INFORME <i class="bi bi-chevron-right"></i>
                                                                             <?= $informe['nombre_materia']; ?>
                                                                         </h5>
                                                                         <button type="button" class="close" data-dismiss="modal"
@@ -292,34 +345,51 @@ include('../../app/controllers/informes/listado_de_informes.php');
                                                                             <span aria-hidden="true">&times;</span>
                                                                         </button>
                                                                     </div>
-                                                                    <form action="<?= APP_URL; ?>/app/controllers/informes/update.php" method="post">
+                                                                    <form
+                                                                        action="<?= APP_URL; ?>/app/controllers/informes/update.php"
+                                                                        method="post">
                                                                         <div class="modal-body">
                                                                             <div class="row">
                                                                                 <div class="col-md-12">
-                                                                                    <div class="form-group" style="text-align: left">
-                                                                                        <label for="" class="text-align-left">Fecha de Informe</label>
-                                                                                        <input type="text" name="id_informe" value="<?= $id_informe; ?>" hidden>
-                                                                                        <input type="text" name="docente_id" value="<?= $docente_id; ?>" hidden>
-                                                                                        <input type="date" value="<?= $informe['fecha_informe']; ?>" name="fecha_informe" class="form-control" name=""
-                                                                                            id="">
+                                                                                    <div class="form-group"
+                                                                                        style="text-align: left">
+                                                                                        <label for=""
+                                                                                            class="text-align-left">Fecha de
+                                                                                            Informe</label>
+                                                                                        <input type="text" name="id_informe"
+                                                                                            value="<?= $id_informe; ?>" hidden>
+                                                                                        <input type="text" name="docente_id"
+                                                                                            value="<?= $docente_id; ?>" hidden>
+                                                                                        <input type="date"
+                                                                                            value="<?= $informe['fecha_informe']; ?>"
+                                                                                            name="fecha_informe"
+                                                                                            class="form-control" name="" id="">
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
 
                                                                             <div class="row">
                                                                                 <div class="col-md-12">
-                                                                                    <div class="form-group" style="text-align: left">
-                                                                                        <label for="estudiantes-select" class="text-align-left">Estudiante</label>
-                                                                                        <select name="estudiante_id" class="form-control uppercase" id="estudiantes-select">
-                                                                                            <option value="" disabled selected>Seleccione un estudiante</option>
+                                                                                    <div class="form-group"
+                                                                                        style="text-align: left">
+                                                                                        <label for="estudiantes-select"
+                                                                                            class="text-align-left">Estudiante</label>
+                                                                                        <select name="estudiante_id"
+                                                                                            class="form-control uppercase"
+                                                                                            id="estudiantes-select">
+                                                                                            <option value="" disabled selected>
+                                                                                                Seleccione un estudiante
+                                                                                            </option>
                                                                                             <?php
                                                                                             foreach ($estudiantes as $estudiante) {
                                                                                                 if ($estudiante['id_grado'] == $grado_id) {
                                                                                                     $id_estudiante = $estudiante['id_estudiante']; ?>
-                                                                                                    <option value="<?= $id_estudiante; ?>" <?= $id_estudiante == $estudiante_id ? 'selected' : '' ?>>
+                                                                                                    <option
+                                                                                                        value="<?= $id_estudiante; ?>"
+                                                                                                        <?= $id_estudiante == $estudiante_id ? 'selected' : '' ?>>
                                                                                                         <?= strtoupper($estudiante['apellidos'] . ", " . $estudiante['nombres']); ?>
                                                                                                     </option>
-                                                                                            <?php
+                                                                                                    <?php
                                                                                                 }
                                                                                             }
                                                                                             ?>
@@ -330,27 +400,58 @@ include('../../app/controllers/informes/listado_de_informes.php');
 
                                                                             <div class="row" hidden>
                                                                                 <div class="col-md-12">
-                                                                                    <div class="form-group" style="text-align: left">
-                                                                                        <label for="" class="text-align-left">Materia</label>
-                                                                                        <input type="text" value="<?= $informe['nombre_materia']; ?>">
-                                                                                        <input type="text" name="materia_id" value="<?= $informe['id_materia']; ?>" hidden>
+                                                                                    <div class="form-group"
+                                                                                        style="text-align: left">
+                                                                                        <label for=""
+                                                                                            class="text-align-left">Materia</label>
+                                                                                        <input type="text"
+                                                                                            value="<?= $informe['nombre_materia']; ?>">
+                                                                                        <input type="text" name="materia_id"
+                                                                                            value="<?= $informe['id_materia']; ?>"
+                                                                                            hidden>
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
 
                                                                             <div class="row">
                                                                                 <div class="col-md-12">
-                                                                                    <div class="form-group" style="text-align: left">
-                                                                                        <label for="" class="text-align-left">Categorización</label>
-                                                                                        <select name="observacion" class="form-control uppercase" id="">
-                                                                                            <option value="" disabled selected>Seleccione una categoria</option>
-                                                                                            <option value="COMPORTAMIENTO Y DISCIPLINA" <?= $informe['observacion'] == "COMPORTAMIENTO Y DISCIPLINA" ? 'selected' : '' ?>>COMPORTAMIENTO Y DISCIPLINA</option>
-                                                                                            <option value="COMUNICACIÓN Y PARTICIPACIÓN" <?= $informe['observacion'] == "COMUNICACIÓN Y PARTICIPACIÓN" ? 'selected' : '' ?>>COMUNICACIÓN Y PARTICIPACIÓN</option>
-                                                                                            <option value="DIAGNÓSTICO INICIAL" <?= $informe['observacion'] == "DIAGNÓSTICO INICIAL" ? 'selected' : '' ?>>DIAGNÓSTICO INICIAL</option>
-                                                                                            <option value="EVOLUCIÓN Y PROGRESO GENERAL" <?= $informe['observacion'] == "EVOLUCIÓN Y PROGRESO GENERAL" ? 'selected' : '' ?>>EVOLUCIÓN Y PROGRESO GENERAL</option>
-                                                                                            <option value="OBSERVACIONES ESPECÍFICAS" <?= $informe['observacion'] == "OBSERVACIONES ESPECÍFICAS" ? 'selected' : '' ?>>OBSERVACIONES ESPECÍFICAS</option>
-                                                                                            <option value="RETOS Y ESTRATEGIAS DE APOYO" <?= $informe['observacion'] == "RETOS Y ESTRATEGIAS DE APOYO" ? 'selected' : '' ?>>RETOS Y ESTRATEGIAS DE APOYO</option>
-                                                                                            <option value="TRABAJO EN GRUPO Y COLABORACIÓN" <?= $informe['observacion'] == "TRABAJO EN GRUPO Y COLABORACIÓN" ? 'selected' : '' ?>>TRABAJO EN GRUPO Y COLABORACIÓN</option>
+                                                                                    <div class="form-group"
+                                                                                        style="text-align: left">
+                                                                                        <label for=""
+                                                                                            class="text-align-left">Categorización</label>
+                                                                                        <select name="observacion"
+                                                                                            class="form-control uppercase"
+                                                                                            id="">
+                                                                                            <option value="" disabled selected>
+                                                                                                Seleccione una categoria
+                                                                                            </option>
+                                                                                            <option
+                                                                                                value="COMPORTAMIENTO Y DISCIPLINA"
+                                                                                                <?= $informe['observacion'] == "COMPORTAMIENTO Y DISCIPLINA" ? 'selected' : '' ?>>COMPORTAMIENTO Y DISCIPLINA
+                                                                                            </option>
+                                                                                            <option
+                                                                                                value="COMUNICACIÓN Y PARTICIPACIÓN"
+                                                                                                <?= $informe['observacion'] == "COMUNICACIÓN Y PARTICIPACIÓN" ? 'selected' : '' ?>>COMUNICACIÓN Y
+                                                                                                PARTICIPACIÓN</option>
+                                                                                            <option value="DIAGNÓSTICO INICIAL"
+                                                                                                <?= $informe['observacion'] == "DIAGNÓSTICO INICIAL" ? 'selected' : '' ?>>
+                                                                                                DIAGNÓSTICO INICIAL</option>
+                                                                                            <option
+                                                                                                value="EVOLUCIÓN Y PROGRESO GENERAL"
+                                                                                                <?= $informe['observacion'] == "EVOLUCIÓN Y PROGRESO GENERAL" ? 'selected' : '' ?>>EVOLUCIÓN Y PROGRESO
+                                                                                                GENERAL</option>
+                                                                                            <option
+                                                                                                value="OBSERVACIONES ESPECÍFICAS"
+                                                                                                <?= $informe['observacion'] == "OBSERVACIONES ESPECÍFICAS" ? 'selected' : '' ?>>OBSERVACIONES ESPECÍFICAS
+                                                                                            </option>
+                                                                                            <option
+                                                                                                value="RETOS Y ESTRATEGIAS DE APOYO"
+                                                                                                <?= $informe['observacion'] == "RETOS Y ESTRATEGIAS DE APOYO" ? 'selected' : '' ?>>RETOS Y
+                                                                                                ESTRATEGIAS DE APOYO</option>
+                                                                                            <option
+                                                                                                value="TRABAJO EN GRUPO Y COLABORACIÓN"
+                                                                                                <?= $informe['observacion'] == "TRABAJO EN GRUPO Y COLABORACIÓN" ? 'selected' : '' ?>>TRABAJO EN
+                                                                                                GRUPO Y COLABORACIÓN</option>
 
                                                                                         </select>
                                                                                     </div>
@@ -359,7 +460,7 @@ include('../../app/controllers/informes/listado_de_informes.php');
 
 
                                                                             <!-- Place the following <script> and <textarea> tags your HTML's <body> -->
-                                                                            <!-- <script>
+                                                                            <script>
                                                                                 tinymce.init({
                                                                                     selector: 'textarea',
                                                                                     language: 'es',
@@ -367,28 +468,21 @@ include('../../app/controllers/informes/listado_de_informes.php');
                                                                                         // Core editing features
                                                                                         'anchor', 'autolink', 'charmap', 'codesample', 'emoticons', 'image', 'link', 'lists', 'media', 'searchreplace', 'table', 'visualblocks', 'wordcount',
                                                                                         // Your account includes a free trial of TinyMCE premium features
-                                                                                        // Try the most popular premium features until Dec 11, 2024:
-                                                                                        'checklist', 'mediaembed', 'casechange', 'export', 'formatpainter', 'pageembed', 'a11ychecker', 'tinymcespellchecker', 'permanentpen', 'powerpaste', 'advtable', 'advcode', 'editimage', 'advtemplate', 'ai', 'mentions', 'tinycomments', 'tableofcontents', 'footnotes', 'mergetags', 'autocorrect', 'typography', 'inlinecss', 'markdown',
-                                                                                        // Early access to document converters
-                                                                                        'importword', 'exportword', 'exportpdf'
+                                                                                        // Try the most popular premium features until Dec 26, 2024:
+                                                                                        'checklist', 'mediaembed', 'casechange', 'export', 'formatpainter', 'pageembed', 'a11ychecker', 'tinymcespellchecker', 'permanentpen', 'powerpaste', 'advtable', 'advcode', 'editimage', 'advtemplate', 'ai', 'mentions', 'tinycomments', 'tableofcontents', 'footnotes', 'mergetags', 'autocorrect', 'typography', 'inlinecss', 'markdown', 'importword', 'exportword', 'exportpdf'
                                                                                     ],
                                                                                     toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | addcomment showcomments | spellcheckdialog a11ycheck typography | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
                                                                                     tinycomments_mode: 'embedded',
                                                                                     tinycomments_author: 'Author name',
-                                                                                    mergetags_list: [{
-                                                                                            value: 'First.Name',
-                                                                                            title: 'First Name'
-                                                                                        },
-                                                                                        {
-                                                                                            value: 'Email',
-                                                                                            title: 'Email'
-                                                                                        },
+                                                                                    mergetags_list: [
+                                                                                        { value: 'First.Name', title: 'First Name' },
+                                                                                        { value: 'Email', title: 'Email' },
                                                                                     ],
                                                                                     ai_request: (request, respondWith) => respondWith.string(() => Promise.reject('See docs to implement AI Assistant')),
                                                                                 });
-                                                                            </script> -->
+                                                                            </script>
 
-                                                                            <script>
+                                                                            <!-- <script>
                                                                                 tinymce.init({
                                                                                     selector: 'textarea',
                                                                                     language: 'es',
@@ -411,29 +505,40 @@ include('../../app/controllers/informes/listado_de_informes.php');
                                                                                     tinycomments_author: 'Author name'
 
                                                                                 });
-                                                                            </script>
+                                                                            </script> -->
 
                                                                             <div class="row">
                                                                                 <div class="col-md-12">
-                                                                                    <div class="form-group" style="text-align: left">
-                                                                                        <label for="" class="text-align-left">Observaciones</label>
-                                                                                        <textarea name="nota" rows="10" class="form-control" id=""><?= $informe['nota']; ?></textarea>
+                                                                                    <div class="form-group"
+                                                                                        style="text-align: left">
+                                                                                        <label for=""
+                                                                                            class="text-align-left">Observaciones</label>
+                                                                                        <textarea name="nota" rows="10"
+                                                                                            class="form-control"
+                                                                                            id=""><?= $informe['nota']; ?></textarea>
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
                                                                         <div class="modal-footer">
-                                                                            <button type="submit" class="btn btn-success">Actualizar</button>
-                                                                            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                                                                            <button type="submit"
+                                                                                class="btn btn-success">Actualizar</button>
+                                                                            <button type="button" class="btn btn-danger"
+                                                                                data-dismiss="modal">Cancelar</button>
                                                                         </div>
                                                                     </form>
                                                                 </div>
                                                             </div>
                                                         </div>
 
-                                                        <form action="<?= APP_URL; ?>/app/controllers/informes/delete.php" onclick="preguntar<?= $id_informe; ?>(event)" method="post" id="miFormulario<?= $id_informe; ?>">
-                                                            <input type="text" name="id_informe" value="<?= $id_informe; ?>" hidden>
-                                                            <button type="submit" title="Eliminar" class="btn btn-danger btn-sm" style="border-radius: 0px 5px 5px 0px"><i class="bi bi-trash"></i></button>
+                                                        <form action="<?= APP_URL; ?>/app/controllers/informes/delete.php"
+                                                            onclick="preguntar<?= $id_informe; ?>(event)" method="post"
+                                                            id="miFormulario<?= $id_informe; ?>">
+                                                            <input type="text" name="id_informe" value="<?= $id_informe; ?>"
+                                                                hidden>
+                                                            <button type="submit" title="Eliminar" class="btn btn-danger btn-sm"
+                                                                style="border-radius: 0px 5px 5px 0px"><i
+                                                                    class="bi bi-trash"></i></button>
                                                         </form>
                                                         <script>
                                                             function preguntar<?= $id_informe; ?>(event) {
@@ -461,7 +566,7 @@ include('../../app/controllers/informes/listado_de_informes.php');
 
 
                                             </tr>
-                                    <?php
+                                            <?php
                                         }
                                     }
                                     ?>
@@ -494,7 +599,7 @@ include('../../layout/mensajes.php');
 ?>
 
 <script>
-    $(function() {
+    $(function () {
         $("#example2").DataTable({
             "pageLength": 10,
             "language": {
@@ -520,38 +625,38 @@ include('../../layout/mensajes.php');
             "lengthChange": true,
             "autoWidth": false,
             buttons: [{
-                    extend: 'collection',
-                    text: 'Exportar',
-                    orientation: 'landscape',
-                    buttons: [{
-                        text: 'Copiar Texto',
-                        extend: 'copy',
-                    }, {
-                        text: 'Descargar en PDF',
-                        extend: 'pdf'
-                    }, {
-                        text: 'Descargar en CSV',
-                        extend: 'csv'
-                    }, {
-                        text: 'Descargar en Excel',
-                        extend: 'excel'
-                    }, {
-                        text: 'Imprimir Reporte',
-                        extend: 'print'
-                    }]
-                },
-                {
-                    extend: 'colvis',
-                    text: 'Visualizar',
-                    collectionLayout: 'fixed three-column'
-                }
+                extend: 'collection',
+                text: 'Exportar',
+                orientation: 'landscape',
+                buttons: [{
+                    text: 'Copiar Texto',
+                    extend: 'copy',
+                }, {
+                    text: 'Descargar en PDF',
+                    extend: 'pdf'
+                }, {
+                    text: 'Descargar en CSV',
+                    extend: 'csv'
+                }, {
+                    text: 'Descargar en Excel',
+                    extend: 'excel'
+                }, {
+                    text: 'Imprimir Reporte',
+                    extend: 'print'
+                }]
+            },
+            {
+                extend: 'colvis',
+                text: 'Visualizar',
+                collectionLayout: 'fixed three-column'
+            }
             ],
         }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
     });
 </script>
 
 <script>
-    $(function() {
+    $(function () {
         $("#example1").DataTable({
             "pageLength": 10,
             "language": {
@@ -577,31 +682,31 @@ include('../../layout/mensajes.php');
             "lengthChange": true,
             "autoWidth": false,
             buttons: [{
-                    extend: 'collection',
-                    text: 'Exportar',
-                    orientation: 'landscape',
-                    buttons: [{
-                        text: 'Copiar Texto',
-                        extend: 'copy',
-                    }, {
-                        text: 'Descargar en PDF',
-                        extend: 'pdf'
-                    }, {
-                        text: 'Descargar en CSV',
-                        extend: 'csv'
-                    }, {
-                        text: 'Descargar en Excel',
-                        extend: 'excel'
-                    }, {
-                        text: 'Imprimir Reporte',
-                        extend: 'print'
-                    }]
-                },
-                {
-                    extend: 'colvis',
-                    text: 'Visualizar',
-                    collectionLayout: 'fixed three-column'
-                }
+                extend: 'collection',
+                text: 'Exportar',
+                orientation: 'landscape',
+                buttons: [{
+                    text: 'Copiar Texto',
+                    extend: 'copy',
+                }, {
+                    text: 'Descargar en PDF',
+                    extend: 'pdf'
+                }, {
+                    text: 'Descargar en CSV',
+                    extend: 'csv'
+                }, {
+                    text: 'Descargar en Excel',
+                    extend: 'excel'
+                }, {
+                    text: 'Imprimir Reporte',
+                    extend: 'print'
+                }]
+            },
+            {
+                extend: 'colvis',
+                text: 'Visualizar',
+                collectionLayout: 'fixed three-column'
+            }
             ],
         }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
     });
