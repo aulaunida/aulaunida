@@ -396,12 +396,12 @@ include('../../admin/layout/parte2.php');
             const thead = document.createElement('thead');
             thead.innerHTML = `
             <tr>
-                <th style="border: 1px solid #ccc; padding: 4px; text-align: left;">Grado</th>
-                <th style="border: 1px solid #ccc; padding: 4px; text-align: left;">Ciclo</th>
-                <th style="border: 1px solid #ccc; padding: 4px; text-align: left;">Participación</th>
-                <th style="border: 1px solid #ccc; padding: 4px; text-align: left;">Aceptable</th>
-                <th style="border: 1px solid #ccc; padding: 4px; text-align: left;">Escasa</th>
-                <th style="border: 1px solid #ccc; padding: 4px; text-align: left;">%</th>
+                <th style="border: 1px solid #ccc; padding: 4px; text-align: center;">Grado</th>
+                <th style="border: 1px solid #ccc; padding: 4px; text-align: center;">Ciclo</th>
+                <th style="border: 1px solid #ccc; padding: 4px; text-align: center;">Evento</th>
+                <th style="border: 1px solid #ccc; padding: 4px; text-align: left;">Presencias</th>
+                <th style="border: 1px solid #ccc; padding: 4px; text-align: left;">Ausencias</th>
+                <th style="border: 1px solid #ccc; padding: 4px; text-align: left;">Porcentaje</th>
             </tr>
         `;
             tabla.appendChild(thead);
@@ -526,7 +526,7 @@ include('../../admin/layout/parte2.php');
 
             crearGrafico(calcularPorcentajes(...actos), labels, colores, contenedorGraficos, `Actos escolares`);
             crearGrafico(calcularPorcentajes(...reuniones), labels, colores, contenedorGraficos, `Reuniones informativas`);
-            crearGrafico(calcularPorcentajes(...extras), labels, colores, contenedorGraficos, `Actividades extras curriculares`);
+            crearGrafico(calcularPorcentajes(...extras), labels, colores, contenedorGraficos, `Actividades extracurriculares`);
 
             contenedor.appendChild(contenedorGraficos);
             document.getElementById('contenedorGraficos').appendChild(contenedor);

@@ -180,25 +180,6 @@ include('../app/controllers/docentes/listado_de_asignaciones_indicadores.php');
             <?php
             if ($rol_sesion_usuario == 'ADMINISTRADOR') { ?>
                 <div class="row">
-
-                <!-- <div class="col-lg-3 col-3">
-                        <div class="small-box bg-green">
-                            <div class="inner">
-                                <?php
-                                $contador_indicadores = 7;
-                                ?>
-                                <h3><?= $contador_indicadores; ?></h3>
-                                <p>Indicadores </p>
-                            </div>
-                            <div style="color: white;" class="icon">
-                                <i class="fas"><i class="bi bi-graph-up-arrow"></i></i>
-                            </div>
-                            <a href="<?= APP_URL; ?>/admin/estadisticas/index.php" class="small-box-footer">
-                                Más información <i class="fas fa-arrow-circle-right"></i>
-                            </a>
-                        </div>
-                    </div> -->
-
                     <div class="col-lg-3 col-3">
                         <div class="small-box bg-blue">
                             <div class="inner">
@@ -219,7 +200,6 @@ include('../app/controllers/docentes/listado_de_asignaciones_indicadores.php');
                             </a>
                         </div>
                     </div>
-
                     <div class="col-lg-3 col-3">
                         <div class="small-box bg-warning ">
                             <div class="inner">
@@ -240,7 +220,6 @@ include('../app/controllers/docentes/listado_de_asignaciones_indicadores.php');
                             </a>
                         </div>
                     </div>
-
                     <div class="col-lg-3 col-3">
                         <div class="small-box bg-danger">
                             <div class="inner">
@@ -257,6 +236,23 @@ include('../app/controllers/docentes/listado_de_asignaciones_indicadores.php');
                                 <i class="fas"><i class="bi bi-journal-bookmark"></i></i>
                             </div>
                             <a href="<?= APP_URL; ?>/admin/materias" class="small-box-footer">
+                                Más información <i class="fas fa-arrow-circle-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-3">
+                        <div class="small-box bg-green">
+                            <div class="inner">
+                            <?php
+                                $contador_indicadores = 4;
+                                ?>
+                                <h3><?= $contador_indicadores; ?></h3>
+                                <p>Indicadores </p>
+                            </div>
+                            <div style="color: white;" class="icon">
+                                <i class="fas"><i class="bi bi-graph-up-arrow"></i></i>
+                            </div>
+                            <a href="<?= APP_URL; ?>/admin/indicadores/" class="small-box-footer">
                                 Más información <i class="fas fa-arrow-circle-right"></i>
                             </a>
                         </div>
@@ -282,7 +278,6 @@ include('../app/controllers/docentes/listado_de_asignaciones_indicadores.php');
                             </a>
                         </div>
                     </div>
-
                     <div class="col-lg-3 col-3">
                         <div class="small-box bg-olive ">
                             <div class="inner">

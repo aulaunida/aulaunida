@@ -551,7 +551,7 @@ include('../../admin/layout/parte2.php');
             }
 
             datos.push({
-                ciclo: gradoText,
+                ciclo: cicloText,
                 grado: gradoText, // Mostrar texto en la tabla
                 matriculados,
                 abandonos,

@@ -577,7 +577,7 @@ include('../../admin/layout/parte2.php');
                 return;
             }
             datos.push({
-                ciclo: gradoText,
+                ciclo: cicloText,
                 // turno,
                 grado: gradoText, // Mostrar texto en la tabla
                 matriculados,
@@ -725,7 +725,7 @@ include('../../admin/layout/parte2.php');
                             color: '#000', // Color de las etiquetas
                             font: {
                             size: 14,
-                            weight: 'normal'
+                            weight: 'bold'
                             },
                             formatter: (value, context) => {
                                 // Mostrar solo si el valor es mayor que 0

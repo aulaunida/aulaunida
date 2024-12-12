@@ -12,12 +12,7 @@ include('../../app/controllers/docentes/listado_de_asignaciones.php');
 ?>
 <style>
     .small-box {
-        border-radius: 100%;
-        /* Redondea los bordes para que sea circular u ovalado */
-        width: 530px;
-        /* Ajusta el ancho */
-        height: 150px;
-        /* Ajusta la altura para mantener la forma circular */
+      
         display: flex;
         align-items: center;
         justify-content: center;
@@ -60,7 +55,7 @@ include('../../app/controllers/docentes/listado_de_asignaciones.php');
             <br>
             <div class="row">
                 <div class="col-lg-6 col-6">
-                    <div class="small-box bg-pastel-blue">
+                    <div style="margin-left: 50px; margin-right: 80px;"  class="small-box bg-pastel-blue">
                         <div class="inner">
                             <?php
                             $contador_repitencia = 1;
@@ -77,7 +72,7 @@ include('../../app/controllers/docentes/listado_de_asignaciones.php');
                     </div>
                 </div>
                 <div class="col-lg-6 col-6">
-                    <div class="small-box bg-pastel-green">
+                    <div style="margin-left: 50px; margin-right: 80px;" class="small-box bg-pastel-green">
                         <div class="inner">
                             <?php
                             $contador_integrados = 2;
@@ -113,7 +108,7 @@ include('../../app/controllers/docentes/listado_de_asignaciones.php');
                 </div> -->
             <div class="row">
                 <div class="col-lg-6 col-6">
-                    <div class="small-box bg-pastel-pink">
+                    <div style="margin-left: 50px; margin-right: 80px;"  class="small-box bg-pastel-pink">
                         <div class="inner">
                             <?php
                             $contador_tiempo = 3;
@@ -130,7 +125,7 @@ include('../../app/controllers/docentes/listado_de_asignaciones.php');
                     </div>
                 </div>
                 <div class="col-lg-6 col-6">
-                    <div class="small-box bg-pastel-yellow">
+                    <div style="margin-left: 50px; margin-right: 80px;"  class="small-box bg-pastel-yellow">
                         <div class="inner">
                             <?php
                             $contador_abandono = 4;
