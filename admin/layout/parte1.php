@@ -148,42 +148,18 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 if ($rol_sesion_usuario == 'DOCENTE') { ?>
                     <li class="nav-item">
                         <a href="#" class="nav-link active">
-                            <i class="nav-icon fas"><i class="bi bi-graph-up-arrow"></i></i>
+                            <i class="nav-icon fas"><i class="bi bi-calendar2-check"></i></i>
                             <p>
-                                Indicadores
-
+                                Asistencias
                                 <i class="right fas fa-angle-left"></i>
                             </p>
                         </a>
+
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="<?= APP_URL; ?>/admin/estadisticas/index.php" class="nav-link active">
+                                <a href="<?= APP_URL; ?>/admin/asistencias" class="nav-link active">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>Consultar indicadores</p>
-                                </a>
-                            </li>
-                        </ul>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="<?= APP_URL; ?>/admin/repitencias" class="nav-link active">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Registrar repitencia</p>
-                                </a>
-                            </li>
-                        </ul>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="<?= APP_URL; ?>/admin/abandonos" class="nav-link active">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Registrar abandono</p>
-                                </a>
-                            </li>
-                        </ul>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="<?= APP_URL; ?>/admin/participaciones" class="nav-link active">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Registrar participaciones</p>
+                                    <p>Consultar asistencias</p>
                                 </a>
                             </li>
                         </ul>
@@ -225,25 +201,49 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         </ul>
                     </li>
 
+                    
                     <li class="nav-item">
                         <a href="#" class="nav-link active">
-                            <i class="nav-icon fas"><i class="bi bi-calendar2-check"></i></i>
+                            <i class="nav-icon fas"><i class="bi bi-graph-up-arrow"></i></i>
                             <p>
-                                Asistencias
+                                Indicadores
+
                                 <i class="right fas fa-angle-left"></i>
                             </p>
                         </a>
-
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="<?= APP_URL; ?>/admin/asistencias" class="nav-link active">
+                                <a href="<?= APP_URL; ?>/admin/estadisticas/index.php" class="nav-link active">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>Consultar asistencias</p>
+                                    <p>Consultar indicadores</p>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="<?= APP_URL; ?>/admin/repitencias" class="nav-link active">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Registrar repitencia</p>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="<?= APP_URL; ?>/admin/abandonos" class="nav-link active">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Registrar abandono</p>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="<?= APP_URL; ?>/admin/participaciones" class="nav-link active">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Registrar participaciones</p>
                                 </a>
                             </li>
                         </ul>
                     </li>
-
                     <li class="nav-item">
                         <a href="#" class="nav-link active">
                             <i class="nav-icon fas"><i class="bi bi-question-square"></i></i>
@@ -364,7 +364,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                     <li class="nav-item">
                         <a href="#" class="nav-link active">
-                            <i class="nav-icon fas"><i class="bi bi-journal-bookmark"></i></i></i>
+                            <i class="nav-icon fas"><i class="bi bi-graph-up-arrow"></i></i>
                             <p>
                                 Indicadores
                                 <i class="right fas fa-angle-left"></i>

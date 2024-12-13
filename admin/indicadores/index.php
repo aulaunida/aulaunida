@@ -12,7 +12,7 @@ include ('../../app/controllers/indicadores/listado_de_indicadores.php');
     <div class="content">
         <div class="container">
             <div class="row">
-            <h1 style="margin-left: 20px;"><i class="bi bi-journal-bookmark"></i> Indicadores</h1>
+            <h1 style="margin-left: 20px;"><i class="bi bi-graph-up-arrow"></i> Indicadores</h1>
             </div>
             <br>
             <div class="row">
