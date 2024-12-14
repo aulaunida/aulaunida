@@ -585,14 +585,16 @@ include('../../admin/layout/parte2.php');
         };
         // Definir colores fijos
         const coloresFijos = [
-            "#FFB6C1", // Rosa pastel
-            "#ADD8E6", // Azul pastel
-            "#FFDAB9", // Durazno pastel
-            "#DDA0DD", // Púrpura pastel
-            "#98FB98", // Verde pastel
-            "#FFFACD", // Amarillo pastel
-            "#FFE4E1" // Rosa claro pastel
-        ];
+    "#FF9999", // Rosa intermedio pastel
+    "#99CCFF", // Azul intermedio pastel
+    "#FFD699", // Durazno intermedio pastel
+    "#CC99FF", // Lila intermedio pastel
+    "#99FFB3", // Verde intermedio pastel
+    "#FFFF99", // Amarillo intermedio pastel
+    "#FFCCCC"  // Rosa claro intermedio
+];
+
+
 
         const actualizarGrafico = () => {
             const grados = [...new Set(datos.map(dato => dato.grado))];
